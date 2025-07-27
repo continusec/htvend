@@ -6,7 +6,13 @@ bindir := $(exec_prefix)/bin
 
 # builds all the outputs
 .PHONY: all
-all: target/htvend target/htvend-buildah target/htvend-buildah-build
+all: internal external
+
+.PHONY: internal
+internal: target/htvend target/htvend-buildah-build
+
+.PHONY: external
+external: target/htvend-buildah
 
 # copy them to /usr/local/bin - normally run with sudo
 .PHONY: install
@@ -79,8 +85,11 @@ clean-examples:
 
 .PHONY: check-license
 check-license:
-	git ls-files | grep .go$$ | xargs go-license --config license.yml --verify
+	git ls-files | grep .go$$ | xargs go-license --config ./config/license.yml --verify
 
 .PHONY: update-license
 update-license:
-	git ls-files | grep .go$$ | xargs go-license --config license.yml
+	git ls-files | grep .go$$ | xargs go-license --config ./config/license.yml
+
+.PHONY: test
+	go test ./...
