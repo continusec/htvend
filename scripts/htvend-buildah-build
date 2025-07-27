@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+temp_xdg_dir="$(mktemp -d)"
+cleanup() {
+    # normal rm -rf often fails with permission errors
+    htvend-buildah unshare rm -rf "${temp_xdg_dir}"
+}
+trap cleanup ERR EXIT
+
+# run with custom XDG_DATA_HOME else buildah won't re-fetch images that it
+# already has the blobs for. We need it to fetch each time, else we won't
+# detect those assets as needed as they won't be pulled through
+
+# we run with --timestamp 0 etc and SOURCE_DATE_EPOCH available to the
+# containers as this is generally useful for reproducible builds
+XDG_DATA_HOME="${temp_xdg_dir}" ZERO=0 htvend-buildah build \
+    ${BUILDAH_OPTS} \
+    --timestamp 0 \
+    --secret=id=ZERO,type=env,env=ZERO \
+    --run-mount=type=secret,id=ZERO,required,env=SOURCE_DATE_EPOCH \
+    "$@"
