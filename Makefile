@@ -67,7 +67,10 @@ manifests: all $(addsuffix blobs.yml,$(EXAMPLES))
 			htvend-buildah-build
 
 %/assets: %/blobs.yml
-	rm -rf "$@" && env -C "$*" PATH=$(PWD)/target:$(PATH) \
+	rm -rf "$@"
+	env -C "$*" PATH=$(PWD)/target:$(PATH) \
+		htvend verify --fetch
+	env -C "$*" PATH=$(PWD)/target:$(PATH) \
 		htvend export
 
 %/img.tar: %/blobs.yml %/assets
@@ -75,8 +78,16 @@ manifests: all $(addsuffix blobs.yml,$(EXAMPLES))
 		htvend offline --blobs-dir ./assets -- \
 			htvend-buildah-build --tag oci-archive:img.tar
 
+%/assets: %/blobs.yml
+	rm -rf "$@"
+	env -C "$*" PATH=$(PWD)/target:$(PATH) \
+		htvend verify --fetch
+	env -C "$*" PATH=$(PWD)/target:$(PATH) \
+		htvend export
+
+
 .PHONY: sha256sum
-sha256sum : images
+sha256sum: images
 	sha256sum examples/*/img.tar
 
 .PHONY: clean-examples
@@ -92,4 +103,6 @@ update-license:
 	git ls-files | grep .go$$ | xargs go-license --config ./config/license.yml
 
 .PHONY: test
+
+test:
 	go test ./...
