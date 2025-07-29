@@ -25,18 +25,8 @@ func sslCertFileAppender(e *envCtx) error {
 	if err := os.WriteFile(resultPath, e.CAPem, 0o444); err != nil {
 		return fmt.Errorf("error writing file: %w", err)
 	}
-	for idx, ev := range e.Options.CertFileEnvVars {
+	for _, ev := range e.Options.CertFileEnvVars {
 		e.EnvOverrides = append(e.EnvOverrides, ev+"="+resultPath)
-		if idx == 0 {
-			e.BuildahArgs = append(e.BuildahArgs,
-				"--secret=id=SSL_CERT_FILE_DATA,type=file,src="+resultPath,
-				"--secret=id=SSL_CERT_FILE_PATH,type=env,env="+ev,
-				"--run-mount=type=secret,id=SSL_CERT_FILE_DATA,required,target="+resultPath, // put in same spot so we can re-use env-var above
-			)
-		}
-		e.BuildahArgs = append(e.BuildahArgs,
-			"--run-mount=type=secret,id=SSL_CERT_FILE_PATH,required,env="+ev,
-		)
 	}
 	return nil
 }

@@ -34,11 +34,9 @@ import (
 type ListenerOptions struct {
 	ListenAddr string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
 
-	CertFileEnvVars  []string `long:"child-env-var-ssl-cert-file" default:"SSL_CERT_FILE" description:"List of environment variables that will be set pointing to the temporary certificate file."`
-	HttpProxyEnvVars []string `long:"child-env-var-http-proxy" default:"HTTP_PROXY" default:"HTTPS_PROXY" default:"http_proxy" default:"https_proxy" description:"List of environment variables that will be set pointing to the proxy host:port."`
-	NoProxyEnvVars   []string `long:"child-env-var-no-proxy" default:"NO_PROXY" default:"no_proxy" description:"List of environment variables that will be set blank."`
-	JksPaths         []string `long:"child-mount-path-jks" default:"/usr/lib/jvm/java-21-amazon-corretto/lib/security/cacerts" description:"List of paths that will see a trust-store mounted on it."`
-	MvnSettingsPaths []string `long:"child-mount-path-mvn" default:"/usr/share/maven/conf/settings.xml" description:"List of paths that will see a maven settings mounted on it."`
+	CertFileEnvVars  []string `long:"set-env-var-ssl-cert-file" default:"SSL_CERT_FILE" description:"List of environment variables that will be set pointing to the temporary certificate file."`
+	HttpProxyEnvVars []string `long:"set-env-var-http-proxy" default:"HTTP_PROXY" default:"HTTPS_PROXY" default:"http_proxy" default:"https_proxy" description:"List of environment variables that will be set pointing to the proxy host:port."`
+	NoProxyEnvVars   []string `long:"set-env-var-no-proxy" default:"NO_PROXY" default:"no_proxy" description:"List of environment variables that will be set blank."`
 }
 
 type mutateEnvFunc func(ectx *envCtx) error
@@ -87,9 +85,6 @@ func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt st
 				for _, f := range []mutateEnvFunc{
 					stdProxyVarsAppender,
 					sslCertFileAppender,
-					jksTrustStoreAppender,
-					mvnSettingsAppender,
-					buildahMountsAppender, // must be last as it sets env for others
 				} {
 					if err := f(&ectx); err != nil {
 						return fmt.Errorf("error modifying env: %w", err)
