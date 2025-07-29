@@ -8,25 +8,33 @@ The idea being that this serves as an upstream package lock file for any asset t
 
 ## Installation
 
-To build just `htvend`, you need [Go](https://go.dev/dl/) installed:
-
-```bash
-make target/htvend
-```
-
-Run:
-
-```bash
-./target/htvend --help
-```
-
-This repo also includes a patched `buildah` (`htvend-buildah`) and helper script `htvend-buildah-build`. The patched `buildah` includes a number of small PRs that are not yet merged upstream.
-
-To install these you will need the additional dependencies listed in the [buildah instllation instructions](https://github.com/containers/buildah/blob/main/install.md#installation-from-github), and these are easy to install with your regular distribution package manager.
+To build just `htvend`, you need [Go](https://go.dev/dl/) installed and then:
 
 ```bash
 make
-sudo make install # copies binaries to /usr/local/bin/
+
+# optional, copies target/htvend to /usr/local/bin
+sudo make install
+```
+
+Run `htvend --help`:
+
+```
+Usage:
+  htvend [OPTIONS] <command>
+
+Application Options:
+  -C, --chdir=   Directory to change to before running. (default: .)
+  -v, --verbose  Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+
+Help Options:
+  -h, --help     Show this help message
+
+Available commands:
+  build    Run command to create/update the manifest file
+  export   Export referenced assets to directory
+  offline  Serve assets to command, don't allow other outbound requests
+  verify   Verify and fetch any missing assets in the manifest file
 ```
 
 ## Quickstart
@@ -99,14 +107,13 @@ HTTPS_PROXY=http://127.0.0.1:46307
 HTTP_PROXY=http://127.0.0.1:46307
 NO_PROXY=
 SSL_CERT_FILE=/tmp/htvend1586023741/cacerts.pem
-...
 ```
 
-When a URL is requested that is found in `blobs.yml`, then that content is served.
+When the proxy server receives a URL that is found in `blobs.yml`, then that content is served.
 
-If it isn't found, then if invoked as `htvend build`, it will be fetched from upstream, and if invoked as `htvend offline` then an error response will be served.
+If it isn't found, then if invoked as `htvend build`, it will be fetched from upstream, and if invoked as `htvend offline`, an error response will be served.
 
-By default all blobs are saved and retrieved from `${XDG_DATA_HOME}/htvend/blobs` (`XDG_DATA_HOME` defaults to `~/.local/share`). The `htvend export` command demonstrated above copied any references the current dir `blobs.yml` to an `assets` directory in the current dir.
+By default all blobs are saved to and retrieved from `${XDG_DATA_HOME}/htvend/blobs` (`XDG_DATA_HOME` defaults to `~/.local/share`). The `htvend export` command demonstrated above copies any references in the current dir `blobs.yml` to an `assets` directory in the current dir.
 
 A cache `blobs.yml` is also saved at `${XDG_DATA_HOME}/htvend/cache.yml`, and this is useful during rebuilds of `blobs.yml` to avoid needing to connect to upstream servers more than neccessary.
 
@@ -124,49 +131,14 @@ Perhaps most importantly, this lets you accept changes on your schedule. If you 
 
 Yes. Packaging software into OCI Images is a very useful way to distribute software.
 
-We have built special support into `htvend` to make it straight-forward to use with the `buildah` tool to create OCI Image archives, which can be imported or pushed to your container management system. The special support is primarily around making the `SSL_CERT_FILE` mount available to the `RUN` instructions inside the `Dockerfile` without needing to modify the `Dockerfile`.
+Further using a `Dockerfile` to populate `blobs.yml` is an excellent way to ensure that a build is done from scratch (that is, it pulls through all needed assets) and thus is a great way of producing a canonical `blobs.yml` file.
 
-Building images has 2 challenges:
+However at time of writing none of the image building tools evaluated make full and effective use of `HTTP_PROXY` and `SSL_CERT_FILE` values.
 
-1. Fetching upstream base images from Docker registries such as docker.io.
-2. Propagating proxy/certificate information to `RUN` instructions inside of a `Dockerfile`.
+We have a (temporary, until PRs are accepted) fork of the `buildah` tool that has a number of small patches that enable it to work in this manner, and we have that packaged up here:
+<https://github.com/aeijdenberg/buildah>
 
-Our intent is to work without needing to make changes to a `Dockerfile` that otherwise can build with normal internet connectivity.
-
-### Non-caching of registry /v2/ tokens
-
-Here we make 2 main accommodations:
-
-1. Don't cache registry token end-points during `build` mode. Controlled with `--no-cache-response=` flag. See `htvend build --help` for default list.
-2. Do serve dummy 200 OK response for registry endpoint during `offline` mode. Controlled with `--dummy-ok-response=`. See `htvend offline --help` for default list.
-
-The first is necessary so that we don't cache and save authentication information.
-
-The second is necessary because some registry clients (including that used by `buildah`) will always perform a `GET` against the `/v2/` endpoint to check if authentication is required for furture connection (and during `offline` mode it isn't). By returning a dummy `200 OK` subsequent calls can work without putting weird data in the `blobs.yml`.
-
-### Custom `RUN` mount to make `SSL_CERT_FILE` and other files available to build process
-
-While `docker` and `buildah` automatically propagate `https_proxy` and other proxy variables to `RUN` commands without affecting the final image, they don't have a similar method for propagating `SSL_CERT_FILE`.
-
-However if we set this as a Docker "secret", then effectively run `RUN --mount=secret,id=xx,env=SSL_CERT_FILE` we can make that data available to `RUN` commands.
-
-This is awkward however as it requires modifying a `Dockerfile`, so we have contributed a patch to `buildah` that does so in a ephemeral manner, such that additional files/environment variables can be made available during each `RUN` invocation during a build, but without baking this into or otherwise affecting the final image.
-
-We have the following pull requests open against `buildah`:
-
-<https://github.com/containers/buildah/pull/6289>
-<https://github.com/containers/buildah/pull/6285>
-
-Until the above are merged, we have a branch with these patches at:
-<https://github.com/aeijdenberg/buildah/tree/continusecbuild>
-
-### Building Java projects
-
-Maven is a popular tool for building Java projects. It does not use the standard `HTTP_PROXY` and related variables.
-
-We instead create a temporary `settings.xml` file for `mvn` and put it in a temporary file. `MAVEN_SETTINGS_FILE` is set to the path of this file.
-
-Likewise we create a custom JKS truststore containing the self-signed certificate, and put this in a temporary file. `JAVA_TRUST_STORE_FILE` is set to the path of this file.
+See [README-oci-image-building.md](./README-oci-image-building.md) for details on how to use this.
 
 ## Frequently asked questions
 
@@ -178,9 +150,10 @@ When `htvend build` is run, assets are saved to `~/.local/share/htvend/blobs` ra
 
 This is so that `blobs.yml` can be easily commited with your source code. To save the other assets, run `htvend export` (see `--help`) to collect the referenced assets in an `assets/` directory.
 
-To "repair" or update the `blobs.yml` to re-point to latest images, you can run as `htvend build --force-refresh`.
+We have 2 options for updating a `blobs.yml`.
 
-For example in this repo, the `examples/alpine-img/blobs.yml` file is likely of out-of-date from when we saved it.
+1. Full rebuild, run: `htvend build --force-refresh --clean -- <your build command>` The `--force-refresh` tell it to always pull a new asset from upstream, and `--clean` tell it to clear the `blobs.yml` before starting.
+2. Update the hashes to current values, run: `htvend verify --fetch --repair` - this will attempt to fetch any missing assets, then rather than complain about incorrect hashes, it will replace the value in `blobs.yml` with the new hash.
 
 Run:
 

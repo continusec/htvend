@@ -23,7 +23,7 @@ import (
 
 type FlagsCommon struct {
 	DirToChangeTo string `short:"C" long:"chdir" default:"." description:"Directory to change to before running."`
-	Verbose       bool   `short:"v" description:"Set for verbose output. Equivalent to setting LOG_LEVEL=debug"`
+	Verbose       bool   `short:"v" long:"verbose" description:"Set for verbose output. Equivalent to setting LOG_LEVEL=debug"`
 }
 
 func (fc FlagsCommon) Apply() error {
