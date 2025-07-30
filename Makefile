@@ -6,7 +6,7 @@ bindir := $(exec_prefix)/bin
 
 # builds all the outputs
 .PHONY: all
-all: target/htvend
+all: target/htvend target/with-temp-dir
 
 # copy them to /usr/local/bin - normally run with sudo
 .PHONY: install
@@ -20,7 +20,7 @@ clean:
 
 # builds all the go binaries
 target/htvend target/with-temp-dir target: cmd/*/*.go internal/*/*.go go.mod go.sum
-	env GOBIN=$(PWD)/target go install ./cmd/...
+	env GOBIN=$(PWD)/target go install -trimpath -ldflags=-buildid= ./cmd/...
 
 .PHONY: check-license
 check-license:
@@ -34,8 +34,27 @@ update-license:
 test:
 	go test ./...
 
-# builds htvend then use that to produce bootstrap for self
-assets.json: target/htvend target/with-temp-dir
+# builds htvend then use that to produce bootstrap assets.json for self
+assets.json: target/htvend target/with-temp-dir go.mod go.sum
+	# here we set a temp GOMODCACHE to ensure go pulls through all dependent modules
 	./target/htvend build --clean -- \
 		./target/with-temp-dir -e GOMODCACHE -- \
 			$(MAKE) -B target/htvend || rm assets.json
+
+# fetch all the assets referred to by assets.json
+.PHONY: fetch
+fetch: assets.json target/htvend 
+	./target/htvend verify --fetch
+
+# export all the assets referred to by assets.json to local blobs/ dir
+blobs: assets.json target/htvend
+	rm -rf blobs/
+	./target/htvend export
+
+# rebuild htvend using itself and downloaded assets
+.PHONY: offline
+offline: target/htvend target/with-temp-dir assets.json blobs
+	# there's no need to set GOMODCACHE, other than to demonstrate that these will be downloaded again
+	./target/htvend offline -- \
+		./target/with-temp-dir -e GOMODCACHE -- \
+			$(MAKE) -B target/htvend

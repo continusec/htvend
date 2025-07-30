@@ -25,7 +25,7 @@ var _ flags.Commander = &ExportCommand{}
 type ExportCommand struct {
 	ManifestOptions
 
-	OutputDir string `short:"o" long:"output-directory" default:"./assets" description:"Directory to export assets to."`
+	OutputDir string `short:"o" long:"output-directory" default:"./blobs" description:"Directory to export blobs to."`
 }
 
 func (rc *ExportCommand) Execute(args []string) (retErr error) {

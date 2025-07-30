@@ -32,6 +32,7 @@ Help Options:
 
 Available commands:
   build    Run command to create/update the manifest file
+  clean    Clean various files, see htvend clean --help for details
   export   Export referenced assets to directory
   offline  Serve assets to command, don't allow other outbound requests
   verify   Verify and fetch any missing assets in the manifest file
@@ -42,16 +43,24 @@ Available commands:
 Here's a simple example:
 
 ```bash
+mkdir test
+cd test
+
 htvend build -- curl https://www.google.com.au
 ```
 
 Creates `assets.json` in your directory, with contents:
 
-```bash
-https://www.google.com.au/:
-  Headers:
-    Content-Type: text/html; charset=ISO-8859-1
-  Sha256: bd9c1762501a93c9ed806477a7fbf3db427aa7b8929d8b4d9839ca89ea560f24
+```json
+{
+  "https://www.google.com.au/": {
+    "Sha256": "44edb03288a899171c16c0e8f3855747446c53d22c5200e6cee1dce9ac953d42",
+    "Size": 17528,
+    "Headers": {
+      "Content-Type": "text/html; charset=ISO-8859-1"
+    }
+  }
+}
 ```
 
 If you now disconnect your internet (for example turn wifi off on your laptop), you can run:
@@ -83,8 +92,8 @@ htvend export
 and this creates:
 
 ```
-assets
-└── bd9c1762501a93c9ed806477a7fbf3db427aa7b8929d8b4d9839ca89ea560f24
+blobs/
+└── 44edb03288a899171c16c0e8f3855747446c53d22c5200e6cee1dce9ac953d42
 ```
 
 ## How does it work?
@@ -109,13 +118,9 @@ NO_PROXY=
 SSL_CERT_FILE=/tmp/htvend1586023741/cacerts.pem
 ```
 
-When the proxy server receives a URL that is found in `assets.json`, then that content is served.
+When the proxy server receives a URL that is found in `assets.json`, then that content is served, along with any relevant headers in that file.
 
-If it isn't found, then if invoked as `htvend build`, it will be fetched from upstream, and if invoked as `htvend offline`, an error response will be served.
-
-By default all blobs are saved to and retrieved from `${XDG_DATA_HOME}/htvend/blobs` (`XDG_DATA_HOME` defaults to `~/.local/share`). The `htvend export` command demonstrated above copies any references in the current dir `assets.json` to an `assets` directory in the current dir.
-
-A cache `assets.json` is also saved at `${XDG_DATA_HOME}/htvend/cache.yml`, and this is useful during rebuilds of `assets.json` to avoid needing to connect to upstream servers more than neccessary.
+If it isn't found, then if invoked as `htvend build`, it will be fetched from upstream, or if invoked as `htvend offline`, a 404 not found response will be served.
 
 ## When is this useful?
 
@@ -127,7 +132,165 @@ This is useful for a number of reasons, including:
 
 Perhaps most importantly, this lets you accept changes on your schedule. If you have to make a small change to a script that lives inside of an image to address a production issue, this makes it easy to make that change without inavertently bringing in additional changes due to other upstream changes that are pulled in via an otherwise uncontrolled image build process.
 
-## Does this work with building Docker / OCI images?
+## Sub-commands
+
+### `htvend build`
+
+```
+Usage:
+  htvend [OPTIONS] build [build-OPTIONS]
+
+Application Options:
+  -C, --chdir=                         Directory to change to before running. (default: .)
+  -v, --verbose                        Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+
+Help Options:
+  -h, --help                           Show this help message
+
+[build command options]
+      -m, --manifest=                  File to put manifest data in (default: ./assets.json)
+          --blobs-dir=                 Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=            Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+      -l, --listen-addr=               Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
+          --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary certificate file. (default: SSL_CERT_FILE)
+          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy,
+                                       https_proxy)
+          --set-env-var-no-proxy=      List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
+          --no-cache-response=         Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
+          --cache-header=              List of headers for which we will cache the first value. (default: Content-Type, Content-Encoding, X-Checksum-Sha1)
+          --force-refresh              If set, always fetch from upstream (and save to both local and global cache).
+          --clean                      If set, reset local blob list to empty before running.
+```
+
+This command is used to create/update `assets.json` in your current directory.
+
+After setting up a proxy server with a self-signed certificate, it will set the relevant environment variables and execute a sub-command. If none specified, an interactive shell will be made.
+
+See `make assets.json` for an example that creates a manifest for the dependcies of this project.
+
+### `htvend clean`
+
+```
+Usage:
+  htvend [OPTIONS] clean [clean-OPTIONS]
+
+Application Options:
+  -C, --chdir=              Directory to change to before running. (default: .)
+  -v, --verbose             Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+
+Help Options:
+  -h, --help                Show this help message
+
+[clean command options]
+      -m, --manifest=       File to put manifest data in (default: ./assets.json)
+          --blobs-dir=      Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest= Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+          --all             If set, instead remove shared global cache.
+```
+
+This does nothing unless the `--all` flag is set, in which case the global cache is deleted. In typical usage this should not be needed, but is useful for development of the `htvend` tool itself.
+
+### `htvend export`
+
+```
+Usage:
+  htvend [OPTIONS] export [export-OPTIONS]
+
+Application Options:
+  -C, --chdir=                Directory to change to before running. (default: .)
+  -v, --verbose               Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+
+Help Options:
+  -h, --help                  Show this help message
+
+[export command options]
+      -m, --manifest=         File to put manifest data in (default: ./assets.json)
+          --blobs-dir=        Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=   Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+      -o, --output-directory= Directory to export blobs to. (default: ./blobs)
+```
+
+This copies all cached blobs referred to by `assets.json` to a directory of your choosing. This is useful when packaging your assets to send to another environment (which may not have internet access).
+
+`make export` runs this for the `assets.json` file in this repo.
+
+### `htvend verify`
+
+```
+Usage:
+  htvend [OPTIONS] verify [verify-OPTIONS]
+
+Application Options:
+  -C, --chdir=                 Directory to change to before running. (default: .)
+  -v, --verbose                Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+
+Help Options:
+  -h, --help                   Show this help message
+
+[verify command options]
+      -m, --manifest=          File to put manifest data in (default: ./assets.json)
+          --blobs-dir=         Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=    Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+          --no-cache-response= Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
+          --cache-header=      List of headers for which we will cache the first value. (default: Content-Type, Content-Encoding, X-Checksum-Sha1)
+          --fetch              If set, fetch missing assets
+          --repair             If set, replace any missing assets with new versions currently found (implies fetch). May still require a rebuild afterwards (e.g. if they
+                               trigger other new calls).
+```
+
+Iterates through all referenced and confirm they exist locally and with the correct SHA256.
+
+If `--fetch` is set, it tries to fetch anything missing.
+
+If `--repair` is set, then the local manifest is updated if the content has changed since.
+
+`make fetch` runs this for the `assets.json` file in this repo.
+
+### `htvend offline`
+
+```
+Usage:
+  htvend [OPTIONS] offline [offline-OPTIONS]
+
+Application Options:
+  -C, --chdir=                         Directory to change to before running. (default: .)
+  -v, --verbose                        Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+
+Help Options:
+  -h, --help                           Show this help message
+
+[offline command options]
+      -m, --manifest=                  File to put manifest data in (default: ./assets.json)
+          --blobs-dir=                 Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=            Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+      -l, --listen-addr=               Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
+          --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary certificate file. (default: SSL_CERT_FILE)
+          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy,
+                                       https_proxy)
+          --set-env-var-no-proxy=      List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
+          --dummy-ok-response=         Regex list of URLs that we return a dummy 200 OK reply to. Useful for some Docker clients. (default: ^http.*/v2/$)
+```
+
+This runs the specified sub-command with a proxy which only serves the contents referenced in `assets.json`. Anything else will return a 404 not found error.
+
+`make offline` does this for this repository.
+
+If you have `unshare` installed, then a good way to *really* verify that you are offline can be as follows:
+
+```bash
+unshare -r -n -- \
+  bash -c "ip link set lo up && make offline"
+```
+
+The `unshare -r -n` runs the sub-command in a new namespace with no networks. The `ip link set lo up` creates a loopback interface in that empty namespace so that `htvend` can create a server that it's sub-command can then hit.
+
+By default all blobs are saved to and retrieved from `${XDG_DATA_HOME}/htvend/cache/blobs` (`XDG_DATA_HOME` defaults to `~/.local/share`). The `htvend export` command demonstrated above copies any references in the current dir `assets.json` to a local `blobs` directory in the current dir.
+
+A cache `assets.json` is also saved at `${XDG_DATA_HOME}/htvend/cache/assets.json`, and this is useful during rebuilds of `assets.json` to avoid needing to connect to upstream servers more than neccessary.
+
+## Frequently asked questions
+
+### Can this work with building Docker / OCI images?
 
 Yes. Packaging software into OCI Images is a very useful way to distribute software.
 
@@ -140,45 +303,9 @@ We have a (temporary, until PRs are accepted) fork of the `buildah` tool that ha
 
 See [README-oci-image-building.md](./README-oci-image-building.md) for details on how to use this.
 
-## Frequently asked questions
+### Isn't `go mod vendor` a better solution for Go code?
 
-### When I run `htvend verify` the upstream asset now has a different SHA256, how can I get the original?
-
-As part of your workflow it's important to ensure that the assets that you care about are saved.
-
-When `htvend build` is run, assets are saved to `~/.local/share/htvend/blobs` rather than your working directory (which is where `assets.json` is saved).
-
-This is so that `assets.json` can be easily commited with your source code. To save the other assets, run `htvend export` (see `--help`) to collect the referenced assets in an `assets/` directory.
-
-We have 2 options for updating a `assets.json`.
-
-1. Full rebuild, run: `htvend build --force-refresh --clean -- <your build command>` The `--force-refresh` tell it to always pull a new asset from upstream, and `--clean` tell it to clear the `assets.json` before starting.
-2. Update the hashes to current values, run: `htvend verify --fetch --repair` - this will attempt to fetch any missing assets, then rather than complain about incorrect hashes, it will replace the value in `assets.json` with the new hash.
-
-Run:
-
-```bash
-cd examples/alpine-img
-htvend verify --fetch
-```
-
-Results in error:
-
-```
-FATA[0000] error fetching https://dl-cdn.alpinelinux.org/alpine/v3.21/community/aarch64/APKINDEX.tar.gz: error updating asset file: wrong SHA256 for https://dl-cdn.alpinelinux.org/alpine/v3.21/community/aarch64/APKINDEX.tar.gz: expected: 7d7cfb8cdf852f2b1ccc887b624dcdefbba67cf0b35a4fff571811fa9b21f3c0 received: d4958fd1f4d5130459d8c0fa0e39861f6dc723ff341d3778b6b662de11550715 
-```
-
-Rebuild with latest with:
-
-```bash
-htvend build --force-refresh -- htvend-buildah-build
-```
-
-Or, for example if you only wanted to re-fetch that particular file:
-
-```bash
-htvend build --force-refresh -- curl https://dl-cdn.alpinelinux.org/alpine/v3.21/community/aarch64/APKINDEX.tar.gz 
-```
+Yes it probably is. We use the `assets.json` in this repo as an example only - not all languages are as good as Go.
 
 ### Why is this needed, can't we just ship built images around?
 
