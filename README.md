@@ -40,8 +40,8 @@ Creates `assets.json` in your directory, with contents:
 ```json
 {
   "https://www.google.com.au/": {
-    "Sha256": "44edb03288a899171c16c0e8f3855747446c53d22c5200e6cee1dce9ac953d42",
-    "Size": 17528,
+    "Sha256": "500f6cf6d3c3e33210612f92ad9fced116932293b36aedd33e836acf3b964e34",
+    "Size": 17536,
     "Headers": {
       "Content-Type": "text/html; charset=ISO-8859-1"
     }
@@ -377,7 +377,7 @@ This tool recognises that many projects end up being a combination of public ups
 
 The intent is to help make it easier to make changes to the private application part without pulling in any other changes from the internet.
 
-### Can specialised pull through caches like Artifactory and Nexus server the same purpose?
+### Can specialised pull through caches like Artifactory and Nexus serve the same purpose?
 
 Yes, they likely can. However they can be tricky to setup and may require specialist configuration for each package type (e.g. Maven vs Docker vs apt vs Python) and modification of each `Dockerfile` to use.
 
