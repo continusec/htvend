@@ -15,6 +15,7 @@
 package lockfile
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"maps"
@@ -25,17 +26,16 @@ import (
 	"github.com/continusec/htvend/internal/re"
 	"github.com/danjacques/gofslock/fslock"
 	"github.com/sirupsen/logrus"
-
-	"sigs.k8s.io/yaml"
 )
 
 type BlobInfo struct {
-	Headers map[string]string
 	Sha256  string
+	Size    int
+	Headers map[string]string
 }
 
 func blobEquals(a, b BlobInfo) bool {
-	return a.Sha256 == b.Sha256 && maps.Equal(a.Headers, b.Headers)
+	return a.Size == b.Size && a.Sha256 == b.Sha256 && maps.Equal(a.Headers, b.Headers)
 }
 
 type blobMap map[string]BlobInfo
@@ -189,6 +189,16 @@ func (f *File) Reset() error {
 	return f.save(false)
 }
 
+func (f *File) CloseAndDestroy() error {
+	if !f.options.Writable {
+		return fmt.Errorf("hmm, file should not be destroyable")
+	}
+	if err := f.Close(); err != nil {
+		return fmt.Errorf("error closing manifest file prior to destruction: %w", err)
+	}
+	return os.Remove(f.options.Path)
+}
+
 func (f *File) ForEach(cb func(k *url.URL, v BlobInfo) error) error {
 	f.mu.Lock()
 	defer f.mu.Unlock()
@@ -254,7 +264,7 @@ func (f *File) save(final bool) (retErr error) {
 		return nil
 	}
 
-	bb, err := yaml.Marshal(f.blobs) // uses the JSON marshaller which docs say will sort keys
+	bb, err := json.MarshalIndent(f.blobs, "", "  ") // uses the JSON marshaller which docs say will sort keys
 	if err != nil {
 		return fmt.Errorf("error marshalling: %w", err)
 	}
@@ -279,5 +289,5 @@ func (f *File) load() (retErr error) {
 		}
 		return fmt.Errorf("error opening map: %w", err)
 	}
-	return yaml.UnmarshalStrict(bb, &f.blobs)
+	return json.Unmarshal(bb, &f.blobs)
 }

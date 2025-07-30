@@ -38,6 +38,19 @@ type manifestContextOptions struct {
 	NoCacheList []string
 }
 
+func (o *ManifestOptions) MakeGlobalCacheManifestFile(noCache *re.MultiRegexMatcher) (*lockfile.File, error) {
+	cmPath, err := xdgIt(o.CacheMap)
+	if err != nil {
+		return nil, fmt.Errorf("error getting cache map path with xdg: %w", err)
+	}
+	return lockfile.NewMapFile(lockfile.MapFileOptions{
+		Path:           cmPath,
+		AllowOverwrite: true, // global cache should overwrite new vals
+		Writable:       true,
+		NoCache:        noCache,
+	})
+}
+
 func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockfile.File, error) {
 	noCache, err := re.NewMultiRegexMatcher(opts.NoCacheList)
 	if err != nil {
@@ -46,18 +59,9 @@ func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockf
 
 	var cache *lockfile.File
 	if opts.Writable {
-		cmPath, err := xdgIt(o.CacheMap)
+		cache, err = o.MakeGlobalCacheManifestFile(noCache)
 		if err != nil {
-			return nil, fmt.Errorf("error getting cache map path with xdg: %w", err)
-		}
-		cache, err = lockfile.NewMapFile(lockfile.MapFileOptions{
-			Path:           cmPath,
-			AllowOverwrite: true, // global cache should overwrite new vals
-			Writable:       true,
-			NoCache:        noCache,
-		})
-		if err != nil {
-			return nil, fmt.Errorf("error creating cache lock file: %w", err)
+			return nil, fmt.Errorf("error creating global manifest file: %w", err)
 		}
 	}
 

@@ -21,13 +21,16 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func RunWithFlags(opts any, globalInit func() error) {
+func RunWithFlags(opts any, globalInit func(args []string) error) {
 	err := func() (retErr error) {
 		// create parser - this should include execution of any flags.Executor(s)
 		parser := flags.NewParser(opts, flags.Default)
 		parser.CommandHandler = func(command flags.Commander, args []string) error {
-			if err := globalInit(); err != nil {
+			if err := globalInit(args); err != nil {
 				return err
+			}
+			if command == nil {
+				return nil
 			}
 			return command.Execute(args)
 		}

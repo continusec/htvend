@@ -11,7 +11,7 @@ all: target/htvend
 # copy them to /usr/local/bin - normally run with sudo
 .PHONY: install
 install: all
-	cp -t "$(DESTDIR)${bindir}" target/*
+	cp -t "$(DESTDIR)${bindir}" target/htvend target/with-temp-dir
 
 # remove any untracked files
 .PHONY: clean
@@ -19,7 +19,7 @@ clean:
 	git clean -xfd
 
 # builds all the go binaries
-target/htvend target: cmd/*/*.go internal/*/*.go go.mod go.sum
+target/htvend target/with-temp-dir target: cmd/*/*.go internal/*/*.go go.mod go.sum
 	env GOBIN=$(PWD)/target go install ./cmd/...
 
 .PHONY: check-license
@@ -33,3 +33,9 @@ update-license:
 .PHONY: test
 test:
 	go test ./...
+
+# builds htvend then use that to produce bootstrap for self
+blobs.yml: target/htvend target/with-temp-dir
+	./target/htvend build --clean -- \
+		./target/with-temp-dir -e GOMODCACHE -- \
+			$(MAKE) -B target/htvend || rm blobs.yml

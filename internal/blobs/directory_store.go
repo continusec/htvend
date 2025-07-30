@@ -52,3 +52,10 @@ func (s *DirectoryStore) Put() (*caf.ContentAddressableFile, error) {
 	}
 	return caf.NewContentAddressableFile(s.resolve), nil
 }
+
+func (s *DirectoryStore) Destroy() error {
+	if !s.writable {
+		return errors.New("blob store is not writable and therefore cannot be destroyed")
+	}
+	return os.RemoveAll(s.dir)
+}

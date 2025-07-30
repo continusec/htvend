@@ -37,7 +37,7 @@ func RunSubprocess(ctx context.Context, prompt string, args []string, extraEnv [
 			extraEnv = append(extraEnv, fmt.Sprintf("PS1=(%s) \\$ ", prompt))
 		}
 
-		logrus.Infof("Entering shell with env set to use proxy. Type exit / ctrl-D to exit.")
+		logrus.Infof("Entering shell with env set. Type exit / ctrl-D to exit.")
 	}
 
 	cmd := exec.CommandContext(ctx, args[0], args[1:]...)

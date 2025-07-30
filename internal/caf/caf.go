@@ -39,6 +39,7 @@ type ContentAddressableFile struct {
 	tf     *os.File  // writing until committed
 	path   string    // closed until cafStateCanceled
 	digest []byte    // committed until cafStateCanceled
+	size   int
 }
 
 type FilenameResolver func(digest []byte) string
@@ -104,7 +105,9 @@ func (caf *ContentAddressableFile) Write(p []byte) (int, error) {
 	if caf.state != cafStateWriting {
 		return 0, fmt.Errorf("invalid state for content addressable file: %d", caf.state)
 	}
-	return caf.mw.Write(p)
+	bw, err := caf.mw.Write(p)
+	caf.size += bw
+	return bw, err
 }
 
 func (caf *ContentAddressableFile) doClosedToCancelled() error {
@@ -160,6 +163,11 @@ func (caf *ContentAddressableFile) Committed() bool {
 // Only valid if Committed()
 func (caf *ContentAddressableFile) Digest() []byte {
 	return caf.digest
+}
+
+// Only valid if Committed()
+func (caf *ContentAddressableFile) Size() int {
+	return caf.size
 }
 
 // Only valid if Committed()

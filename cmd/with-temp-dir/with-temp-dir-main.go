@@ -15,20 +15,33 @@
 package main
 
 import (
+	"context"
+	"os"
+	"path/filepath"
+
 	"github.com/continusec/htvend/internal/app"
-	"github.com/continusec/htvend/internal/htvend"
 )
 
 func main() {
 	opts := &struct {
 		app.FlagsCommon
-		Build   htvend.BuildCommand   `command:"build" description:"Run command to create/update the manifest file"`
-		Verify  htvend.VerifyCommand  `command:"verify" description:"Verify and fetch any missing assets in the manifest file"`
-		Export  htvend.ExportCommand  `command:"export" description:"Export referenced assets to directory"`
-		Offline htvend.OfflineCommand `command:"offline" description:"Serve assets to command, don't allow other outbound requests"`
-		Clean   htvend.CleanCommand   `command:"clean" description:"Clean various files, see htvend clean --help for details"`
+
+		TmpDirEnv []string `short:"e" description:"For each value, this creates a temp dir and sets the specified environment variable to point to it"`
 	}{}
-	app.RunWithFlags(opts, func([]string) error {
-		return opts.FlagsCommon.Apply()
+	app.RunWithFlags(opts, func(args []string) error {
+		if err := opts.FlagsCommon.Apply(); err != nil {
+			return err
+		}
+		return app.WithTempDir(func(tempDirRoot string) error {
+			var extraEnv []string
+			for _, ev := range opts.TmpDirEnv {
+				evPath := filepath.Join(tempDirRoot, ev)
+				if err := os.Mkdir(evPath, 0o700); err != nil {
+					return err
+				}
+				extraEnv = append(extraEnv, ev+"="+evPath)
+			}
+			return app.RunSubprocess(context.Background(), "with-temp-dir", args, extraEnv)
+		})
 	})
 }

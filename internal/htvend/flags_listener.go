@@ -218,6 +218,7 @@ func fetchAndSaveBlob(
 
 	// record asset belonging to this build
 	err = assets.AddBlob(u, lockfile.BlobInfo{
+		Size:    caf.Size(),
 		Sha256:  hex.EncodeToString(caf.Digest()),
 		Headers: filterHeaders(hdrsToCache, resp.Header),
 	})
