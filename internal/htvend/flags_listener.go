@@ -32,6 +32,8 @@ import (
 )
 
 type ListenerOptions struct {
+	app.SubprocessOptions `positional-args:"yes"`
+
 	ListenAddr string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
 
 	CertFileEnvVars  []string `long:"set-env-var-ssl-cert-file" default:"SSL_CERT_FILE" description:"List of environment variables that will be set pointing to the temporary certificate file."`
@@ -90,7 +92,7 @@ func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt st
 						return fmt.Errorf("error modifying env: %w", err)
 					}
 				}
-				return app.RunSubprocess(ctx, prompt, args, ectx.EnvOverrides)
+				return app.RunSubprocess(ctx, prompt, o.SubprocessOptions, ectx.EnvOverrides)
 			})
 		})
 	})

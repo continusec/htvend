@@ -16,28 +16,6 @@ make
 # optional, copies target/htvend to /usr/local/bin
 sudo make install
 ```
-
-Run `htvend --help`:
-
-```
-Usage:
-  htvend [OPTIONS] <command>
-
-Application Options:
-  -C, --chdir=   Directory to change to before running. (default: .)
-  -v, --verbose  Set for verbose output. Equivalent to setting LOG_LEVEL=debug
-
-Help Options:
-  -h, --help     Show this help message
-
-Available commands:
-  build    Run command to create/update the manifest file
-  clean    Clean various files, see htvend clean --help for details
-  export   Export referenced assets to directory
-  offline  Serve assets to command, don't allow other outbound requests
-  verify   Verify and fetch any missing assets in the manifest file
-```
-
 ## Quickstart
 
 Here's a simple example:
@@ -134,11 +112,30 @@ Perhaps most importantly, this lets you accept changes on your schedule. If you 
 
 ## Sub-commands
 
+```
+Usage:
+  htvend [OPTIONS] <command>
+
+Application Options:
+  -C, --chdir=   Directory to change to before running. (default: .)
+  -v, --verbose  Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+
+Help Options:
+  -h, --help     Show this help message
+
+Available commands:
+  build    Run command to create/update the manifest file
+  clean    Clean various files, see htvend clean --help for details
+  export   Export referenced assets to directory
+  offline  Serve assets to command, don't allow other outbound requests
+  verify   Verify and fetch any missing assets in the manifest file
+```
+
 ### `htvend build`
 
 ```
 Usage:
-  htvend [OPTIONS] build [build-OPTIONS]
+  htvend [OPTIONS] build [build-OPTIONS] [COMMAND] [ARG...]
 
 Application Options:
   -C, --chdir=                         Directory to change to before running. (default: .)
@@ -153,13 +150,16 @@ Help Options:
           --cache-manifest=            Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
       -l, --listen-addr=               Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
           --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary certificate file. (default: SSL_CERT_FILE)
-          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy,
-                                       https_proxy)
+          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy)
           --set-env-var-no-proxy=      List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
           --no-cache-response=         Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
           --cache-header=              List of headers for which we will cache the first value. (default: Content-Type, Content-Encoding, X-Checksum-Sha1)
           --force-refresh              If set, always fetch from upstream (and save to both local and global cache).
           --clean                      If set, reset local blob list to empty before running.
+
+[build command arguments]
+  COMMAND:                             Sub-process to run. If not specified an interactive-shell is opened
+  ARG:                                 Arguments to pass to the sub-process
 ```
 
 This command is used to create/update `assets.json` in your current directory.
@@ -234,8 +234,8 @@ Help Options:
           --no-cache-response= Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
           --cache-header=      List of headers for which we will cache the first value. (default: Content-Type, Content-Encoding, X-Checksum-Sha1)
           --fetch              If set, fetch missing assets
-          --repair             If set, replace any missing assets with new versions currently found (implies fetch). May still require a rebuild afterwards (e.g. if they
-                               trigger other new calls).
+          --repair             If set, replace any missing assets with new versions currently found (implies fetch). May still require a rebuild afterwards (e.g. if they trigger other new
+                               calls).
 ```
 
 Iterates through all referenced and confirm they exist locally and with the correct SHA256.
@@ -250,7 +250,7 @@ If `--repair` is set, then the local manifest is updated if the content has chan
 
 ```
 Usage:
-  htvend [OPTIONS] offline [offline-OPTIONS]
+  htvend [OPTIONS] offline [offline-OPTIONS] [COMMAND] [ARG...]
 
 Application Options:
   -C, --chdir=                         Directory to change to before running. (default: .)
@@ -265,10 +265,13 @@ Help Options:
           --cache-manifest=            Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
       -l, --listen-addr=               Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
           --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary certificate file. (default: SSL_CERT_FILE)
-          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy,
-                                       https_proxy)
+          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy)
           --set-env-var-no-proxy=      List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
           --dummy-ok-response=         Regex list of URLs that we return a dummy 200 OK reply to. Useful for some Docker clients. (default: ^http.*/v2/$)
+
+[offline command arguments]
+  COMMAND:                             Sub-process to run. If not specified an interactive-shell is opened
+  ARG:                                 Arguments to pass to the sub-process
 ```
 
 This runs the specified sub-command with a proxy which only serves the contents referenced in `assets.json`. Anything else will return a 404 not found error.

@@ -24,26 +24,29 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func RunSubprocess(ctx context.Context, prompt string, args []string, extraEnv []string) error {
-	if len(args) == 0 { // then assume shell
-		shell := os.Getenv("SHELL")
-		if shell == "" {
+type SubprocessOptions struct {
+	Process string   `positional-arg-name:"COMMAND" description:"Sub-process to run. If not specified an interactive-shell is opened"`
+	Args    []string `positional-arg-name:"ARG" description:"Arguments to pass to the sub-process"`
+}
+
+func RunSubprocess(ctx context.Context, prompt string, opts SubprocessOptions, extraEnv []string) error {
+	if opts.Process == "" { // then assume shell
+		opts.Process = os.Getenv("SHELL")
+		if opts.Process == "" {
 			return fmt.Errorf("no args specified, and unable to find SHELL envariable to default to")
 		}
-		args = []string{shell}
-		if strings.HasSuffix(shell, "bash") {
+		opts.Args = nil
+		if strings.HasSuffix(opts.Process, "bash") {
 			// if we're bash, then add an extra prompt
-			args = append(args, "--norc")
+			opts.Args = append(opts.Args, "--norc")
 			extraEnv = append(extraEnv, fmt.Sprintf("PS1=(%s) \\$ ", prompt))
 		}
 
 		logrus.Infof("Entering shell with env set. Type exit / ctrl-D to exit.")
 	}
 
-	cmd := exec.CommandContext(ctx, args[0], args[1:]...)
-
+	cmd := exec.CommandContext(ctx, opts.Process, opts.Args...)
 	cmd.Env = append(cmd.Environ(), extraEnv...)
-
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
@@ -51,7 +54,7 @@ func RunSubprocess(ctx context.Context, prompt string, args []string, extraEnv [
 	for _, e := range extraEnv {
 		logrus.Debugf("export %s", e)
 	}
-	logrus.Debugf("%s", strings.Join(args, " "))
+	logrus.Debugf("%s %s", opts.Process, strings.Join(opts.Args, " "))
 	defer logrus.Debugf("(terminated)")
 
 	return cmd.Run()

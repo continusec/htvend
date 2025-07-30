@@ -28,7 +28,7 @@ func main() {
 		Offline htvend.OfflineCommand `command:"offline" description:"Serve assets to command, don't allow other outbound requests"`
 		Clean   htvend.CleanCommand   `command:"clean" description:"Clean various files, see htvend clean --help for details"`
 	}{}
-	app.RunWithFlags(opts, func([]string) error {
+	app.RunWithFlags(opts, func() error {
 		return opts.FlagsCommon.Apply()
 	})
 }

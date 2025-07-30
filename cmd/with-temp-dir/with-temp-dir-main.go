@@ -25,10 +25,11 @@ import (
 func main() {
 	opts := &struct {
 		app.FlagsCommon
+		app.SubprocessOptions `positional-args:"yes"`
 
 		TmpDirEnv []string `short:"e" description:"For each value, this creates a temp dir and sets the specified environment variable to point to it"`
 	}{}
-	app.RunWithFlags(opts, func(args []string) error {
+	app.RunWithFlags(opts, func() error {
 		if err := opts.FlagsCommon.Apply(); err != nil {
 			return err
 		}
@@ -41,7 +42,7 @@ func main() {
 				}
 				extraEnv = append(extraEnv, ev+"="+evPath)
 			}
-			return app.RunSubprocess(context.Background(), "with-temp-dir", args, extraEnv)
+			return app.RunSubprocess(context.Background(), "with-temp-dir", opts.SubprocessOptions, extraEnv)
 		})
 	})
 }
