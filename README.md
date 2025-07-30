@@ -45,7 +45,7 @@ Here's a simple example:
 htvend build -- curl https://www.google.com.au
 ```
 
-Creates `blobs.yml` in your directory, with contents:
+Creates `assets.json` in your directory, with contents:
 
 ```bash
 https://www.google.com.au/:
@@ -109,13 +109,13 @@ NO_PROXY=
 SSL_CERT_FILE=/tmp/htvend1586023741/cacerts.pem
 ```
 
-When the proxy server receives a URL that is found in `blobs.yml`, then that content is served.
+When the proxy server receives a URL that is found in `assets.json`, then that content is served.
 
 If it isn't found, then if invoked as `htvend build`, it will be fetched from upstream, and if invoked as `htvend offline`, an error response will be served.
 
-By default all blobs are saved to and retrieved from `${XDG_DATA_HOME}/htvend/blobs` (`XDG_DATA_HOME` defaults to `~/.local/share`). The `htvend export` command demonstrated above copies any references in the current dir `blobs.yml` to an `assets` directory in the current dir.
+By default all blobs are saved to and retrieved from `${XDG_DATA_HOME}/htvend/blobs` (`XDG_DATA_HOME` defaults to `~/.local/share`). The `htvend export` command demonstrated above copies any references in the current dir `assets.json` to an `assets` directory in the current dir.
 
-A cache `blobs.yml` is also saved at `${XDG_DATA_HOME}/htvend/cache.yml`, and this is useful during rebuilds of `blobs.yml` to avoid needing to connect to upstream servers more than neccessary.
+A cache `assets.json` is also saved at `${XDG_DATA_HOME}/htvend/cache.yml`, and this is useful during rebuilds of `assets.json` to avoid needing to connect to upstream servers more than neccessary.
 
 ## When is this useful?
 
@@ -131,7 +131,7 @@ Perhaps most importantly, this lets you accept changes on your schedule. If you 
 
 Yes. Packaging software into OCI Images is a very useful way to distribute software.
 
-Further using a `Dockerfile` to populate `blobs.yml` is an excellent way to ensure that a build is done from scratch (that is, it pulls through all needed assets) and thus is a great way of producing a canonical `blobs.yml` file.
+Further using a `Dockerfile` to populate `assets.json` is an excellent way to ensure that a build is done from scratch (that is, it pulls through all needed assets) and thus is a great way of producing a canonical `assets.json` file.
 
 However at time of writing none of the image building tools evaluated make full and effective use of `HTTP_PROXY` and `SSL_CERT_FILE` values.
 
@@ -146,14 +146,14 @@ See [README-oci-image-building.md](./README-oci-image-building.md) for details o
 
 As part of your workflow it's important to ensure that the assets that you care about are saved.
 
-When `htvend build` is run, assets are saved to `~/.local/share/htvend/blobs` rather than your working directory (which is where `blobs.yml` is saved).
+When `htvend build` is run, assets are saved to `~/.local/share/htvend/blobs` rather than your working directory (which is where `assets.json` is saved).
 
-This is so that `blobs.yml` can be easily commited with your source code. To save the other assets, run `htvend export` (see `--help`) to collect the referenced assets in an `assets/` directory.
+This is so that `assets.json` can be easily commited with your source code. To save the other assets, run `htvend export` (see `--help`) to collect the referenced assets in an `assets/` directory.
 
-We have 2 options for updating a `blobs.yml`.
+We have 2 options for updating a `assets.json`.
 
-1. Full rebuild, run: `htvend build --force-refresh --clean -- <your build command>` The `--force-refresh` tell it to always pull a new asset from upstream, and `--clean` tell it to clear the `blobs.yml` before starting.
-2. Update the hashes to current values, run: `htvend verify --fetch --repair` - this will attempt to fetch any missing assets, then rather than complain about incorrect hashes, it will replace the value in `blobs.yml` with the new hash.
+1. Full rebuild, run: `htvend build --force-refresh --clean -- <your build command>` The `--force-refresh` tell it to always pull a new asset from upstream, and `--clean` tell it to clear the `assets.json` before starting.
+2. Update the hashes to current values, run: `htvend verify --fetch --repair` - this will attempt to fetch any missing assets, then rather than complain about incorrect hashes, it will replace the value in `assets.json` with the new hash.
 
 Run:
 

@@ -35,7 +35,7 @@ test:
 	go test ./...
 
 # builds htvend then use that to produce bootstrap for self
-blobs.yml: target/htvend target/with-temp-dir
+assets.json: target/htvend target/with-temp-dir
 	./target/htvend build --clean -- \
 		./target/with-temp-dir -e GOMODCACHE -- \
-			$(MAKE) -B target/htvend || rm blobs.yml
+			$(MAKE) -B target/htvend || rm assets.json

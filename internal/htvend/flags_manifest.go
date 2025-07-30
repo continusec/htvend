@@ -25,7 +25,7 @@ import (
 )
 
 type ManifestOptions struct {
-	ManifestFile string `short:"m" long:"manifest" default:"./blobs.yml" description:"File to put manifest data in"`
+	ManifestFile string `short:"m" long:"manifest" default:"./assets.json" description:"File to put manifest data in"`
 	BlobsDir     string `long:"blobs-dir" default:"${XDG_DATA_HOME}/htvend/blobs" description:"Common directory to store downloaded blobs in"`
 	CacheMap     string `long:"cache-manifest" default:"${XDG_DATA_HOME}/htvend/cache.yml" description:"Cache of all downloaded assets"`
 }
