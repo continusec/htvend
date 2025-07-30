@@ -31,7 +31,7 @@ type CleanCommand struct {
 func (rc *CleanCommand) Execute(args []string) (retErr error) {
 	if rc.RmGlobalCache {
 		// first open global manifest file
-		mf, err := rc.ManifestOptions.MakeGlobalCacheManifestFile(nil)
+		mf, err := rc.ManifestOptions.MakeGlobalCacheManifestFile(nil, 0)
 		if err != nil {
 			return fmt.Errorf("error opening global manifest file: %w", err)
 		}

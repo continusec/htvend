@@ -38,12 +38,13 @@ type manifestContextOptions struct {
 	NoCacheList []string
 }
 
-func (o *ManifestOptions) MakeGlobalCacheManifestFile(noCache *re.MultiRegexMatcher) (*lockfile.File, error) {
+func (o *ManifestOptions) MakeGlobalCacheManifestFile(noCache *re.MultiRegexMatcher, depth int) (*lockfile.File, error) {
 	cmPath, err := xdgIt(o.CacheMap)
 	if err != nil {
 		return nil, fmt.Errorf("error getting cache map path with xdg: %w", err)
 	}
 	return lockfile.NewMapFile(lockfile.MapFileOptions{
+		Depth:          depth,
 		Path:           cmPath,
 		AllowOverwrite: true, // global cache should overwrite new vals
 		Writable:       true,
@@ -59,13 +60,14 @@ func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockf
 
 	var cache *lockfile.File
 	if opts.Writable {
-		cache, err = o.MakeGlobalCacheManifestFile(noCache)
+		cache, err = o.MakeGlobalCacheManifestFile(noCache, 1)
 		if err != nil {
 			return nil, fmt.Errorf("error creating global manifest file: %w", err)
 		}
 	}
 
 	return lockfile.NewMapFile(lockfile.MapFileOptions{
+		Depth:          0,
 		Path:           o.ManifestFile,
 		Writable:       opts.Writable,
 		AllowOverwrite: opts.AllowOverwrite,

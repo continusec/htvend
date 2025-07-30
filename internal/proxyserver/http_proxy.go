@@ -29,6 +29,7 @@ import (
 	"math/big"
 	"net"
 	"net/http"
+	"syscall"
 	"time"
 
 	"github.com/sirupsen/logrus"
@@ -223,7 +224,11 @@ func (s *httpServer) handleConnect(w http.ResponseWriter, _ *http.Request) {
 		}
 		return nil
 	}(); err != nil {
-		fmt.Printf("error handling request somewhere: %v\n", err)
+		if errors.Is(err, syscall.ECONNRESET) {
+			// ignore, this seems normal when client disconnects early
+			return
+		}
+		logrus.Errorf("error handling request: %v", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }

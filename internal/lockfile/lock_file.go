@@ -51,6 +51,8 @@ type File struct {
 }
 
 type MapFileOptions struct {
+	Depth int // how "deep" are we? Useful for logging
+
 	// Path to where manifest is to be saved
 	Path string
 
@@ -129,17 +131,23 @@ func (f *File) GetBlob(u *url.URL) (BlobInfo, bool, error) {
 	// now, if we have it, then use it
 	rv, ok := f.blobs[k]
 	if ok {
-		logrus.Debugf("cache hit for %s", k)
+		if f.options.Depth == 0 {
+			logrus.Infof("Found (manifest): %s", k)
+		}
 		return rv, ok, nil
 	}
 
 	// else if fallback has it populate it here so that we save this out as used
 	if fallbackOK {
-		logrus.Debugf("fallback cache hit for %s", k)
+		if f.options.Depth == 0 {
+			logrus.Infof("Found (global cache): %s", k)
+		}
 		f.blobs[k] = fallbackRV
 		f.dirty = true
 	} else {
-		logrus.Debugf("cache miss for %s", k)
+		if f.options.Depth == 0 {
+			logrus.Infof("Not cached: %s", k)
+		}
 	}
 
 	return fallbackRV, fallbackOK, f.save(false)

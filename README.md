@@ -27,6 +27,14 @@ cd test
 htvend build -- curl https://www.google.com.au
 ```
 
+Output:
+
+```
+INFO[0000] Not cached: https://www.google.com.au/       
+INFO[0000] Fetching URL: https://www.google.com.au/     
+... (contents) ...
+```
+
 Creates `assets.json` in your directory, with contents:
 
 ```json
@@ -49,6 +57,11 @@ htvend offline -- curl https://www.google.com.au
 
 and the same contents are output but without making upstream connections to the internet.
 
+```
+INFO[0000] Found (manifest): https://www.google.com.au/
+... (contents) ...
+```
+
 But if instead you run:
 
 ```bash
@@ -58,6 +71,7 @@ htvend offline -- curl https://www.bing.com
 Then a 404 will be returned, and a log message printed:
 
 ```
+INFO[0000] Not cached: https://www.bing.com/            
 WARN[0000] missing asset for URL: https://www.bing.com/ 
 ```
 
@@ -71,7 +85,7 @@ and this creates:
 
 ```
 blobs/
-└── 44edb03288a899171c16c0e8f3855747446c53d22c5200e6cee1dce9ac953d42
+└── 500f6cf6d3c3e33210612f92ad9fced116932293b36aedd33e836acf3b964e34
 ```
 
 ## How does it work?
@@ -331,7 +345,7 @@ Outputs:
 A more useful example is:
 
 ```bash
-with-temp-dir -e GOMODCACHE -- go build ./cmd/htvend`
+with-temp-dir -e GOMODCACHE -- go build ./cmd/htvend
 ```
 
 This tells Go to use a temp dir for `GOMODCACHE` which forces it to pull-through all needed modules (that are otherwise cached).

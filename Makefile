@@ -39,7 +39,7 @@ assets.json: target/htvend target/with-temp-dir go.mod go.sum
 	# here we set a temp GOMODCACHE to ensure go pulls through all dependent modules
 	./target/htvend build --clean -- \
 		./target/with-temp-dir -e GOMODCACHE -- \
-			$(MAKE) -B target/htvend || rm assets.json
+			$(MAKE) -B targets-for-offline || rm assets.json
 
 # fetch all the assets referred to by assets.json
 .PHONY: fetch
@@ -57,4 +57,7 @@ offline: target/htvend target/with-temp-dir assets.json blobs
 	# there's no need to set GOMODCACHE, other than to demonstrate that these will be downloaded again
 	./target/htvend offline -- \
 		./target/with-temp-dir -e GOMODCACHE -- \
-			$(MAKE) -B target/htvend
+			$(MAKE) -B targets-for-offline
+
+.PHONY: targets-for-offline
+targets-for-offline: target/htvend target/with-temp-dir test

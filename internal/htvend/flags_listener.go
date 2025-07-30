@@ -154,7 +154,7 @@ func fetchAndSaveBlob(
 	if err != nil {
 		return fmt.Errorf("error making request object: %w", err)
 	}
-	logrus.Debugf("req for URL: %s", newReq.URL)
+	logrus.Infof("Fetching URL: %s", newReq.URL)
 	if preprocessRequest != nil {
 		err = preprocessRequest(newReq)
 		if err != nil {
