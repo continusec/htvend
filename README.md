@@ -110,7 +110,9 @@ This is useful for a number of reasons, including:
 
 Perhaps most importantly, this lets you accept changes on your schedule. If you have to make a small change to a script that lives inside of an image to address a production issue, this makes it easy to make that change without inavertently bringing in additional changes due to other upstream changes that are pulled in via an otherwise uncontrolled image build process.
 
-## Sub-commands
+## `htvend`
+
+This is the main tool built by this repo.
 
 ```
 Usage:
@@ -290,6 +292,49 @@ The `unshare -r -n` runs the sub-command in a new namespace with no networks. Th
 By default all blobs are saved to and retrieved from `${XDG_DATA_HOME}/htvend/cache/blobs` (`XDG_DATA_HOME` defaults to `~/.local/share`). The `htvend export` command demonstrated above copies any references in the current dir `assets.json` to a local `blobs` directory in the current dir.
 
 A cache `assets.json` is also saved at `${XDG_DATA_HOME}/htvend/cache/assets.json`, and this is useful during rebuilds of `assets.json` to avoid needing to connect to upstream servers more than neccessary.
+
+## `with-temp-dir`
+
+Often when launching sub-processes to update build manifests, we fall into a pattern for creating temporary directories for them, setting an env var, then deleting it afterwards.
+
+`with-temp-dir` simplifies that process.
+
+```
+Usage:
+  with-temp-dir [OPTIONS] [COMMAND] [ARG...]
+
+Application Options:
+  -C, --chdir=   Directory to change to before running. (default: .)
+  -v, --verbose  Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+  -e=            For each value, this creates a temp dir and sets the specified environment variable to point to it
+
+Help Options:
+  -h, --help     Show this help message
+
+Arguments:
+  COMMAND:       Sub-process to run. If not specified an interactive-shell is opened
+  ARG:           Arguments to pass to the sub-process
+```
+
+For example:
+
+```bash
+with-temp-dir -e FOO -- bash -c 'echo $FOO'
+```
+
+Outputs:
+
+```
+/tmp/htvend1361185943/FOO
+```
+
+A more useful example is:
+
+```bash
+with-temp-dir -e GOMODCACHE -- go build ./cmd/htvend`
+```
+
+This tells Go to use a temp dir for `GOMODCACHE` which forces it to pull-through all needed modules (that are otherwise cached).
 
 ## Frequently asked questions
 
