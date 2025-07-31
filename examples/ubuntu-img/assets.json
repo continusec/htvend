@@ -1,0 +1,30 @@
+{
+  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:b24db5c17bb8bcfff3c149999ffa403fa580c172b8d2c2950ae8fdccd4a6e4e6": {
+    "Sha256": "b24db5c17bb8bcfff3c149999ffa403fa580c172b8d2c2950ae8fdccd4a6e4e6",
+    "Size": 2311,
+    "Headers": {
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:e3bd89a9dac501ff564b39359113adad7c3d2813d5e04eab53ee10e20a6793a7": {
+    "Sha256": "e3bd89a9dac501ff564b39359113adad7c3d2813d5e04eab53ee10e20a6793a7",
+    "Size": 28860351,
+    "Headers": {
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/ubuntu/manifests/24.04": {
+    "Sha256": "a08e551cb33850e4740772b38217fc1796a66da2506d312abe51acda354ff061",
+    "Size": 6688,
+    "Headers": {
+      "Content-Type": "application/vnd.oci.image.index.v1+json"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/ubuntu/manifests/sha256:561d015542e18ccd6fb31b039a312334184f05f24b147f7562a7af79d16354e9": {
+    "Sha256": "561d015542e18ccd6fb31b039a312334184f05f24b147f7562a7af79d16354e9",
+    "Size": 424,
+    "Headers": {
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json"
+    }
+  }
+}

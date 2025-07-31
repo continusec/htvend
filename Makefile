@@ -6,12 +6,12 @@ bindir := $(exec_prefix)/bin
 
 # builds all the outputs
 .PHONY: all
-all: target/htvend target/with-temp-dir target/with-java-keystore
+all: target/htvend target/with-temp-dir target/pem2jks target/build-img-with-proxy
 
 # copy them to /usr/local/bin - normally run with sudo
 .PHONY: install
 install: all
-	cp -t "$(DESTDIR)${bindir}" target/htvend target/with-temp-dir target/with-java-keystore
+	cp -t "$(DESTDIR)${bindir}" target/htvend target/with-temp-dir target/pem2jks target/build-img-with-proxy
 
 # remove any untracked files
 .PHONY: clean
@@ -19,8 +19,12 @@ clean:
 	git clean -xfd
 
 # builds all the go binaries
-target/htvend target/with-temp-dir target/with-java-keystore target: cmd/*/*.go internal/*/*.go go.mod go.sum
+target/htvend target/with-temp-dir target/pem2jks target: cmd/*/*.go internal/*/*.go go.mod go.sum
 	env GOBIN=$(PWD)/target go install -trimpath -ldflags=-buildid= ./cmd/...
+
+# copy other scripts
+target/build-img-with-proxy: target scripts/build-img-with-proxy
+	cp scripts/build-img-with-proxy target/build-img-with-proxy
 
 .PHONY: check-license
 check-license:

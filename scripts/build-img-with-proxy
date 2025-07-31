@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# must be set to use any of the SSL related settings below
+SSL_CERT_FILE="${SSL_CERT_FILE}"
+
+# needed for mvn.settings
+HTTP_PROXY="${HTTP_PROXY}"
+
+# set to 0 for reproducible builds
+SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-0}"
+
+# path to buildah binary to use
+BUILDAH_BINARY="${BUILDAH_BINARY:-buildah}"
+
+# space separated name of env vars we set inside container pointing to CA file
+CERT_FILE_VARS="${CERT_FILE_VARS:-SSL_CERT_FILE}"
+
+# set to non-empty to create a mvn.settings file for the proxy at this location in the container
+MVN_SETTINGS_PATH="${MVN_SETTINGS_PATH:-}"
+
+# set to non-empty to create a Java keystore file for the SSL_CERT_FILE at this location in the container
+JKS_KEYSTORE_PATH="${JKS_KEYSTORE_PATH:-}"
+
+########################################################
+# create temp dir so that 
+temp_xdg_dir="$(mktemp -d)"
+cleanup() {
+    # normal rm -rf often fails with permission errors
+   "${BUILDAH_BINARY}" unshare rm -rf "${temp_xdg_dir}"
+}
+trap cleanup ERR EXIT
+
+# build up args we want
+buildah_args=""
+
+# need to be able to use hosts network to get to localhost
+buildah_args="${buildah_args} --network=host"
+
+# pass through http_proxy vars - this is on by default but may as well be explicit
+buildah_args="${buildah_args} --http-proxy"
+
+# if SOURCE_DATE_EPOCH is set, then pass through vals to child containers - useful for reproducible builds
+if [[ -n "${SOURCE_DATE_EPOCH}" ]]; then
+    # this make any OCI archives etc have the right timestamp
+    buildah_args="${buildah_args} --timestamp ${SOURCE_DATE_EPOCH}"
+
+    # then pass this var through to things inside the RUN instructions
+    buildah_args="${buildah_args} --secret=id=SOURCE_DATE_EPOCH,type=env,env=SOURCE_DATE_EPOCH"
+    buildah_args="${buildah_args} --run-mount=type=secret,id=SOURCE_DATE_EPOCH,required,env=SOURCE_DATE_EPOCH"
+fi
+
+# get the file which is at path SSL_CERT_FILE on host, and mount that in the container
+# at same location
+if [[ -n "${CERT_FILE_VARS}" ]]; then
+    buildah_args="${buildah_args} --secret=id=SSL_CERT_FILE_DATA,type=file,src=${SSL_CERT_FILE}"
+    buildah_args="${buildah_args} --secret=id=SSL_CERT_FILE_PATH,type=env,env=SSL_CERT_FILE"
+    buildah_args="${buildah_args} --run-mount=type=secret,id=SSL_CERT_FILE_DATA,required,target=${SSL_CERT_FILE}"
+    for cfv in ${CERT_FILE_VARS}; do
+        # then make each var in CERT_FILE_VARS point to it. Override this with space separated if more needed
+        buildah_args="${buildah_args} --run-mount=type=secret,id=SSL_CERT_FILE_PATH,required,env=${cfv}"
+    done
+fi
+
+# if set then mount a JKS file at each of these paths
+if [[ -n "${JKS_KEYSTORE_PATH}" ]]; then
+    jks_path="${temp_xdg_dir}/cacerts.jks"
+    pem2jks < "${SSL_CERT_FILE}" > "${jks_path}"
+    buildah_args="${buildah_args} --secret=id=JKS_CA_TRUSTSTORE,type=file,src=${jks_path}"
+    for jkp in ${JKS_KEYSTORE_PATH}; do
+        buildah_args="${buildah_args} --run-mount=type=secret,id=JKS_CA_TRUSTSTORE,required,target=${jkp}"
+    done
+fi
+
+# if set then mount a mvn.settings file at each of these paths
+if [[ -n "${MVN_SETTINGS_PATH}" ]]; then
+    settings_path="${temp_xdg_dir}/mvn-settings.xml"
+    proxy_port="${HTTP_PROXY##*:}"
+    proxy_proto_host="${HTTP_PROXY%:*}"
+    proxy_host="${proxy_proto_host#*//}"
+    cat <<EOF > "${settings_path}"
+<settings>
+    <proxies>
+        <proxy>
+            <id>htvend</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>${proxy_host}</host>
+            <port>${proxy_port}</port>
+            <nonProxyHosts />
+        </proxy>
+    </proxies>
+</settings>
+EOF
+    buildah_args="${buildah_args} --secret=id=MVN_SETTINGS_XML,type=file,src=${settings_path}"
+    for msp in ${MVN_SETTINGS_PATH}; do
+        buildah_args="${buildah_args} --run-mount=type=secret,id=MVN_SETTINGS_XML,required,target=${msp}"
+    done
+fi
+
+# run with custom XDG_DATA_HOME else buildah won't re-fetch images that it
+# already has the blobs for. We need it to fetch each time, else we won't
+# detect those assets as needed as they won't be pulled through
+XDG_DATA_HOME="${temp_xdg_dir}" "${BUILDAH_BINARY}" build ${buildah_args} "$@"

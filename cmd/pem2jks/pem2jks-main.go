@@ -15,26 +15,19 @@
 package main
 
 import (
-	"context"
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
+	"io"
 	"os"
-	"path/filepath"
 
-	"github.com/continusec/htvend/internal/app"
 	"software.sslmate.com/src/go-pkcs12"
 )
 
-func createJksInHere(resultPath string) error {
-	pemLoc, ok := os.LookupEnv("SSL_CERT_FILE")
-	if !ok {
-		return fmt.Errorf("SSL_CERT_FILE must be specified")
-	}
-
-	caPem, err := os.ReadFile(pemLoc)
+func createJksInHere(in io.Reader, out io.Writer) error {
+	caPem, err := io.ReadAll(in)
 	if err != nil {
-		return fmt.Errorf("error loading %s: %w", pemLoc, err)
+		return fmt.Errorf("error loading PEM from stdin: %w", err)
 	}
 
 	var entries []pkcs12.TrustStoreEntry
@@ -61,36 +54,13 @@ func createJksInHere(resultPath string) error {
 		return fmt.Errorf("error encoding JKS: %w", err)
 	}
 
-	if err := os.WriteFile(resultPath, bb, 0o444); err != nil {
-		return fmt.Errorf("error writing file: %w", err)
-	}
-
-	return nil
+	_, err = out.Write(bb)
+	return err
 }
 
 func main() {
-	opts := &struct {
-		app.FlagsCommon
-		app.SubprocessOptions `positional-args:"yes"`
-
-		JksEnvVarPath []string `short:"j" description:"This tool takes the certificate file at SSL_CERT_FILE and creates a pkcs12 file with the same data, and put it at a temp location referenced by this path."`
-	}{}
-	app.RunWithFlags(opts, func() error {
-		if err := opts.FlagsCommon.Apply(); err != nil {
-			return err
-		}
-
-		return app.WithTempDir(func(tempDirRoot string) error {
-			jksPath := filepath.Join(tempDirRoot, "cacerts.jks")
-			if err := createJksInHere(jksPath); err != nil {
-				return err
-			}
-
-			var extraEnv []string
-			for _, ev := range opts.JksEnvVarPath {
-				extraEnv = append(extraEnv, ev+"="+jksPath)
-			}
-			return app.RunSubprocess(context.Background(), "with-java-keystore-main", opts.SubprocessOptions, extraEnv)
-		})
-	})
+	if err := createJksInHere(os.Stdin, os.Stdout); err != nil {
+		fmt.Fprintf(os.Stderr, "error converting PEM to JKS. Expecting PEM on stdin\n")
+		os.Exit(1)
+	}
 }
