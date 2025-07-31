@@ -209,6 +209,27 @@
       "Content-Type": "application/zip"
     }
   },
+  "https://proxy.golang.org/golang.org/x/crypto/@v/v0.11.0.info": {
+    "Sha256": "8281943d5fdeae0ff382cad76bba5adfeb70317238c40296141a847eefd076e1",
+    "Size": 193,
+    "Headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/golang.org/x/crypto/@v/v0.11.0.mod": {
+    "Sha256": "fcbb894badd69e1e81ba36878fa88b90dad5ee703d5f55069d4b5fa240019743",
+    "Size": 190,
+    "Headers": {
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/golang.org/x/crypto/@v/v0.11.0.zip": {
+    "Sha256": "30422b3532687af0627ced0f8a48550044467db066fd01c40edc82a91b2be3f6",
+    "Size": 1784008,
+    "Headers": {
+      "Content-Type": "application/zip"
+    }
+  },
   "https://proxy.golang.org/golang.org/x/sys/@v/v0.34.0.info": {
     "Sha256": "2e11b61ecff0e3cc5b8599e7dc090a2e8e42c084ea38c17b48df1f6f39c1f948",
     "Size": 190,
@@ -247,6 +268,27 @@
   "https://proxy.golang.org/gopkg.in/yaml.v3/@v/v3.0.1.zip": {
     "Sha256": "aab8fbc4e6300ea08e6afe1caea18a21c90c79f489f52c53e2f20431f1a9a015",
     "Size": 104623,
+    "Headers": {
+      "Content-Type": "application/zip"
+    }
+  },
+  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.6.0.info": {
+    "Sha256": "a5ad9a9d91312577fc28ce0f22f588cc470ee2e4c5311d729edf21131db1a009",
+    "Size": 203,
+    "Headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.6.0.mod": {
+    "Sha256": "fbf55b69a87d5a391082fd9bae5e4c7581041fe09b8bb93b0fe16cddfe85ce95",
+    "Size": 100,
+    "Headers": {
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.6.0.zip": {
+    "Sha256": "a6edb27adeb6f8f7e6ba412cace0159cea35af9c2aa308091da1be5b5e4ebab3",
+    "Size": 66337,
     "Headers": {
       "Content-Type": "application/zip"
     }

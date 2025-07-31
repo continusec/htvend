@@ -6,12 +6,12 @@ bindir := $(exec_prefix)/bin
 
 # builds all the outputs
 .PHONY: all
-all: target/htvend target/with-temp-dir
+all: target/htvend target/with-temp-dir target/with-java-keystore
 
 # copy them to /usr/local/bin - normally run with sudo
 .PHONY: install
 install: all
-	cp -t "$(DESTDIR)${bindir}" target/htvend target/with-temp-dir
+	cp -t "$(DESTDIR)${bindir}" target/htvend target/with-temp-dir target/with-java-keystore
 
 # remove any untracked files
 .PHONY: clean
@@ -19,7 +19,7 @@ clean:
 	git clean -xfd
 
 # builds all the go binaries
-target/htvend target/with-temp-dir target: cmd/*/*.go internal/*/*.go go.mod go.sum
+target/htvend target/with-temp-dir target/with-java-keystore target: cmd/*/*.go internal/*/*.go go.mod go.sum
 	env GOBIN=$(PWD)/target go install -trimpath -ldflags=-buildid= ./cmd/...
 
 .PHONY: check-license
@@ -35,7 +35,7 @@ test:
 	go test ./...
 
 # builds htvend then use that to produce bootstrap assets.json for self
-assets.json: target/htvend target/with-temp-dir go.mod go.sum
+assets.json: all go.mod go.sum
 	# here we set a temp GOMODCACHE to ensure go pulls through all dependent modules
 	./target/htvend build --clean -- \
 		./target/with-temp-dir -e GOMODCACHE -- \
