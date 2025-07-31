@@ -1,3 +1,2 @@
-.PHONY: default
-default:
+assets.json: Dockerfile
 	build-img-with-proxy

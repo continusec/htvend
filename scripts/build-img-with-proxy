@@ -23,6 +23,9 @@ MVN_SETTINGS_PATH="${MVN_SETTINGS_PATH:-}"
 # set to non-empty to create a Java keystore file for the SSL_CERT_FILE at this location in the container
 JKS_KEYSTORE_PATH="${JKS_KEYSTORE_PATH:-}"
 
+# any other options to pass to buildah for convenience
+BUILDAH_OPTS="${BUILDAH_OPTS:-}"
+
 ########################################################
 # create temp dir so that 
 temp_xdg_dir="$(mktemp -d)"
@@ -102,4 +105,4 @@ fi
 # run with custom XDG_DATA_HOME else buildah won't re-fetch images that it
 # already has the blobs for. We need it to fetch each time, else we won't
 # detect those assets as needed as they won't be pulled through
-XDG_DATA_HOME="${temp_xdg_dir}" "${BUILDAH_BINARY}" build ${buildah_args} "$@"
+XDG_DATA_HOME="${temp_xdg_dir}" "${BUILDAH_BINARY}" build ${buildah_args} ${BUILDAH_OPTS} "$@"

@@ -1,2 +1,3 @@
 /target/
 /blobs/
+/examples/*/blobs/
