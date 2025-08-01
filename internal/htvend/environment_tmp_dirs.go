@@ -20,15 +20,13 @@ import (
 	"path/filepath"
 )
 
-func sslCertFileAppender(e *envCtx) error {
-	if len(e.Options.CertFileEnvVars) != 0 {
-		resultPath := filepath.Join(e.TempDir, "cacerts.pem")
-		if err := os.WriteFile(resultPath, e.CAPem, 0o444); err != nil {
-			return fmt.Errorf("error writing CA PEM file: %w", err)
+func tmpDirsAppender(e *envCtx) error {
+	for _, td := range e.Options.TmpDirs {
+		resultPath := filepath.Join(e.TempDir, td)
+		if err := os.Mkdir(resultPath, 0o755); err != nil {
+			return fmt.Errorf("error creating temp dir: %w", err)
 		}
-		for _, ev := range e.Options.CertFileEnvVars {
-			e.EnvOverrides = append(e.EnvOverrides, ev+"="+resultPath)
-		}
+		e.EnvOverrides = append(e.EnvOverrides, td+"="+resultPath)
 	}
 	return nil
 }

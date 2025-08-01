@@ -53,9 +53,8 @@ targets-for-offline: all test
 assets.json: $(all_artifacts)
 	# here we set a temp GOMODCACHE to ensure go pulls through all dependent modules
 	# we set a different BUILDBINDIR so that we won't overwrite ourselves
-	$(BUILDBINDIR)/htvend build --clean -- \
-		$(BUILDBINDIR)/with-temp-dir -e GOMODCACHE -e BUILDBINDIR -v -- \
-			$(MAKE) -B targets-for-offline || rm assets.json
+	$(BUILDBINDIR)/htvend build --clean -t GOMODCACHE -t BUILDBINDIR -- \
+		$(MAKE) -B targets-for-offline || rm assets.json
 
 # fetch all the assets referred to by assets.json
 blobs: assets.json $(all_artifacts)
@@ -67,9 +66,8 @@ blobs: assets.json $(all_artifacts)
 .PHONY: offline
 offline: $(all_artifacts) assets.json blobs
 	# there's no need to set GOMODCACHE, other than to demonstrate that these will be downloaded again
-	$(BUILDBINDIR)/htvend offline -- \
-		$(BUILDBINDIR)/with-temp-dir -e GOMODCACHE -e BUILDBINDIR -- \
-			$(MAKE) BUILDBINDIR=$(BUILDBINDIR) -B targets-for-offline
+	$(BUILDBINDIR)/htvend offline -t GOMODCACHE -t BUILDBINDIR -- \
+		$(MAKE) BUILDBINDIR=$(BUILDBINDIR) -B targets-for-offline
 
 # ========================================================
 # Following targets operate to each directory in examples/

@@ -12,19 +12,40 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main
+package htvend
 
 import (
+	"bytes"
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 
 	"software.sslmate.com/src/go-pkcs12"
 )
 
-func createJksInHere(in io.Reader, out io.Writer) error {
+func jksKeystoreAppender(e *envCtx) error {
+	if len(e.Options.JksKeyStoreVars) != 0 {
+		jks := bytes.NewBuffer(nil)
+		if err := pemToJks(bytes.NewReader(e.CAPem), jks); err != nil {
+			return fmt.Errorf("error converting PEM to JKS file: %w", err)
+		}
+
+		resultPath := filepath.Join(e.TempDir, "cacerts.jks")
+		if err := os.WriteFile(resultPath, jks.Bytes(), 0o444); err != nil {
+			return fmt.Errorf("error writing CA PEM file: %w", err)
+		}
+
+		for _, ev := range e.Options.JksKeyStoreVars {
+			e.EnvOverrides = append(e.EnvOverrides, ev+"="+resultPath)
+		}
+	}
+	return nil
+}
+
+func pemToJks(in io.Reader, out io.Writer) error {
 	caPem, err := io.ReadAll(in)
 	if err != nil {
 		return fmt.Errorf("error loading PEM from stdin: %w", err)
@@ -56,11 +77,4 @@ func createJksInHere(in io.Reader, out io.Writer) error {
 
 	_, err = out.Write(bb)
 	return err
-}
-
-func main() {
-	if err := createJksInHere(os.Stdin, os.Stdout); err != nil {
-		fmt.Fprintf(os.Stderr, "error converting PEM to JKS. Expecting PEM on stdin\n")
-		os.Exit(1)
-	}
 }

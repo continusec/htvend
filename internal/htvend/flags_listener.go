@@ -36,7 +36,9 @@ type ListenerOptions struct {
 
 	ListenAddr string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
 
-	CertFileEnvVars  []string `long:"set-env-var-ssl-cert-file" default:"SSL_CERT_FILE" description:"List of environment variables that will be set pointing to the temporary certificate file."`
+	TmpDirs          []string `long:"with-temp-dir" short:"t" description:"List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process."`
+	CertFileEnvVars  []string `long:"set-env-var-ssl-cert-file" default:"SSL_CERT_FILE" description:"List of environment variables that will be set pointing to the temporary CA certificates file in PEM format."`
+	JksKeyStoreVars  []string `long:"set-env-var-jks-keystore" default:"JKS_KEYSTORE_FILE" description:"List of environment variables that will be set pointing to the temporary CA certificates file in JKS format."`
 	HttpProxyEnvVars []string `long:"set-env-var-http-proxy" default:"HTTP_PROXY" default:"HTTPS_PROXY" default:"http_proxy" default:"https_proxy" description:"List of environment variables that will be set pointing to the proxy host:port."`
 	NoProxyEnvVars   []string `long:"set-env-var-no-proxy" default:"NO_PROXY" default:"no_proxy" description:"List of environment variables that will be set blank."`
 }
@@ -87,11 +89,14 @@ func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt st
 				for _, f := range []mutateEnvFunc{
 					stdProxyVarsAppender,
 					sslCertFileAppender,
+					tmpDirsAppender,
+					jksKeystoreAppender,
 				} {
 					if err := f(&ectx); err != nil {
 						return fmt.Errorf("error modifying env: %w", err)
 					}
 				}
+
 				return app.RunSubprocess(ctx, prompt, o.SubprocessOptions, ectx.EnvOverrides)
 			})
 		})

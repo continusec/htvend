@@ -78,11 +78,9 @@ if [[ -n "${CERT_FILE_VARS}" ]]; then
     done
 fi
 
-# if set then mount a JKS file at each of these paths
+# if set then mount a JKS file at each of these paths, assumes JKS_KEYSTORE_FILE is set
 if [[ -n "${JKS_KEYSTORE_PATH}" ]]; then
-    jks_path="${temp_xdg_dir}/cacerts.jks"
-    pem2jks < "${SSL_CERT_FILE}" > "${jks_path}"
-    buildah_args="${buildah_args} --secret=id=JKS_CA_TRUSTSTORE,type=file,src=${jks_path}"
+    buildah_args="${buildah_args} --secret=id=JKS_CA_TRUSTSTORE,type=file,src=${JKS_KEYSTORE_FILE}"
     for jkp in ${JKS_KEYSTORE_PATH}; do
         buildah_args="${buildah_args} --run-mount=type=secret,id=JKS_CA_TRUSTSTORE,required,target=${jkp}"
     done
