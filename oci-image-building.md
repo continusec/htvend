@@ -10,9 +10,9 @@ Our patched `buildah` can be found at: <https://github.com/aeijdenberg/buildah/t
 
 See further down for rationale why, but here is how to get started with a patched `buildah`.
 
-### Ubuntu 24.04 depdencies for `buildah`
+### Ubuntu 24.04 dependencies for `buildah`
 
-You will likely need some operating system specific libraries / configuration be installed. At time of writing, the following works for an Ubuntu 24.04 system:
+You will likely need some operating system specific libraries / configuration be installed. At time of writing, the following works for an Ubuntu 24.04 system (tested with <https://lima-vm.io/> on macOS, using template `limactl create --name=u2404 --plain template://ubuntu-24.04 -y`)
 
 ```bash
 # install Go
@@ -20,7 +20,8 @@ curl -L https://go.dev/dl/go1.24.5.linux-arm64.tar.gz | sudo tar -C /usr/local -
 export PATH=/usr/local/go/bin:$PATH
 
 # install apt dependencies
-sudo apt update -y && apt upgrade -y && apt install -y make gcc uidmap pkg-config libseccomp-dev libgpgme-dev netavark runc
+sudo apt update -y
+sudo apt install -y make gcc uidmap pkg-config libseccomp-dev libgpgme-dev netavark runc
 
 # set up a uid/gid range for use by namespaces
 sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $USER
@@ -48,14 +49,14 @@ sudo make install-patched-buildah install
 Now go and try the examples. For example:
 
 ```bash
-# build the assets.json in that directory
-htvend -C ./examples/alpine-img build -- build-img-with-proxy
+# build the assets.json in that directory, use the --clean
+htvend -C ./examples/alpine-img build --clean -- build-img-with-proxy
 
 # verify all the assets exist
 htvend -C ./examples/alpine-img verify --fetch
 
-# run in offline mode
-htvend -C ./examples/alpine-img offline -- build-img-with-proxy
+# run in offline mode, produce img.tar file
+htvend -C ./examples/alpine-img offline -- build-img-with-proxy --tag oci-archive:img.tar
 ```
 
 The following `make` targets will run the above for each example:

@@ -331,12 +331,7 @@ Yes. Packaging software into OCI Images is a very useful way to distribute softw
 
 Further using a `Dockerfile` to populate `assets.json` is an excellent way to ensure that a build is done from scratch (that is, it pulls through all needed assets) and thus is a great way of producing a canonical `assets.json` file.
 
-However at time of writing none of the image building tools evaluated make full and effective use of `HTTP_PROXY` and `SSL_CERT_FILE` values.
-
-We have a (temporary, until PRs are accepted) fork of the `buildah` tool that has a number of small patches that enable it to work in this manner, and we have that packaged up here:
-<https://github.com/aeijdenberg/buildah>
-
-See [oci-image-building.md](./oci-image-building.md) for details on how to use this.
+See [OCI Image Building](./oci-image-building.md) for details on how to use this.
 
 ### Isn't `go mod vendor` a better solution for Go code?
 
