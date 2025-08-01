@@ -107,6 +107,7 @@ Most upstream image repos need a simple token to be fetched. This should not be 
 ### Build tool caches image layer data and won't re-pull through
 
 Since many upstream image assets are content addressable, many systems cache the file contents locally, such that even with a `--pull=always` (or similar) the actual blobs are not re-fetched.
+
 **Mitigation:** Our [build-img-with-proxy](./scripts/build-img-with-proxy) script wraps `buildah` with `XDG_DATA_DIR=/some/temp/dir` before executing. This prevents `buildah` from seeing any cached layers and will always pull-through again.
 
 ### No method to pass `SSL_CERT_FILE` to `RUN` instructions in Dockerfile
