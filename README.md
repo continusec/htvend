@@ -336,7 +336,7 @@ However at time of writing none of the image building tools evaluated make full 
 We have a (temporary, until PRs are accepted) fork of the `buildah` tool that has a number of small patches that enable it to work in this manner, and we have that packaged up here:
 <https://github.com/aeijdenberg/buildah>
 
-See [README-oci-image-building.md](./README-oci-image-building.md) for details on how to use this.
+See [oci-image-building.md](./oci-image-building.md) for details on how to use this.
 
 ### Isn't `go mod vendor` a better solution for Go code?
 

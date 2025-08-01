@@ -13,7 +13,7 @@ HTTP_PROXY="${HTTP_PROXY}"
 SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-0}"
 
 # path to buildah binary to use
-BUILDAH_BINARY="${BUILDAH_BINARY:-buildah}"
+BUILDAH_BINARY="${BUILDAH_BINARY:-patched-buildah}"
 
 # space separated name of env vars we set inside container pointing to CA file
 CERT_FILE_VARS="${CERT_FILE_VARS:-SSL_CERT_FILE}"
@@ -28,7 +28,7 @@ JKS_KEYSTORE_PATH="${JKS_KEYSTORE_PATH:-}"
 BUILDAH_OPTS="${BUILDAH_OPTS:-}"
 
 ########################################################
-# create temp dir so that 
+
 temp_xdg_dir="$(mktemp -d)"
 cleanup() {
     # normal rm -rf often fails with permission errors

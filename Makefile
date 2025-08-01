@@ -69,6 +69,28 @@ offline: $(all_artifacts) assets.json blobs
 	$(BUILDBINDIR)/htvend offline -t GOMODCACHE -t BUILDBINDIR -- \
 		$(MAKE) BUILDBINDIR=$(BUILDBINDIR) -B targets-for-offline
 
+
+# clone or update patched-buildah-src
+patched-buildah-src:
+	test -d patched-buildah-src || git clone https://github.com/aeijdenberg/buildah --branch continusecbuild --single-branch patched-buildah-src
+	git -C patched-buildah-src fetch
+	git -C patched-buildah-src checkout continusecbuild
+
+# build patched buildah binary
+patched-buildah-src/bin/buildah: patched-buildah-src
+	$(MAKE) -C patched-buildah-src bin/buildah
+
+# run with sudo to install patched-buildah binary and init config files for it
+.PHONY: install-patched-buildah
+install-patched-buildah: patched-buildah-src/bin/buildah
+	# copy our patched binary
+	cp patched-buildah-src/bin/buildah "$(DESTDIR)$(bindir)/patched-buildah"
+
+	# the following are normally installed by podman / buildah. If they don't exist, then drop default values in
+	mkdir -p /etc/containers
+	test -f /etc/containers/registries.conf || (echo 'unqualified-search-registries = ["docker.io"]' > /etc/containers/registries.conf)
+	test -f /etc/containers/policy.json || (echo '{"default":[{"type":"insecureAcceptAnything"}]}' > /etc/containers/policy.json)
+
 # ========================================================
 # Following targets operate to each directory in examples/
 # ========================================================
