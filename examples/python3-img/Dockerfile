@@ -8,4 +8,4 @@ EXPOSE 8080
 
 WORKDIR /
 
-ENTRYPOINT ["flask", "--app", "main", "run" ]
+ENTRYPOINT ["flask", "--app", "main", "run"]

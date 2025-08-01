@@ -5,7 +5,7 @@ exec_prefix := $(prefix)
 bindir := $(exec_prefix)/bin
 
 # go install to install to here
-BUILDBINDIR ?= $(PWD)/target
+BUILDBINDIR ?= $(CURDIR)/target
 
 # all binaries that we creaate
 go_bins := $(patsubst cmd/%,$(BUILDBINDIR)/%,$(wildcard cmd/*))
@@ -19,8 +19,8 @@ all: $(all_artifacts)
 
 # copy them to /usr/local/bin - normally run with sudo
 .PHONY: install
-install: all
-	cp -t "$(DESTDIR)$(bindir)" $(all_bins)
+install: $(all_artifacts)
+	cp -t "$(DESTDIR)$(bindir)" $(all_artifacts)
 
 # remove any untracked files
 .PHONY: clean

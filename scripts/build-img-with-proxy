@@ -9,6 +9,7 @@ SSL_CERT_FILE="${SSL_CERT_FILE}"
 HTTP_PROXY="${HTTP_PROXY}"
 
 # set to 0 for reproducible builds
+# we export this one, as it needs to be read by the buildah process (type=env)
 SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-0}"
 
 # path to buildah binary to use
@@ -37,6 +38,13 @@ trap cleanup ERR EXIT
 
 # build up args we want
 buildah_args=""
+env_unset_args=""
+env_set_args=""
+
+# run with custom XDG_DATA_HOME else buildah won't re-fetch images that it
+# already has the blobs for. We need it to fetch each time, else we won't
+# detect those assets as needed as they won't be pulled through
+env_set_args="${env_set_args} XDG_DATA_HOME=${temp_xdg_dir}"
 
 # need to be able to use hosts network to get to localhost
 buildah_args="${buildah_args} --network=host"
@@ -46,14 +54,18 @@ buildah_args="${buildah_args} --http-proxy"
 
 # if SOURCE_DATE_EPOCH is set, then pass through vals to child containers - useful for reproducible builds
 if [[ -n "${SOURCE_DATE_EPOCH}" ]]; then
+    # need to unset SOURCE_DATE_EPOCH for buildah, as it gets confused between that and --timestamp
+    env_unset_args="${env_unset_args} --unset=SOURCE_DATE_EPOCH"
+    env_set_args="${env_set_args} CONTAINER_SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH}"
+
     # this make any OCI archives etc have the right timestamp
     buildah_args="${buildah_args} --timestamp ${SOURCE_DATE_EPOCH}"
 
     # then pass this var through to things inside the RUN instructions
-    buildah_args="${buildah_args} --secret=id=SOURCE_DATE_EPOCH,type=env,env=SOURCE_DATE_EPOCH"
+    buildah_args="${buildah_args} --secret=id=SOURCE_DATE_EPOCH,type=env,env=CONTAINER_SOURCE_DATE_EPOCH"
     buildah_args="${buildah_args} --run-mount=type=secret,id=SOURCE_DATE_EPOCH,required,env=SOURCE_DATE_EPOCH"
 fi
-
+ 
 # get the file which is at path SSL_CERT_FILE on host, and mount that in the container
 # at same location
 if [[ -n "${CERT_FILE_VARS}" ]]; then
@@ -102,8 +114,5 @@ EOF
     done
 fi
 
-# run with custom XDG_DATA_HOME else buildah won't re-fetch images that it
-# already has the blobs for. We need it to fetch each time, else we won't
-# detect those assets as needed as they won't be pulled through
 set -x
-XDG_DATA_HOME="${temp_xdg_dir}" "${BUILDAH_BINARY}" build ${buildah_args} ${BUILDAH_OPTS} "$@"
+env ${env_unset_args} ${env_set_args} "${BUILDAH_BINARY}" build ${buildah_args} ${BUILDAH_OPTS} "$@"
