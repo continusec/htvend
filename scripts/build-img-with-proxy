@@ -105,4 +105,5 @@ fi
 # run with custom XDG_DATA_HOME else buildah won't re-fetch images that it
 # already has the blobs for. We need it to fetch each time, else we won't
 # detect those assets as needed as they won't be pulled through
+set -x
 XDG_DATA_HOME="${temp_xdg_dir}" "${BUILDAH_BINARY}" build ${buildah_args} ${BUILDAH_OPTS} "$@"

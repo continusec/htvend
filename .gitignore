@@ -1,3 +1,4 @@
 /target/
 /blobs/
 /examples/*/blobs/
+/examples/*/img.tar
