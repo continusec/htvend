@@ -17,11 +17,14 @@ package blobs
 import (
 	"encoding/hex"
 	"errors"
+	"fmt"
 	"io"
+	"io/fs"
 	"os"
 	"path/filepath"
 
 	"github.com/continusec/htvend/internal/caf"
+	"github.com/sirupsen/logrus"
 )
 
 type DirectoryStore struct {
@@ -57,5 +60,30 @@ func (s *DirectoryStore) Destroy() error {
 	if !s.writable {
 		return errors.New("blob store is not writable and therefore cannot be destroyed")
 	}
+	logrus.Infof("rm -rf %s", s.dir)
 	return os.RemoveAll(s.dir)
+}
+
+func (s *DirectoryStore) RemoveExcept(keep map[string]bool) error {
+	if !s.writable {
+		return errors.New("blob store is not writable and therefore cannot be modified")
+	}
+	entries, err := os.ReadDir(s.dir)
+	if err != nil {
+		if errors.Is(err, fs.ErrNotExist) {
+			// no work required
+			return nil
+		}
+		return fmt.Errorf("error listing blobs dir: %w", err)
+	}
+	for _, e := range entries {
+		if !keep[e.Name()] {
+			pathToRm := filepath.Join(s.dir, e.Name())
+			logrus.Infof("rm -f %s", pathToRm)
+			if err := os.Remove(pathToRm); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
 }

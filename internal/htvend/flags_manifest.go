@@ -24,10 +24,14 @@ import (
 	"github.com/continusec/htvend/internal/re"
 )
 
+type CacheOptions struct {
+	BlobsDir string `long:"blobs-dir" default:"${XDG_DATA_HOME}/htvend/cache/blobs" description:"Common directory to store downloaded blobs in"`
+	CacheMap string `long:"cache-manifest" default:"${XDG_DATA_HOME}/htvend/cache/assets.json" description:"Cache of all downloaded assets"`
+}
+
 type ManifestOptions struct {
+	CacheOptions
 	ManifestFile string `short:"m" long:"manifest" default:"./assets.json" description:"File to put manifest data in"`
-	BlobsDir     string `long:"blobs-dir" default:"${XDG_DATA_HOME}/htvend/cache/blobs" description:"Common directory to store downloaded blobs in"`
-	CacheMap     string `long:"cache-manifest" default:"${XDG_DATA_HOME}/htvend/cache/assets.json" description:"Cache of all downloaded assets"`
 }
 
 type manifestContextOptions struct {
@@ -38,7 +42,7 @@ type manifestContextOptions struct {
 	NoCacheList []string
 }
 
-func (o *ManifestOptions) MakeGlobalCacheManifestFile(noCache *re.MultiRegexMatcher, depth int) (*lockfile.File, error) {
+func (o *CacheOptions) MakeGlobalCacheManifestFile(noCache *re.MultiRegexMatcher, depth int) (*lockfile.File, error) {
 	cmPath, err := xdgIt(o.CacheMap)
 	if err != nil {
 		return nil, fmt.Errorf("error getting cache map path with xdg: %w", err)
@@ -89,7 +93,7 @@ func xdgIt(origPath string) (string, error) {
 	return d, nil
 }
 
-func (o *ManifestOptions) MakeBlobStore(writable bool) (*blobs.DirectoryStore, error) {
+func (o *CacheOptions) MakeBlobStore(writable bool) (*blobs.DirectoryStore, error) {
 	d, err := xdgIt(o.BlobsDir)
 	if err != nil {
 		return nil, fmt.Errorf("error getting blob store with xdg: %w", err)

@@ -204,6 +204,7 @@ func (f *File) CloseAndDestroy() error {
 	if err := f.Close(); err != nil {
 		return fmt.Errorf("error closing manifest file prior to destruction: %w", err)
 	}
+	logrus.Infof("rm %s", f.options.Path)
 	return os.Remove(f.options.Path)
 }
 

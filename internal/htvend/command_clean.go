@@ -16,42 +16,60 @@ package htvend
 
 import (
 	"fmt"
+	"net/url"
 
+	"github.com/continusec/htvend/internal/lockfile"
 	"github.com/jessevdk/go-flags"
 )
 
 var _ flags.Commander = &CleanCommand{}
 
 type CleanCommand struct {
-	ManifestOptions
+	CacheOptions
 
-	RmGlobalCache bool `long:"all" description:"If set, instead remove shared global cache."`
+	RmGlobalCache bool `long:"all" description:"If set, remove entire shared global cache."`
 }
 
 func (rc *CleanCommand) Execute(args []string) (retErr error) {
-	if rc.RmGlobalCache {
-		// first open global manifest file
-		mf, err := rc.ManifestOptions.MakeGlobalCacheManifestFile(nil, 0)
-		if err != nil {
-			return fmt.Errorf("error opening global manifest file: %w", err)
+	// first open global manifest file
+	mf, err := rc.CacheOptions.MakeGlobalCacheManifestFile(nil, 0)
+	if err != nil {
+		return fmt.Errorf("error opening global manifest file: %w", err)
+	}
+	defer func() {
+		if mf != nil {
+			if err := mf.Close(); err != nil && retErr == nil {
+				retErr = err
+			}
 		}
+	}()
 
-		// then destroy it
-		if err := mf.CloseAndDestroy(); err != nil && retErr == nil {
-			return err
-		}
-
-		// now open the actual blob store
-		bs, err := rc.ManifestOptions.MakeBlobStore(true)
-		if err != nil {
-			return fmt.Errorf("error opening blob store: %w", err)
-		}
-
-		// and destroy that too
-		if err := bs.Destroy(); err != nil {
-			return fmt.Errorf("error removing global manifest: %w", err)
-		}
+	// now open the actual blob store
+	bs, err := rc.CacheOptions.MakeBlobStore(true)
+	if err != nil {
+		return fmt.Errorf("error opening blob store: %w", err)
 	}
 
-	return nil
+	// if we are blowing everything away, then simply do so
+	if rc.RmGlobalCache {
+		// then destroy it
+		if err := mf.CloseAndDestroy(); err != nil {
+			return err
+		}
+		mf = nil // so that we don't attempt Close it again
+
+		// and destroy that too
+		return bs.Destroy()
+	}
+
+	// else we find a list of dangling blobs and delete those only
+	blobsToKeep := make(map[string]bool)
+	if err := mf.ForEach(func(k *url.URL, v lockfile.BlobInfo) error {
+		blobsToKeep[v.Sha256] = true
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return bs.RemoveExcept(blobsToKeep)
 }
