@@ -73,7 +73,7 @@ See the script itself for which variables it uses, these are at the top.
 
 ## Patched `buildah`
 
-he examples in this repository apply some small patches to the [buildah](https://github.com/containers/buildah) tool so that we can easily build images, while pulling through upstream assets in such a way that they can be saved out, and then replayed later to facilitate new image builds.
+The examples in this repository apply some small patches to the [buildah](https://github.com/containers/buildah) tool so that we can easily build images, while pulling through upstream assets in such a way that they can be saved out, and then replayed later to facilitate new image builds.
 
 The patches that we apply to `buildah` are, at time of writing:
 
