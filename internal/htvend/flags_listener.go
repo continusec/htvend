@@ -35,6 +35,7 @@ type ListenerOptions struct {
 	app.SubprocessOptions `positional-args:"yes"`
 
 	ListenAddr string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
+	Daemon     bool   `short:"d" long:"daemon" description:"Run as a daemon until terminated"`
 
 	TmpDirs          []string `long:"with-temp-dir" short:"t" description:"List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process."`
 	CertFileEnvVars  []string `long:"set-env-var-ssl-cert-file" default:"SSL_CERT_FILE" description:"List of environment variables that will be set pointing to the temporary CA certificates file in PEM format."`
@@ -97,7 +98,22 @@ func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt st
 					}
 				}
 
-				return app.RunSubprocess(ctx, prompt, o.SubprocessOptions, ectx.EnvOverrides)
+				if !o.Daemon {
+					return app.RunSubprocess(ctx, prompt, o.SubprocessOptions, ectx.EnvOverrides)
+				}
+
+				// we are a daemon
+				if o.SubprocessOptions.Process != "" {
+					return fmt.Errorf("if running as a daemon, no sub-process should be specified. Received: %s", o.SubprocessOptions.Process)
+				}
+
+				logrus.Infof("Daemon running...")
+				for _, ev := range ectx.EnvOverrides {
+					fmt.Printf("export %s\n", ev)
+				}
+
+				<-ctx.Done()
+				return nil
 			})
 		})
 	})
