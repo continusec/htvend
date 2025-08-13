@@ -25,7 +25,7 @@ var _ flags.Commander = &BuildCommand{}
 
 type FetchOptions struct {
 	NoCache     []string `long:"no-cache-response" default:"^http.*/v2/$" default:"/token\\?" description:"Regex list of URLs to never store in cache. Useful for token endpoints."`
-	CacheHeader []string `long:"cache-header" default:"Content-Type" default:"Content-Encoding" default:"X-Checksum-Sha1" description:"List of headers for which we will cache the first value."`
+	CacheHeader []string `long:"cache-header" default:"Content-Length" default:"Docker-Content-Digest" default:"Content-Type" default:"Content-Encoding" default:"X-Checksum-Sha1" description:"List of headers for which we will cache the first value."`
 }
 
 func (fo FetchOptions) CacheHeaderMap() map[string]bool {

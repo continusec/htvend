@@ -69,7 +69,6 @@ offline: $(all_artifacts) assets.json blobs
 	$(BUILDBINDIR)/htvend offline -t GOMODCACHE -t BUILDBINDIR -- \
 		$(MAKE) BUILDBINDIR=$(BUILDBINDIR) -B targets-for-offline
 
-
 # clone or update patched-buildah-src
 patched-buildah-src:
 	test -d patched-buildah-src || git clone https://github.com/aeijdenberg/buildah --branch continusecbuild --single-branch patched-buildah-src
