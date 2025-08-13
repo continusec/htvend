@@ -27,7 +27,8 @@ var _ flags.Commander = &CleanCommand{}
 type CleanCommand struct {
 	CacheOptions
 
-	RmGlobalCache bool `long:"all" description:"If set, remove entire shared global cache."`
+	RmGlobalCache bool     `long:"all" description:"If set, remove entire shared global cache."`
+	Urls          []string `short:"u" long:"url" description:"URL to remove from global cache."`
 }
 
 func (rc *CleanCommand) Execute(args []string) (retErr error) {
@@ -43,6 +44,33 @@ func (rc *CleanCommand) Execute(args []string) (retErr error) {
 			}
 		}
 	}()
+
+	// drop anything we want to drop
+	for _, us := range rc.Urls {
+		u, err := url.Parse(us)
+		if err != nil {
+			return fmt.Errorf("error parsing URL: %v", err)
+		}
+		if err := mf.RemoveEntry(u); err != nil {
+			return fmt.Errorf("error removing entry: %v", err)
+		}
+	}
+
+	// find list of things with missing SHA2 - should not happen but earlier versions sometime made this happen
+	var tbd []*url.URL
+	if err := mf.ForEach(func(k *url.URL, v lockfile.BlobInfo) error {
+		if v.Sha256 == "" {
+			tbd = append(tbd, k)
+		}
+		return nil
+	}); err != nil {
+		return fmt.Errorf("error finding bad refs: %w", err)
+	}
+	for _, u := range tbd {
+		if err := mf.RemoveEntry(u); err != nil {
+			return fmt.Errorf("error removing entry: %v", err)
+		}
+	}
 
 	// now open the actual blob store
 	bs, err := rc.CacheOptions.MakeBlobStore(true)

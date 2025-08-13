@@ -32,14 +32,16 @@ const (
 )
 
 type ContentAddressableFile struct {
-	state  int
-	fn     FilenameResolver
-	mw     io.Writer // writing until closed
-	dg     hash.Hash // writing until closed
-	tf     *os.File  // writing until committed
-	path   string    // closed until cafStateCanceled
-	digest []byte    // committed until cafStateCanceled
-	size   int
+	fn FilenameResolver // set during init
+
+	mw io.Writer // created on first Write()
+	tf *os.File  // created on first Write()
+	dg hash.Hash // created on first Write()
+
+	size int // updated in Write
+
+	path   string // set after Commit()
+	digest []byte // set after Commit()
 }
 
 type FilenameResolver func(digest []byte) string
@@ -50,39 +52,51 @@ type FilenameResolver func(digest []byte) string
 // first write.
 func NewContentAddressableFile(fn FilenameResolver) *ContentAddressableFile {
 	return &ContentAddressableFile{
-		state: cafStateInitial,
-		fn:    fn,
+		fn: fn,
 	}
 }
 
-func (caf *ContentAddressableFile) doInitToWriting() error {
-	caf.dg = sha256.New()
-	// create temp file with resolve and empty digest - in this manner its likely near the final location
-	filename := caf.fn(caf.dg.Sum(nil))
-	if err := os.MkdirAll(filepath.Dir(filename), 0o755); err != nil {
-		return fmt.Errorf("error creating parent dir: %w", err)
+func (caf *ContentAddressableFile) Write(p []byte) (int, error) {
+	if len(p) == 0 {
+		return 0, nil
 	}
-	var err error
-	if caf.tf, err = os.CreateTemp(filepath.Dir(filename), "tmp"); err != nil {
-		return fmt.Errorf("error creating temp file: %w", err)
-	}
-	caf.mw = io.MultiWriter(caf.tf, caf.dg)
-	caf.state = cafStateWriting
-	return nil
+	return caf.writeAlways(p)
 }
 
-func (caf *ContentAddressableFile) doWritingToClosed() error {
-	err := caf.tf.Close()
-	if err != nil {
+// make sure file exists, then write to it
+func (caf *ContentAddressableFile) writeAlways(p []byte) (int, error) {
+	if caf.mw == nil {
+		caf.dg = sha256.New()
+		// resolve with a bogus digest just to get the right parent dir - in this manner its likely near the final location
+		filename := caf.fn(caf.dg.Sum(nil))
+		if err := os.MkdirAll(filepath.Dir(filename), 0o755); err != nil {
+			return 0, fmt.Errorf("error creating parent dir: %w", err)
+		}
+		var err error
+		if caf.tf, err = os.CreateTemp(filepath.Dir(filename), "tmp"); err != nil {
+			return 0, fmt.Errorf("error creating temp file: %w", err)
+		}
+		caf.mw = io.MultiWriter(caf.tf, caf.dg)
+	}
+
+	bw, err := caf.mw.Write(p)
+	caf.size += bw
+	return bw, err
+}
+
+func (caf *ContentAddressableFile) Commit() error {
+	// special-case empty file... other code won't write until first byte received,
+	// here we force the issue which populates caf.tf etc
+	if caf.size == 0 {
+		if _, err := caf.writeAlways(nil); err != nil {
+			return fmt.Errorf("error writing empty file: %w", err)
+		}
+	}
+
+	if err := caf.tf.Close(); err != nil {
 		return fmt.Errorf("err closing temp file: %w", err)
 	}
 	caf.digest = caf.dg.Sum(nil)
-	caf.mw, caf.dg = nil, nil
-	caf.state = cafStateClosed
-	return nil
-}
-
-func (caf *ContentAddressableFile) doClosedToCommitted() error {
 	caf.path = caf.fn(caf.digest)
 	if err := os.MkdirAll(filepath.Dir(caf.path), 0o755); err != nil {
 		return fmt.Errorf("error creating parent dir: %w", err)
@@ -90,87 +104,32 @@ func (caf *ContentAddressableFile) doClosedToCommitted() error {
 	if err := os.Rename(caf.tf.Name(), caf.path); err != nil {
 		return fmt.Errorf("err renaming temp file: %w", err)
 	}
-	caf.tf = nil
-	caf.state = cafStateCommitted
+	caf.mw, caf.tf, caf.dg = nil, nil, nil
 	return nil
 }
 
-func (caf *ContentAddressableFile) Write(p []byte) (int, error) {
-	if caf.state == cafStateInitial {
-		err := caf.doInitToWriting()
-		if err != nil {
-			return 0, fmt.Errorf("err initing content addressable file: %w", err)
+// Tidy up any temporary files. Safe to call after Commit() in which case written data is left there,
+// but if not, temp files are deleted
+func (caf *ContentAddressableFile) Cleanup() (retErr error) {
+	if caf.tf != nil {
+		if err := caf.tf.Close(); err != nil && retErr == nil {
+			retErr = err
 		}
-	}
-	if caf.state != cafStateWriting {
-		return 0, fmt.Errorf("invalid state for content addressable file: %d", caf.state)
-	}
-	bw, err := caf.mw.Write(p)
-	caf.size += bw
-	return bw, err
-}
-
-func (caf *ContentAddressableFile) doClosedToCancelled() error {
-	err := os.Remove(caf.tf.Name())
-	caf.tf = nil
-	caf.state = cafStateCanceled
-	return err
-}
-
-// Close will close and rename the file with the digest that it has calculated
-// If file has never been written to, it will Close() without error
-func (caf *ContentAddressableFile) Close() error {
-	switch caf.state {
-	case cafStateInitial:
-		caf.state = cafStateClosed
-		return nil
-	case cafStateWriting:
-		err := caf.doWritingToClosed()
-		if err != nil {
-			return fmt.Errorf("err transitioning from writing to closed: %w", err)
+		if err := os.Remove(caf.tf.Name()); err != nil && retErr == nil {
+			retErr = err
 		}
-		return caf.doClosedToCommitted()
-	default:
-		return fmt.Errorf("invalid state for close: %d", caf.state)
+		caf.tf = nil
 	}
+	caf.mw, caf.dg = nil, nil
+	return nil
 }
 
-// If not yet committed, cleanup as best we can
-func (caf *ContentAddressableFile) Cleanup() error {
-	switch caf.state {
-	case cafStateInitial, cafStateCommitted:
-		return nil
-	case cafStateWriting:
-		closeErr := caf.doWritingToClosed()
-		cancelErr := caf.doClosedToCancelled()
-		if closeErr != nil {
-			return closeErr
-		}
-		return cancelErr
-	case cafStateClosed:
-		return caf.doClosedToCancelled()
-
-	default:
-		return fmt.Errorf("invalid state for cleanup: %d", caf.state)
-	}
-}
-
-// Committed if we successfully wrote data to a hash
-func (caf *ContentAddressableFile) Committed() bool {
-	return caf.state == cafStateCommitted
-}
-
-// Only valid if Committed()
+// Only valid if Commit() called
 func (caf *ContentAddressableFile) Digest() []byte {
 	return caf.digest
 }
 
-// Only valid if Committed()
-func (caf *ContentAddressableFile) Size() int {
-	return caf.size
-}
-
-// Only valid if Committed()
+// Only valid if Commit() called
 func (caf *ContentAddressableFile) Path() string {
 	return caf.path
 }

@@ -40,8 +40,7 @@ Creates `assets.json` in your directory, with contents:
 ```json
 {
   "https://www.google.com.au/": {
-    "Sha256": "500f6cf6d3c3e33210612f92ad9fced116932293b36aedd33e836acf3b964e34",
-    "Size": 17536,
+    "Sha256": "89106a37bb7b8e803990c9589d069e4ee06ef045d2692ad78b0462c12b89f59f",
     "Headers": {
       "Content-Type": "text/html; charset=ISO-8859-1"
     }
@@ -85,7 +84,7 @@ and this creates:
 
 ```
 blobs/
-└── 500f6cf6d3c3e33210612f92ad9fced116932293b36aedd33e836acf3b964e34
+└── 89106a37bb7b8e803990c9589d069e4ee06ef045d2692ad78b0462c12b89f59f
 ```
 
 ## How does it work?
@@ -169,21 +168,20 @@ Help Options:
   -h, --help                           Show this help message
 
 [build command options]
-      -m, --manifest=                  File to put manifest data in (default: ./assets.json)
           --blobs-dir=                 Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
           --cache-manifest=            Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+      -m, --manifest=                  File to put manifest data in (default: ./assets.json)
       -l, --listen-addr=               Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
-      -t, --with-temp-dir=             List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the
-                                       sub-process.
-          --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary CA certificates file in PEM format. (default:
-                                       SSL_CERT_FILE)
-          --set-env-var-jks-keystore=  List of environment variables that will be set pointing to the temporary CA certificates file in JKS format. (default:
-                                       JKS_KEYSTORE_FILE)
-          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY,
-                                       http_proxy, https_proxy)
+      -c, --ca-out=                    Cert file out location - defaults to a temp file
+      -d, --daemon                     Run as a daemon until terminated
+      -s, --single-thread              Don't service HTTP request until previous one is complete.
+      -t, --with-temp-dir=             List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process.
+          --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary CA certificates file in PEM format. (default: SSL_CERT_FILE)
+          --set-env-var-jks-keystore=  List of environment variables that will be set pointing to the temporary CA certificates file in JKS format. (default: JKS_KEYSTORE_FILE)
+          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy)
           --set-env-var-no-proxy=      List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
           --no-cache-response=         Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
-          --cache-header=              List of headers for which we will cache the first value. (default: Content-Type, Content-Encoding, X-Checksum-Sha1)
+          --cache-header=              List of headers for which we will cache the first value. (default: Content-Length, Docker-Content-Digest, Content-Type, Content-Encoding, X-Checksum-Sha1)
           --force-refresh              If set, always fetch from upstream (and save to both local and global cache).
           --clean                      If set, reset local blob list to empty before running.
 
@@ -227,14 +225,13 @@ Help Options:
           --cache-manifest=            Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
       -m, --manifest=                  File to put manifest data in (default: ./assets.json)
       -l, --listen-addr=               Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
-      -t, --with-temp-dir=             List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the
-                                       sub-process.
-          --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary CA certificates file in PEM format. (default:
-                                       SSL_CERT_FILE)
-          --set-env-var-jks-keystore=  List of environment variables that will be set pointing to the temporary CA certificates file in JKS format. (default:
-                                       JKS_KEYSTORE_FILE)
-          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY,
-                                       http_proxy, https_proxy)
+      -c, --ca-out=                    Cert file out location - defaults to a temp file
+      -d, --daemon                     Run as a daemon until terminated
+      -s, --single-thread              Don't service HTTP request until previous one is complete.
+      -t, --with-temp-dir=             List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process.
+          --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary CA certificates file in PEM format. (default: SSL_CERT_FILE)
+          --set-env-var-jks-keystore=  List of environment variables that will be set pointing to the temporary CA certificates file in JKS format. (default: JKS_KEYSTORE_FILE)
+          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy)
           --set-env-var-no-proxy=      List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
           --dummy-ok-response=         Regex list of URLs that we return a dummy 200 OK reply to. Useful for some Docker clients. (default: ^http.*/v2/$)
 
@@ -267,7 +264,6 @@ Help Options:
       -o, --output-directory= Directory to export blobs to. (default: ./blobs)
 ```
 
-
 ### `htvend verify`
 
 Iterates through all referenced and confirm they exist locally and with the correct SHA256.
@@ -294,10 +290,9 @@ Help Options:
           --cache-manifest=    Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
       -m, --manifest=          File to put manifest data in (default: ./assets.json)
           --no-cache-response= Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
-          --cache-header=      List of headers for which we will cache the first value. (default: Content-Type, Content-Encoding, X-Checksum-Sha1)
+          --cache-header=      List of headers for which we will cache the first value. (default: Content-Length, Docker-Content-Digest, Content-Type, Content-Encoding, X-Checksum-Sha1)
           --fetch              If set, fetch missing assets
-          --repair             If set, replace any missing assets with new versions currently found (implies fetch). May still require a rebuild afterwards (e.g.
-                               if they trigger other new calls).
+          --repair             If set, replace any missing assets with new versions currently found (implies fetch). May still require a rebuild afterwards (e.g. if they trigger other new calls).
 ```
 
 ### `htvend clean`
@@ -321,6 +316,7 @@ Help Options:
           --blobs-dir=      Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
           --cache-manifest= Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
           --all             If set, remove entire shared global cache.
+      -u, --url=            URL to remove from global cache.
 ```
 
 ## Frequently asked questions

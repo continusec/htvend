@@ -1,4041 +1,4044 @@
 {
   "https://api.github.com/repos/spring-guides/gs-spring-boot/tarball/main": {
     "Sha256": "67a3fd424faf6a2368fcb4e6d57ddb502232390fff69700d86771b0a663001df",
-    "Size": 235102,
     "Headers": {
       "Content-Type": "application/x-gzip"
     }
   },
   "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:1474604263309fc1a601a7b4fc9a4b56b117d7d4defa76c964e963362332e40d": {
     "Sha256": "1474604263309fc1a601a7b4fc9a4b56b117d7d4defa76c964e963362332e40d",
-    "Size": 64794474,
     "Headers": {
+      "Content-Length": "64794474",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:3f9234070fd4a9a177785ccb3c05a5409eeeaf935c5938301e6ac0444fa83468": {
     "Sha256": "3f9234070fd4a9a177785ccb3c05a5409eeeaf935c5938301e6ac0444fa83468",
-    "Size": 2125,
     "Headers": {
+      "Content-Length": "2125",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:43a14bf5f399c85b794f21fc25ddefed9921d741e7e223456e8087c76b5d0c9c": {
     "Sha256": "43a14bf5f399c85b794f21fc25ddefed9921d741e7e223456e8087c76b5d0c9c",
-    "Size": 163113734,
     "Headers": {
+      "Content-Length": "163113734",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/amazoncorretto/manifests/21.0.8": {
     "Sha256": "dc9e136c19854698f3dc848705cc43ad7cebaf168513126d7a87c1ea6107bb27",
-    "Size": 2647,
     "Headers": {
-      "Content-Type": "application/vnd.oci.image.index.v1+json"
+      "Content-Length": "2647",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:dc9e136c19854698f3dc848705cc43ad7cebaf168513126d7a87c1ea6107bb27"
     }
   },
   "https://registry-1.docker.io/v2/library/amazoncorretto/manifests/sha256:6320d6da00986baa32c0452a2189c20cd9271c5a325b6838a971c604da8542a1": {
     "Sha256": "6320d6da00986baa32c0452a2189c20cd9271c5a325b6838a971c604da8542a1",
-    "Size": 1360,
     "Headers": {
-      "Content-Type": "application/vnd.oci.image.manifest.v1+json"
+      "Content-Length": "1360",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:6320d6da00986baa32c0452a2189c20cd9271c5a325b6838a971c604da8542a1"
     }
   },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:31976800a5f829220dc5e316a008316601c5833dc011657ad61e89399c232f90": {
-    "Sha256": "31976800a5f829220dc5e316a008316601c5833dc011657ad61e89399c232f90",
-    "Size": 155,
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:3e846d053c2c091ec48e8e3eb9c5661a465e0f4c992ed9b12ec74fb0694cdd9a": {
+    "Sha256": "3e846d053c2c091ec48e8e3eb9c5661a465e0f4c992ed9b12ec74fb0694cdd9a",
     "Headers": {
+      "Content-Length": "5079",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/maven/blobs/sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1": {
     "Sha256": "4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1",
-    "Size": 32,
     "Headers": {
+      "Content-Length": "32",
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:5611c1913dd6ba7385cf1a1189fc5fdca8484437a908c245ae587320a5522a36": {
-    "Sha256": "5611c1913dd6ba7385cf1a1189fc5fdca8484437a908c245ae587320a5522a36",
-    "Size": 214977166,
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:907b99062c827b08a5ba032e8ce7732260bacbdb1691e08fdaa0a06b24f456f3": {
+    "Sha256": "907b99062c827b08a5ba032e8ce7732260bacbdb1691e08fdaa0a06b24f456f3",
     "Headers": {
+      "Content-Length": "155",
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:73f67d7aa9895bbeacb5d91b4634822cc1a30334729d5147ee37f84e95ce59bc": {
-    "Sha256": "73f67d7aa9895bbeacb5d91b4634822cc1a30334729d5147ee37f84e95ce59bc",
-    "Size": 852,
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:98887fe92f3d79ab5078c519111b1d354e0ffd047fbcbae2f1657f460b7a79fe": {
+    "Sha256": "98887fe92f3d79ab5078c519111b1d354e0ffd047fbcbae2f1657f460b7a79fe",
     "Headers": {
-      "Content-Type": "application/octet-stream"
-    }
-  },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:8266d84f44ca71001e306695422cd4cdb617c30222917b2d93ad0ae5dfb96f20": {
-    "Sha256": "8266d84f44ca71001e306695422cd4cdb617c30222917b2d93ad0ae5dfb96f20",
-    "Size": 5079,
-    "Headers": {
-      "Content-Type": "application/octet-stream"
-    }
-  },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:a6b13617fd82f673059c25cea5b9ecbbdfc12d7ef1c330ea01e4530018e3e952": {
-    "Sha256": "a6b13617fd82f673059c25cea5b9ecbbdfc12d7ef1c330ea01e4530018e3e952",
-    "Size": 9242579,
-    "Headers": {
+      "Content-Length": "9242591",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/maven/blobs/sha256:b3407f3b5b5beb45007b2980ccef71785b08dae5a2dcbdd91272f35c4c5e784f": {
     "Sha256": "b3407f3b5b5beb45007b2980ccef71785b08dae5a2dcbdd91272f35c4c5e784f",
-    "Size": 28082000,
     "Headers": {
+      "Content-Length": "28082000",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:e2cc3f80a76aa867102b42c63591a0caa70700998c3581cf3ea9558bde306775": {
+    "Sha256": "e2cc3f80a76aa867102b42c63591a0caa70700998c3581cf3ea9558bde306775",
+    "Headers": {
+      "Content-Length": "849",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:fcbd6cde995378360e470c84ca3edc0bcffe309d396dec4e41c9da7bb06d9cec": {
+    "Sha256": "fcbd6cde995378360e470c84ca3edc0bcffe309d396dec4e41c9da7bb06d9cec",
+    "Headers": {
+      "Content-Length": "214995178",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/maven/manifests/3.9.11-amazoncorretto-21-debian": {
-    "Sha256": "c459ecf2f953a9c55d1a91d5febc14cefd1e03be93e264a14b6cfc220bdee245",
-    "Size": 2703,
+    "Sha256": "82a28c3bb17fd23ab8a821757715afc2e9fa95fdd231198eaac27496cf2d74fb",
     "Headers": {
-      "Content-Type": "application/vnd.oci.image.index.v1+json"
+      "Content-Length": "2703",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:82a28c3bb17fd23ab8a821757715afc2e9fa95fdd231198eaac27496cf2d74fb"
     }
   },
-  "https://registry-1.docker.io/v2/library/maven/manifests/sha256:c14b68633c953de493db22b6494d0c5a0e300a0de0096b7313bed69d5f20ba01": {
-    "Sha256": "c14b68633c953de493db22b6494d0c5a0e300a0de0096b7313bed69d5f20ba01",
-    "Size": 2145,
+  "https://registry-1.docker.io/v2/library/maven/manifests/sha256:534ab94b036df7478a679794378cbc58d34f6bb830220050dcabc68890e3967e": {
+    "Sha256": "534ab94b036df7478a679794378cbc58d34f6bb830220050dcabc68890e3967e",
     "Headers": {
-      "Content-Type": "application/vnd.oci.image.manifest.v1+json"
+      "Content-Length": "2145",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:534ab94b036df7478a679794378cbc58d34f6bb830220050dcabc68890e3967e"
     }
   },
   "https://repo.maven.apache.org/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.pom": {
     "Sha256": "26e82330157d6b844b67a8064945e206581e772977183e3e31fec6058aa9a59b",
-    "Size": 363,
     "Headers": {
+      "Content-Length": "363",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5128a2b0efbba460a1178d07773618e0986ea152"
     }
   },
   "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar": {
     "Sha256": "6115c6cac5ed1d9db810d14f2f7f4dd6a9f21f0acbba8016e4daaca2ba0f5eb8",
-    "Size": 293697,
     "Headers": {
+      "Content-Length": "293697",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "afc75d260d838a3bddfb8f207c2805ed7d1b34f9"
     }
   },
   "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.pom": {
     "Sha256": "4b2b00df6123c0e2a61e71b5be2b3f00739678bb4b069940d5c49c24df53f59a",
-    "Size": 13082,
     "Headers": {
+      "Content-Length": "13082",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c36ed6ab109f34e3340ef2bb7a5faac267019f8c"
     }
   },
   "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar": {
     "Sha256": "898c7d120199f37e1acc8118d97ab15a4d02b0e72e27ba9f05843cb374e160c6",
-    "Size": 609942,
     "Headers": {
+      "Content-Length": "609942",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "41cbe874701200c5624c19e0ab50d1b88dfcc77d"
     }
   },
   "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.pom": {
     "Sha256": "0693d068dd36877475ad80906e31c7bc0d5195b82d4c00751dc19c1ea511e711",
-    "Size": 7493,
     "Headers": {
+      "Content-Length": "7493",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ce2b2c0de2d0c656ebccdad3d49b601293f77287"
     }
   },
   "https://repo.maven.apache.org/maven2/ch/qos/logback/logback-parent/1.5.6/logback-parent-1.5.6.pom": {
     "Sha256": "7bdfcb24924681a49144dba34a927b8bd07920d092eacc3def61f9e647af4de8",
-    "Size": 18719,
     "Headers": {
+      "Content-Length": "18719",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c76cf268188662f3d4dd0399a6ddfee0c47fa7d4"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.2/jackson-annotations-2.14.2.jar": {
     "Sha256": "2c6869d505cf60dc066734b7d50339f975bd3adc635e26a78abb71acb4473c0d",
-    "Size": 76636,
     "Headers": {
+      "Content-Length": "76636",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "a7aae9525864930723e3453ab799521fdfd9d873"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.2/jackson-annotations-2.14.2.pom": {
     "Sha256": "84ae0341837d7696a61043d809e43260a5eb077232d1dcaa464c8da549cd9ea0",
-    "Size": 6209,
     "Headers": {
+      "Content-Length": "6209",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "31ae3aee07a17dc4323941f6a76c6d22ef09c501"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar": {
     "Sha256": "fccad82e13172c0e4384db71577219c9b8631c0820f4b18daaa57016fb661c76",
-    "Size": 78491,
     "Headers": {
+      "Content-Length": "78491",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "fca7ef6192c9ad05d07bc50da991bf937a84af3a"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.pom": {
     "Sha256": "7355f37445f5daf50f50c75f2ebcd71ba2c4fbcea4b6254148059ec635644e77",
-    "Size": 7059,
     "Headers": {
+      "Content-Length": "7059",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "186c3704ed2d09c8870722223a44e7b221da9a5a"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.2/jackson-core-2.14.2.jar": {
     "Sha256": "b5d37a77c88277b97e3593c8740925216c06df8e4172bbde058528df04ad3e7a",
-    "Size": 458834,
     "Headers": {
+      "Content-Length": "458834",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "f804090e6399ce0cf78242db086017512dd71fcc"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.2/jackson-core-2.14.2.pom": {
     "Sha256": "f44cc63d612f03b1dbfc82892dcdb32fdb75bf16049fd8595561e7c7a33bc451",
-    "Size": 7017,
     "Headers": {
+      "Content-Length": "7017",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "76bac750b8718e4303ab6ea2742aab1422d3e8b9"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar": {
     "Sha256": "ddb26c8a1f1a84535e8213c48b35b253370434e3287b3cf15777856fc4e58ce6",
-    "Size": 581860,
     "Headers": {
+      "Content-Length": "581860",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "5e52a11644cd59a28ef79f02bddc2cc3bab45edb"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.pom": {
     "Sha256": "d948831209a04c01391b93aaee7ad34a1c9e94863f9e7685c2f5b6149a2ab39d",
-    "Size": 9641,
     "Headers": {
+      "Content-Length": "9641",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "22a579663e24a696b98a352eb423ca393dc1a4bd"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.jar": {
     "Sha256": "501d3abce4d18dcc381058ec593c5b94477906bba6efbac14dae40a642f77424",
-    "Size": 1616844,
     "Headers": {
+      "Content-Length": "1616844",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "01e71fddbc80bb86f71a6345ac1e8ab8a00e7134"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.pom": {
     "Sha256": "22808ebb4b75d8c4037d9cee1208adc65bc782a9885732234a31b7b574c5d90c",
-    "Size": 19496,
     "Headers": {
+      "Content-Length": "19496",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a16354be031c98c5eee8862e9974bb4f49be1f13"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar": {
     "Sha256": "b6ca2f7d5b1ab245cec5495ec339773d2d90554c48592590673fb18f4400a948",
-    "Size": 1649385,
     "Headers": {
+      "Content-Length": "1649385",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "0524dcbcccdde7d45a679dfc333e4763feb09079"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.pom": {
     "Sha256": "60a08a986ac313ad3e32688a4e327a61283a8a801ad6fa61579f8c4be6dc8f6c",
-    "Size": 21262,
     "Headers": {
+      "Content-Length": "21262",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "6948da5a23ce75d431982d8228b67299b57be315"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.1/jackson-datatype-jdk8-2.17.1.jar": {
     "Sha256": "06817b785e33d2247747a620825a7569d988cf2aeda2ae21eb3eaddfecb34b0e",
-    "Size": 36162,
     "Headers": {
+      "Content-Length": "36162",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "76b495194c36058904c82e288d285a1bd13f0ffa"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.1/jackson-datatype-jdk8-2.17.1.pom": {
     "Sha256": "82eb5f41f492bc4efd18e4bf21b8944ec105d742cf51e9f4d196597a63a01c41",
-    "Size": 2585,
     "Headers": {
+      "Content-Length": "2585",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ec1f827c5202e991d58acd2c95e359cbc82b7679"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.1/jackson-datatype-jsr310-2.17.1.jar": {
     "Sha256": "56765d55ac8cffdd757c1a534ec965e70b01176f64dfd7e70b0db34d8babc9fa",
-    "Size": 132263,
     "Headers": {
+      "Content-Length": "132263",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "0969b0c3cb8c75d759e9a6c585c44c9b9f3a4f75"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.1/jackson-datatype-jsr310-2.17.1.pom": {
     "Sha256": "0701d54c7b9f2ca2d1c0052d9474bcf8443627812d0b883c9a5d0c01fc79c789",
-    "Size": 4906,
     "Headers": {
+      "Content-Length": "4906",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1b6da32820fa6fa8105801399e47549be38c8c2d"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.14.2/jackson-base-2.14.2.pom": {
     "Sha256": "3ae245b9df95127321f1f905f703bd32774fe557158a9d3a9e507d82b2bc4ed4",
-    "Size": 10228,
     "Headers": {
+      "Content-Length": "10228",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "9d05485c7ec37cd4e97d1ea00b200d879bec5913"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-base/2.17.1/jackson-base-2.17.1.pom": {
     "Sha256": "e0aefc61d38fcddd955ffeec01bb75104f1bbfffa3a6ecb58dbe74afb715e322",
-    "Size": 11768,
     "Headers": {
+      "Content-Length": "11768",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f5b8cfce0e5562b14ac36020b46ec3bcd8f2d990"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.14.2/jackson-bom-2.14.2.pom": {
     "Sha256": "9aa209bb32391cbf5f1bd3e7fa11901676169acd190d9896b5c1e877c999febc",
-    "Size": 17487,
     "Headers": {
+      "Content-Length": "17487",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e737bd3ebe6f1f0b0fda994530473bf8a1a95f1e"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.16.1/jackson-bom-2.16.1.pom": {
     "Sha256": "69d8bf9b2a7d42c9cf1d70ad82be42f6ac6fd788918a6e1d75792ecdcc117a0b",
-    "Size": 18229,
     "Headers": {
+      "Content-Length": "18229",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0e56871cbeb604dfdce9ffac8ce705d049f478cf"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.17.1/jackson-bom-2.17.1.pom": {
     "Sha256": "9f4461228e129103eed7a302dc1001ab2e4c82dd3cea915c2a7dbb8cc61efd25",
-    "Size": 18694,
     "Headers": {
+      "Content-Length": "18694",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3bd0a8fe4faa6434ff0109e330349fd8cff0967f"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.14/jackson-parent-2.14.pom": {
     "Sha256": "0906add855ae39f92357d63f485889b08fca4c43a5fe433522d75344e0757b19",
-    "Size": 7658,
     "Headers": {
+      "Content-Length": "7658",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "dc7342332cd6011d0694abec10a676a9cfe29d6b"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.16/jackson-parent-2.16.pom": {
     "Sha256": "8bf6142812148a2abf6850b272f0af4c3d8ff1121ed604c402f3f38c9e6546ab",
-    "Size": 6522,
     "Headers": {
+      "Content-Length": "6522",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "712d723d9a99b84ce364361e155857377c16de96"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.17/jackson-parent-2.17.pom": {
     "Sha256": "aee6de4a97283b040e43f4dad575e7b74796cd984d89276f7ec7567380c8a29d",
-    "Size": 6522,
     "Headers": {
+      "Content-Length": "6522",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "df97fedb1aae67d608a69fa9262410247f3d31af"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.14.2/jackson-module-parameter-names-2.14.2.jar": {
     "Sha256": "b4e3fbea545a155a14dcb8a65c46b57ad8d0fb9627c84f789858263f05299330",
-    "Size": 9459,
     "Headers": {
+      "Content-Length": "9459",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "2b6c19b3d99dda02915515df879ab9e23fed3864"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.14.2/jackson-module-parameter-names-2.14.2.pom": {
     "Sha256": "64940359a9c9a55764a4c6de33479950904bd0926d28a1d68f6b0d41da757c97",
-    "Size": 4361,
     "Headers": {
+      "Content-Length": "4361",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "81edc5c72499ec5fb5fd64ee51767093badf4dfd"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.1/jackson-module-parameter-names-2.17.1.jar": {
     "Sha256": "55a0c54a82c30524981335c7835e326ca09f489cf0f5d5e2a34b5c4c6cc1a0a5",
-    "Size": 10338,
     "Headers": {
+      "Content-Length": "10338",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "74a998f6fbcedbddedf0a27e8ce72078b2e516a6"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.1/jackson-module-parameter-names-2.17.1.pom": {
     "Sha256": "a81dda774acf0d9aeb7c7406c8e3873ad6fc1968412441b3572ea80161b1af4c",
-    "Size": 4235,
     "Headers": {
+      "Content-Length": "4235",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b5062ee07cd424b8d030b188afd05b948bdd5ec8"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-modules-java8/2.14.2/jackson-modules-java8-2.14.2.pom": {
     "Sha256": "36ea7dadcb10c7153ef65a75e169b1b7f937ded09a18450e0f10fe202df2adcd",
-    "Size": 3099,
     "Headers": {
+      "Content-Length": "3099",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7c63f2a6e269c8e4957bb576762eaca7f364c0ee"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-modules-java8/2.17.1/jackson-modules-java8-2.17.1.pom": {
     "Sha256": "b5c5069359edd71be0c7fe1f09f7d2da8a2da73323b3f466d3ca3166dc3c7a43",
-    "Size": 3099,
     "Headers": {
+      "Content-Length": "3099",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "885dc6a84da22a87b69910418e022cd33073b1e1"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/48/oss-parent-48.pom": {
     "Sha256": "11bba22d8631816e09b623a200747453d6491a66eac8f5c089c73da2b749014f",
-    "Size": 23757,
     "Headers": {
+      "Content-Length": "23757",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "35829270f540f9e687c5b0372da06a456afb699b"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/56/oss-parent-56.pom": {
     "Sha256": "fd491f78857424106d2e3d605bcd799b53d31a565cdc868463ca7e875db45a50",
-    "Size": 23559,
     "Headers": {
+      "Content-Length": "23559",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "355a98a7c92b8dd838bf0b32b04fd991bec14570"
     }
   },
   "https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/58/oss-parent-58.pom": {
     "Sha256": "5670e6ac1c4ddcc9d413cf87997a5da2efaa4d2abe439363af9ef102a0a09e40",
-    "Size": 23661,
     "Headers": {
+      "Content-Length": "23661",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0ed9e5d9e7cad24fce51b18455e0cf5ccd2c94b6"
     }
   },
   "https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.5-11/zstd-jni-1.5.5-11.jar": {
     "Sha256": "d75b2ced6059f81ad23e021c554259b906b6c4f2991cb772409827569ead4c1a",
-    "Size": 6776400,
     "Headers": {
+      "Content-Length": "6776400",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "ca6ab366315e179dd80645aad4a60bab959c6523"
     }
   },
   "https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.5-11/zstd-jni-1.5.5-11.pom": {
     "Sha256": "a0152b1897c4a6e7dd36e5f686f0e631c3839b5db208b38daa11a4f6dc9b25ff",
-    "Size": 2009,
     "Headers": {
+      "Content-Length": "2009",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d394d7050319c1ebcc7b177a751a13645deff523"
     }
   },
   "https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar": {
     "Sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
-    "Size": 19936,
     "Headers": {
+      "Content-Length": "19936",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "25ea2e8b0c338a877313bd4672d3fe056ea78f0d"
     }
   },
   "https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom": {
     "Sha256": "19889dbdf1b254b2601a5ee645b8147a974644882297684c798afe5d63d78dfe",
-    "Size": 4286,
     "Headers": {
+      "Content-Length": "4286",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8d93cdf4d84d7e1de736df607945c6df0730a10f"
     }
   },
   "https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/16.0.1/guava-parent-16.0.1.pom": {
     "Sha256": "2c98892cbf7c606b91b4f0f0d1d91da26746bbf5f8595626f5b4d6a5a1914824",
-    "Size": 7336,
     "Headers": {
+      "Content-Length": "7336",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "08ee21458c04474f97a3e499d5618c01cd2991db"
     }
   },
   "https://repo.maven.apache.org/maven2/com/google/guava/guava/16.0.1/guava-16.0.1.pom": {
     "Sha256": "c676575845fc8ad6dcfeca0827f405066a140f5fa5434715598179c8ba1c0817",
-    "Size": 6102,
     "Headers": {
+      "Content-Length": "6102",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "52f16cd93f1ee1f0d1e1e55f46fa21c35f829f85"
     }
   },
   "https://repo.maven.apache.org/maven2/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar": {
     "Sha256": "11a9ee6f88bb31f1450108d1cf6441377dec84aca075eb6bb2343be157575bea",
-    "Size": 276633,
     "Headers": {
+      "Content-Length": "276633",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "37fe2217f577b0b68b18e62c4d17a8858ecf9b69"
     }
   },
   "https://repo.maven.apache.org/maven2/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.pom": {
     "Sha256": "0c2537dde9bf9dc2a2c7967300fc13bc5229d192677fcb88b6fd89966936643f",
-    "Size": 1916,
     "Headers": {
+      "Content-Length": "1916",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e614d3178d8dddfb44c871fc195fba3c5c212cbf"
     }
   },
   "https://repo.maven.apache.org/maven2/com/querydsl/querydsl-bom/5.1.0/querydsl-bom-5.1.0.pom": {
     "Sha256": "8853dce132c9ece4c295c7f4d4f3c2832eee0d7d44930870c0666fa72043ca56",
-    "Size": 7153,
     "Headers": {
+      "Content-Length": "7153",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3a3cf55132761ec4bf5381f0b458bfc996d70752"
     }
   },
   "https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp-bom/4.12.0/okhttp-bom-4.12.0.pom": {
     "Sha256": "780838ee67f2a1ee580887de8a748e5b259f9e81542e1c4244d5042659922e14",
-    "Size": 3053,
     "Headers": {
+      "Content-Length": "3053",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "739bd19d4113d096b0470fb179cb2d4bad33dac9"
     }
   },
   "https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.0.3/qdox-2.0.3.jar": {
     "Sha256": "ff70c10165714fe9546c418a65d74ecd5d57623ba408cecde9428f0a609b5d1c",
-    "Size": 334163,
     "Headers": {
+      "Content-Length": "334163",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "d70143d2a58e7b16a8ec73a495508d43a085d83b"
     }
   },
   "https://repo.maven.apache.org/maven2/com/thoughtworks/qdox/qdox/2.0.3/qdox-2.0.3.pom": {
     "Sha256": "e7ebaead3c95e74934451fc5b5ae9d02066303db67430f59fe219714efcf3bf3",
-    "Size": 17237,
     "Headers": {
+      "Content-Length": "17237",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e49afe613a42b199b666e571570114b9836f38f3"
     }
   },
   "https://repo.maven.apache.org/maven2/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar": {
     "Sha256": "dfb7bae2f404cfe0b72b4d23944698cb716b7665171812a0a4d0f5926c0fac79",
-    "Size": 18279,
     "Headers": {
+      "Content-Length": "18279",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "fa26d351fe62a6a17f5cda1287c1c6110dec413f"
     }
   },
   "https://repo.maven.apache.org/maven2/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.pom": {
     "Sha256": "2ff6c17d9c060b89cd7ef18fa480ae2446eba86855a633f3892837fc3b848fef",
-    "Size": 2786,
     "Headers": {
+      "Content-Length": "2786",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "90ebaebd21e7bcfad5416f999926d05f834bfeb5"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.16.1/commons-codec-1.16.1.jar": {
     "Sha256": "ec87bfb55f22cbd1b21e2190eeda28b2b312ed2a431ee49fbdcc01812d04a5e4",
-    "Size": 365463,
     "Headers": {
+      "Content-Length": "365463",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "47bd4d333fba53406f6c6c51884ddbca435c8862"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.16.1/commons-codec-1.16.1.pom": {
     "Sha256": "b826ddd92f9d7cc64371a02fa0830c154d67c98370ea54a2d196e72eb590ad28",
-    "Size": 15675,
     "Headers": {
+      "Content-Length": "15675",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "fdca64157d8fd070e24bd7d4ae9b8851d9ed9c0e"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar": {
     "Sha256": "961b2f6d87dbacc5d54abf45ab7a6e2495f89b75598962d8c723cea9bc210908",
-    "Size": 327135,
     "Headers": {
+      "Content-Length": "327135",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "a2503f302b11ebde7ebc3df41daebe0e4eea3689"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.pom": {
     "Sha256": "2e016fd7e3244b5f2c20acad834d93aa4790486ee1e4564641361a3e831eef59",
-    "Size": 19729,
     "Headers": {
+      "Content-Length": "19729",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3fe5d6ebed1afb72c3e8c166dba0b0e00fdd1f16"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.13.0/commons-io-2.13.0.jar": {
     "Sha256": "671eaa39688dac2ffaa4645b3c9980ae2d0ea2471e4ae6a5da199cd15ae23666",
-    "Size": 483954,
     "Headers": {
+      "Content-Length": "483954",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "8bb2bc9b4df17e2411533a0708a69f983bf5e83b"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.13.0/commons-io-2.13.0.pom": {
     "Sha256": "db3fed64c2e1774ebfd6b1a749037732b149b9111dd7e6b985f08dda55470439",
-    "Size": 20319,
     "Headers": {
+      "Content-Length": "20319",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1da8a0360c9fa9b5c0553b032b54cfacf1d7182f"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar": {
     "Sha256": "a58af12ee1b68cfd2ebb0c27caef164f084381a00ec81a48cc275fd7ea54e154",
-    "Size": 501218,
     "Headers": {
+      "Content-Length": "501218",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "f11560da189ab563a5c8e351941415430e9304ea"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.15.1/commons-io-2.15.1.pom": {
     "Sha256": "171a1af82b6759eb5740b3b8809aca80113deaf1153036f2f4445901dfd3f91d",
-    "Size": 19970,
     "Headers": {
+      "Content-Length": "19970",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3ec366b41f9e6c0f3f2c413299a0186ad6d093c4"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.jar": {
     "Sha256": "f41f7baacd716896447ace9758621f62c1c6b0a91d89acee488da26fc477c84f",
-    "Size": 508826,
     "Headers": {
+      "Content-Length": "508826",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "377d592e740dc77124e0901291dbfaa6810a200e"
     }
   },
   "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.16.1/commons-io-2.16.1.pom": {
     "Sha256": "5777d292251c7895c04a4c57015683ec3b353a12486c9b3e7178e9b0b3c38fff",
-    "Size": 19623,
     "Headers": {
+      "Content-Length": "19623",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "553d6f69e338060a231755afe0ebf99d14b45da6"
     }
   },
   "https://repo.maven.apache.org/maven2/io/fabric8/kubernetes-client-bom/5.12.4/kubernetes-client-bom-5.12.4.pom": {
     "Sha256": "d232392a89c3efdc85ab299c5a94e8b9dd35bc02f340ce8446ff659aa15913a0",
-    "Size": 25637,
     "Headers": {
+      "Content-Length": "25637",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e79360b6c85f975006571e2251496c9677a15d19"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-bom/1.13.0/micrometer-bom-1.13.0.pom": {
     "Sha256": "e053cab4fa2d13371a4eb5ab1aa016badad64031a0ca7b2e7b55ea1dbb68dc08",
-    "Size": 8575,
     "Headers": {
+      "Content-Length": "8575",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "036f2ea90c35cd3a044bc229deef9d47e1b28ead"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.6/micrometer-commons-1.12.6.jar": {
     "Sha256": "1cefa7dbb651f35ae886158c9d4cf4dd3cc0997fa71e89c119102e2272bfa44c",
-    "Size": 47473,
     "Headers": {
+      "Content-Length": "47473",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "255ebef194f74428cce1a63d107812d97b15b199"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.6/micrometer-commons-1.12.6.pom": {
     "Sha256": "62e14fb3cb5e935e06a4c614192c0801232c8a33c8f4be5c1fd727255590f06b",
-    "Size": 3412,
     "Headers": {
+      "Content-Length": "3412",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ae404e9d0e6e8b494986ab338653f907dfefdc86"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.13.0/micrometer-commons-1.13.0.jar": {
     "Sha256": "039aef255b5092561fdf649367fd0ff9af8da00aadb25f0c60cf30ebad8dceb8",
-    "Size": 47510,
     "Headers": {
+      "Content-Length": "47510",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "156a59aff8d72c5e631eb4a2d739373ed5881609"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.13.0/micrometer-commons-1.13.0.pom": {
     "Sha256": "b3bda6c4278d77562852a5074a486863ec0d01738f6d23a14740756dab8061cc",
-    "Size": 3412,
     "Headers": {
+      "Content-Length": "3412",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "64353076c488ab7f2f8c18142cee979d25dd77ad"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.13.0/micrometer-core-1.13.0.jar": {
     "Sha256": "1ced414878f151d08617b47732fa67a5d06b47b63903e2722f40e2294e883643",
-    "Size": 862397,
     "Headers": {
+      "Content-Length": "862397",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "d7ed656fbc54fde5a03d978fc0d66f270cc4a997"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.13.0/micrometer-core-1.13.0.pom": {
     "Sha256": "66603062b2af68594b99ee6def84525aea5d629f524414d3835243a2a1111084",
-    "Size": 10657,
     "Headers": {
+      "Content-Length": "10657",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "217229222e52fa711d4c54d91f7a3aa9d8270c0d"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.13.0/micrometer-jakarta9-1.13.0.jar": {
     "Sha256": "4392321128eca6773804fc8c6525ca81424d49abad72fa3082df6b96bb59a6d0",
-    "Size": 32397,
     "Headers": {
+      "Content-Length": "32397",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "5d6820df50cba9ef893bf026eacf5a6093945ac7"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.13.0/micrometer-jakarta9-1.13.0.pom": {
     "Sha256": "24f8b0cf0d7c966b77b56c8ff05e9a197348cb47a33f2f75fd4fe3eb3bb4f607",
-    "Size": 3771,
     "Headers": {
+      "Content-Length": "3771",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5b0e4ba9bb6e7c9ecbb7997aa1964ca62c596b5a"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.6/micrometer-observation-1.12.6.jar": {
     "Sha256": "bbf73132b0fa6e49a36a2c1429422204809f50946caf5806c5446cebff19f7b2",
-    "Size": 71757,
     "Headers": {
+      "Content-Length": "71757",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "ec96cbd5bafac7be6f8192b5c3c926930b571b30"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.6/micrometer-observation-1.12.6.pom": {
     "Sha256": "68dd09c343f7ba83d6263360bbf6a9a55e1bc4fcef3244a8cf52cc3bff54d89a",
-    "Size": 3843,
     "Headers": {
+      "Content-Length": "3843",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "748da197947d6bc0fd717e6e1b3d6b9d64a04b7f"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.13.0/micrometer-observation-1.13.0.jar": {
     "Sha256": "33e7c9de55ef34ae502a2ad6c4c9786563b6d44eca2cbd2b832911594b378858",
-    "Size": 71768,
     "Headers": {
+      "Content-Length": "71768",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "5aa75fbb4367dc3b28e557d14535d21335dc8985"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.13.0/micrometer-observation-1.13.0.pom": {
     "Sha256": "1bb6811f70e28929b2d1a7684287d1d9cac0f0559c7539d8d2a53b1bd6203022",
-    "Size": 3843,
     "Headers": {
+      "Content-Length": "3843",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "bb536be49a993f374d94606a77958e0616ed7b30"
     }
   },
   "https://repo.maven.apache.org/maven2/io/micrometer/micrometer-tracing-bom/1.3.0/micrometer-tracing-bom-1.3.0.pom": {
     "Sha256": "52b11442907daf3f49d242bed2c92eed2798ce5decebd7726d1a3e43d63fa690",
-    "Size": 4510,
     "Headers": {
+      "Content-Length": "4510",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "dcc4995d3b08278919843aedcc06d762b60ee849"
     }
   },
   "https://repo.maven.apache.org/maven2/io/netty/netty-bom/4.1.107.Final/netty-bom-4.1.107.Final.pom": {
     "Sha256": "c36997558bfb4e11f200dda6ee2e41a45f2df9e1aef678eda08e79dd8938c210",
-    "Size": 13741,
     "Headers": {
+      "Content-Length": "13741",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3eaa3b12c0e8140d40c9dc9aabcef31f4b2d320b"
     }
   },
   "https://repo.maven.apache.org/maven2/io/netty/netty-bom/4.1.110.Final/netty-bom-4.1.110.Final.pom": {
     "Sha256": "a49be1a4ad1f8bf170c1dc1628b1181b51e6d9cf2a25645aa722994095bb9bff",
-    "Size": 13741,
     "Headers": {
+      "Content-Length": "13741",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a86b95fdfd5562c2f00e4ce7cad8da0aa73a7939"
     }
   },
   "https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-bom/1.37.0/opentelemetry-bom-1.37.0.pom": {
     "Sha256": "c1409111c5a85ad8905630e1ca4eaaeea9379f2c78a3a1939883c009e6ff2409",
-    "Size": 5688,
     "Headers": {
+      "Content-Length": "5688",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ce699411fc4792fec2213eae62a3101cfa014ccf"
     }
   },
   "https://repo.maven.apache.org/maven2/io/projectreactor/reactor-bom/2023.0.6/reactor-bom-2023.0.6.pom": {
     "Sha256": "00e2c9c4fc0ab71171ca0f22a3e3e48018b2d924f2064f26661a08e4acbb3d6d",
-    "Size": 4771,
     "Headers": {
+      "Content-Length": "4771",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "57b853881f3f424446cb1d19db18c5659c6fa30a"
     }
   },
   "https://repo.maven.apache.org/maven2/io/prometheus/client_java/1.2.1/client_java-1.2.1.pom": {
     "Sha256": "fc8f7fe2b4ef0ceedc84393b8900a93d64b19c983ff82166c84a33667070ba7d",
-    "Size": 13262,
     "Headers": {
+      "Content-Length": "13262",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "074f95ce4db5dfddea234d35e4227f4314d02bae"
     }
   },
   "https://repo.maven.apache.org/maven2/io/prometheus/parent/0.16.0/parent-0.16.0.pom": {
     "Sha256": "722b55119097b04d711479dfb60dd54b27b5920a1aeb7702027c44a215ffc596",
-    "Size": 12517,
     "Headers": {
+      "Content-Length": "12517",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2ae0bbbf4310dedfed62e8fd92279bf5bc60975d"
     }
   },
   "https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-bom/1.2.1/prometheus-metrics-bom-1.2.1.pom": {
     "Sha256": "8da77a7d98063f48152ebe8b5f5a7e0a7163e499fdd22048f1966756020e6a7b",
-    "Size": 6066,
     "Headers": {
+      "Content-Length": "6066",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a93d924d7cde568fbbe8546ac51accc756444d0f"
     }
   },
   "https://repo.maven.apache.org/maven2/io/prometheus/simpleclient_bom/0.16.0/simpleclient_bom-0.16.0.pom": {
     "Sha256": "af441d3295de11a70e35febeb3d919ba2ed17552753163325b954d53594d55c3",
-    "Size": 6014,
     "Headers": {
+      "Content-Length": "6014",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7a83764a96ed642f7236dac41b9d4b3483be3a10"
     }
   },
   "https://repo.maven.apache.org/maven2/io/rest-assured/rest-assured-bom/5.4.0/rest-assured-bom-5.4.0.pom": {
     "Sha256": "3f03da385d3fc79ccca5b32236e2bd20e45c8049501cd0317e7f8d966082d6ab",
-    "Size": 4489,
     "Headers": {
+      "Content-Length": "4489",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "949cdbbc97f2a16325a526dad8fdb145463081d1"
     }
   },
   "https://repo.maven.apache.org/maven2/io/rsocket/rsocket-bom/1.1.3/rsocket-bom-1.1.3.pom": {
     "Sha256": "e5ccd8fed3415bb4385e4d0787e3e33624cb2c7c002d2550c39788f2bb9b0fae",
-    "Size": 2635,
     "Headers": {
+      "Content-Length": "2635",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a14dbc5198c3219b6e764229029f466d1c66a426"
     }
   },
   "https://repo.maven.apache.org/maven2/io/zipkin/brave/brave-bom/6.0.3/brave-bom-6.0.3.pom": {
     "Sha256": "3d1a3ebff9597d16e8998a1053dfcc5b2e5f10773e5da66161c43d288ca614f1",
-    "Size": 10975,
     "Headers": {
+      "Content-Length": "10975",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f6db48171860326f9e609537d7991dd2317d9c67"
     }
   },
   "https://repo.maven.apache.org/maven2/io/zipkin/reporter2/zipkin-reporter-bom/3.4.0/zipkin-reporter-bom-3.4.0.pom": {
     "Sha256": "eb324ff64d4c8224506bdd95f10e315c9019f92145bbde6087e5ef70f7269cea",
-    "Size": 6403,
     "Headers": {
+      "Content-Length": "6403",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "905d334405463db491d66cc87af9859bc097aa69"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar": {
     "Sha256": "01b176d718a169263e78290691fc479977186bcc6b333487325084d6586f4627",
-    "Size": 66514,
     "Headers": {
+      "Content-Length": "66514",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "fa165bd70cda600368eee31555222776a46b881f"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.pom": {
     "Sha256": "b2549940c17b6865a34f6135b7722ed8cbfef6d0b6c0db372c30f0346bc8cd58",
-    "Size": 18513,
     "Headers": {
+      "Content-Length": "18513",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d50eecb3b12aa729c1bd58ca3a4a61b22d98563d"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar": {
     "Sha256": "5f65fdaf424eee2b55e1d882ba9bb376be93fb09b37b808be6e22e8851c909fe",
-    "Size": 26141,
     "Headers": {
+      "Content-Length": "26141",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "48b9bda22b091b1f48b13af03fe36db3be6e1ae3"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.pom": {
     "Sha256": "af650eca1de1b98741006acd82507e4408cffedd2fee33a0ea463d61508db7ec",
-    "Size": 15802,
     "Headers": {
+      "Content-Length": "15802",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1c89931b0b9bf7c03d18ae18a13473528617838e"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/platform/jakarta.jakartaee-bom/9.1.0/jakarta.jakartaee-bom-9.1.0.pom": {
     "Sha256": "df98e0266219fdbb82562826d79a3a20776a8ba02aa787f0f0765a538654c8a4",
-    "Size": 9553,
     "Headers": {
+      "Content-Length": "9553",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "39a915229cabfe6bba43e0566b1a74bf8fe3eefe"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/platform/jakartaee-api-parent/9.1.0/jakartaee-api-parent-9.1.0.pom": {
     "Sha256": "a7702c487026802784b5797b62330a8b8d6592bf0f4737b25c67a5eac82659c0",
-    "Size": 14842,
     "Headers": {
+      "Content-Length": "14842",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e5020a636b3c0cc4c5dd110e17213aaded1d6895"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api-parent/4.0.2/jakarta.xml.bind-api-parent-4.0.2.pom": {
     "Sha256": "482cdb46d4dd2f5af7dc884c8a6de73ddffe6daf549ef36a6c077fd6e41eed08",
-    "Size": 9148,
     "Headers": {
+      "Content-Length": "9148",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5d3186bca50baf84bb24db19bafcff2d131d02cb"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar": {
     "Sha256": "0d6bcfe47763e85047acf7c398336dc84ff85ebcad0a7cb6f3b9d3e981245406",
-    "Size": 131033,
     "Headers": {
+      "Content-Length": "131033",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "6cd5a999b834b63238005b7144136379dc36cad2"
     }
   },
   "https://repo.maven.apache.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.pom": {
     "Sha256": "ab7273e26a54824b3b7333d4956e6ecd26de13a5eb3d90ee63023193a92d72be",
-    "Size": 12720,
     "Headers": {
+      "Content-Length": "12720",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "da6b967605200a3f7ed3b5874159046cc9e8ecc5"
     }
   },
   "https://repo.maven.apache.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.pom": {
     "Sha256": "52d73f35f7e638ce3cb56546f879c20e7f7019f72aa20cde1fa80e97865dfd40",
-    "Size": 13432,
     "Headers": {
+      "Content-Length": "13432",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d90e6c7f83898fe30f83aeaf4d411285f970a433"
     }
   },
   "https://repo.maven.apache.org/maven2/javax/enterprise/cdi-api/1.2/cdi-api-1.2.pom": {
     "Sha256": "d7d713c993363764ba1667296b835ee914e19b2e70921eafe96b37f0d5b4088f",
-    "Size": 6276,
     "Headers": {
+      "Content-Length": "6276",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b0239d3cc2f5a47533bb0be184830a9f90db984a"
     }
   },
   "https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar": {
     "Sha256": "91c77044a50c481636c32d916fd89c9118a72195390452c81065080f957de7ff",
-    "Size": 2497,
     "Headers": {
+      "Content-Length": "2497",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "6975da39a7040257bd51d21a231b76c915872d38"
     }
   },
   "https://repo.maven.apache.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom": {
     "Sha256": "943e12b100627804638fa285805a0ab788a680266531e650921ebfe4621a8bfa",
-    "Size": 612,
     "Headers": {
+      "Content-Length": "612",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b8e00a8a0deb0ebef447570e37ff8146ccd92cbe"
     }
   },
   "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.16/byte-buddy-agent-1.14.16.jar": {
     "Sha256": "bfe45768a5b75c076e49f036c96c10c32cb4062313189476cc26ff5f4f5a1384",
-    "Size": 258045,
     "Headers": {
+      "Content-Length": "258045",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "4a451ee6484abac3a498df0f3b33ed00a6fced4d"
     }
   },
   "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.16/byte-buddy-agent-1.14.16.pom": {
     "Sha256": "0d11b217aa7af0951fe6055aa9835fd0c7251915c7db8959b25ee47b79b3b70a",
-    "Size": 10461,
     "Headers": {
+      "Content-Length": "10461",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0306f813210a90c6497d9ebac15c2e7dea800d8e"
     }
   },
   "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.16/byte-buddy-parent-1.14.16.pom": {
     "Sha256": "c1da5e400c7465c8823fbe6cc2dd4d518f51191c6630637e439f463ba699530c",
-    "Size": 62136,
     "Headers": {
+      "Content-Length": "62136",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "07dad5cddc06080d6432cfd2a465f7bdc9beb7c7"
     }
   },
   "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.16/byte-buddy-1.14.16.jar": {
     "Sha256": "5add6c7b294b2b2ac60c9a4b54f924cd65e4f10ccfed75d2a99d621d6c5f0a8d",
-    "Size": 4215024,
     "Headers": {
+      "Content-Length": "4215024",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "e1b9a06e131b7d5b183c8ccc7c29b9e5a8dba077"
     }
   },
   "https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.16/byte-buddy-1.14.16.pom": {
     "Sha256": "808749924730dd83438518fa240b046d71c938cd2a0acaa7affbbd94cdfa8361",
-    "Size": 15910,
     "Headers": {
+      "Content-Length": "15910",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d4ec4669702b5b2e322dea0bf03adbfb23b33aa5"
     }
   },
   "https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/5.13.0/jna-platform-5.13.0.jar": {
     "Sha256": "474d7b88f6e97009b6ec1d98c3024dd95c23187c65dabfbc35331bcac3d173dd",
-    "Size": 1363209,
     "Headers": {
+      "Content-Length": "1363209",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "88e9a306715e9379f3122415ef4ae759a352640d"
     }
   },
   "https://repo.maven.apache.org/maven2/net/java/dev/jna/jna-platform/5.13.0/jna-platform-5.13.0.pom": {
     "Sha256": "63b20c8af057c98196f8789e1a21a6dddf02aa8f385e6b04b4b4f9f0df257066",
-    "Size": 2251,
     "Headers": {
+      "Content-Length": "2251",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "355cadd84794c6eb9d805be777292608b6f188dd"
     }
   },
   "https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar": {
     "Sha256": "66d4f819a062a51a1d5627bffc23fac55d1677f0e0a1feba144aabdd670a64bb",
-    "Size": 1879325,
     "Headers": {
+      "Content-Length": "1879325",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1200e7ebeedbe0d10062093f32925a912020e747"
     }
   },
   "https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.13.0/jna-5.13.0.pom": {
     "Sha256": "f515c2578178f45247ecca7a9e1db109531b1c42f2424e253ceeb0f6b8d42374",
-    "Size": 2030,
     "Headers": {
+      "Content-Length": "2030",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b7cc05a5394544befc936c39080a93cc8c1e082e"
     }
   },
   "https://repo.maven.apache.org/maven2/net/java/jvnet-parent/3/jvnet-parent-3.pom": {
     "Sha256": "30f5789efa39ddbf96095aada3fc1260c4561faf2f714686717cb2dc5049475a",
-    "Size": 4789,
     "Headers": {
+      "Content-Length": "4789",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f8f3be3e980551a39b5679411e171aeb6931aaec"
     }
   },
   "https://repo.maven.apache.org/maven2/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar": {
     "Sha256": "2796ae857d0c7be4bc3580daa4d3828d555212355f4c83d38dd0af0742b3c812",
-    "Size": 30305,
     "Headers": {
+      "Content-Length": "30305",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "19b820261eb2e7de7d5bde11d1c06e4501dd7e5f"
     }
   },
   "https://repo.maven.apache.org/maven2/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.pom": {
     "Sha256": "487e77a8dbd9ac38441916c83050185c3a1e4869ce975377afea3932bf62adee",
-    "Size": 10892,
     "Headers": {
+      "Content-Length": "10892",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b0844383f60fb68dfaef5375f3f9a31fd0cc3e0a"
     }
   },
   "https://repo.maven.apache.org/maven2/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar": {
     "Sha256": "86c0c189581b79b57b0719f443a724e9f628ffbb9eef645cf79194f5973a1001",
-    "Size": 122291,
     "Headers": {
+      "Content-Length": "122291",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "4c11d2808d009132dfbbf947ebf37de6bf266c8e"
     }
   },
   "https://repo.maven.apache.org/maven2/net/minidev/json-smart/2.5.1/json-smart-2.5.1.pom": {
     "Sha256": "f467dd51f6869e6683d105a6728a7423da11793b0815ebd32b50c3abf4321f6d",
-    "Size": 9274,
     "Headers": {
+      "Content-Length": "9274",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d367a9c886ea665835020cee3839aa60219e419c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/antlr/antlr4-master/4.7.2/antlr4-master-4.7.2.pom": {
     "Sha256": "ba99cb25d2390f38680c7502842a0ee0959d1e6403e013ccff698fd5856eead1",
-    "Size": 4404,
     "Headers": {
+      "Content-Length": "4404",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "be60f81cb61996f57281497067d890caf8eeece8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar": {
     "Sha256": "4c518b87d4bdff8b44cd8cbc1af816e944b62a3fe5b80b781501cf1f4759bbc4",
-    "Size": 337904,
     "Headers": {
+      "Content-Length": "337904",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "e27d8ab4f984f9d186f54da984a6ab1cccac755e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.pom": {
     "Sha256": "dc09cba98c25d3c06e4aec516885d4c3af03062ba55f4fe6283fc9cf176a60fb",
-    "Size": 3617,
     "Headers": {
+      "Content-Length": "3617",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0ef31048e832523e34634045589c56c5e63d4866"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-bom/2.33.0/artemis-bom-2.33.0.pom": {
     "Sha256": "02c0fea0e8e6ab94663b42eff3b71613be2b941c54a0aad8f5d07c13720242f2",
-    "Size": 9637,
     "Headers": {
+      "Content-Length": "9637",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f036683e1ca2cf4dbd2f40e0901564e236a8d21c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/activemq/artemis-project/2.33.0/artemis-project-2.33.0.pom": {
     "Sha256": "a1eccd2890f61f074ba02850e5a7a53acf30fa290e582e1365c78bae3829d167",
-    "Size": 63711,
     "Headers": {
+      "Content-Length": "63711",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "06702f4882c445b7f5079edc77b06e1e6014c1af"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom": {
     "Sha256": "ff513db0361fd41237bef4784968bc15aae478d4ec0a9496f811072ccaf3841d",
-    "Size": 13974,
     "Headers": {
+      "Content-Length": "13974",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "15aff1faaec4963617f07dbe8e603f0adabc3a12"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/15/apache-15.pom": {
     "Sha256": "36c2f2f979ac67b450c0cb480e4e9baf6b40f3a681f22ba9692287d1139ad494",
-    "Size": 15236,
     "Headers": {
+      "Content-Length": "15236",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "95c70374817194cabfeec410fe70c3a6b832bafe"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/21/apache-21.pom": {
     "Sha256": "af10c108da014f17cafac7b52b2b4b5a3a1c18265fa2af97a325d9143537b380",
-    "Size": 17107,
     "Headers": {
+      "Content-Length": "17107",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "649b700a1b2b4a1d87e7ae8e3f47bfe101b2a4a5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/23/apache-23.pom": {
     "Sha256": "bc10624e0623f36577fac5639ca2936d3240ed152fb6d8d533ab4d270543491c",
-    "Size": 18422,
     "Headers": {
+      "Content-Length": "18422",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0404949e96725e63a10a6d8f9d9b521948d170d5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/26/apache-26.pom": {
     "Sha256": "765b9c71832d2faad9611869c1f07263e3dfd000ebefdcd434d1f14cb2be3ea1",
-    "Size": 20539,
     "Headers": {
+      "Content-Length": "20539",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d05aaef85ff7d6ddf4e5c8770046c006cb66795a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/27/apache-27.pom": {
     "Sha256": "b2b0fc69e22a650c3892f1c366d77076f29575c6738df4c7a70a44844484cdf9",
-    "Size": 20363,
     "Headers": {
+      "Content-Length": "20363",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ea179482b464bfc8cac939c6d6e632b6a8e3316b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/29/apache-29.pom": {
     "Sha256": "3e49037174820bbd0df63420a977255886398954c2a06291fa61f727ac35b377",
-    "Size": 20721,
     "Headers": {
+      "Content-Length": "20721",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "57991491045c9a37a3113f24bf29a41a4ceb1459"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/30/apache-30.pom": {
     "Sha256": "63dd4a393a9c0dfcb314efe83871a41d243bc8d200cbc7f2d197f30da78239d8",
-    "Size": 23241,
     "Headers": {
+      "Content-Length": "23241",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8ec9c23c01b89c7c704fea3fc4822c4de4c02430"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/31/apache-31.pom": {
     "Sha256": "555d0c9eaa69c042aff924927b9381e8f8174136d355eead445224452e6291cc",
-    "Size": 23531,
     "Headers": {
+      "Content-Length": "23531",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "9009cbdad2b69835f2df9265794c8ab50cf4dce1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/apache/32/apache-32.pom": {
     "Sha256": "cfd872c0ec27f53ae68f43dbc0fecded8add773079a53afbd390e407b42ce72f",
-    "Size": 24184,
     "Headers": {
+      "Content-Length": "24184",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2e08f841a6fbc946452701faaf5e39a17ac97ef3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/cassandra/java-driver-bom/4.18.1/java-driver-bom-4.18.1.pom": {
     "Sha256": "84c8643b0f01ae44762f22cb79820c4961ce58bdb51743329f6f2038713c9b65",
-    "Size": 5461,
     "Headers": {
+      "Content-Length": "5461",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "291a680f5004e49bc98ba3d5b185cfbe896cbd63"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar": {
     "Sha256": "1df8b9430b5c8ed143d7815e403e33ef5371b2400aadbe9bda0883762e0846d1",
-    "Size": 751914,
     "Headers": {
+      "Content-Length": "751914",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "62ebe7544cb7164d87e0637a2a6a2bdc981395e8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.pom": {
     "Sha256": "271bd673839af46e73aff957e2918d4bf96f5ac4f6c6cf4d5be93fd1f1271c4d",
-    "Size": 23784,
     "Headers": {
+      "Content-Length": "23784",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "05428d42492ca170947632194080eb9432fbdf6c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.25.0/commons-compress-1.25.0.jar": {
     "Sha256": "d0ec8014ebbb0749f471803122b21796afddf2e98e194e4374622e5fbaf69f49",
-    "Size": 1080823,
     "Headers": {
+      "Content-Length": "1080823",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "9d35aec423da6c8a7f93d7e9e1c6b1d9fe14bb5e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.25.0/commons-compress-1.25.0.pom": {
     "Sha256": "ba5cda496643a906fcb77b1f13c5c7de817133c977a417e8a835fe28a6518ece",
-    "Size": 21700,
     "Headers": {
+      "Content-Length": "21700",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "334a8fd9c3120b359be7d70490cd6500bd35f7f8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.26.1/commons-compress-1.26.1.jar": {
     "Sha256": "27bb5d40f37c3bb7205b4a0540247df057715e9f6cbbd97d626ab8b50318bb04",
-    "Size": 1079377,
     "Headers": {
+      "Content-Length": "1079377",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "44331c1130c370e726a2e1a3e6fba6d2558ef04a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.26.1/commons-compress-1.26.1.pom": {
     "Sha256": "5f448a021d88c96f3840dfe619128d62e5cfb62712cd6e66dca8a7704945b06e",
-    "Size": 22371,
     "Headers": {
+      "Content-Length": "22371",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1f7f7a9f3acd67344c3ae0e64d6fc66a61b9b1b4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar": {
     "Sha256": "d919d904486c037f8d193412da0c92e22a9fa24230b9d67a57855c5c31c7e94e",
-    "Size": 587402,
     "Headers": {
+      "Content-Length": "587402",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.pom": {
     "Sha256": "82d31f1dcc4583effd744e979165b16da64bf86bca623fc5d1b03ed94f45c85a",
-    "Size": 30660,
     "Headers": {
+      "Content-Length": "30660",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "302d01a9279f7a400b1e767be60f12c02a5cf513"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar": {
     "Sha256": "7b96bf3ee68949abb5bc465559ac270e0551596fa34523fddf890ec418dde13c",
-    "Size": 657952,
     "Headers": {
+      "Content-Length": "657952",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1ed471194b02f2c6cb734a0cd6f6f107c673afae"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.pom": {
     "Sha256": "110438863bad37c28f906bf87016e38c7a8c758ba321e09d11dc5a2363a8e79e",
-    "Size": 30894,
     "Headers": {
+      "Content-Length": "30894",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "063304d0daef2181ff359107bc29fb865a04d3cf"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/48/commons-parent-48.pom": {
     "Sha256": "1e1f7de9370a7b7901f128f1dacd1422be74e3f47f9558b0f79e04c0637ca0b4",
-    "Size": 72034,
     "Headers": {
+      "Content-Length": "72034",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1cdeb626cf4f0cec0f171ec838a69922efc6ef95"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/52/commons-parent-52.pom": {
     "Sha256": "75dbe8f34e98e4c3ff42daae4a2f9eb4cbcd3b5f1047d54460ace906dbb4502e",
-    "Size": 79273,
     "Headers": {
+      "Content-Length": "79273",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "004ee86dedc66d0010ccdc29e5a4ce014c057854"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/58/commons-parent-58.pom": {
     "Sha256": "2d4b12e18899063abd7c75278b5fa97a3729d80878ceecb6a40d946e9c0d5590",
-    "Size": 82646,
     "Headers": {
+      "Content-Length": "82646",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "26758faad5d4d692a3cee724c42605d2ee9d5284"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/64/commons-parent-64.pom": {
     "Sha256": "6f19638994e8357b4ed734696f992057efaafa1235673998133299798e2ccddb",
-    "Size": 77957,
     "Headers": {
+      "Content-Length": "77957",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "aec2c7e06fc7ab9271cd4d076e8251df6a0d55da"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/65/commons-parent-65.pom": {
     "Sha256": "6cf3495fc2e6ac913a2b7f2e03fb5908fb3f229fb06d3358dc45678d5af3e36e",
-    "Size": 77926,
     "Headers": {
+      "Content-Length": "77926",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a5e6a3fd684242815f2ffd77ed8b316d549ed01b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/66/commons-parent-66.pom": {
     "Sha256": "48fd6dc846e56b1f408660d163e75300f9e384bb63be482a8082a21d72a8db9c",
-    "Size": 77001,
     "Headers": {
+      "Content-Length": "77001",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "24cf85c9d30c5ca5a2f48d806e93d8328b622a8c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/69/commons-parent-69.pom": {
     "Sha256": "d50da9c39bdca823d618d1b4a03b73f196497fcb8616fd0da727c8623592a9bb",
-    "Size": 77006,
     "Headers": {
+      "Content-Length": "77006",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "6ebeacd37818d945d96c06b44af10e050d2ef7c4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/groovy/groovy-bom/4.0.21/groovy-bom-4.0.21.pom": {
     "Sha256": "d595c287bb0cf1480fd851792809d408b56a77c622611b59250113cc530c16c5",
-    "Size": 27277,
     "Headers": {
+      "Content-Length": "27277",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "cb48cf8a18df884da05138c687dbd86e6696b4e4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5-parent/5.3.1/httpclient5-parent-5.3.1.pom": {
     "Sha256": "36889434eaacdca47017406b7941203b37bcf7962478def8f9489294242deee4",
-    "Size": 16680,
     "Headers": {
+      "Content-Length": "16680",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "02c6ba9fe8736784d26a50037acc0327c26d0f50"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.jar": {
     "Sha256": "08346a757c617f6ecc66af9f099260adde1f3a1351fa81cb22fc17482b31f823",
-    "Size": 861741,
     "Headers": {
+      "Content-Length": "861741",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "56b53c8f4bcdaada801d311cf2ff8a24d6d96883"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.pom": {
     "Sha256": "7ee19df1e2b6769c40cd79302c84916095e1cfaec4a310c06d58e4150b881f20",
-    "Size": 5962,
     "Headers": {
+      "Content-Length": "5962",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "15dbafd7364d1d40c3ae3e7be541a1763b124e05"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.jar": {
     "Sha256": "dc1a95e73eb04db93451533d390ce02c53b301a10dc343d08c862f2934b3d30e",
-    "Size": 237145,
     "Headers": {
+      "Content-Length": "237145",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "2872764df7b4857549e2880dd32a6f9009166289"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.pom": {
     "Sha256": "4d167685c0a9a398cc244a73a9086e2acf635160801a0a4eb8cfd3e3271cf9d3",
-    "Size": 3616,
     "Headers": {
+      "Content-Length": "3616",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "61f988b1d97de455635f8075fa026f927133730d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.4/httpcore5-parent-5.2.4.pom": {
     "Sha256": "83fdeedb1a25049b5fe7e00afcd35743f7a89f99040fb9a3a5135fb9269a5a4a",
-    "Size": 13722,
     "Headers": {
+      "Content-Length": "13722",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2f8026ed7977c055d789acb6c7c402f533597d85"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.jar": {
     "Sha256": "a7f62496113f66f9e27c26b84c44f5ce4555c6270083cdf2d45f255336cd52af",
-    "Size": 855013,
     "Headers": {
+      "Content-Length": "855013",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "34d8332b975f9e9a8298efe4c883ec43d45b7059"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.pom": {
     "Sha256": "01bab6a76efbd4d26849fd450eaae87caef9a1c1c0cc5f60fe4f3b918f077164",
-    "Size": 3946,
     "Headers": {
+      "Content-Length": "3946",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "dea1344613c8df982593ebed215591037631ca96"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcomponents-parent/13/httpcomponents-parent-13.pom": {
     "Sha256": "e4287867035856c737420368dd586e5e57e702098135840cf3d73e9c8363d7b3",
-    "Size": 30210,
     "Headers": {
+      "Content-Length": "30210",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "283fba4052e1a2b4162c0cce3a76473c89a50ab8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar": {
     "Sha256": "92ec1fd36ab3bc09de6198d2d7c0914685c0f7127ea931acc32fd2ecdd82ea89",
-    "Size": 342535,
     "Headers": {
+      "Content-Length": "342535",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "9c15c29c526d9c6783049c0a77722693c66706e1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.pom": {
     "Sha256": "b67cc3d0980927049a3beb00d506ece288746732b0dec812245c59f453fb1ca1",
-    "Size": 3834,
     "Headers": {
+      "Content-Length": "3834",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e7956cd0359e2781cd9d197a8d46fb654d00f8bc"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.23.1/log4j-bom-2.23.1.pom": {
     "Sha256": "372396e0458d4cd32c096cadabe0cc9330ec10f4f57fa3be2e74f79b5e178a35",
-    "Size": 12429,
     "Headers": {
+      "Content-Length": "12429",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "880a6912627a714370b8b19367bb98c73f9a763d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar": {
     "Sha256": "7937a84055156910234e3b42868f55e68ff4b7becbb6ffd10146f72f5bf54dd5",
-    "Size": 23081,
     "Headers": {
+      "Content-Length": "23081",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "425ad1eb8a39904d2830e907a324e956fb456520"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.pom": {
     "Sha256": "055649b97d273fc6ac3a3c7ad5afd8ded3c0fce0047b2babed1299dc1a739382",
-    "Size": 4431,
     "Headers": {
+      "Content-Length": "4431",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ca8ea37898a4d0ea2933319df5979a8d7b2db799"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j/2.23.1/log4j-2.23.1.pom": {
     "Sha256": "6ce1540455364b53ea22a18342cb126a6381633f653f095467f2aa198511a6ce",
-    "Size": 36796,
     "Headers": {
+      "Content-Length": "36796",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a77a3c04274a5d812b964c5a020deb5a44f7f444"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/10.6.0/logging-parent-10.6.0.pom": {
     "Sha256": "f827475840a64083b585ec8dbbf7093b6fd02624293cec37d56edf9fc354109e",
-    "Size": 54145,
     "Headers": {
+      "Content-Length": "54145",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "95a0a7ac9287a65d508ab8cc880cd90f9ef93047"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-aether-provider/3.2.5/maven-aether-provider-3.2.5.pom": {
     "Sha256": "317d515c5c69278a980c6219901d327efb4210ca44ae1f07c2a304d487ec7cae",
-    "Size": 4250,
     "Headers": {
+      "Content-Length": "4250",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "4a2af3bb7a69d5e63063bab0334d3414c672bd60"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.jar": {
     "Sha256": "1f895a587df4844d9b7565e8e9a6352afe1d55532458a0dbeb746bc1d02e9216",
-    "Size": 26804,
     "Headers": {
+      "Content-Length": "26804",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "a2d949d87fed6db197cc3cceec93012dd2317ca0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/3.6.2/maven-archiver-3.6.2.pom": {
     "Sha256": "8b117b0dc205a71abda33463f8c7ff891513cfb92241d8a011f9e8ac5ea21e77",
-    "Size": 4386,
     "Headers": {
+      "Content-Length": "4386",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1eaa320b6d9c675e83099baf7a0ecf5ca232f9ba"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/3.2.5/maven-artifact-3.2.5.pom": {
     "Sha256": "4e7f1161d5e955492198699b47a413ae1059e9ba187de2970a75aa655a8cfd21",
-    "Size": 2348,
     "Headers": {
+      "Content-Length": "2348",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "30cf406f5725ab51a21d79b4a9e25cf5d00c3316"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/3.2.5/maven-core-3.2.5.pom": {
     "Sha256": "88ffe6ab7548bda1a711d434a67cfb1599bfb38497f65b36d106a6e98f6eb955",
-    "Size": 8063,
     "Headers": {
+      "Content-Length": "8063",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "4db404fc630cd267a04d7a185ec67ca9aed97b8f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-model-builder/3.2.5/maven-model-builder-3.2.5.pom": {
     "Sha256": "ebf1341d424e9faa3e8d02c5e91a30868be6583ecb753c72208634f5c05f0738",
-    "Size": 2993,
     "Headers": {
+      "Content-Length": "2993",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "904f459ee4607652e021ef1a129ffdb2b477332b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom": {
     "Sha256": "5425501edd9e0bd7b01eca53cc92e06836d24851151304f9c6759e1713541685",
-    "Size": 32586,
     "Headers": {
+      "Content-Length": "32586",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f92ae4baba6616609a29f6287626ee3f50ed7d6e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/25/maven-parent-25.pom": {
     "Sha256": "3e66146707bc76e9d5b6cd8c98cf77d931c0894e7955a8e7f104f6790769abf1",
-    "Size": 37440,
     "Headers": {
+      "Content-Length": "37440",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2e3d7a4d43a1103612cca66127ce6381e8ef85c9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/34/maven-parent-34.pom": {
     "Sha256": "1a8faf7a6a2b848acb26a959954ee115c0d79dbe75a6206fb3b8c7c2f45a237f",
-    "Size": 42838,
     "Headers": {
+      "Content-Length": "42838",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d03d96b2f4ee06300faa9731b0fa71feeec5a8ef"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/36/maven-parent-36.pom": {
     "Sha256": "fcc3ab64c3cc80966d562a9aa604d8c280b3b7092441dd09e5290b081dfbedb5",
-    "Size": 45474,
     "Headers": {
+      "Content-Length": "45474",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "af78602525e1c7ac4575ef2e3059b7910bb79f3a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/37/maven-parent-37.pom": {
     "Sha256": "bcf3700301e8221ef14da27a2f0cff71fcd03fc45276bfd84adace401e88bebc",
-    "Size": 45626,
     "Headers": {
+      "Content-Length": "45626",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "4dea31650e71386d7c41da8806ef4c87ef8de0b1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/39/maven-parent-39.pom": {
     "Sha256": "cfe4820aa1d96ae51d1dc5b0e2a9dc582c42478c24c95ca8238f547e60bef721",
-    "Size": 47971,
     "Headers": {
+      "Content-Length": "47971",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "9b763d93ee3622181d8d39f62e8e995266c12362"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/41/maven-parent-41.pom": {
     "Sha256": "762fcdd4ce8621c5fa0a2cf6495ad26972a8093eb432aa3e402bc2d4e2500c53",
-    "Size": 49873,
     "Headers": {
+      "Content-Length": "49873",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c60098252d5841553d75a7d7382db46e6859d84d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/42/maven-parent-42.pom": {
     "Sha256": "04534dea350a2187970a5b74444338bcf78ba8e537d44f262acfba16ebb33056",
-    "Size": 50444,
     "Headers": {
+      "Content-Length": "50444",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c47c2942c1347b1f221c113c96056a8ba44a2f49"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/3.2.5/maven-plugin-api-3.2.5.pom": {
     "Sha256": "2c3ba62ee26ffc694cfb2fc6132e4ccd7b4acf553aa86d9143dc0f77822f68ec",
-    "Size": 3027,
     "Headers": {
+      "Content-Length": "3027",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "44e0a65475f47fc65f28a5790d046c3a63c46708"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/3.2.5/maven-repository-metadata-3.2.5.pom": {
     "Sha256": "171c98a1e2a5a2445b0ddd83ee15cb53122b82c44bec045fd00d817c72948b1e",
-    "Size": 2229,
     "Headers": {
+      "Content-Length": "2229",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ccad93c103cf0961469bf8afd13fda2d9dee65cf"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings-builder/3.2.5/maven-settings-builder-3.2.5.pom": {
     "Sha256": "c1837d6691e39a614c9179bbafaa2c4327457763cf71ffd8f67b7f81ce3084eb",
-    "Size": 2596,
     "Headers": {
+      "Content-Length": "2596",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d8568e9f65a25d19ed12046ed51207d8b2777767"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/3.2.5/maven-settings-3.2.5.pom": {
     "Sha256": "244564951300444c0c4c4a1a3f870756a110cb9a40405aed4ceccc3e33f5182f",
-    "Size": 2171,
     "Headers": {
+      "Content-Length": "2171",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "fe0ca1c63e27441f2c8121536a9f251c42912358"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/maven/3.2.5/maven-3.2.5.pom": {
     "Sha256": "75f8135d0a9ae8d63c3553f2eaefe25f1b0a01d7676e07f561835b95a88aedf5",
-    "Size": 22371,
     "Headers": {
+      "Content-Length": "22371",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e3af023ee33c8e6599bc48253d1294e128700309"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.13.0/maven-compiler-plugin-3.13.0.jar": {
     "Sha256": "6f819947a2a773792dc91d17f906e22113bfb2fefb6b64dec836175715d7402a",
-    "Size": 82525,
     "Headers": {
+      "Content-Length": "82525",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "f9e53f33e2d4d79936154bc33cf59b8913c3f21a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.13.0/maven-compiler-plugin-3.13.0.pom": {
     "Sha256": "0d00b84f26ff5f3e845bf349302345633ca65f8d8e9101b31082082415912c1e",
-    "Size": 10444,
     "Headers": {
+      "Content-Length": "10444",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e4881f5e9859c3f8ba1ba094cf21bd911e7c5d73"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.4.1/maven-jar-plugin-3.4.1.jar": {
     "Sha256": "25e0a5b55b872d95e3a09a5d825bc1061f5ce25ee81f147e623405d8ebedfa5f",
-    "Size": 33771,
     "Headers": {
+      "Content-Length": "33771",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "44be5e76ba16ce060eac02396299bc5dfe81d0eb"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/3.4.1/maven-jar-plugin-3.4.1.pom": {
     "Sha256": "be9318cc19895ffd5532df090df37adb5b97396d9a827f961fde65753b5a922f",
-    "Size": 7807,
     "Headers": {
+      "Content-Length": "7807",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f4be98b08ba44b43eb7b13dbddee45d0032b1665"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/39/maven-plugins-39.pom": {
     "Sha256": "18085afbef3a17942b442135a3f0e77018cda66edd33c6b18fd18440661bc29e",
-    "Size": 8092,
     "Headers": {
+      "Content-Length": "8092",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0cc43509e437079ac1255236ccdcbef302daa93d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/41/maven-plugins-41.pom": {
     "Sha256": "9e64593239bb69d80b2db9e595d8c0fc3cb44cf2aa5c1ed547718b4cfd732efe",
-    "Size": 7353,
     "Headers": {
+      "Content-Length": "7353",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "642f5ab11b18715bd24893805ad5a50a10be4d97"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/42/maven-plugins-42.pom": {
     "Sha256": "5b31681ea67e838a8ed1f08af891d1ae50f16dfadd3fc2b787900ed69d5f2503",
-    "Size": 7690,
     "Headers": {
+      "Content-Length": "7690",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "29c252d69753502d9e9435d05c1814c79e88f16e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/3.3.1/maven-resources-plugin-3.3.1.jar": {
     "Sha256": "eb4069c7fe50a313b3f5295ccd214f30402f63971c26f443f7f3e798be8cc2a7",
-    "Size": 30951,
     "Headers": {
+      "Content-Length": "30951",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "5a0e59faaaec9485868660696dd0808f483917d0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/3.3.1/maven-resources-plugin-3.3.1.pom": {
     "Sha256": "3269d0a6e3cd614a29486f57fc86488b0f1e458a11bebc61f9408fd6c7cf85ae",
-    "Size": 8158,
     "Headers": {
+      "Content-Length": "8158",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "9966f75b0f17184e0a3b7716adcb2f6b753e3088"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.5.0/maven-shade-plugin-3.5.0.jar": {
     "Sha256": "a065b3bb59a60b7bcedb80f850036a14f7fb04060069d5f53f0471cc0c24a2e6",
-    "Size": 146605,
     "Headers": {
+      "Content-Length": "146605",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "9f03141a15f914d74d2fe037bd3f14bce9127174"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/3.5.0/maven-shade-plugin-3.5.0.pom": {
     "Sha256": "0b42bb1c39160c88c0f59509a7239aa493b3cfacc4f6d10331621151431809a5",
-    "Size": 12428,
     "Headers": {
+      "Content-Length": "12428",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "75ee1dc581b4469916ea88ee3e5cc306ff0a7056"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.2.5/maven-surefire-plugin-3.2.5.jar": {
     "Sha256": "e35a8d2114b4c0166c3bf8e40ac63dd4608734347d7294555b6160a661294a92",
-    "Size": 44571,
     "Headers": {
+      "Content-Length": "44571",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "8a34b9424cd6b6b349b306369228e571f32f9e28"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/3.2.5/maven-surefire-plugin-3.2.5.pom": {
     "Sha256": "284c61ddc929bbc9eeba3c8c11213f1f0f7bf0f8aa558067e0f9be3b90c8ddc0",
-    "Size": 5319,
     "Headers": {
+      "Content-Length": "5319",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f0229627457562c8224539767f7873c940dd9fac"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.jar": {
     "Sha256": "2e8cb2d546a01c2259cb17f1e06732db3d14b079d19622bf8400c82cb1ee6b96",
-    "Size": 36328,
     "Headers": {
+      "Content-Length": "36328",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "f87a3a54c856714e4157b9ce7a5ff6ffc310d447"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/3.1.0/file-management-3.1.0.pom": {
     "Sha256": "5e93a63b3042023e558dcbeb19914ce82e6a6fbccdbd68797f80b135121a8bde",
-    "Size": 4487,
     "Headers": {
+      "Content-Length": "4487",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8c2dcedec327bbb9daf24ced48fc59ce228a6b1f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.1.1/maven-common-artifact-filters-3.1.1.jar": {
     "Sha256": "4a8eea7663992e49206d9f928138f334a835ad3fbbc40929342ef007ccf5471b",
-    "Size": 60844,
     "Headers": {
+      "Content-Length": "60844",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "044f7d167891f281160764ef1a687dcf487d3a2c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.1.1/maven-common-artifact-filters-3.1.1.pom": {
     "Sha256": "5498d020941318c23a707b11b73032632da91672e36cc4a7e2fc4e19726c1306",
-    "Size": 5799,
     "Headers": {
+      "Content-Length": "5799",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8018cd9ce907b9094def17d38824932c52120ebf"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.3.2/maven-common-artifact-filters-3.3.2.jar": {
     "Sha256": "2be8b810cf0937ff4bb7bef8ce78a8faad17ca2182751055ac7df54d5510b908",
-    "Size": 58339,
     "Headers": {
+      "Content-Length": "58339",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "c1cb1bc78ae8c6a6e64da833d4a9afbda5e0834a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-common-artifact-filters/3.3.2/maven-common-artifact-filters-3.3.2.pom": {
     "Sha256": "214677844a23cf33f09f58ecd29dec08dd005ffa4e20381b4b5c56059236a237",
-    "Size": 5268,
     "Headers": {
+      "Content-Length": "5268",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "52270cc2218ca35cba2b0828ec272f1d8506d408"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/3.2.1/maven-dependency-tree-3.2.1.jar": {
     "Sha256": "482811ea38f339d2b0867a7852a195b56e329fdb37066b2f3035a209c111a2bc",
-    "Size": 42608,
     "Headers": {
+      "Content-Length": "42608",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "864b4c49c862b95946fafe9338bbbbcde6e4b692"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/3.2.1/maven-dependency-tree-3.2.1.pom": {
     "Sha256": "8e15debdc0761dc91e0314147002052b81d3a326295296641ae81b16603ae44a",
-    "Size": 6236,
     "Headers": {
+      "Content-Length": "6236",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a3c077ba82316da614efefa2bfdf45a17e56b1f4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/3.3.1/maven-filtering-3.3.1.jar": {
     "Sha256": "b12663187d9ffc6a1ee76139c0ef497fe9400efbe2ebe01616fe2703656fb4f0",
-    "Size": 54990,
     "Headers": {
+      "Content-Length": "54990",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "7b613072bcce1d949b6d82f714af08b4535aae2b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/3.3.1/maven-filtering-3.3.1.pom": {
     "Sha256": "a1d90278a9c3effef6c45db86c660749d2910d8d7361ed81983565950f667e85",
-    "Size": 6036,
     "Headers": {
+      "Content-Length": "6036",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "892af5bd3778032e12cb527cab28ee8651fbee4f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom": {
     "Sha256": "d82408269aada2eb1521ee8ff17f7c67333684f8ed2a09a9e35badd2e7575957",
-    "Size": 6359,
     "Headers": {
+      "Content-Length": "6359",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "650a49682d4c82f060c7cc8005f8734a5fd86af9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/34/maven-shared-components-34.pom": {
     "Sha256": "64d0edb5f21cfff600b1c3ab7d45f9754cd18ba5fbf83b3d1bb7c4849437d8e3",
-    "Size": 5096,
     "Headers": {
+      "Content-Length": "5096",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "633600d0ac8d18b70b559a90fa62ad4e90e8dc15"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/36/maven-shared-components-36.pom": {
     "Sha256": "ec8e973e7964aaf490dbddd39f312340e00d113b8470f135a13e35e45f4baf9f",
-    "Size": 4894,
     "Headers": {
+      "Content-Length": "4894",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0376c5365dff8496ca0185247296d760ee80dfec"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/37/maven-shared-components-37.pom": {
     "Sha256": "72ab6f7efae60892e6457871a951326a9ad7f92932d34a97715d0908b87874d3",
-    "Size": 4894,
     "Headers": {
+      "Content-Length": "4894",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c38a33f4773da60ee98a770e2c980586d62df432"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/39/maven-shared-components-39.pom": {
     "Sha256": "17e81388d88ba61c4055450ec90a32ee30acd07f46dc6e31e096b8e53735f4b2",
-    "Size": 3220,
     "Headers": {
+      "Content-Length": "3220",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c6707d46530a62cdc0e6d9cf70061f80d002f862"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/41/maven-shared-components-41.pom": {
     "Sha256": "c6bd81e2588e0f0f87392d4db590e1d81c126a25ee9253252ef89c506cde1e34",
-    "Size": 3176,
     "Headers": {
+      "Content-Length": "3176",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f065cc41ea386a672156b8df42c4409ef1a972b2"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar": {
     "Sha256": "61988e54486a5dc38f06c70fdae5b108556c63bd433697b9f4305fcdb30fa40e",
-    "Size": 13538,
     "Headers": {
+      "Content-Length": "13538",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "9d017a7584086755445c0a260dd9a1e9eae161a5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom": {
     "Sha256": "f21d19eb49b4a66cd85354a9ee7335439ea92a368173760a202766008cc19924",
-    "Size": 4742,
     "Headers": {
+      "Content-Length": "4742",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c607b2c64c027151c440f27b5ec86e062b9e9953"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.jar": {
     "Sha256": "b613357e1bad4dfc1dead801691c9460f9585fe7c6b466bc25186212d7d18487",
-    "Size": 151103,
     "Headers": {
+      "Content-Length": "151103",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "bfa28296272a5915b08de9f11f34a94b0a818fd0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.pom": {
     "Sha256": "a941745d7faeb8dc9a75edc2c330c994b7440b9a44d21142716b6053967a41c1",
-    "Size": 5899,
     "Headers": {
+      "Content-Length": "5899",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "78e0d256abbc6df63b2bb96493dd99daa29be63f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar": {
     "Sha256": "feadf94df4eae79457b3612f21d96fc2a1b37072d352bc6e994352b8fe571f58",
-    "Size": 17555,
     "Headers": {
+      "Content-Length": "17555",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "66a36806201e1c21468acf81d52afa564b39a515"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom": {
     "Sha256": "afe641001c11f1b194d72ea7e8f68322cba87601805e75524d3a3b6c910962fc",
-    "Size": 2814,
     "Headers": {
+      "Content-Length": "2814",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "307803d416d04ae693c1aa1d68d9ca15afd07bb6"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.2.5/maven-surefire-common-3.2.5.jar": {
     "Sha256": "00c66c89a5a303c665db30da3d95edfa993660c85a778f27af73af63e6972685",
-    "Size": 307901,
     "Headers": {
+      "Content-Length": "307901",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "f571ddce1d2c4ae2d8f26081d6e95fa131dfde22"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/maven-surefire-common/3.2.5/maven-surefire-common-3.2.5.pom": {
     "Sha256": "f10334bd0e4023f689fdb6b8434be7612d9ccbe881140d79ebb10701220dfbeb",
-    "Size": 6242,
     "Headers": {
+      "Content-Length": "6242",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e25b277960e8629e55497150fe388c097ad280a8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.jar": {
     "Sha256": "20a4b458d9f6d93223d6bb906c61032fa66925f9e867a0d6762d35bc0b528bb9",
-    "Size": 170506,
     "Headers": {
+      "Content-Length": "170506",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "e3dce08c9fdd7536e9df5b81bd2c990a3758930e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.pom": {
     "Sha256": "d0625e4a3f88a2fa680f278845f2ab08c9fbd3c2261e6b26e8b6b8a0dfda16f6",
-    "Size": 3530,
     "Headers": {
+      "Content-Length": "3530",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8fe8b5edf27c970e178439819dc60b6e05d136c0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.2.5/surefire-booter-3.2.5.jar": {
     "Sha256": "830ff373fad31d246ef5162333f3153d28c744fd95b05a572eb3be4cfb463e96",
-    "Size": 117600,
     "Headers": {
+      "Content-Length": "117600",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "df5e66299137015f9de7acb979bd5597b6d9d708"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-booter/3.2.5/surefire-booter-3.2.5.pom": {
     "Sha256": "77e3f7579baab18a1b1fcbdce309ae0392a63462d93b719198e066f316b2e2e6",
-    "Size": 4455,
     "Headers": {
+      "Content-Length": "4455",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "85af881d26bf7d9f5c2ae72b54b7cb3e548babed"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.2.5/surefire-extensions-api-3.2.5.jar": {
     "Sha256": "549cfb25613c0756d23ab15227f30f0f290af359fc2d21b4123f40c440b34209",
-    "Size": 25852,
     "Headers": {
+      "Content-Length": "25852",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1e10093f2384fe0ef43476655cd587800159540f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-api/3.2.5/surefire-extensions-api-3.2.5.pom": {
     "Sha256": "3f7489bfbb172d545e8b4d3d49e03258c635721ba636479a2c8e4a61d2f3fdf7",
-    "Size": 3305,
     "Headers": {
+      "Content-Length": "3305",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b8d41fc3d8e2bb432ed40bec3b33b8dce445c390"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.2.5/surefire-extensions-spi-3.2.5.jar": {
     "Sha256": "af522c12a77f967e83cf243f9cfbb86217f01df66ebaa4690ad3cec1036d4c18",
-    "Size": 8177,
     "Headers": {
+      "Content-Length": "8177",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "04a5df0a33b2c9087c869f27e6a92d5b0a7c0b4d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-extensions-spi/3.2.5/surefire-extensions-spi-3.2.5.pom": {
     "Sha256": "3d315c7c99f3a64022802ef5c93ded4f6ecce112e6c7ff919d9491714c726c1a",
-    "Size": 1762,
     "Headers": {
+      "Content-Length": "1762",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "9fc181ce794a98d18a8a45f466937c15cc2cabd8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar": {
     "Sha256": "a426d731705a4804f33b5f51ff9dd6c13eaba15bac41e2a01595ccd137548ef3",
-    "Size": 27152,
     "Headers": {
+      "Content-Length": "27152",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "359ef45ecdbc6ee4eabdd017fc01fba00668acd6"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom": {
     "Sha256": "3574aa03854596289fa4cffe4a03fb4fe9e1406aa292945d58663d32c28dc668",
-    "Size": 4665,
     "Headers": {
+      "Content-Length": "4665",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f2523e43eca3f29b73c3637bb50168bb24dd1f02"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.jar": {
     "Sha256": "da275c04bd08355403f987d83f6ecef1afa54e92864cb73ca6ec89cc062ed50d",
-    "Size": 13588,
     "Headers": {
+      "Content-Length": "13588",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "ec8e7d8c08cf98d128c5c2835f4c7ea46c212c22"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.pom": {
     "Sha256": "d14b0f073e7d5d7b051f4bea853b9c921cd6f4301e2b148f66a7108210504dc8",
-    "Size": 3259,
     "Headers": {
+      "Content-Length": "3259",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b1a29e80cd7e96af4473942492dba5c7e2765f16"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom": {
     "Sha256": "6848e38924e3635a31b066a3eda4481ca2790d1d1b5242381df277bcfaf2256e",
-    "Size": 2611,
     "Headers": {
+      "Content-Length": "2611",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2478c3d78326a46270e34a568606a277e3f335ce"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.jar": {
     "Sha256": "edbbbe4e9feee89b864e02cfc377963af6a3d6c3f0b7d860ebf99778d6886579",
-    "Size": 2438463,
     "Headers": {
+      "Content-Length": "2438463",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "9cbdd9ffbbbd7440bf5908b56b943766dbc10047"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.pom": {
     "Sha256": "50c9a8000949fe14e72ed484847a6ec57174e6639b909244070f0ca24c6c6a32",
-    "Size": 4059,
     "Headers": {
+      "Content-Length": "4059",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f1e21c811cf91b5afeede3223fc5f506a94884c4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/3.2.5/surefire-3.2.5.pom": {
     "Sha256": "c70e0ba22e3ea026bc46a47028a07375cb9124d1748d84af9d4fa33d85820379",
-    "Size": 21967,
     "Headers": {
+      "Content-Length": "21967",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c15e392b53dcab4ad504c234d3b07c3c6ec5862a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/pulsar/pulsar-bom/3.2.3/pulsar-bom-3.2.3.pom": {
     "Sha256": "825211b13099c4ab63c56d51ca34b1930b0ae70493ae233ae4d9600c2c727222",
-    "Size": 25940,
     "Headers": {
+      "Content-Length": "25940",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8a00e3b70723e9c3a893b4547790df69a441526a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.24/tomcat-embed-core-10.1.24.jar": {
     "Sha256": "8bced76143c505907256d10c5d13b510f941a381f2ec1dce11ab99c37b277901",
-    "Size": 3831413,
     "Headers": {
+      "Content-Length": "3831413",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "cd9358f0a26d26e1a2c7200f69cb9a302c20ceb4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.24/tomcat-embed-core-10.1.24.pom": {
     "Sha256": "58dbf41f8e6ba92d5f63dca20a6a5bf1e7ee56fb5f107128b214468ae02dfc9c",
-    "Size": 1737,
     "Headers": {
+      "Content-Length": "1737",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b59df05fbda5e8b69c9173a26f4c5fd0253fe373"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.24/tomcat-embed-el-10.1.24.jar": {
     "Sha256": "7d869fdc8b5c4621ca37962849fc2f78e3f440beacafae12a7b59e451dacb78b",
-    "Size": 261320,
     "Headers": {
+      "Content-Length": "261320",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "6e9c9dce63c10f903cb0aaaeff45f5f7092f5527"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.24/tomcat-embed-el-10.1.24.pom": {
     "Sha256": "cd615ca46c1dd339c6b177f71ad1374664d212160d511ed040473fc7365306e6",
-    "Size": 1506,
     "Headers": {
+      "Content-Length": "1506",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b3b371e19cba4d57bf71ce31f3c94fcc8dcc73e2"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.24/tomcat-embed-websocket-10.1.24.jar": {
     "Sha256": "3badb58e1937273455453f0fa64c0d5b8df3c6767373b269431a04dea5bf4018",
-    "Size": 281744,
     "Headers": {
+      "Content-Length": "281744",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "938419aba5a4f4645b9cd23a9e1d5453e85d09b9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.24/tomcat-embed-websocket-10.1.24.pom": {
     "Sha256": "27b23bf8ea47e88ec72095237c446f4548feef95fc851ec0f642b3e75025c524",
-    "Size": 1743,
     "Headers": {
+      "Content-Length": "1743",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "47c227f1a17afbf9f574c457e75f02342e5bcfec"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar": {
     "Sha256": "b509448ac506d607319f182537f0b35d71007582ec741832a1f111e5b5b70b38",
-    "Size": 6806,
     "Headers": {
+      "Content-Length": "6806",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "a231e0d844d2721b0fa1b238006d15c6ded6842a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.pom": {
     "Sha256": "32355081d109095c3d5d374d5a43b4f4c1b75d549e983ef50723e2772e5302a0",
-    "Size": 1526,
     "Headers": {
+      "Content-Length": "1526",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ce9568cec632f7c99fb26d13c4d5c89517349f6b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/assertj/assertj-bom/3.25.3/assertj-bom-3.25.3.pom": {
     "Sha256": "91b7a19b77af5462c7290b91ac7c72c44d6483afea0b62536816e98f8d53f257",
-    "Size": 3689,
     "Headers": {
+      "Content-Length": "3689",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a2827abcb7085a2469efb1d4f1d9b6fcb76bb345"
     }
   },
   "https://repo.maven.apache.org/maven2/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar": {
     "Sha256": "7fbdffa1996d43cc08e2576e01008b07e57bbad2b4741aa6c3ab73ce8511130e",
-    "Size": 1372028,
     "Headers": {
+      "Content-Length": "1372028",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "792b270e73aa1cfc28fa135be0b95e69ea451432"
     }
   },
   "https://repo.maven.apache.org/maven2/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.pom": {
     "Sha256": "3917230eaa33bcf13ea33dd337acafa9d326c739660bf4b6fc56c88d78feb9f2",
-    "Size": 3822,
     "Headers": {
+      "Content-Length": "3822",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1a5823d590833fdc8812cc8b69e7355c85b3ebb2"
     }
   },
   "https://repo.maven.apache.org/maven2/org/awaitility/awaitility-parent/4.2.1/awaitility-parent-4.2.1.pom": {
     "Sha256": "5ac7f0b0a42f1d9f0594e4760735ad67fb41e38fd7bc6f13df6ad87a9230787d",
-    "Size": 10856,
     "Headers": {
+      "Content-Length": "10856",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "32db009c4bec3e85ae20d000799f0028b4519546"
     }
   },
   "https://repo.maven.apache.org/maven2/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar": {
     "Sha256": "53e7d64cd2c9a96e1cb05321d26c1cea5d55625be75e39ad98c773ce5fffa6a7",
-    "Size": 97222,
     "Headers": {
+      "Content-Length": "97222",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "e56b600e0b184182ba5b2baccd2bab593a98a624"
     }
   },
   "https://repo.maven.apache.org/maven2/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.pom": {
     "Sha256": "8c76acbb779431b9d3ed30495e109af617c0d21d4b150fad9518c8f24605058d",
-    "Size": 3548,
     "Headers": {
+      "Content-Length": "3548",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "aba3ab718e1fb74424595150ea467d24ac49afdc"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/groovy/groovy-bom/3.0.21/groovy-bom-3.0.21.pom": {
     "Sha256": "92cc36affd20f568b5092c0b94ecf585ddeb0a281b6c8ba7256570bb185d6534",
-    "Size": 26432,
     "Headers": {
+      "Content-Length": "26432",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "325a49f8c22e727d1682631ba68c99c32b2eaaa9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.9.2/plexus-archiver-4.9.2.jar": {
     "Sha256": "a837bd7d73291564dc8e8c826de0fede75896527a35bdcddb77b0545ee656a4c",
-    "Size": 224755,
     "Headers": {
+      "Content-Length": "224755",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "a03ed402ef8468c1d1bda368d7213cad67f16a71"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.9.2/plexus-archiver-4.9.2.pom": {
     "Sha256": "7b4a569c92f60c859ae69594f8935d11bcbb940d86c518742c30f0925a48ba9f",
-    "Size": 5990,
     "Headers": {
+      "Content-Length": "5990",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7d735c23385b28f42fffacbbb11c6cd3b9820227"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.pom": {
     "Sha256": "89811897b815beefa094c39b4603e3f60c42276a2cd5d80b924ab19183629925",
-    "Size": 7305,
     "Headers": {
+      "Content-Length": "7305",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a39bedbc3fa3652d3606821d7c21d80e900f57a0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0.pom": {
     "Sha256": "469a6c59f92effa62c0797ce7d52d2c03cf8ee1034b923c360dd78a9f505a7ba",
-    "Size": 7911,
     "Headers": {
+      "Content-Length": "7911",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e05bc927ead7a1e7dc36c7daed209611d94fbb6d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.jar": {
     "Sha256": "d31d744eb69f77dffd3722dca4094758e0f90e79918a7b3b9fdc37ce49b60342",
-    "Size": 29072,
     "Headers": {
+      "Content-Length": "29072",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1bd59395d358ca695fddc7b9dc594483f4140601"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.15.0/plexus-compiler-api-2.15.0.pom": {
     "Sha256": "4c89cab0505b0ac901197d2dd1363fe5e26bcbfd43e99dd21a8ae023b443cc4e",
-    "Size": 1362,
     "Headers": {
+      "Content-Length": "1362",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "85362b884310a05ede00e892923492aa7e96c9f1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.jar": {
     "Sha256": "89603334988453b9cf4d7ec404d4b54f140de28b678d6a8e8edc448240dd0e90",
-    "Size": 25708,
     "Headers": {
+      "Content-Length": "25708",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "48069fe3c512b09e8aa32d77929c190a6faba790"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.15.0/plexus-compiler-javac-2.15.0.pom": {
     "Sha256": "bbe796c5fe109736980aff79860548d828abd27b36872b80a0e831642b65f328",
-    "Size": 1291,
     "Headers": {
+      "Content-Length": "1291",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e391b900f6ace61b0c6dcd650afb6834b706ceca"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.jar": {
     "Sha256": "c13b12c32a18b00e457de9b93cfc3d5593bfa1fb992b2c46a3498be1a77c4889",
-    "Size": 5232,
     "Headers": {
+      "Content-Length": "5232",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "4c6d2fc56063e2c62b953a2da9ad60c19097474d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.15.0/plexus-compiler-manager-2.15.0.pom": {
     "Sha256": "12bd3bfb803d2004ed8318583ac7b272115a8b9303eabcd100808c54d44d2017",
-    "Size": 1348,
     "Headers": {
+      "Content-Length": "1348",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "05e0554068987c383fcd50d94a663421b341c5f0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.15.0/plexus-compiler-2.15.0.pom": {
     "Sha256": "9c9b62a7703d4994b60fb7f9e42805f9abc798d1397e4d22c1118cd12aa678d8",
-    "Size": 7600,
     "Headers": {
+      "Content-Length": "7600",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a6e6866e422252517e7d3d37097117c09b369b99"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.15.0/plexus-compilers-2.15.0.pom": {
     "Sha256": "1ce14d30276866a9493a2c72e42f990a2e3c1bd794026ccd9830475a12d9a91d",
-    "Size": 1567,
     "Headers": {
+      "Content-Length": "1567",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "26209faddddf2bbd50e438962d6f89059daba8fc"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom": {
     "Sha256": "815f3ec316b8c5fa701385fdf4009bfb51e07d780e8f6a6e2afe720c52d7e292",
-    "Size": 815,
     "Headers": {
+      "Content-Length": "815",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "fd506865d5d083d8cef9fdbf525ad99fcc3416c1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/2.1.0/plexus-component-annotations-2.1.0.pom": {
     "Sha256": "0670b605255f7dc9a454daaec7912918ccf1b5475cbfca374363b51fcfd4ea00",
-    "Size": 750,
     "Headers": {
+      "Content-Length": "750",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b86c9acce33ef506e0cef3692ebc784df0db195a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom": {
     "Sha256": "8cbcb2aacd7f4a7759866ce91b2f910310fbe5a586b5fc7b9bdb76af9257e7c4",
-    "Size": 3064,
     "Headers": {
+      "Content-Length": "3064",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "4daaf2af8e09587eb3837b80252473d6f423c0f7"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.5.5/plexus-containers-1.5.5.pom": {
     "Sha256": "1bc264824ec876b0ca6f4f5838175c541c638cbc43326a268b9aee7d4778b5ef",
-    "Size": 4240,
     "Headers": {
+      "Content-Length": "4240",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "cd786b660f8a4c1c520403a5fa04c7be45212b84"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/2.1.0/plexus-containers-2.1.0.pom": {
     "Sha256": "94d5aedb3c46023265396527cf8ce7fc944b7bd79e4ebab907386418eb5a08d7",
-    "Size": 4805,
     "Headers": {
+      "Content-Length": "4805",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "133ad2d4fca8f498be182d776e85f359f7ac6e36"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.pom": {
     "Sha256": "e078ac8780c6f2da5c11c5d2164bf2c2262112a89a82884de9c9886333267f7d",
-    "Size": 1540,
     "Headers": {
+      "Content-Length": "1540",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "af59eb04ba7e5a729837c4c6799ef4b80553a92e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.jar": {
     "Sha256": "b3b5412ce17889103ea564bcdfcf9fb3dfa540344ffeac6b538a73c9d7182662",
-    "Size": 85348,
     "Headers": {
+      "Content-Length": "85348",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "25b919c664b79795ccde0ede5cee0fd68b544197"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.pom": {
     "Sha256": "e1c10b3a6335641eb74a668daa9ee86ae4ab06610174e59ba07c8c68042327f7",
-    "Size": 2655,
     "Headers": {
+      "Content-Length": "2655",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "af412be9edee5aad63bbb304752ac0deda35ff08"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.27/plexus-interpolation-1.27.jar": {
     "Sha256": "3fb4fb6143fdf964024c3cb738551524b9ea84e5c211cd660c559ad0703e5230",
-    "Size": 85874,
     "Headers": {
+      "Content-Length": "85874",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "8dc73f4ff5eafcbb7ec035ba54736e828b272533"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.27/plexus-interpolation-1.27.pom": {
     "Sha256": "d54fbcbc4399e352322874a4128b9d28fe9fe1583f89ec361de242ea38d33f9b",
-    "Size": 3021,
     "Headers": {
+      "Content-Length": "3021",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0562449f7a1f2ec670751e294799e8786f8003e3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.4.2/plexus-io-3.4.2.jar": {
     "Sha256": "6ba7fb0db6bfa348c248df3f983ae31318e9c14f35a86a932af5ffd7450aa62a",
-    "Size": 78962,
     "Headers": {
+      "Content-Length": "78962",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "40deb3076e4597f1ef973dc794f3a510fa3a942d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.4.2/plexus-io-3.4.2.pom": {
     "Sha256": "aafc90ce29fe79bc6a0aeafb2bf6bdeaf979a1b8211493428a2290228170355d",
-    "Size": 3862,
     "Headers": {
+      "Content-Length": "3862",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "4faed3a6992fff12755fdb541824d809a6add4ee"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.2.0/plexus-java-1.2.0.jar": {
     "Sha256": "4d2d63cdcad46feba432110ef64bcdc8f8fad48538fda5cd2253686b45a94304",
-    "Size": 57542,
     "Headers": {
+      "Content-Length": "57542",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "3f161764aac786d64c4cac26511215369250d4fd"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-java/1.2.0/plexus-java-1.2.0.pom": {
     "Sha256": "d069564d4f490ae22ad885dd4b3ab9ac33a27e23a6f8542760970a36935ccf42",
-    "Size": 4273,
     "Headers": {
+      "Content-Length": "4273",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "dcbf38b0e13a1f7b65bc5feb5f0be2aff8022a12"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-languages/1.2.0/plexus-languages-1.2.0.pom": {
     "Sha256": "a28f034d79815cd7a4b107f66182c21ebf45fbb2fbe2c15697860b720c8a3bf7",
-    "Size": 3193,
     "Headers": {
+      "Content-Length": "3193",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ae3eaaf5b981affee4aecfe3804ce0e7907a3216"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.jar": {
     "Sha256": "b7554a41499282e3b2226a22aff3ebe984f7e159798c461d917c1b829b130cd1",
-    "Size": 267853,
     "Headers": {
+      "Content-Length": "267853",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "eb32118269e8c2ef714d4fbfc79243acead31b10"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.pom": {
     "Sha256": "1ff4fb95c218af4a46f71d625212c70f377ccf97ad2e26cb8d4c10709265bf62",
-    "Size": 8063,
     "Headers": {
+      "Content-Length": "8063",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7deaa90e5725075c9f9fb5a2cfbef75c86a5e5b5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.0/plexus-utils-3.5.0.pom": {
     "Sha256": "aa4ea451bb6fa92e9cc96654eef53e334ff4d36a946633e01765fed41e845e03",
-    "Size": 8012,
     "Headers": {
+      "Content-Length": "8012",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5b0a95ee86f9182f8e01ff878fc7e39dd841bc49"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar": {
     "Sha256": "86e0255d4c879c61b4833ed7f13124e8bb679df47debb127326e7db7dd49a07b",
-    "Size": 269335,
     "Headers": {
+      "Content-Length": "269335",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "c6bfb17c97ecc8863e88778ea301be742c62b06d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.pom": {
     "Sha256": "94ff68edeb48204d12c99189c767164d3a9f778a1372d1dce11a41462e6236f2",
-    "Size": 8768,
     "Headers": {
+      "Content-Length": "8768",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "9b1bf6967abaa0a516a04ea096da08ec8d8fe0d7"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.0/plexus-utils-4.0.0.jar": {
     "Sha256": "270cd703b48c6e5c8c691f1875f22d62d22cfe072c73ae2f5814d83d68c1da0b",
-    "Size": 192368,
     "Headers": {
+      "Content-Length": "192368",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "ff00a04ba971655ed10e9fb93bce0ed3014e9477"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.0/plexus-utils-4.0.0.pom": {
     "Sha256": "a44c5479426dea0e7bfffd2ec3adf49c68515019788965c4d231fc3f04da4129",
-    "Size": 8656,
     "Headers": {
+      "Content-Length": "8656",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "647235185db6052b61e019f1f546b63658e74220"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.1/plexus-utils-4.0.1.jar": {
     "Sha256": "96b9cc44439191d2d0635974e2d44e768736b4fb2abcb65f94cd95e41912fa8b",
-    "Size": 192527,
     "Headers": {
+      "Content-Length": "192527",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "2162c639aa9b081ef2a0be9d41643513e284bf99"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.0.1/plexus-utils-4.0.1.pom": {
     "Sha256": "bc4235a95cd1ebae42644c81ebba9c1d4c52565f81e96ab204b6e56e3e378cc1",
-    "Size": 7829,
     "Headers": {
+      "Content-Length": "7829",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e0676726100b880bfb6e317ee364e953b77c1a93"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.0/plexus-xml-3.0.0.jar": {
     "Sha256": "d2622dc9339b16f5b8c9cad2add440e965831d0e16f19ae1de24e1202b0de536",
-    "Size": 93014,
     "Headers": {
+      "Content-Length": "93014",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "d16b91678bc3734276886132923d6919c935c9f7"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.0.0/plexus-xml-3.0.0.pom": {
     "Sha256": "c07d67161cdf7f8fdce4cd921be5d3cccb9e2c259105ca1afeb772cbcb0cbec5",
-    "Size": 3738,
     "Headers": {
+      "Content-Length": "3738",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f94a34d43206e704670533b74feb981b8de56640"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/10/plexus-10.pom": {
     "Sha256": "bba9c521064b9ca132ce97cc1cc7eb4afc2dbe32bc88cb872c88e99f6162301f",
-    "Size": 25398,
     "Headers": {
+      "Content-Length": "25398",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d521749acee596e7325804c5b8fa208efa9f4263"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/13/plexus-13.pom": {
     "Sha256": "575945dc08966c66eb03d5bae9135bd22ca3920a1865bb99d3ecd93bef55abd3",
-    "Size": 27377,
     "Headers": {
+      "Content-Length": "27377",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "85676f789cc7204850a5c072c313a5ee228b0e0c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/15/plexus-15.pom": {
     "Sha256": "96dc0fbe73664a0f05c6770910473c1a12e1c112cb648364fca867daa689c21d",
-    "Size": 27795,
     "Headers": {
+      "Content-Length": "27795",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d7fdd5e1b392bbd95d2bc3093f0e5143f631f9fd"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/16/plexus-16.pom": {
     "Sha256": "68d4eed65a3dbbc342ed80dd138fbe9c67cb7fb4c2abc4f5201cdb5b9f645868",
-    "Size": 27638,
     "Headers": {
+      "Content-Length": "27638",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c81926f677c914cff35c0856a79e8713eea36f47"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/17/plexus-17.pom": {
     "Sha256": "91526ee66327c7f50fbb25bd41bfcb916e284414b868e31d50a23004bd7deea7",
-    "Size": 28184,
     "Headers": {
+      "Content-Length": "28184",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d902df7874c7a06b2be8ee03082e5af695250cf1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom": {
     "Sha256": "e246e2a062b5d989fdefc521c9c56431ba5554ff8d2344edee9218a34a546a33",
-    "Size": 11610,
     "Headers": {
+      "Content-Length": "11610",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b6c97d19090baa51e953fb782e3986b068fb450f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.7/plexus-2.0.7.pom": {
     "Sha256": "2b59062030ab0a15c5d0977ba22421706368926488739a65f25793e715cc8a74",
-    "Size": 17295,
     "Headers": {
+      "Content-Length": "17295",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f6ee62f8157f273757b8ffda59714a6a279a174d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom": {
     "Sha256": "6ec96f889bc29250f90b167c14e547f1b05aa23565c63f9079595befbde816bb",
-    "Size": 20446,
     "Headers": {
+      "Content-Length": "20446",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f081c65405b2d5e403c9d57e791b23f613966322"
     }
   },
   "https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/5.1/plexus-5.1.pom": {
     "Sha256": "a343e44ff5796aed0ea60be11454c935ce20ab1c5f164acc8da574482dcbc7e9",
-    "Size": 22504,
     "Headers": {
+      "Content-Length": "22504",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2fca82e2eb5172f6a2909bea7accc733581a8c71"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.jar": {
     "Sha256": "84b98521684ab22f9528470fa6d8ab68a230e1b211623c989ba7016c306eb773",
-    "Size": 136299,
     "Headers": {
+      "Content-Length": "136299",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "be68e917f454dcd841865ad7cf9b7615b26a51f7"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-api/1.0.0.v20140518/aether-api-1.0.0.v20140518.pom": {
     "Sha256": "2cbb6b666dd1518153afd4939b126c2336506cf3b1bc4541263c09ba87c34b96",
-    "Size": 1896,
     "Headers": {
+      "Content-Length": "1896",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b83658f3bcad1dbfaef617a9d0b78f7ba982204b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-impl/1.0.0.v20140518/aether-impl-1.0.0.v20140518.pom": {
     "Sha256": "5a80a73241d6cf2e982688b0fe0dacd238d920d81d84fa9435d6d2dd595184e4",
-    "Size": 3473,
     "Headers": {
+      "Content-Length": "3473",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b10bcac138019f0753435ec1378a6129aa8ef069"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-spi/1.0.0.v20140518/aether-spi-1.0.0.v20140518.pom": {
     "Sha256": "7d547087459c89b8717ec5081aa45922d605299da39e32a811041db1b7e2514e",
-    "Size": 2052,
     "Headers": {
+      "Content-Length": "2052",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "422bc81cf031d092e3d235f2803ef15c08e56797"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.jar": {
     "Sha256": "aff0951639837c4e3a4699a421fa79f410032f603f5c6a5bba435e98531f3984",
-    "Size": 145829,
     "Headers": {
+      "Content-Length": "145829",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "7df5ba98ce8b78985d75fdd8c2981fe69234ef85"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/1.0.0.v20140518/aether-util-1.0.0.v20140518.pom": {
     "Sha256": "5c8b507a80901fcdaef89f50c639176b516e8866c6bf07be1ab8ab9da5a4877f",
-    "Size": 2194,
     "Headers": {
+      "Content-Length": "2194",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "183d2dcbfc492540f8a49e0e09f675238257c884"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/aether/aether/1.0.0.v20140518/aether-1.0.0.v20140518.pom": {
     "Sha256": "606b5fa03b171d8204aac0fbace11ee28e71175a0f869bd45f09c9319e7e88dc",
-    "Size": 30152,
     "Headers": {
+      "Content-Length": "30152",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ea72b6c7e4a69f088a668098249e16ab8810bff3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.7/project-1.0.7.pom": {
     "Sha256": "205c039a42cbae3556efbeb04a483eb3a3cf9550bd75bf84260dc8f28218f105",
-    "Size": 14181,
     "Headers": {
+      "Content-Length": "14181",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b0f6c4bc691a0b694a377edc9bc4777871647253"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.8/project-1.0.8.pom": {
     "Sha256": "0d0c7b6e54a35eaf6c246e107eb1a8c7ac8ff0a0b84c489b07a357713adf674b",
-    "Size": 14582,
     "Headers": {
+      "Content-Length": "14582",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "41a621037931f9f4aa8768694be9f5cb59df83df"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/ee4j/project/1.0.9/project-1.0.9.pom": {
     "Sha256": "825379934a1cf29249f349f2d18adaf79a7b2cb2dbe231518974e1ee70941c17",
-    "Size": 16135,
     "Headers": {
+      "Content-Length": "16135",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5c02bae4f34e508f6e22b0f7beb0fef77880ad02"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/jetty/ee10/jetty-ee10-bom/12.0.9/jetty-ee10-bom-12.0.9.pom": {
     "Sha256": "9e587656de14066144df74d0a04b3a5071d9685dfaed81837c5336c2db996262",
-    "Size": 9238,
     "Headers": {
+      "Content-Length": "9238",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e801763801abfa5532719c608155008bdc6add44"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-bom/12.0.9/jetty-bom-12.0.9.pom": {
     "Sha256": "3842e8b9712bfba436c725d42a50ef8ef3a1ad76e4274b004679574501ee9494",
-    "Size": 14102,
     "Headers": {
+      "Content-Length": "14102",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c462bcc123672ef64c16af863f0d3dba1805b5ca"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-bom/9.4.54.v20240208/jetty-bom-9.4.54.v20240208.pom": {
     "Sha256": "d344104a6ee619da6598403c25d03aaaaaf0f54e9646fd3512458df57c9aaeb8",
-    "Size": 17652,
     "Headers": {
+      "Content-Length": "17652",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ce7382fb18185685b0787387b61a960bbdcbb730"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.pom": {
     "Sha256": "05666f27941117ccadfab6329118c1c348f8b838ce89ed23182c151cb2943ee9",
-    "Size": 17341,
     "Headers": {
+      "Content-Length": "17341",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7d49912af7fb08b38dda895316a0ad9093d51b32"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M2/org.eclipse.sisu.plexus-0.9.0.M2.pom": {
     "Sha256": "8feb5693e2d2b2379f9f9f483f2d2b47ab54f0f0ed22cb232e968c544f778752",
-    "Size": 14966,
     "Headers": {
+      "Content-Length": "14966",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d81da08a9ce130175e06b756f03b70f6c664cfd9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/0.9.0.M2/sisu-inject-0.9.0.M2.pom": {
     "Sha256": "7630f4cd4d1620067fa83e1d748b012cffa0655e5380cc0e4a5e283d3b441fdb",
-    "Size": 14800,
     "Headers": {
+      "Content-Length": "14800",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "24caf4978a05257dba83838713049ff3fb58c6b9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-plexus/0.9.0.M2/sisu-plexus-0.9.0.M2.pom": {
     "Sha256": "ec6e99407036014f81a39d81c56ba40d924c72d96e402ad14f7efd29b2c775cd",
-    "Size": 14502,
     "Headers": {
+      "Content-Length": "14502",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "77b4568a4889291177f63cb7d14a17e1b54f49be"
     }
   },
   "https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-bom/4.0.5/jaxb-bom-4.0.5.pom": {
     "Sha256": "ec97ec42d937d3c89519797e44246f80de0850819ac7a7ae675c4497b7075c39",
-    "Size": 11645,
     "Headers": {
+      "Content-Length": "11645",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a86fce599edf93050d83862d319078bcc8298dc2"
     }
   },
   "https://repo.maven.apache.org/maven2/org/glassfish/jersey/jersey-bom/3.1.6/jersey-bom-3.1.6.pom": {
     "Sha256": "4bf809c35117f55a8843a2d8c76484779272961a0d7fde05d7f0873541176d3c",
-    "Size": 20724,
     "Headers": {
+      "Content-Length": "20724",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "fcb234cf2a584fe1e71b5e7abfdfe3eaf7acdf5a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar": {
     "Sha256": "5e62846a89f05cd78cd9c1a553f340d002458380c320455dd1f8fc5497a8a1c1",
-    "Size": 123360,
     "Headers": {
+      "Content-Length": "123360",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1820c0968dba3a11a1b30669bb1f01978a91dedc"
     }
   },
   "https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest/2.2/hamcrest-2.2.pom": {
     "Sha256": "b36137376c4b3fcf76dc337e2a1bc5b691a2ac1aa966ab5d26209a93812fa57d",
-    "Size": 1128,
     "Headers": {
+      "Content-Length": "1128",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "98624f676c4d263b568816b0af5d4f552a2d0501"
     }
   },
   "https://repo.maven.apache.org/maven2/org/hdrhistogram/HdrHistogram/2.2.1/HdrHistogram-2.2.1.jar": {
     "Sha256": "df6afd38afcf79fc5c8e67087ea953c1b83b040176d5f573db4ce91a260fc07c",
-    "Size": 175832,
     "Headers": {
+      "Content-Length": "175832",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "0eb1feb351f64176c377772a30174e582c0274d5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/hdrhistogram/HdrHistogram/2.2.1/HdrHistogram-2.2.1.pom": {
     "Sha256": "5f0b3f63585bc03a07af90d5022a5bf57704fd24d95af4ee0085ab4545ec95a2",
-    "Size": 13791,
     "Headers": {
+      "Content-Length": "13791",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "59dc60bbbeeeb22013b1335a8bb046f5329c41c8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/infinispan/infinispan-bom/15.0.4.Final/infinispan-bom-15.0.4.Final.pom": {
     "Sha256": "7f2519dd8d439cc0e73da4a1ec103b4a9e2d6c58bd0c10c216b02ff4cccdf37f",
-    "Size": 18185,
     "Headers": {
+      "Content-Length": "18185",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "98b7cbedaf8eed1c9583565ec29f15ebdc4e9f28"
     }
   },
   "https://repo.maven.apache.org/maven2/org/infinispan/infinispan-build-configuration-parent/15.0.4.Final/infinispan-build-configuration-parent-15.0.4.Final.pom": {
     "Sha256": "03fa0efc19ccbea93c27d0d4f1c5119a279fe4b0a0566e02c217076c6190267e",
-    "Size": 19336,
     "Headers": {
+      "Content-Length": "19336",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0d94c75df0adf11f70cb720bb904ccc64bcda590"
     }
   },
   "https://repo.maven.apache.org/maven2/org/iq80/snappy/snappy/0.4/snappy-0.4.jar": {
     "Sha256": "46a0c87d504ce9d6063e1ff6e4d20738feb49d8abf85b5071a7d18df4f11bac9",
-    "Size": 57954,
     "Headers": {
+      "Content-Length": "57954",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "a42b2d92a89efd35bb14738000dabcac6bd07a8d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/iq80/snappy/snappy/0.4/snappy-0.4.pom": {
     "Sha256": "a709ce17111e4149d9b79a5295644e0cd5a8355aec4b2ef4c0436aba7b25d08a",
-    "Size": 14537,
     "Headers": {
+      "Content-Length": "14537",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a2a52b5dc6183010d4e3d12a520ced355607ce32"
     }
   },
   "https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/43/jboss-parent-43.pom": {
     "Sha256": "3c3ade76fb883acdb9a8a03355d1df4066ffb9c8c78f09b219e9c0fc2a3f4317",
-    "Size": 75462,
     "Headers": {
+      "Content-Length": "75462",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "389a7638d9b8398e7d18d049eade934baa8b0890"
     }
   },
   "https://repo.maven.apache.org/maven2/org/jboss/weld/weld-parent/26/weld-parent-26.pom": {
     "Sha256": "13023471418b890557b982e4cbab2b5f6967adf1cebe54bf630fe201a63963cc",
-    "Size": 32327,
     "Headers": {
+      "Content-Length": "32327",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "54a75d96c0c3f6bb4b32293d2ababb8fae665e91"
     }
   },
   "https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.jar": {
     "Sha256": "0b20f45e3a0fd8f0d12cdc5316b06776e902b1365db00118876f9175c60f302c",
-    "Size": 327806,
     "Headers": {
+      "Content-Length": "327806",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "dc15dff8f701b227ee523eeb7a17f77c10eafe2f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/jdom/jdom2/2.0.6.1/jdom2-2.0.6.1.pom": {
     "Sha256": "55795e1018b8ae647b937967cf810a99b08582c2374e7873c128734c8c914bf3",
-    "Size": 4600,
     "Headers": {
+      "Content-Length": "4600",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "172940c5c8e5198f95111b14aa4de1cf99528073"
     }
   },
   "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-bom/1.9.24/kotlin-bom-1.9.24.pom": {
     "Sha256": "0b45f87ae7a9487fd8390f77f2996d5a258192008fb6cea27b7cea78cf74eaff",
-    "Size": 9120,
     "Headers": {
+      "Content-Length": "9120",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2e8c3262d4e59cf79fd8b8e8e4d1359db900110a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-bom/1.8.1/kotlinx-coroutines-bom-1.8.1.pom": {
     "Sha256": "563e4aa29fa8fe09a6e1746d0a5b51308f7c7dedc468dc5a0ca810a485877030",
-    "Size": 4291,
     "Headers": {
+      "Content-Length": "4291",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "945379b6526660d8768667a096584f2b041dc0ec"
     }
   },
   "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-serialization-bom/1.6.3/kotlinx-serialization-bom-1.6.3.pom": {
     "Sha256": "29d69842bb7d449be2aa4ade6a4a7ce6aa55827d0ab13d168745fe6d95739332",
-    "Size": 3665,
     "Headers": {
+      "Content-Length": "3665",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7c5582389dc60169a84cb882bed09b4ab68833bf"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.0/junit-bom-5.10.0.pom": {
     "Sha256": "e006dd8894f9fc7b75fc32bb12fe5ed8be65667d5b454f99e2e0b8c5bb8d30b3",
-    "Size": 5649,
     "Headers": {
+      "Content-Length": "5649",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1136f35a5438634393bf628f69b8ca43c8518f7c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.1/junit-bom-5.10.1.pom": {
     "Sha256": "21c4b0286f4b20069577ff4b20978a85c100ac8a46b6f1c8672fbaab337bc3f2",
-    "Size": 5649,
     "Headers": {
+      "Content-Length": "5649",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "41a86ea51227739a5b7ca3430ae88ce44a64a42a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.10.2/junit-bom-5.10.2.pom": {
     "Sha256": "169dd904a4b0f6520cffe658cc62292bfe9f3c14a989fa92120724cde43a9968",
-    "Size": 5649,
     "Headers": {
+      "Content-Length": "5649",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b25ed98a5bd08cdda60e569cf22822a760e76019"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.1/junit-bom-5.7.1.pom": {
     "Sha256": "0b9b14a3d62106fafe8c68a717b87b87ad18685899451b753c04fa41b6857784",
-    "Size": 5098,
     "Headers": {
+      "Content-Length": "5098",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ea517dcd1a0692cf193264d3e3ef0cc1a4a7b410"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.7.2/junit-bom-5.7.2.pom": {
     "Sha256": "cd14aaa869991f82021c585d570d31ff342bcba58bb44233b70193771b96487b",
-    "Size": 5098,
     "Headers": {
+      "Content-Length": "5098",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e8848369738c03e40af5507686216f9b8b44b6a3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.9.3/junit-bom-5.9.3.pom": {
     "Sha256": "4d0329cd9e72f2420e5ca15724cbfe6ffa6e5fd2888361516271190fdc342ed7",
-    "Size": 5630,
     "Headers": {
+      "Content-Length": "5630",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b1874b6a66656e4f5e4b492ab321249bcb749dc7"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar": {
     "Sha256": "afff77c186cd317275803872fa5133aa801fd6ac40bd91c78a6cf8009b4b17cc",
-    "Size": 210956,
     "Headers": {
+      "Content-Length": "210956",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "fb55d6e2bce173f35fd28422e7975539621055ef"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.pom": {
     "Sha256": "bb5da3060226b1b3ceb5408495dc69b59465bf50d7ebe63eef94f25909cf1900",
-    "Size": 3184,
     "Headers": {
+      "Content-Length": "3184",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "93a08d741cad9179423cc229ecbfc016164977d7"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar": {
     "Sha256": "b6df35da750a546ae932376f11b3c0df841f0c90c7cb2944cd39adb432886e4b",
-    "Size": 244690,
     "Headers": {
+      "Content-Length": "244690",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "f1f8fe97bd58e85569205f071274d459c2c4f8cd"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.pom": {
     "Sha256": "abe72c8fbf9a9c8f9ee79bac29ba6479d32b0dffaab88080a502911d24d39463",
-    "Size": 3203,
     "Headers": {
+      "Content-Length": "3203",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1dfac67b8120dd7ac630a658929fbaf9eb673364"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar": {
     "Sha256": "edb1e43ff0b8067626ffb55e5e9eeca1d9ab2478141a7c7f253d115b29cc7cf2",
-    "Size": 586027,
     "Headers": {
+      "Content-Length": "586027",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "359132c82a9d3fa87a325db6edd33b5fdc67a3d8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.pom": {
     "Sha256": "f27d7d096db48a05d6e7afd841a95454424e55c523d7aed1668178b33a63cbd7",
-    "Size": 3010,
     "Headers": {
+      "Content-Length": "3010",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c1a88afb73d74acfc2ba7cbfc578d727e81aea45"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar": {
     "Sha256": "263e43447f4b40f126ad6b1dcbd7df379448413bdedb8e0d240c5bcbba7c7a4f",
-    "Size": 6359,
     "Headers": {
+      "Content-Length": "6359",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "831c0b86ddc2ce38391c5b81ea662b0cfdc02cce"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.pom": {
     "Sha256": "d5b70c5c2d74522da610cd38776f225bac034ac2591843bee9797abab3880eab",
-    "Size": 3205,
     "Headers": {
+      "Content-Length": "3205",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a36a93123b2617c58d321b1c021df77a1ad4a50c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar": {
     "Sha256": "b56a5ec000a479df4973b18bba24c98fe0db8faa14c8907d3ef451d8c71fd8ae",
-    "Size": 106232,
     "Headers": {
+      "Content-Length": "106232",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "3197154a1f0c88da46c47a9ca27611ac7ec5d797"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.pom": {
     "Sha256": "f3f825c7ca3bd89714d489447c77c76e27ea38f0285f5f796a1000a17fca4be7",
-    "Size": 2833,
     "Headers": {
+      "Content-Length": "2833",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "428e90870a1cd83eec09c4d3ae181a71e7e6a467"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar": {
     "Sha256": "8519157df813c210e85fc1414b74109e3d85f43d7092563ed704c43c48f0d5e6",
-    "Size": 102989,
     "Headers": {
+      "Content-Length": "102989",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "36b2e26a90c41603be7f0094bee80e3f8a2cd4d4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom": {
     "Sha256": "e17a1fde4782f2fc23b42deca75c0b0566d5c29850d0306be65c5da73b802178",
-    "Size": 2831,
     "Headers": {
+      "Content-Length": "2831",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f4e9d582f8ce041038bbc1a5c6ec7bb91e626abe"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar": {
     "Sha256": "905cba9b4998ccc29d1239085a7fb1fe0e28024d7526152356d810edec0a49a3",
-    "Size": 204821,
     "Headers": {
+      "Content-Length": "204821",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "d53bb4e0ce7f211a498705783440614bfaf0df2e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.pom": {
     "Sha256": "12aa86ca1c0d648a225d4e7c696054c1fc76e88782c5c39fb7df379ae23bef6f",
-    "Size": 3205,
     "Headers": {
+      "Content-Length": "3205",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d67d36be92a9dc24fc75cece1a8a9a211ab3641c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar": {
     "Sha256": "0c39553d9a03510757227f5a1c6cc6530287b1a321ed6258450664874aa2a16a",
-    "Size": 189226,
     "Headers": {
+      "Content-Length": "189226",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "8616734a190f8d307376aeb7353dba0a2c037a09"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom": {
     "Sha256": "1c5ab7fcebe3a601183979baafbf2f40e5543882a7ca23e9f9eb719195a747d5",
-    "Size": 3202,
     "Headers": {
+      "Content-Length": "3202",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a946e8b45f1ea365bb901d5824a1904100e6ba2a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.jar": {
     "Sha256": "aed4f42fb90ada9b347c231f13656fc09121ba20dab6dc646a6bd9d4da31e4aa",
-    "Size": 183814,
     "Headers": {
+      "Content-Length": "183814",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "8125dd29e847ca274dd1a7a9ca54859acc284cb3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.pom": {
     "Sha256": "5a311708e7906bb974629c1ac870bc11657465b989da4a077e45416bd98725e4",
-    "Size": 3029,
     "Headers": {
+      "Content-Length": "3029",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2de27a432ceee709afb76ebbc0f4d1eb67538130"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar": {
     "Sha256": "8515e91808a09c8c9af5e359185b5991b5e76b8adcf185b9a3dab4ec8e5ba8ff",
-    "Size": 169237,
     "Headers": {
+      "Content-Length": "169237",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "485650bfe2a2f39b606a6ca013285afda2eaee79"
     }
   },
   "https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom": {
     "Sha256": "0b7ccb4425e8209a0335cf83d63cc3672bf8d9110c6966efe7977d1166648f27",
-    "Size": 3026,
     "Headers": {
+      "Content-Length": "3026",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d9bf30a191cd96003f1fb2513e28e2ef5e301d45"
     }
   },
   "https://repo.maven.apache.org/maven2/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar": {
     "Sha256": "a32a9ffa06b2f4e01c5360f8f9df7bc5d9454a5d373cd8f361347fa5a57165ec",
-    "Size": 29779,
     "Headers": {
+      "Content-Length": "29779",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "769c0b82cb2421c8256300e907298a9410a2a3d3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.pom": {
     "Sha256": "8f0c0153790b84af6c09316d569bd106ee0f008b9393e80ba478f5bf65738a28",
-    "Size": 7242,
     "Headers": {
+      "Content-Length": "7242",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5baec26b6f9e5b17fdd200fc20af85eead4287c4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/mockito/mockito-bom/4.11.0/mockito-bom-4.11.0.pom": {
     "Sha256": "d8531a746c988f7f68ed5f188cdea945006aea993ec5df9e524e0d27d61491da",
-    "Size": 3151,
     "Headers": {
+      "Content-Length": "3151",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "001c271051b650e8dd5ae2c9726ee5953887030d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/mockito/mockito-bom/5.11.0/mockito-bom-5.11.0.pom": {
     "Sha256": "9d2f46b14c21ffcc8eb7f02901e37d9dc5497e65843050184d1a2134071d56b3",
-    "Size": 2962,
     "Headers": {
+      "Content-Length": "2962",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "972a31affccff19a8b10fd7159d2df1164a868bf"
     }
   },
   "https://repo.maven.apache.org/maven2/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar": {
     "Sha256": "f076c96b1f49b8d9bc42e46b0969aaf5684c40c8b5b679d400e5d880073a0e00",
-    "Size": 703977,
     "Headers": {
+      "Content-Length": "703977",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "e4069fa4f4ff2c94322cfec5f2e45341c6c70aff"
     }
   },
   "https://repo.maven.apache.org/maven2/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.pom": {
     "Sha256": "ba0b1b5d703509494f9a8e44582223879e3348a4c49667f0c77e68746e481c78",
-    "Size": 2469,
     "Headers": {
+      "Content-Length": "2469",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "456cc29c4ed1d6e11efe7a92bdaae1ea5999a49d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar": {
     "Sha256": "a30ea4fe0484e54f64cdc15269a6c6ff1bd89bc26a0d41e4c27cb91cb78dc548",
-    "Size": 8855,
     "Headers": {
+      "Content-Length": "8855",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "8e658dd339f40305ed4293db25545b5df98b171b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.pom": {
     "Sha256": "6e69977a948bbe44d09f750f5e8b368b7545c32e4978982bb3496e8894042e5e",
-    "Size": 2284,
     "Headers": {
+      "Content-Length": "2284",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3e34e679f03c0b6689496bf703c986bd73417bc4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/3.3/objenesis-parent-3.3.pom": {
     "Sha256": "305c384aa2f1e1c7fe53a96da41c3ec35243b97d428d24a8f779818cc10be4ff",
-    "Size": 19157,
     "Headers": {
+      "Content-Length": "19157",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "60b46fea1dc4cb9c3123f8c366f8b33d0c774fa3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/objenesis/objenesis/3.3/objenesis-3.3.jar": {
     "Sha256": "02dfd0b0439a5591e35b708ed2f5474eb0948f53abf74637e959b8e4ef69bfeb",
-    "Size": 49423,
     "Headers": {
+      "Content-Length": "49423",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1049c09f1de4331e8193e579448d0916d75b7631"
     }
   },
   "https://repo.maven.apache.org/maven2/org/objenesis/objenesis/3.3/objenesis-3.3.pom": {
     "Sha256": "ba0c40da2669a048b6e24ef7066a471f0fbcbfcc509e6a3e856ca4ddfa614ad3",
-    "Size": 3007,
     "Headers": {
+      "Content-Length": "3007",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8da1208285232e541d0bbb869bbe66af6ec6abb4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar": {
     "Sha256": "58812de60898d976fb81ef3b62da05c6604c18fd4a249f5044282479fc286af2",
-    "Size": 7653,
     "Headers": {
+      "Content-Length": "7653",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "28c11eb91f9b6d8e200631d46e20a7f407f2a046"
     }
   },
   "https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom": {
     "Sha256": "a96e671816c1ff8803bdec74c9241f025bdfb277da5d2b4ee02266405936f994",
-    "Size": 1683,
     "Headers": {
+      "Content-Length": "1683",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b5c66f49b69c36797c1fb7f4ec57776f261303ad"
     }
   },
   "https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar": {
     "Sha256": "48e2df636cab6563ced64dcdff8abb2355627cb236ef0bf37598682ddf742f1b",
-    "Size": 14304,
     "Headers": {
+      "Content-Length": "14304",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "152ea56b3a72f655d4fd677fc0ef2596c3dd5e6e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.pom": {
     "Sha256": "9bf7cffc410f3e8372c2522578df9ca56d9d43bd937e30948706c232a943b355",
-    "Size": 2035,
     "Headers": {
+      "Content-Length": "2035",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "73f3c942f86fd30bcf1759e2f9db6e9cc0e59c32"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.jar": {
     "Sha256": "72eee9fbafb9de8d9463f20dd584a48ceeb7e5152ad4c987bfbe17dd4811c9ae",
-    "Size": 72209,
     "Headers": {
+      "Content-Length": "72209",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-commons/9.5/asm-commons-9.5.pom": {
     "Sha256": "8a6e460eedf8cc7b85d33c756213e6a5f7875f4a8383d535d199f3211ec2355c",
-    "Size": 2788,
     "Headers": {
+      "Content-Length": "2788",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "fa5a5be8aad46e084710303b8c2b2b6c65fe3c49"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.jar": {
     "Sha256": "3c33a648191079aeaeaeb7c19a49b153952f9e40fe86fbac5205554ddd9acd94",
-    "Size": 51944,
     "Headers": {
+      "Content-Length": "51944",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "fd33c8b6373abaa675be407082fdfda35021254a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/asm/asm-tree/9.5/asm-tree-9.5.pom": {
     "Sha256": "a72aaaf8dd051899fa089e783ec7d4827ac4d7d1876201c6deecbaa94a0dc956",
-    "Size": 2592,
     "Headers": {
+      "Content-Length": "2592",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3e9552b02a64dc1c887075d9ccbbaffa570d5539"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.5/asm-9.5.jar": {
     "Sha256": "b62e84b5980729751b0458c534cf1366f727542bb8d158621335682a460f0353",
-    "Size": 121863,
     "Headers": {
+      "Content-Length": "121863",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "dc6ea1875f4d64fbc85e1691c95b96a3d8569c90"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.5/asm-9.5.pom": {
     "Sha256": "2c9cceb951cc6586de8d9a16c672ad3e4c30b9c323028d7a3c3366560d5627b1",
-    "Size": 2370,
     "Headers": {
+      "Content-Length": "2370",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "29d57fb2366b772c530508ebdeea81b61a4657c1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.6/asm-9.6.jar": {
     "Sha256": "3c6fac2424db3d4a853b669f4e3d1d9c3c552235e19a319673f887083c2303a1",
-    "Size": 123598,
     "Headers": {
+      "Content-Length": "123598",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "aa205cf0a06dbd8e04ece91c0b37c3f5d567546a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.6/asm-9.6.pom": {
     "Sha256": "92eee24bc3c843e4881d46c1dd6505471ee3142facfb466b428cfea5a56c6b60",
-    "Size": 2370,
     "Headers": {
+      "Content-Length": "2370",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "d18179bac08cecb6a4901e36d32ab057e460bd35"
     }
   },
   "https://repo.maven.apache.org/maven2/org/ow2/ow2/1.5.1/ow2-1.5.1.pom": {
     "Sha256": "321ddbb7ee6fe4f53dea6b4cd6db74154d6bfa42391c1f763b361b9f485acf05",
-    "Size": 11290,
     "Headers": {
+      "Content-Length": "11290",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "bda66fa5f1b68fa7d2de3d569bdc8508b2af82d4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-bom/4.19.1/selenium-bom-4.19.1.pom": {
     "Sha256": "f101f9fb1b6e0b39d3739499a00e821d35e1f3f6e817619137368260964cda68",
-    "Size": 6028,
     "Headers": {
+      "Content-Length": "6028",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f3bf1355cab09ffd03bf15e4ec1b6718b8806b12"
     }
   },
   "https://repo.maven.apache.org/maven2/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar": {
     "Sha256": "1e9a7c443d0dd579906646d767f3701918a78cb88a93112f528305fc9095d261",
-    "Size": 30548,
     "Headers": {
+      "Content-Length": "30548",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "6d842d0faf4cf6725c509a5e5347d319ee0431c3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.pom": {
     "Sha256": "c74ed2d0f14dabd48638b82987ba8cc05099984b0596e0706c4cd45ecfd78167",
-    "Size": 5175,
     "Headers": {
+      "Content-Length": "5175",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "74dc250fbeda03e4421e22ce85e55576b37844fe"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar": {
     "Sha256": "fa5ed8f23df2158d0d4d5c82f85cae289d36cc3cd7b7497deff5a37b0b7d7878",
-    "Size": 6350,
     "Headers": {
+      "Content-Length": "6350",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "a3bcd9d9dd50c71ce69f06b1fd05e40fdeff6ba5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.pom": {
     "Sha256": "fdf867e6a91afc84748553d3974a9ba651f5f4c45a519f6b7d1ea2c238e930af",
-    "Size": 1097,
     "Headers": {
+      "Content-Length": "1097",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2ede0aee61cae4efda113e4d4110d61976ad0f4b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.pom": {
     "Sha256": "001cde5b3c6ba91070425cfe9f2e695e4aeb8bc290a2d4cd96531127ab244fe5",
-    "Size": 3835,
     "Headers": {
+      "Content-Length": "3835",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "dd71cee8b1ef6f54fa6e60f3814fa748f03642e2"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar": {
     "Sha256": "d3ef575e3e4979678dc01bf1dcce51021493b4d11fb7f1be8ad982877c16a1c0",
-    "Size": 41125,
     "Headers": {
+      "Content-Length": "41125",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "6c62681a2f655b49963a5983b8b0950a6120ae14"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.pom": {
     "Sha256": "fb046a9c229437928bb11c2d27c8b5d773eb8a25e60cbd253d985210dedc2684",
-    "Size": 2743,
     "Headers": {
+      "Content-Length": "2743",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "749f6995b1d6591a417ca4fd19cdbddabae16fd1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar": {
     "Sha256": "e7c2a48e8515ba1f49fa637d57b4e2f590b3f5bd97407ac699c3aa5efb1204a9",
-    "Size": 68605,
     "Headers": {
+      "Content-Length": "68605",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "80229737f704b121a318bba5d5deacbcf395bc77"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.pom": {
     "Sha256": "51805cfda80ca2ac82041b906d9865d39e9823e358a0eeb62379dfed475c1571",
-    "Size": 2826,
     "Headers": {
+      "Content-Length": "2826",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "cfe027e08f55e8e5b45f84cbabb4e74e8cd915ec"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-bom/2.0.13/slf4j-bom-2.0.13.pom": {
     "Sha256": "7af272d7a738e2b98763791ffdd896040e8beb298a88fd606214407976cd310a",
-    "Size": 7332,
     "Headers": {
+      "Content-Length": "7332",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7154be9a411f51d833e40a654ec8bf738aaa394a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.32/slf4j-parent-1.7.32.pom": {
     "Sha256": "5ab349d0f4c7bc08ed0ef1f4d9386cb1940a2f4d6f152150e16dbbecc0b83c70",
-    "Size": 13806,
     "Headers": {
+      "Content-Length": "13806",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a3cb6b2b36f7d228af85043d7b31393c6c16a4d6"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.7.36/slf4j-parent-1.7.36.pom": {
     "Sha256": "bb388d37fbcdd3cde64c3cede21838693218dc451f04040c5df360a78ed7e812",
-    "Size": 14093,
     "Headers": {
+      "Content-Length": "14093",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5ee2b2ff107aa21d6e6c8b1d38ab28d02b5bf62e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/2.0.13/slf4j-parent-2.0.13.pom": {
     "Sha256": "67facfd51f06935cea85615a04775d70d80bfd03ad0f37670351f920ed0bb58a",
-    "Size": 13366,
     "Headers": {
+      "Content-Length": "13366",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "47cc245b4e806907ef2612563e4c124c15f99a44"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom": {
     "Sha256": "c14fb9c32b59cc03251f609416db7c0cff01f811edcccb4f6a865d6e7046bd0b",
-    "Size": 13560,
     "Headers": {
+      "Content-Length": "13560",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c24dc843444f348100c19ebd51157e7a5f61bfe7"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/38/forge-parent-38.pom": {
     "Sha256": "a406af6d1f345158b4d37c0f80bc6ba7c2b1da7cd34d1be9ef118d5fe00f020f",
-    "Size": 18740,
     "Headers": {
+      "Content-Length": "18740",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1869421fb762c3de75b5f97386bfbee804842c09"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/4/forge-parent-4.pom": {
     "Sha256": "1838d132479005b4b7459b798e9d9915515090c288082fdcd86db0b10983a24c",
-    "Size": 8397,
     "Headers": {
+      "Content-Length": "8397",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "564f266ea9323e57e246f0fca8f04f596663fb86"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/5/forge-parent-5.pom": {
     "Sha256": "e56188aa8ce51278006aa90bc7e0f304a81e2f1219f462e7d21f262535cd2795",
-    "Size": 8363,
     "Headers": {
+      "Content-Length": "8363",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a557514263bbd4a6daef8f125ab80e78413292d3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom": {
     "Sha256": "b51f8867c92b6a722499557fc3a1fdea77bdf9ef574722fe90ce436a29559454",
-    "Size": 4824,
     "Headers": {
+      "Content-Length": "4824",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "46b8a785b60a2767095b8611613b58577e96d4c9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom": {
     "Sha256": "fb40265f982548212ff82e362e59732b2187ec6f0d80182885c14ef1f982827a",
-    "Size": 6569,
     "Headers": {
+      "Content-Length": "6569",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e5cdc4d23b86d79c436f16fed20853284e868f65"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar": {
     "Sha256": "934171640fbd3d2495c50b79b0d9adb11e2c83e65bad157df8fe34bcac0ff798",
-    "Size": 8482,
     "Headers": {
+      "Content-Length": "8482",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "e6ba5cd4bfd8de00235af936e7f63eb24ed436e6"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.pom": {
     "Sha256": "e067317a47ed9e84b2ba85a76d3cf72980e2b0dc873a90b9cbfe74fe80c37c17",
-    "Size": 3204,
     "Headers": {
+      "Content-Length": "3204",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1e4a1b9e61ff446213473bbd1f3d970c0d1c4d62"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom": {
     "Sha256": "a63a2e23988cca7fac6c93886d6f0506fd26d88d7e8cc0cb89b9c6e0d6c994ad",
-    "Size": 2065,
     "Headers": {
+      "Content-Length": "2065",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8c0bee97c1badb926611bf82358e392fedc07764"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom": {
     "Sha256": "d5e650c50ef6958c028ed024b59af04cf3d38e1453a77d542b6b484bc0f4ca0b",
-    "Size": 2961,
     "Headers": {
+      "Content-Length": "2961",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b953c3a84a7d3f2a7f606e18c07ee38fb6766e3d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/sisu/inject/guice-parent/3.2.3/guice-parent-3.2.3.pom": {
     "Sha256": "5aa8d98b590478df88a349bd1dbe11d0620bfe2bdf11c4e52d51b27fe31d6168",
-    "Size": 13473,
     "Headers": {
+      "Content-Length": "13473",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e1174de7394fa7e47ac3ef0fc3ea1719be8d1984"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/sisu/sisu-guice/3.2.3/sisu-guice-3.2.3.pom": {
     "Sha256": "4a14ec03fa5fdfef34b595d3fabb83832423a5d6e9b31571e44c8a48304014df",
-    "Size": 10936,
     "Headers": {
+      "Content-Length": "10936",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "067a88af019f78ef3f26bc1111499224df5a2b97"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/12/spice-parent-12.pom": {
     "Sha256": "21a19b26dbe5c38ddb5114cf4eadbf5ccb411bc6b128fdd5949b1ccb12f3683e",
-    "Size": 6798,
     "Headers": {
+      "Content-Length": "6798",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e86b2d826f53093e27dc579bea3becbf1425d9ba"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/15/spice-parent-15.pom": {
     "Sha256": "13d15ddfe9946b8427bb7b4b081ab63962285eed0bf6fa5142aea25a46e15814",
-    "Size": 8358,
     "Headers": {
+      "Content-Length": "8358",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3cfa1d1f3113a8137fdc7b7a67f310abbed4a22d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom": {
     "Sha256": "9151f9a5b33ec36ee8778842fc56144fb0242d39cbcc42061b053b8909969bdf",
-    "Size": 6759,
     "Headers": {
+      "Content-Length": "6759",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7f500699ef371383492a4d6ee799b1a77ffd82cc"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-amqp-bom/3.1.5/spring-amqp-bom-3.1.5.pom": {
     "Sha256": "09882a6c2b36bc0116564edcb3514fbe7921d8f68331f9256a34d5c142e9c879",
-    "Size": 3869,
     "Headers": {
+      "Content-Length": "3869",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ca111d010d7e023317f275c6e734f845e1ef5225"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/batch/spring-batch-bom/5.1.2/spring-batch-bom-5.1.2.pom": {
     "Sha256": "b15bd655bec44a22ca7bf56785ca4f7ee6d47003816aa07026d1746db102c008",
-    "Size": 3240,
     "Headers": {
+      "Content-Length": "3240",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "f3a537d578d495034729d2d1a866422fdadd5b65"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.3.0/spring-boot-actuator-autoconfigure-3.3.0.jar": {
     "Sha256": "a6ad871e96cf8e9258d10c417702a2caffb5671cee6dda22efe9fc3f15531f42",
-    "Size": 776751,
     "Headers": {
+      "Content-Length": "776751",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "993952c505a09c13a7fd996def6dbaf3bc6b06d9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.3.0/spring-boot-actuator-autoconfigure-3.3.0.pom": {
     "Sha256": "fbf76c307ef74d67693ab218f8cff6794985a94991ffba651c22d584c280e9f6",
-    "Size": 2889,
     "Headers": {
+      "Content-Length": "2889",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "23d0387d24de9a2c0cf40573a1e3606d01689744"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.3.0/spring-boot-actuator-3.3.0.jar": {
     "Sha256": "3ac4e02dbc48750b3b8fd59b2327b17f8432b7a413db08f2a0158636cbc656d7",
-    "Size": 674592,
     "Headers": {
+      "Content-Length": "674592",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "14696a25a7c6adc23836a6a1315f90bbafd23cd4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.3.0/spring-boot-actuator-3.3.0.pom": {
     "Sha256": "87471e776c1bba078d301cf3ab343a37a3bf847a09fa2e1614ce75299cc1c07a",
-    "Size": 2045,
     "Headers": {
+      "Content-Length": "2045",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "86604197fd2dfe66527c44220ba8a4c6249fe150"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.3.0/spring-boot-autoconfigure-3.3.0.jar": {
     "Sha256": "0d53c617019b23333f916dd9422fcd56e73cc90d57dd3ed14da965be3d2bff24",
-    "Size": 1964227,
     "Headers": {
+      "Content-Length": "1964227",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1d98cfa94223e6a3a0e0ad301822cef90cc04fbc"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.3.0/spring-boot-autoconfigure-3.3.0.pom": {
     "Sha256": "d4a9d5deb03d9a42bc936cc4e3114de318479abfe1cf9abf8c5a4fd0c0c74ab5",
-    "Size": 2060,
     "Headers": {
+      "Content-Length": "2060",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "383dc53a6ce82d804beac2d0cbb14739d4506dcd"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/3.3.0/spring-boot-buildpack-platform-3.3.0.jar": {
     "Sha256": "0f24e2af805e87f36a404645944eb0622a659f215db08b26eedcf3296d1a0f08",
-    "Size": 287425,
     "Headers": {
+      "Content-Length": "287425",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "4348e64090fd0318c354283c6993aeb441a7b52b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-buildpack-platform/3.3.0/spring-boot-buildpack-platform-3.3.0.pom": {
     "Sha256": "ac43cce07c1cfaffd7f22c40a0f146bdfc4554295170b62fcef2981ef0c8dd9b",
-    "Size": 3213,
     "Headers": {
+      "Content-Length": "3213",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "14788793bdb4814ea9a26ac8279276d3f9b12ed6"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-dependencies/3.3.0/spring-boot-dependencies-3.3.0.pom": {
     "Sha256": "676e4c05a631704a32e799d4ec8ebb813f4f7da55ccecd052c0ceab7c841473e",
-    "Size": 103427,
     "Headers": {
+      "Content-Length": "103427",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5852c86ca1357ee956dfadf176022952a2512fe3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/3.3.0/spring-boot-loader-tools-3.3.0.jar": {
     "Sha256": "7a91bd6576c3d73689027a269aeb8e7aaa04552bd643cf9d77f619c63f2c2324",
-    "Size": 458237,
     "Headers": {
+      "Content-Length": "458237",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "cffa9703ae876efa41220c1c9c1f5068b74fcffa"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-loader-tools/3.3.0/spring-boot-loader-tools-3.3.0.pom": {
     "Sha256": "67dcddaf8f8a2bc9584654a760eed26a9a1be0daf67873d6aece019f3d5b5c96",
-    "Size": 2241,
     "Headers": {
+      "Content-Length": "2241",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "259d23a8bcdf149a043d55f17e521000596c6612"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-maven-plugin/3.3.0/spring-boot-maven-plugin-3.3.0.jar": {
     "Sha256": "0a4e790c0aeb9e72dc44178c0c7a0c58e726b773c28d8ef4650c7487ca5cd0e5",
-    "Size": 136896,
     "Headers": {
+      "Content-Length": "136896",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "bfa886d0c69bc30ba073c1ba076a5cc45c2920a1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-maven-plugin/3.3.0/spring-boot-maven-plugin-3.3.0.pom": {
     "Sha256": "47cc381a7eb2262c0a48f6066c9d39b572d993d1c274e92d104f9a4e36b5aa7a",
-    "Size": 4190,
     "Headers": {
+      "Content-Length": "4190",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "fb16c69a5a48d49209df52a96ecfed5112af456e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.3.0/spring-boot-starter-actuator-3.3.0.jar": {
     "Sha256": "0731515e7a5b61f88bae1720e457ea0d79828411207762377cf6e93ebc6a42a3",
-    "Size": 4804,
     "Headers": {
+      "Content-Length": "4804",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "0768a4f4e20c529f08e241b3ab5b316ab0567c30"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.3.0/spring-boot-starter-actuator-3.3.0.pom": {
     "Sha256": "c6216514518f7f53a58f0260f594db7ac774106e4926fd643d69409496a83134",
-    "Size": 2764,
     "Headers": {
+      "Content-Length": "2764",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "152ed760643f3276f3c701fb29af6d5e31186596"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-json/3.3.0/spring-boot-starter-json-3.3.0.jar": {
     "Sha256": "4d492c73f0f2cfb8fa161124de8a22bf22501c77e38e222510a38fea28411cd5",
-    "Size": 4745,
     "Headers": {
+      "Content-Length": "4745",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1c9938093b372602f121e2b073f490897388cc71"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-json/3.3.0/spring-boot-starter-json-3.3.0.pom": {
     "Sha256": "f666805afc9d861d8e5a6673a1f87b9ff244242154951d49d98bface5a9bfd1e",
-    "Size": 3079,
     "Headers": {
+      "Content-Length": "3079",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "274d866c7779a91ecc5ee2718656160dd7c37544"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-logging/3.3.0/spring-boot-starter-logging-3.3.0.jar": {
     "Sha256": "b44799bf63c633c3d13eaf399edf7de1eaee1f5e62340ed6d9e95a83ee1a0490",
-    "Size": 4755,
     "Headers": {
+      "Content-Length": "4755",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "79a400c9d7ce3a7cecf296fda402e3100a099bce"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-logging/3.3.0/spring-boot-starter-logging-3.3.0.pom": {
     "Sha256": "ab8bb8bbb0666b6badaf6fdb3e17671bf9695ff7672517e26ecd8cf9b74a43f5",
-    "Size": 2458,
     "Headers": {
+      "Content-Length": "2458",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7a82deb91fc8e5b92c32431720fac9c1bb73250f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/3.3.0/spring-boot-starter-parent-3.3.0.pom": {
     "Sha256": "691ee5c6543b54cbf9370930724f394979074d0aea0a9b3ce83ed7414c6535b8",
-    "Size": 13305,
     "Headers": {
+      "Content-Length": "13305",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5482ea851aab61eba73c4dee11bb39e4be43b1eb"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-test/3.3.0/spring-boot-starter-test-3.3.0.jar": {
     "Sha256": "e499e28ede4f440c2c27c71db91ae3a0b769f73e40e53a572eafa835dc718ebc",
-    "Size": 4788,
     "Headers": {
+      "Content-Length": "4788",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "7e8530fb86a9354d3ef8e5efece6e75899f0cdc8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-test/3.3.0/spring-boot-starter-test-3.3.0.pom": {
     "Sha256": "693669e07114a9710dcaa0e752c1b27d523f5d86d7ff24bb6fe8dc1b79a677e1",
-    "Size": 5050,
     "Headers": {
+      "Content-Length": "5050",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ac53c9f7b28309241f72e45605135756c93d34e2"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/3.3.0/spring-boot-starter-tomcat-3.3.0.jar": {
     "Sha256": "721f86a4ca470b8d2f2456e3cf84cec97cb3dcff963a73eb4e73ae150bf51072",
-    "Size": 4790,
     "Headers": {
+      "Content-Length": "4790",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "f9cdd6f3976d307e10cce065349e331d7162faf2"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/3.3.0/spring-boot-starter-tomcat-3.3.0.pom": {
     "Sha256": "0f67951878df1b5a8266b6953073f1399baf4c5dff5cf9d91500f15ab34bc07e",
-    "Size": 3125,
     "Headers": {
+      "Content-Length": "3125",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "fdb6b2e0062a299fe2704d1d7e07fbdb672f06e5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-web/3.3.0/spring-boot-starter-web-3.3.0.jar": {
     "Sha256": "117bcb86cd7423ab62bc523ffc9300d8577cf9b1bd8265fcc340e9f99d817f31",
-    "Size": 4801,
     "Headers": {
+      "Content-Length": "4801",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "d8f587bc52e6c31dc4f161a49ce8f5e19f8853a9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-web/3.3.0/spring-boot-starter-web-3.3.0.pom": {
     "Sha256": "346666b9e53f396dc0a335c8ec395841a2a8dc77a3da6f17b320681d9ad9b978",
-    "Size": 2931,
     "Headers": {
+      "Content-Length": "2931",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "25d0af2ef11d713c7eb8e40f5fc3b8b5f2cbec8c"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/3.3.0/spring-boot-starter-3.3.0.jar": {
     "Sha256": "7d1cc5dddc1a5a400e65746531faa79d80f836e6042cfdb14f895d930dfde3e9",
-    "Size": 4766,
     "Headers": {
+      "Content-Length": "4766",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "001af929e0fcb10c2bfc3f3619f4ca9049bd927b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/3.3.0/spring-boot-starter-3.3.0.pom": {
     "Sha256": "b189f186eb805c51f6cd7f550a6e177d54ef457daa3a8690e5dec140795f0b03",
-    "Size": 3041,
     "Headers": {
+      "Content-Length": "3041",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7c74a71d9d68488c37b82a65b62b5187352075ff"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test-autoconfigure/3.3.0/spring-boot-test-autoconfigure-3.3.0.jar": {
     "Sha256": "085fc92b0720adc88842d8ccb6b2b0250c56ba4f45f7d00b464ec740d3b684bf",
-    "Size": 219281,
     "Headers": {
+      "Content-Length": "219281",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1e5451c5f21caa7c9ec8dcc1ec81513983c17098"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test-autoconfigure/3.3.0/spring-boot-test-autoconfigure-3.3.0.pom": {
     "Sha256": "f1791bdbf7eaf85229c3cfe1f5184f21e72302821d701cdd08f54a6c67cc11ce",
-    "Size": 2470,
     "Headers": {
+      "Content-Length": "2470",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "9805721b5ba952bdd052fe0d4bb2be193c508053"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test/3.3.0/spring-boot-test-3.3.0.jar": {
     "Sha256": "503a28fe91d5f627f51ea610784e2d01893ded63940870a22363d1e9c0fa6d79",
-    "Size": 246309,
     "Headers": {
+      "Content-Length": "246309",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "75d7387692d786d957e064f52bd44c7e3e3c393d"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test/3.3.0/spring-boot-test-3.3.0.pom": {
     "Sha256": "e0a91668504fecab2f796fb74c2d6e0288fc074dcded1493c79b897e6d9f1021",
-    "Size": 2212,
     "Headers": {
+      "Content-Length": "2212",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b1fa02f77aa0ff03573c32132b294282f958b6a1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.3.0/spring-boot-3.3.0.jar": {
     "Sha256": "f4d6fd50467d2c7a956eebffc96336ec771fa629fa57ed87279a5f43329b7ac3",
-    "Size": 1622360,
     "Headers": {
+      "Content-Length": "1622360",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "83d42f81f312d71b9425f58d1d3f9e8970e51b22"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.3.0/spring-boot-3.3.0.pom": {
     "Sha256": "42f26ae861a590f7d0ee460160a917c276e3d4e844c474d11dc68ba595ffb0ab",
-    "Size": 2195,
     "Headers": {
+      "Content-Length": "2195",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "ffbdc37eaca79559b6eed91d160a1f0021cefd1f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-bom/2024.0.0/spring-data-bom-2024.0.0.pom": {
     "Sha256": "e8750151e959a13f2fd34dbfcf71d02bfd4b715f5272193ffae7c4f88c5ca421",
-    "Size": 5506,
     "Headers": {
+      "Content-Length": "5506",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "0ca87935ee0cecdbc0ace8f67fe6deabae3b21a1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/integration/spring-integration-bom/6.3.0/spring-integration-bom-6.3.0.pom": {
     "Sha256": "5fc4636529ca3a4904a3398c5d7df38b0364dcd967195ad30f4ab92cd31c1a33",
-    "Size": 10274,
     "Headers": {
+      "Content-Length": "10274",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "2c3b731bd90f84f843e698cef3317ab019976c8a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/pulsar/spring-pulsar-bom/1.1.0/spring-pulsar-bom-1.1.0.pom": {
     "Sha256": "0590f605e5970bdabf87b12f4fa4bb91893d003ef1e1451b461c2afca5e9480c",
-    "Size": 2920,
     "Headers": {
+      "Content-Length": "2920",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "69e111313e7d52c650bce77387dfbafc17cd46ac"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/restdocs/spring-restdocs-bom/3.0.1/spring-restdocs-bom-3.0.1.pom": {
     "Sha256": "5120225bcafe641dcc2667e90d348531719a50ebdd5f8af07fba345199ad58ce",
-    "Size": 2577,
     "Headers": {
+      "Content-Length": "2577",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a2dde6e0ff712732da1dcace896abe7781735a87"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-bom/6.3.0/spring-security-bom-6.3.0.pom": {
     "Sha256": "771ef17880eeb35a4db9859d3aa4c31e591293b12c89c2edf2da820808c03bcc",
-    "Size": 5331,
     "Headers": {
+      "Content-Length": "5331",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c1d356c42b765556cf9d2ac7aa087f26d57e8007"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/session/spring-session-bom/3.3.0/spring-session-bom-3.3.0.pom": {
     "Sha256": "cb037258ece87379b5bb61b4e3a064470a54e665615cd93cb85de0ef8636d154",
-    "Size": 2891,
     "Headers": {
+      "Content-Length": "2891",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "38203bad202111c06b5e216ed47742e0b6999053"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.1.8/spring-aop-6.1.8.jar": {
     "Sha256": "34a94cc105d68316a6a7dfbd0df58206e46acc5050e00cdb12d50bc34c9901bf",
-    "Size": 416176,
     "Headers": {
+      "Content-Length": "416176",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "ef793a21e405a88d9d32b92cb459c845ee12b271"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.1.8/spring-aop-6.1.8.pom": {
     "Sha256": "42df7d332a474925104c375b8883edb27220b4fbb7eedbdb4b1acab3734326b5",
-    "Size": 2197,
     "Headers": {
+      "Content-Length": "2197",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "19002e2a4a76f3e86de8d6521b6b6db11139465e"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.1.8/spring-beans-6.1.8.jar": {
     "Sha256": "0b61cfe36446671cb1f5d6904d263580e6c9f57890866058de27afdd43a33d7f",
-    "Size": 861076,
     "Headers": {
+      "Content-Length": "861076",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "79a5e45383542ff514b5328fe277410cf4054f3b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.1.8/spring-beans-6.1.8.pom": {
     "Sha256": "d93eecb0e4b67756ef13cbb452caeb458ae91cccb24f38c45bacd603c5a88c77",
-    "Size": 2019,
     "Headers": {
+      "Content-Length": "2019",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c979f986dbd32ee659002badd2827fe812353af6"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.1.8/spring-context-6.1.8.jar": {
     "Sha256": "d55a10880b52dc97496b3eece71ee82972206f7bd6ca13fa12bd8f2f4aae679f",
-    "Size": 1305805,
     "Headers": {
+      "Content-Length": "1305805",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "21219a0df58e5b96ef489a172b449232573352e8"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.1.8/spring-context-6.1.8.pom": {
     "Sha256": "8f38e5fa4178a01e8f205e3b8dc585b23232461fa5ef464fbe5c804946008f56",
-    "Size": 2769,
     "Headers": {
+      "Content-Length": "2769",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b53c7177c1ee90b4540dd80715904a688c94da98"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.0.10/spring-core-6.0.10.pom": {
     "Sha256": "8ca9c213ea95dcc08efe521f1f6ec6b1b69200ef8b74fafd67b265b3f35da7c9",
-    "Size": 2017,
     "Headers": {
+      "Content-Length": "2017",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a2f939c2f7d6628946e9c5c33b1bdbea621ecef5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.1.8/spring-core-6.1.8.jar": {
     "Sha256": "aa1bd77c5c3fc62c3bcc6e461a768864d301db489a8d6a9fe31907547c0e3568",
-    "Size": 1882644,
     "Headers": {
+      "Content-Length": "1882644",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "141fc11a5dbaa503fe361150312ad0fa9d9c03da"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.1.8/spring-core-6.1.8.pom": {
     "Sha256": "b6a9ed27f01299f4f5582d89480227cc4ab94fa7af98e75db7611d8ea66b085b",
-    "Size": 2015,
     "Headers": {
+      "Content-Length": "2015",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "e6ff66801a89e74410d1d99f89ae2cbf1c989e7f"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.1.8/spring-expression-6.1.8.jar": {
     "Sha256": "9cd9833aa512570d0cd73a027c7daa6c58db0f3a8910e63e652b5f931e7acffb",
-    "Size": 303137,
     "Headers": {
+      "Content-Length": "303137",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "dcf78ef442c24f32ff8c6a9746e7f5209b330111"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.1.8/spring-expression-6.1.8.pom": {
     "Sha256": "7a39d8d47eaca23432cd2ba41f753d58f047d97699c4908891624d986396fc4e",
-    "Size": 2066,
     "Headers": {
+      "Content-Length": "2066",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "41ace641d0a549794b115b8f0e65b3109511ec22"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/5.3.32/spring-framework-bom-5.3.32.pom": {
     "Sha256": "825af7112e3d92ea436bb0df78c19514885f5c016d0fc60c8b24d4763a015a10",
-    "Size": 5656,
     "Headers": {
+      "Content-Length": "5656",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "8825605fc0859103e7bd289754d257b30c80eb28"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/6.1.8/spring-framework-bom-6.1.8.pom": {
     "Sha256": "c3daae64fadba40733a1e40002f7d924b8a1657830471928de7ac4aa22e15e9b",
-    "Size": 5806,
     "Headers": {
+      "Content-Length": "5806",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "618b19c89112d2edae22c8c28134244758ec5f52"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.0.10/spring-jcl-6.0.10.pom": {
     "Sha256": "dcfb4e9b3004af7d895b0cd1c7354eedd6ec3bee595c57809fca46d7ad83b4f2",
-    "Size": 1838,
     "Headers": {
+      "Content-Length": "1838",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "510c07d592666909c0791fc8f4f9ed3c7a91f6d1"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.1.8/spring-jcl-6.1.8.jar": {
     "Sha256": "aaf3cf8133435b4e96069ecf7303ea5601e82c5f80273a8556e7f5d712c2c281",
-    "Size": 24538,
     "Headers": {
+      "Content-Length": "24538",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "0a545266a6efac9283353a922783a0a06f197ec0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.1.8/spring-jcl-6.1.8.pom": {
     "Sha256": "d881cdee386ed4781d8bd11f7f67f3c28bc5f0708b73261c2096b71b120fd0af",
-    "Size": 1837,
     "Headers": {
+      "Content-Length": "1837",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "b4ce74bf684c71ea56eec790eccbdba3a70540f0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-test/6.1.8/spring-test-6.1.8.jar": {
     "Sha256": "b101f02971f53187da3121833989a1fd51eb75e72d314f9c82b7afcce0329a81",
-    "Size": 856204,
     "Headers": {
+      "Content-Length": "856204",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "72839d29b5c60e1ce9b720abd6a8c396e5b265b2"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-test/6.1.8/spring-test-6.1.8.pom": {
     "Sha256": "6acf8101fd26cf3887ffeafad4d82713743782034b8bc1090a1b6039d1ce215d",
-    "Size": 2050,
     "Headers": {
+      "Content-Length": "2050",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "aa9cf4ca634b447b83cbf936b19c95604687d9a5"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.1.8/spring-web-6.1.8.jar": {
     "Sha256": "82ad9c1e574a0e0d784520c6d2e5409f6f0d22bbdc4029bbed23a40a1bac9398",
-    "Size": 1894732,
     "Headers": {
+      "Content-Length": "1894732",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1461405dc325c82a0a058df033bee3d8c6dd6e41"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.1.8/spring-web-6.1.8.pom": {
     "Sha256": "4929160731381bd1de481edd2cd742099d60314b8c8bbea60a0329431d72716e",
-    "Size": 2386,
     "Headers": {
+      "Content-Length": "2386",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "4c9b624f82ae8a324bc46a0c3cabb0dce0414b14"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-webmvc/6.1.8/spring-webmvc-6.1.8.jar": {
     "Sha256": "e39c24eea169134a430e9a1980537fab92aeb91498ee26b762e5166362ace0aa",
-    "Size": 1046856,
     "Headers": {
+      "Content-Length": "1046856",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "8496f8c010625bc0b857d19d2e93a9bdd691c1af"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/spring-webmvc/6.1.8/spring-webmvc-6.1.8.pom": {
     "Sha256": "a6576d8657ba7febb2b032acb8e10be0ab8757ba2ce5cc11b5216648b7b26de1",
-    "Size": 2947,
     "Headers": {
+      "Content-Length": "2947",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "a90ee26f63e2a260723058ece3ec02301ec94ca3"
     }
   },
   "https://repo.maven.apache.org/maven2/org/springframework/ws/spring-ws-bom/4.0.11/spring-ws-bom-4.0.11.pom": {
     "Sha256": "79b71aa1c2bf8a449d30ac7e83aa893a8d008792fc294bc860261552fa10edf0",
-    "Size": 3498,
     "Headers": {
+      "Content-Length": "3498",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "96276952bd91c21bc7d9f44ffad5698a93851a74"
     }
   },
   "https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers-bom/1.19.8/testcontainers-bom-1.19.8.pom": {
     "Sha256": "364f24464bd26e87aff464e2d4917d3cc4d2f45342c2e32eba9be6a6193c954b",
-    "Size": 10422,
     "Headers": {
+      "Content-Length": "10422",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "c0e152d15de84c2bbfe21e44d400fd445f10a911"
     }
   },
   "https://repo.maven.apache.org/maven2/org/tomlj/tomlj/1.0.0/tomlj-1.0.0.jar": {
     "Sha256": "32697c7567b2921c473678a820b13fc64700aa87bb14576eeb48d0ed5847cfd4",
-    "Size": 157156,
     "Headers": {
+      "Content-Length": "157156",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "d1922fb5e672e04d8e8d8dac0b058b1897e6e940"
     }
   },
   "https://repo.maven.apache.org/maven2/org/tomlj/tomlj/1.0.0/tomlj-1.0.0.pom": {
     "Sha256": "ad8192007f73450c51c880305f14dd22ac551449b721b585fc51231422cb0913",
-    "Size": 2822,
     "Headers": {
+      "Content-Length": "2822",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "1533091fd2a96078a725f16a42679013791fde5b"
     }
   },
   "https://repo.maven.apache.org/maven2/org/tukaani/xz/1.9/xz-1.9.jar": {
     "Sha256": "211b306cfc44f8f96df3a0a3ddaf75ba8c5289eed77d60d72f889bb855f535e5",
-    "Size": 116013,
     "Headers": {
+      "Content-Length": "116013",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "1ea4bec1a921180164852c65006d928617bd2caf"
     }
   },
   "https://repo.maven.apache.org/maven2/org/tukaani/xz/1.9/xz-1.9.pom": {
     "Sha256": "093be1b03331bce2932d6825c37e98272d7621e6a9e9fb93289a002518b8dd5a",
-    "Size": 2047,
     "Headers": {
+      "Content-Length": "2047",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "67a95cd14d42aa16c6cc1e7a40fba28e3ddb7521"
     }
   },
   "https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.8.0/jdependency-2.8.0.jar": {
     "Sha256": "bfd2cc7e1bfc78aa83b44c0a54bf2cde38a4382ec24728af683d98dc6be78192",
-    "Size": 233267,
     "Headers": {
+      "Content-Length": "233267",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "d909a0212c7e986264550ab7a1ad09a1db643601"
     }
   },
   "https://repo.maven.apache.org/maven2/org/vafer/jdependency/2.8.0/jdependency-2.8.0.pom": {
     "Sha256": "101867f3f9e92657a2ef89a310b604d43d090c9b90aa3e0b052dcd16a3bbf32d",
-    "Size": 13886,
     "Headers": {
+      "Content-Length": "13886",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "be091076e97accbfed7994621e528e3588146784"
     }
   },
   "https://repo.maven.apache.org/maven2/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar": {
     "Sha256": "7e70f23d4f75e05f0ee79f0f6b9e13b6cf51d34f36c5fc3a6b839429dde1efef",
-    "Size": 175236,
     "Headers": {
+      "Content-Length": "175236",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "e5833662d9a1279a37da3ef6f62a1da29fcd68c4"
     }
   },
   "https://repo.maven.apache.org/maven2/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.pom": {
     "Sha256": "d27e4e2a312a21547ef3605c812e7e60c8aec964e7f960e50d4dc3cb66b39012",
-    "Size": 2437,
     "Headers": {
+      "Content-Length": "2437",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "3a122da8c1358e2beed232f53fe02ecdf399c86a"
     }
   },
   "https://repo.maven.apache.org/maven2/org/xmlunit/xmlunit-parent/2.9.1/xmlunit-parent-2.9.1.pom": {
     "Sha256": "d7e458fbd5c644504878e5fbce094b1d3078d369a7fee17dddece3d199fdaac0",
-    "Size": 20786,
     "Headers": {
+      "Content-Length": "20786",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "5f2bf29d274cb3f7f3db0e807058520ef03a27c9"
     }
   },
   "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar": {
     "Sha256": "1467931448a0817696ae2805b7b8b20bfb082652bf9c4efaed528930dc49389b",
-    "Size": 334352,
     "Headers": {
+      "Content-Length": "334352",
       "Content-Type": "application/java-archive",
       "X-Checksum-Sha1": "3af797a25458550a16bf89acc8e4ab2b7f2bfce0"
     }
   },
   "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.2/snakeyaml-2.2.pom": {
     "Sha256": "e982eadc788c69cf2e4de50a9f632b182c31dba50612830d348fc4b4ba8dd7d6",
-    "Size": 21256,
     "Headers": {
+      "Content-Length": "21256",
       "Content-Type": "text/xml",
       "X-Checksum-Sha1": "7822ad1166dc36cfcbe1eb85434695ac6b549669"
     }

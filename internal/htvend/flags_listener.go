@@ -22,6 +22,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"sync"
 
 	"github.com/continusec/htvend/internal/app"
 	"github.com/continusec/htvend/internal/blobs"
@@ -34,8 +35,10 @@ import (
 type ListenerOptions struct {
 	app.SubprocessOptions `positional-args:"yes"`
 
-	ListenAddr string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
-	Daemon     bool   `short:"d" long:"daemon" description:"Run as a daemon until terminated"`
+	ListenAddr  string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
+	CertFileLoc string `short:"c" long:"ca-out" description:"Cert file out location - defaults to a temp file"`
+	Daemon      bool   `short:"d" long:"daemon" description:"Run as a daemon until terminated"`
+	Serialize   bool   `short:"s" long:"single-thread" description:"Don't service HTTP request until previous one is complete."`
 
 	TmpDirs          []string `long:"with-temp-dir" short:"t" description:"List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process."`
 	CertFileEnvVars  []string `long:"set-env-var-ssl-cert-file" default:"SSL_CERT_FILE" description:"List of environment variables that will be set pointing to the temporary CA certificates file in PEM format."`
@@ -73,8 +76,14 @@ type listenerCtx struct {
 }
 
 func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt string, args []string) error {
+	var mu sync.Mutex
+
 	return app.RunUntilSignals(func(parCtx context.Context) error {
 		return proxyserver.ServeUntilDone(parCtx, o.ListenAddr, func(w http.ResponseWriter, r *http.Request) {
+			if o.Serialize {
+				mu.Lock()
+				defer mu.Unlock()
+			}
 			if err := handleMainServerRequest(lctx, w, r); err != nil {
 				logrus.Warnf("error handling request: %v", err)
 				http.Error(w, "see proxy server log for details", http.StatusInternalServerError)
@@ -175,7 +184,7 @@ func fetchAndSaveBlob(
 	if err != nil {
 		return fmt.Errorf("error making request object: %w", err)
 	}
-	logrus.Infof("Fetching URL: %s", newReq.URL)
+	logrus.Infof("Fetching URL: %s %s", method, newReq.URL)
 	if preprocessRequest != nil {
 		err = preprocessRequest(newReq)
 		if err != nil {
@@ -192,6 +201,13 @@ func fetchAndSaveBlob(
 		}
 	}()
 
+	logrus.Debugf("Response (%d):", resp.StatusCode)
+	for k, v := range resp.Header {
+		for _, v1 := range v {
+			logrus.Debugf("%s: %s", k, v1)
+		}
+	}
+
 	if w != nil {
 		for k, v := range resp.Header {
 			for _, v1 := range v {
@@ -201,8 +217,8 @@ func fetchAndSaveBlob(
 		w.WriteHeader(resp.StatusCode)
 	}
 
-	// if we don't need to save, then exit early
-	if assets.SkipSave(u) {
+	// if we don't need to save, then exit early - don't save non-OK responses - for now don't filter HEAD - useful for Docker API call during k3s init
+	if assets.SkipSave(u) || resp.StatusCode != http.StatusOK {
 		if w != nil {
 			_, err = io.Copy(w, resp.Body)
 			return err
@@ -216,32 +232,29 @@ func fetchAndSaveBlob(
 		return fmt.Errorf("error creating caf to put: %w", err)
 	}
 	defer func() {
-		// if we aren't clean on return, then delete the CAF
-		if retErr != nil {
-			_ = caf.Cleanup() // we are already returning an error, so we swallow this one
+		// Cleanup() is safe to call (no-op) after a successful Commit()
+		if err := caf.Cleanup(); err != nil && retErr == nil {
+			retErr = err
 		}
 	}()
 
 	if w != nil {
-		_, err = io.Copy(w, io.TeeReader(resp.Body, caf))
-		if err != nil {
+		if _, err = io.Copy(w, io.TeeReader(resp.Body, caf)); err != nil {
 			return fmt.Errorf("error copying response via tee: %w", err)
 		}
 	} else {
-		_, err = io.Copy(caf, resp.Body)
-		if err != nil {
+		if _, err = io.Copy(caf, resp.Body); err != nil {
 			return fmt.Errorf("error copying response direct to CAF: %w", err)
 		}
 	}
 
-	err = caf.Close()
+	err = caf.Commit()
 	if err != nil {
-		return fmt.Errorf("error committing blob: %w", err)
+		return fmt.Errorf("error committing blob (url %s): %w", u.Redacted(), err)
 	}
 
 	// record asset belonging to this build
 	err = assets.AddBlob(u, lockfile.BlobInfo{
-		Size:    caf.Size(),
 		Sha256:  hex.EncodeToString(caf.Digest()),
 		Headers: filterHeaders(hdrsToCache, resp.Header),
 	})

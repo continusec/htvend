@@ -30,12 +30,11 @@ import (
 
 type BlobInfo struct {
 	Sha256  string
-	Size    int
 	Headers map[string]string
 }
 
 func blobEquals(a, b BlobInfo) bool {
-	return a.Size == b.Size && a.Sha256 == b.Sha256 && maps.Equal(a.Headers, b.Headers)
+	return a.Sha256 == b.Sha256 && maps.Equal(a.Headers, b.Headers)
 }
 
 type blobMap map[string]BlobInfo
@@ -181,6 +180,27 @@ func (f *File) AddBlob(u *url.URL, info BlobInfo) error {
 		}
 	}
 	f.blobs[k] = info
+	f.dirty = true
+	return f.save(false)
+}
+
+// remove from us only with no regard to fallback
+func (f *File) RemoveEntry(u *url.URL) error {
+	k := u.Redacted()
+
+	if f.options.NoCache.Match(k) {
+		return nil
+	}
+
+	f.mu.Lock()
+	defer f.mu.Unlock()
+
+	_, ok := f.blobs[k]
+	if !ok {
+		return nil
+	}
+
+	delete(f.blobs, k)
 	f.dirty = true
 	return f.save(false)
 }
