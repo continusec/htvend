@@ -26,7 +26,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/continusec/htvend/internal/blobs"
+	"github.com/continusec/htvend/internal/blobstore"
+	blobs "github.com/continusec/htvend/internal/blobstore"
 	"github.com/continusec/htvend/internal/lockfile"
 	"github.com/continusec/htvend/internal/registryauthclient"
 	"github.com/hashicorp/go-multierror"
@@ -77,7 +78,7 @@ func (rc *VerifyCommand) Execute(args []string) (retErr error) {
 
 type validateCtx struct {
 	Assets    *lockfile.File
-	Blobs     blobs.Store
+	Blobs     blobstore.Store
 	ExportDir string
 
 	HeadersToCache map[string]bool // if repair
@@ -132,7 +133,7 @@ func doValidate(vctx *validateCtx) error {
 
 		r, err := vctx.Blobs.Get(expectedH)
 		if err != nil {
-			if errors.Is(err, os.ErrNotExist) {
+			if errors.Is(err, blobs.ErrBlobNotExist) {
 				missingList = append(missingList, toBeFetched{
 					K: k,
 					V: v,

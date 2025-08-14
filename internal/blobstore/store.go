@@ -12,11 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package blobs
+package blobstore
 
 import (
+	"errors"
 	"io"
 )
+
+var ErrBlobNotExist = errors.New("blob does not exist")
 
 type Store interface {
 	// Get thing with this hash

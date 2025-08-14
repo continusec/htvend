@@ -25,7 +25,7 @@ import (
 	"sync"
 
 	"github.com/continusec/htvend/internal/app"
-	"github.com/continusec/htvend/internal/blobs"
+	"github.com/continusec/htvend/internal/blobstore"
 	"github.com/continusec/htvend/internal/lockfile"
 	"github.com/continusec/htvend/internal/proxyserver"
 	"github.com/continusec/htvend/internal/re"
@@ -63,7 +63,7 @@ type envCtx struct {
 
 type listenerCtx struct {
 	Assets *lockfile.File
-	Blobs  blobs.Store
+	Blobs  blobstore.Store
 
 	FetchIfMissing bool
 	FailIfMissing  bool
@@ -171,7 +171,7 @@ func handleMainServerRequest(lctx *listenerCtx, w http.ResponseWriter, r *http.R
 // as this is called by validate
 func fetchAndSaveBlob(
 	assets *lockfile.File,
-	blobs blobs.Store,
+	blobs blobstore.Store,
 	method string,
 	body io.Reader,
 	u *url.URL,

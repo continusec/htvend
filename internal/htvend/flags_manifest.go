@@ -19,14 +19,18 @@ import (
 	"strings"
 
 	"github.com/adrg/xdg"
-	"github.com/continusec/htvend/internal/blobs"
-	"github.com/continusec/htvend/internal/blobs/directory"
+	"github.com/continusec/htvend/internal/blobstore"
+	"github.com/continusec/htvend/internal/blobstore/directory"
+	"github.com/continusec/htvend/internal/blobstore/registry"
 	"github.com/continusec/htvend/internal/lockfile"
 	"github.com/continusec/htvend/internal/re"
 )
 
 type CacheOptions struct {
-	BlobsDir string `long:"blobs-dir" default:"${XDG_DATA_HOME}/htvend/cache/blobs" description:"Common directory to store downloaded blobs in"`
+	BlobsBackend  string `long:"blobs-backend" default:"filesystem" choice:"filesystem" choice:"registry" description:"Type of blob store"`
+	BlobsRegistry string `long:"blobs-registry" description:"URL for registry to store / fetch blobs from"`
+	BlobsDir      string `long:"blobs-dir" default:"${XDG_DATA_HOME}/htvend/cache/blobs" description:"Common directory to store downloaded blobs in"`
+
 	CacheMap string `long:"cache-manifest" default:"${XDG_DATA_HOME}/htvend/cache/assets.json" description:"Cache of all downloaded assets"`
 }
 
@@ -94,10 +98,18 @@ func xdgIt(origPath string) (string, error) {
 	return d, nil
 }
 
-func (o *CacheOptions) MakeBlobStore(writable bool) (blobs.Store, error) {
-	d, err := xdgIt(o.BlobsDir)
-	if err != nil {
-		return nil, fmt.Errorf("error getting blob store with xdg: %w", err)
+func (o *CacheOptions) MakeBlobStore(writable bool) (blobstore.Store, error) {
+	switch o.BlobsBackend {
+	case "filesystem":
+		d, err := xdgIt(o.BlobsDir)
+		if err != nil {
+			return nil, fmt.Errorf("error getting blob store with xdg: %w", err)
+		}
+		return directory.NewDirectoryStore(d, writable), nil
+	case "registry":
+		return registry.NewRegistryStore(o.BlobsRegistry, writable), nil
+	default:
+		return nil, fmt.Errorf("bad blob store type: %s", o.BlobsBackend)
 	}
-	return directory.NewDirectoryStore(d, writable), nil
+
 }
