@@ -161,33 +161,36 @@ Usage:
   htvend [OPTIONS] build [build-OPTIONS] [COMMAND] [ARG...]
 
 Application Options:
-  -C, --chdir=                         Directory to change to before running. (default: .)
-  -v, --verbose                        Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+  -C, --chdir=                                  Directory to change to before running. (default: .)
+  -v, --verbose                                 Set for verbose output. Equivalent to setting LOG_LEVEL=debug
 
 Help Options:
-  -h, --help                           Show this help message
+  -h, --help                                    Show this help message
 
 [build command options]
-          --blobs-dir=                 Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
-          --cache-manifest=            Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
-      -m, --manifest=                  File to put manifest data in (default: ./assets.json)
-      -l, --listen-addr=               Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
-      -c, --ca-out=                    Cert file out location - defaults to a temp file
-      -d, --daemon                     Run as a daemon until terminated
-      -s, --single-thread              Don't service HTTP request until previous one is complete.
-      -t, --with-temp-dir=             List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process.
-          --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary CA certificates file in PEM format. (default: SSL_CERT_FILE)
-          --set-env-var-jks-keystore=  List of environment variables that will be set pointing to the temporary CA certificates file in JKS format. (default: JKS_KEYSTORE_FILE)
-          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy)
-          --set-env-var-no-proxy=      List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
-          --no-cache-response=         Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
-          --cache-header=              List of headers for which we will cache the first value. (default: Content-Length, Docker-Content-Digest, Content-Type, Content-Encoding, X-Checksum-Sha1)
-          --force-refresh              If set, always fetch from upstream (and save to both local and global cache).
-          --clean                      If set, reset local blob list to empty before running.
+          --blobs-backend=[filesystem|registry] Type of blob store (default: filesystem)
+          --blobs-registry=                     URL for registry to store / fetch blobs from
+          --blobs-dir=                          Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=                     Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+      -m, --manifest=                           File to put manifest data in (default: ./assets.json)
+      -l, --listen-addr=                        Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
+      -c, --ca-out=                             Cert file out location - defaults to a temp file
+      -d, --daemon                              Run as a daemon until terminated
+      -s, --single-thread                       Don't service HTTP request until previous one is complete.
+      -t, --with-temp-dir=                      List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process.
+          --set-env-var-ssl-cert-file=          List of environment variables that will be set pointing to the temporary CA certificates file in PEM format. (default: SSL_CERT_FILE)
+          --set-env-var-jks-keystore=           List of environment variables that will be set pointing to the temporary CA certificates file in JKS format. (default: JKS_KEYSTORE_FILE)
+          --set-env-var-http-proxy=             List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy)
+          --set-env-var-no-proxy=               List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
+          --no-cache-response=                  Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
+          --cache-header=                       List of headers for which we will cache the first value. (default: Content-Length, Docker-Content-Digest, Content-Type, Content-Encoding,
+                                                X-Checksum-Sha1)
+          --force-refresh                       If set, always fetch from upstream (and save to both local and global cache).
+          --clean                               If set, reset local blob list to empty before running.
 
 [build command arguments]
-  COMMAND:                             Sub-process to run. If not specified an interactive-shell is opened
-  ARG:                                 Arguments to pass to the sub-process
+  COMMAND:                                      Sub-process to run. If not specified an interactive-shell is opened
+  ARG:                                          Arguments to pass to the sub-process
 ```
 
 ### `htvend offline`
@@ -214,30 +217,32 @@ Usage:
   htvend [OPTIONS] offline [offline-OPTIONS] [COMMAND] [ARG...]
 
 Application Options:
-  -C, --chdir=                         Directory to change to before running. (default: .)
-  -v, --verbose                        Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+  -C, --chdir=                                  Directory to change to before running. (default: .)
+  -v, --verbose                                 Set for verbose output. Equivalent to setting LOG_LEVEL=debug
 
 Help Options:
-  -h, --help                           Show this help message
+  -h, --help                                    Show this help message
 
 [offline command options]
-          --blobs-dir=                 Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
-          --cache-manifest=            Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
-      -m, --manifest=                  File to put manifest data in (default: ./assets.json)
-      -l, --listen-addr=               Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
-      -c, --ca-out=                    Cert file out location - defaults to a temp file
-      -d, --daemon                     Run as a daemon until terminated
-      -s, --single-thread              Don't service HTTP request until previous one is complete.
-      -t, --with-temp-dir=             List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process.
-          --set-env-var-ssl-cert-file= List of environment variables that will be set pointing to the temporary CA certificates file in PEM format. (default: SSL_CERT_FILE)
-          --set-env-var-jks-keystore=  List of environment variables that will be set pointing to the temporary CA certificates file in JKS format. (default: JKS_KEYSTORE_FILE)
-          --set-env-var-http-proxy=    List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy)
-          --set-env-var-no-proxy=      List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
-          --dummy-ok-response=         Regex list of URLs that we return a dummy 200 OK reply to. Useful for some Docker clients. (default: ^http.*/v2/$)
+          --blobs-backend=[filesystem|registry] Type of blob store (default: filesystem)
+          --blobs-registry=                     URL for registry to store / fetch blobs from
+          --blobs-dir=                          Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=                     Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+      -m, --manifest=                           File to put manifest data in (default: ./assets.json)
+      -l, --listen-addr=                        Listen address for proxy server (:0) will allocate a dynamic open port (default: 127.0.0.1:0)
+      -c, --ca-out=                             Cert file out location - defaults to a temp file
+      -d, --daemon                              Run as a daemon until terminated
+      -s, --single-thread                       Don't service HTTP request until previous one is complete.
+      -t, --with-temp-dir=                      List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process.
+          --set-env-var-ssl-cert-file=          List of environment variables that will be set pointing to the temporary CA certificates file in PEM format. (default: SSL_CERT_FILE)
+          --set-env-var-jks-keystore=           List of environment variables that will be set pointing to the temporary CA certificates file in JKS format. (default: JKS_KEYSTORE_FILE)
+          --set-env-var-http-proxy=             List of environment variables that will be set pointing to the proxy host:port. (default: HTTP_PROXY, HTTPS_PROXY, http_proxy, https_proxy)
+          --set-env-var-no-proxy=               List of environment variables that will be set blank. (default: NO_PROXY, no_proxy)
+          --dummy-ok-response=                  Regex list of URLs that we return a dummy 200 OK reply to. Useful for some Docker clients. (default: ^http.*/v2/$)
 
 [offline command arguments]
-  COMMAND:                             Sub-process to run. If not specified an interactive-shell is opened
-  ARG:                                 Arguments to pass to the sub-process
+  COMMAND:                                      Sub-process to run. If not specified an interactive-shell is opened
+  ARG:                                          Arguments to pass to the sub-process
 ```
 
 ### `htvend export`
@@ -251,17 +256,19 @@ Usage:
   htvend [OPTIONS] export [export-OPTIONS]
 
 Application Options:
-  -C, --chdir=                Directory to change to before running. (default: .)
-  -v, --verbose               Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+  -C, --chdir=                                  Directory to change to before running. (default: .)
+  -v, --verbose                                 Set for verbose output. Equivalent to setting LOG_LEVEL=debug
 
 Help Options:
-  -h, --help                  Show this help message
+  -h, --help                                    Show this help message
 
 [export command options]
-          --blobs-dir=        Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
-          --cache-manifest=   Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
-      -m, --manifest=         File to put manifest data in (default: ./assets.json)
-      -o, --output-directory= Directory to export blobs to. (default: ./blobs)
+          --blobs-backend=[filesystem|registry] Type of blob store (default: filesystem)
+          --blobs-registry=                     URL for registry to store / fetch blobs from
+          --blobs-dir=                          Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=                     Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+      -m, --manifest=                           File to put manifest data in (default: ./assets.json)
+      -o, --output-directory=                   Directory to export blobs to. (default: ./blobs)
 ```
 
 ### `htvend verify`
@@ -279,20 +286,24 @@ Usage:
   htvend [OPTIONS] verify [verify-OPTIONS]
 
 Application Options:
-  -C, --chdir=                 Directory to change to before running. (default: .)
-  -v, --verbose                Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+  -C, --chdir=                                  Directory to change to before running. (default: .)
+  -v, --verbose                                 Set for verbose output. Equivalent to setting LOG_LEVEL=debug
 
 Help Options:
-  -h, --help                   Show this help message
+  -h, --help                                    Show this help message
 
 [verify command options]
-          --blobs-dir=         Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
-          --cache-manifest=    Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
-      -m, --manifest=          File to put manifest data in (default: ./assets.json)
-          --no-cache-response= Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
-          --cache-header=      List of headers for which we will cache the first value. (default: Content-Length, Docker-Content-Digest, Content-Type, Content-Encoding, X-Checksum-Sha1)
-          --fetch              If set, fetch missing assets
-          --repair             If set, replace any missing assets with new versions currently found (implies fetch). May still require a rebuild afterwards (e.g. if they trigger other new calls).
+          --blobs-backend=[filesystem|registry] Type of blob store (default: filesystem)
+          --blobs-registry=                     URL for registry to store / fetch blobs from
+          --blobs-dir=                          Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=                     Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+      -m, --manifest=                           File to put manifest data in (default: ./assets.json)
+          --no-cache-response=                  Regex list of URLs to never store in cache. Useful for token endpoints. (default: ^http.*/v2/$, /token\?)
+          --cache-header=                       List of headers for which we will cache the first value. (default: Content-Length, Docker-Content-Digest, Content-Type, Content-Encoding,
+                                                X-Checksum-Sha1)
+          --fetch                               If set, fetch missing assets
+          --repair                              If set, replace any missing assets with new versions currently found (implies fetch). May still require a rebuild afterwards (e.g. if they trigger
+                                                other new calls).
 ```
 
 ### `htvend clean`
@@ -306,17 +317,19 @@ Usage:
   htvend [OPTIONS] clean [clean-OPTIONS]
 
 Application Options:
-  -C, --chdir=              Directory to change to before running. (default: .)
-  -v, --verbose             Set for verbose output. Equivalent to setting LOG_LEVEL=debug
+  -C, --chdir=                                  Directory to change to before running. (default: .)
+  -v, --verbose                                 Set for verbose output. Equivalent to setting LOG_LEVEL=debug
 
 Help Options:
-  -h, --help                Show this help message
+  -h, --help                                    Show this help message
 
 [clean command options]
-          --blobs-dir=      Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
-          --cache-manifest= Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
-          --all             If set, remove entire shared global cache.
-      -u, --url=            URL to remove from global cache.
+          --blobs-backend=[filesystem|registry] Type of blob store (default: filesystem)
+          --blobs-registry=                     URL for registry to store / fetch blobs from
+          --blobs-dir=                          Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
+          --cache-manifest=                     Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+          --all                                 If set, remove entire shared global cache.
+      -u, --url=                                URL to remove from global cache.
 ```
 
 ## Frequently asked questions

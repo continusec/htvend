@@ -19,16 +19,15 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/fs"
 	"os"
 	"path/filepath"
 
-	"github.com/continusec/htvend/internal/blobs"
-	"github.com/continusec/htvend/internal/blobs/directory/caf"
+	"github.com/continusec/htvend/internal/blobstore"
+	"github.com/continusec/htvend/internal/blobstore/directory/caf"
 	"github.com/sirupsen/logrus"
 )
 
-var _ blobs.Store = &DirectoryStore{}
+var _ blobstore.Store = &DirectoryStore{}
 
 type DirectoryStore struct {
 	dir      string
@@ -45,14 +44,21 @@ func NewDirectoryStore(dir string, writable bool) *DirectoryStore {
 // key is raw hash
 // caller must call Close()
 func (s *DirectoryStore) Get(k []byte) (io.ReadCloser, error) {
-	return os.Open(s.resolve(k))
+	rv, err := os.Open(s.resolve(k))
+	if err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			return nil, fmt.Errorf("%w %w", blobstore.ErrBlobNotExist, err)
+		}
+		return nil, err
+	}
+	return rv, nil
 }
 
 func (s *DirectoryStore) resolve(k []byte) string {
 	return filepath.Join(s.dir, hex.EncodeToString(k))
 }
 
-func (s *DirectoryStore) Put() (blobs.ContentAddressableBlob, error) {
+func (s *DirectoryStore) Put() (blobstore.ContentAddressableBlob, error) {
 	if !s.writable {
 		return nil, errors.New("blob store is not writable")
 	}
@@ -73,7 +79,7 @@ func (s *DirectoryStore) RemoveExcept(keep map[string]bool) error {
 	}
 	entries, err := os.ReadDir(s.dir)
 	if err != nil {
-		if errors.Is(err, fs.ErrNotExist) {
+		if errors.Is(err, os.ErrNotExist) {
 			// no work required
 			return nil
 		}
