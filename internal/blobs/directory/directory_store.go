@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package blobs
+package directory
 
 import (
 	"encoding/hex"
@@ -23,9 +23,12 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/continusec/htvend/internal/blobs"
 	"github.com/continusec/htvend/internal/caf"
 	"github.com/sirupsen/logrus"
 )
+
+var _ blobs.Store = &DirectoryStore{}
 
 type DirectoryStore struct {
 	dir      string

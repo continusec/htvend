@@ -20,6 +20,7 @@ import (
 
 	"github.com/adrg/xdg"
 	"github.com/continusec/htvend/internal/blobs"
+	"github.com/continusec/htvend/internal/blobs/directory"
 	"github.com/continusec/htvend/internal/lockfile"
 	"github.com/continusec/htvend/internal/re"
 )
@@ -93,10 +94,10 @@ func xdgIt(origPath string) (string, error) {
 	return d, nil
 }
 
-func (o *CacheOptions) MakeBlobStore(writable bool) (*blobs.DirectoryStore, error) {
+func (o *CacheOptions) MakeBlobStore(writable bool) (blobs.Store, error) {
 	d, err := xdgIt(o.BlobsDir)
 	if err != nil {
 		return nil, fmt.Errorf("error getting blob store with xdg: %w", err)
 	}
-	return blobs.NewDirectoryStore(d, writable), nil
+	return directory.NewDirectoryStore(d, writable), nil
 }

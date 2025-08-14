@@ -77,7 +77,7 @@ func (rc *VerifyCommand) Execute(args []string) (retErr error) {
 
 type validateCtx struct {
 	Assets    *lockfile.File
-	Blobs     *blobs.DirectoryStore
+	Blobs     blobs.Store
 	ExportDir string
 
 	HeadersToCache map[string]bool // if repair
