@@ -30,16 +30,18 @@ func TestCaf(t *testing.T) {
 	caf1 := NewContentAddressableFile(func(digest []byte) string {
 		return filepath.Join(td, hex.EncodeToString(digest))
 	})
-	assert.Nil(t, caf1.Commit())
+	_, err := caf1.Commit()
+	assert.Nil(t, err)
 	assert.Nil(t, caf1.Cleanup())
 
 	// test simple file
 	caf2 := NewContentAddressableFile(func(digest []byte) string {
 		return filepath.Join(td, hex.EncodeToString(digest))
 	})
-	_, err := caf2.Write([]byte{1, 2})
+	_, err = caf2.Write([]byte{1, 2})
 	assert.Nil(t, err)
-	assert.Nil(t, caf2.Commit())
+	_, err = caf2.Commit()
+	assert.Nil(t, err)
 	assert.Nil(t, caf2.Cleanup())
 
 	// test simple file with Cleanup early
@@ -56,7 +58,8 @@ func TestCaf(t *testing.T) {
 	})
 	_, err = caf4.Write([]byte{1, 2})
 	assert.Nil(t, err)
-	assert.Nil(t, caf4.Commit())
+	_, err = caf4.Commit()
+	assert.Nil(t, err)
 
 	// count final files
 	entries, err := os.ReadDir(td)

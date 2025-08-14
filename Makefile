@@ -6,6 +6,7 @@ bindir := $(exec_prefix)/bin
 
 # go install to install to here
 BUILDBINDIR ?= $(CURDIR)/target
+GOSOURCES := $(shell git ls-files *.go)
 
 # all binaries that we creaate
 go_bins := $(patsubst cmd/%,$(BUILDBINDIR)/%,$(wildcard cmd/*))
@@ -27,7 +28,7 @@ install: $(all_artifacts)
 clean:
 	git clean -xfd
 
-$(go_bins) $(BUILDBINDIR): cmd/*/*.go internal/*/*.go go.*
+$(go_bins) $(BUILDBINDIR): $(GOSOURCES) go.*
 	GOBIN=$(BUILDBINDIR) go install -trimpath -ldflags=-buildid= ./cmd/...
 
 # copy other scripts

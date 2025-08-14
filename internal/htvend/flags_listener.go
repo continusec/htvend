@@ -63,7 +63,7 @@ type envCtx struct {
 
 type listenerCtx struct {
 	Assets *lockfile.File
-	Blobs  *blobs.DirectoryStore
+	Blobs  blobs.Store
 
 	FetchIfMissing bool
 	FailIfMissing  bool
@@ -171,7 +171,7 @@ func handleMainServerRequest(lctx *listenerCtx, w http.ResponseWriter, r *http.R
 // as this is called by validate
 func fetchAndSaveBlob(
 	assets *lockfile.File,
-	blobs *blobs.DirectoryStore,
+	blobs blobs.Store,
 	method string,
 	body io.Reader,
 	u *url.URL,
@@ -248,14 +248,14 @@ func fetchAndSaveBlob(
 		}
 	}
 
-	err = caf.Commit()
+	digest, err := caf.Commit()
 	if err != nil {
 		return fmt.Errorf("error committing blob (url %s): %w", u.Redacted(), err)
 	}
 
 	// record asset belonging to this build
 	err = assets.AddBlob(u, lockfile.BlobInfo{
-		Sha256:  hex.EncodeToString(caf.Digest()),
+		Sha256:  hex.EncodeToString(digest),
 		Headers: filterHeaders(hdrsToCache, resp.Header),
 	})
 	if err != nil {
