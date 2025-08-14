@@ -24,7 +24,7 @@ import (
 	"path/filepath"
 
 	"github.com/continusec/htvend/internal/blobs"
-	"github.com/continusec/htvend/internal/caf"
+	"github.com/continusec/htvend/internal/blobs/directory/caf"
 	"github.com/sirupsen/logrus"
 )
 
@@ -52,7 +52,7 @@ func (s *DirectoryStore) resolve(k []byte) string {
 	return filepath.Join(s.dir, hex.EncodeToString(k))
 }
 
-func (s *DirectoryStore) Put() (*caf.ContentAddressableFile, error) {
+func (s *DirectoryStore) Put() (blobs.ContentAddressableBlob, error) {
 	if !s.writable {
 		return nil, errors.New("blob store is not writable")
 	}

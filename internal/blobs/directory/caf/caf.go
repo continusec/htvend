@@ -39,9 +39,6 @@ type ContentAddressableFile struct {
 	dg hash.Hash // created on first Write()
 
 	size int // updated in Write
-
-	path   string // set after Commit()
-	digest []byte // set after Commit()
 }
 
 type FilenameResolver func(digest []byte) string
@@ -84,28 +81,28 @@ func (caf *ContentAddressableFile) writeAlways(p []byte) (int, error) {
 	return bw, err
 }
 
-func (caf *ContentAddressableFile) Commit() error {
+func (caf *ContentAddressableFile) Commit() ([]byte, error) {
 	// special-case empty file... other code won't write until first byte received,
 	// here we force the issue which populates caf.tf etc
 	if caf.size == 0 {
 		if _, err := caf.writeAlways(nil); err != nil {
-			return fmt.Errorf("error writing empty file: %w", err)
+			return nil, fmt.Errorf("error writing empty file: %w", err)
 		}
 	}
 
 	if err := caf.tf.Close(); err != nil {
-		return fmt.Errorf("err closing temp file: %w", err)
+		return nil, fmt.Errorf("err closing temp file: %w", err)
 	}
-	caf.digest = caf.dg.Sum(nil)
-	caf.path = caf.fn(caf.digest)
-	if err := os.MkdirAll(filepath.Dir(caf.path), 0o755); err != nil {
-		return fmt.Errorf("error creating parent dir: %w", err)
+	rv := caf.dg.Sum(nil)
+	path := caf.fn(rv)
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		return nil, fmt.Errorf("error creating parent dir: %w", err)
 	}
-	if err := os.Rename(caf.tf.Name(), caf.path); err != nil {
-		return fmt.Errorf("err renaming temp file: %w", err)
+	if err := os.Rename(caf.tf.Name(), path); err != nil {
+		return nil, fmt.Errorf("err renaming temp file: %w", err)
 	}
 	caf.mw, caf.tf, caf.dg = nil, nil, nil
-	return nil
+	return rv, nil
 }
 
 // Tidy up any temporary files. Safe to call after Commit() in which case written data is left there,
@@ -122,14 +119,4 @@ func (caf *ContentAddressableFile) Cleanup() (retErr error) {
 	}
 	caf.mw, caf.dg = nil, nil
 	return nil
-}
-
-// Only valid if Commit() called
-func (caf *ContentAddressableFile) Digest() []byte {
-	return caf.digest
-}
-
-// Only valid if Commit() called
-func (caf *ContentAddressableFile) Path() string {
-	return caf.path
 }

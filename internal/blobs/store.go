@@ -16,8 +16,6 @@ package blobs
 
 import (
 	"io"
-
-	"github.com/continusec/htvend/internal/caf"
 )
 
 type Store interface {
@@ -25,11 +23,21 @@ type Store interface {
 	Get(k []byte) (io.ReadCloser, error)
 
 	// Put a thing
-	Put() (*caf.ContentAddressableFile, error)
+	Put() (ContentAddressableBlob, error)
 
 	// clean up everything - delete it all
 	Destroy() error
 
 	// delete everything except these (by string?)
 	RemoveExcept(keep map[string]bool) error
+}
+
+type ContentAddressableBlob interface {
+	io.Writer
+
+	// Called when complete successfully. Returns hash and nil if successful.
+	Commit() ([]byte, error)
+
+	// Call if failed and should cleanup after ourselves. No-op if called after successful Commit()
+	Cleanup() error
 }

@@ -248,14 +248,14 @@ func fetchAndSaveBlob(
 		}
 	}
 
-	err = caf.Commit()
+	digest, err := caf.Commit()
 	if err != nil {
 		return fmt.Errorf("error committing blob (url %s): %w", u.Redacted(), err)
 	}
 
 	// record asset belonging to this build
 	err = assets.AddBlob(u, lockfile.BlobInfo{
-		Sha256:  hex.EncodeToString(caf.Digest()),
+		Sha256:  hex.EncodeToString(digest),
 		Headers: filterHeaders(hdrsToCache, resp.Header),
 	})
 	if err != nil {
