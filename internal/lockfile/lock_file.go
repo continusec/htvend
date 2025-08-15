@@ -21,7 +21,9 @@ import (
 	"maps"
 	"net/url"
 	"os"
+	"os/signal"
 	"sync"
+	"syscall"
 
 	"github.com/continusec/htvend/internal/re"
 	"github.com/danjacques/gofslock/fslock"
@@ -72,6 +74,9 @@ type MapFileOptions struct {
 
 	// List of regexes that we never return a value for
 	NoCache *re.MultiRegexMatcher
+
+	// Install HUP handler to reload
+	ReloadHander bool
 }
 
 // if writable, then we get an exclusive lock on this file,
@@ -95,7 +100,21 @@ func NewMapFile(options MapFileOptions) (retFile *File, retErr error) {
 		}()
 	}
 
-	return rv, rv.load()
+	if err := rv.load(); err != nil {
+		return nil, fmt.Errorf("error loading initial file: %w", err)
+	}
+
+	if options.ReloadHander {
+		ch := make(chan os.Signal, 1)
+		signal.Notify(ch, syscall.SIGHUP)
+		go func() {
+			for range ch {
+				rv.reload()
+			}
+		}()
+	}
+
+	return rv, nil
 }
 
 func (f *File) SkipSave(u *url.URL) bool {
@@ -276,6 +295,22 @@ func (f *File) Close() (retErr error) {
 	return f.save(true)
 }
 
+func (f *File) reload() error {
+	// reload config from disk
+	if f.options.Writable {
+		return fmt.Errorf("cannot reload file when in writeable mode - intended for offline daemon only")
+	}
+
+	f.mu.Lock()
+	defer f.mu.Unlock()
+
+	if f.dirty {
+		return fmt.Errorf("cannot reload file when it is dirty - should not have gotten here since not writable")
+	}
+
+	return f.load()
+}
+
 // caller must get mutex
 func (f *File) save(final bool) (retErr error) {
 	// if no need to write, then don't
@@ -309,6 +344,7 @@ func (f *File) save(final bool) (retErr error) {
 
 // caller must get mutex
 func (f *File) load() (retErr error) {
+	logrus.Infof("loading assets file from: %s", f.options.Path)
 	f.blobs = make(blobMap)
 	bb, err := os.ReadFile(f.options.Path)
 	if err != nil {

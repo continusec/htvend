@@ -27,16 +27,22 @@ type OfflineCommand struct {
 	ManifestOptions
 	ListenerOptions
 
-	DummyOK []string `long:"dummy-ok-response" default:"^http.*/v2/$" description:"Regex list of URLs that we return a dummy 200 OK reply to. Useful for some Docker clients."`
+	DummyOK         []string `long:"dummy-ok-response" default:"^http.*/v2/$" description:"Regex list of URLs that we return a dummy 200 OK reply to. Useful for some Docker clients."`
+	AllowRPCUpdates bool     `long:"allow-rpc-updates" description:"If set, allow for RPC updates"`
 }
 
 func (rc *OfflineCommand) Execute(args []string) (retErr error) {
-	bs, err := rc.ManifestOptions.MakeBlobStore(false) // read-only!
+	bs, err := rc.ManifestOptions.MakeBlobStore(rc.AllowRPCUpdates)
 	if err != nil {
 		return fmt.Errorf("error making directory blob store: %w", err)
 	}
 
-	mf, err := rc.ManifestOptions.MakeManifestFile(&manifestContextOptions{}) // read-only!
+	mf, err := rc.ManifestOptions.MakeManifestFile(&manifestContextOptions{
+		ReloadOnHUP:     true,
+		Writable:        rc.AllowRPCUpdates,
+		AllowOverwrite:  rc.AllowRPCUpdates,
+		IncrementalSave: rc.AllowRPCUpdates,
+	}) // read-only!
 	if err != nil {
 		return fmt.Errorf("error getting manifest file: %w", err)
 	}
