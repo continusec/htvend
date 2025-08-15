@@ -1,28 +1,73 @@
 # Running `k3s` under this
 
-The following is experimental, but shows a way of getting `k3s` running with this tool.
+The following is experimental, but shows a way of getting `k3s` running with this tool, with installation of Concourse.
 
 ```bash
-# in one terminal
-htvend build -d -v -s
+# in one terminal, doesn't need to be root but doesn't hurt:
+htvend offline \
+    --listen-addr=127.0.0.1:4321 \
+    --ca-out=/tmp/htvend.pem \
+    --daemon
 ```
 
-In a separate terminal, as root:
+Copy/paste the env vars that it printed in 2nd (root terminal):
 
 ```bash
-# first, copy/paste all the env vars printed from above here, then:
-# running as root - note that INSTALL_K3S_VERSION must be set as otherwise relies on reading Location header
+export HTTP_PROXY=http://127.0.0.1:4321
+export HTTPS_PROXY=http://127.0.0.1:4321
+export http_proxy=http://127.0.0.1:4321
+export https_proxy=http://127.0.0.1:4321
+export NO_PROXY=
+export no_proxy=
+export SSL_CERT_FILE=/tmp/htvend.pem
+```
+
+Then, to install, in that terminal:
+
+```bash
+# skip start, as we need to modify the env file that it creates
+# set version, as it otherwise relies on some clever Location field behaviour
 curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_START=true INSTALL_K3S_VERSION=v1.33.3+k3s1 sh -
 
-# append the cert file locations
-echo SSL_CERT_FILE=$SSL_CERT_FILE >> /etc/systemd/system/k3s.service.env
+# next, add our CA and proxy to the CONTAINERD config only:
+cat <<EOF > /etc/systemd/system/k3s.service.env
+CONTAINERD_HTTP_PROXY=${HTTP_PROXY}
+CONTAINERD_HTTPS_PROXY=${HTTPS_PROXY}
+CONTAINERD_NO_PROXY=${NO_PROXY}
+CONTAINERD_SSL_CERT_FILE=${SSL_CERT_FILE}
+EOF
 
-# and start it
+# start up k3s service
 systemctl start k3s
 
-# note that k3s.service.env will need to be updated each time - we can make that work better in a subsequent update.
+# install helm binary
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+# add Concourse helm repo
+helm repo add concourse https://concourse-charts.storage.googleapis.com/
+
+# install Concourse (remove 7.14.0 once chart is updated)
+KUBECONFIG=/etc/rancher/k3s/k3s.yaml \
+    helm install \
+        --set imageTag=7.14.0 \
+        my-release \
+        concourse/concourse
+
+# note that if the htvend server is restarted, then k3s will need to be too as the CA changes
+
+# set up port-forward to see Concourse locally (test/test):
+k3s kubectl port-forward \
+    --namespace default \
+    $(
+        k3s kubectl get pods \
+            --namespace default \
+            -l "app=my-release-web" \
+            -o jsonpath="{.items[0].metadata.name}" \
+    ) \
+    8080:8080
 
 # and to stop and uninstall to try again:
 systemctl stop k3s
 /usr/local/bin/k3s-uninstall.sh
+rm -rf /root/.config/helm /root/.cache/helm /usr/local/bin/helm
 ```

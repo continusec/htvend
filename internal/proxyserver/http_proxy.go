@@ -85,8 +85,8 @@ func newSelfSignedServer(listenAddr string) (*httpServer, error) {
 	return &rv, nil
 }
 
-func ServeUntilDone(parCtx context.Context, listAddr string, handlerF http.HandlerFunc, childProcess func(ctx context.Context, proxyAddr string, caPemBytes []byte) error) (retErr error) {
-	s, err := newSelfSignedServer(listAddr)
+func ServeUntilDone(parCtx context.Context, httpListAddr, httpsListAddr string, handlerF http.HandlerFunc, childProcess func(ctx context.Context, proxyAddr string, caPemBytes []byte) error) (retErr error) {
+	s, err := newSelfSignedServer(httpListAddr)
 	if err != nil {
 		return fmt.Errorf("error creating keys for servier: %w", err)
 	}
@@ -135,7 +135,7 @@ func ServeUntilDone(parCtx context.Context, listAddr string, handlerF http.Handl
 
 	// creates a second listener. This recieves HTTPS request sent by ourselves, to ourself
 	// when handling CONNECT requests. We could probably do this better, but for now, this works
-	list2, err := net.Listen("tcp4", "127.0.0.1:0")
+	list2, err := net.Listen("tcp4", httpsListAddr)
 	if err != nil {
 		return fmt.Errorf("error making internal listener: %w", err)
 	}
@@ -236,13 +236,17 @@ func (s *httpServer) handleConnect(w http.ResponseWriter, _ *http.Request) {
 func (s *httpServer) makeCertFor(chi *tls.ClientHelloInfo) (*tls.Certificate, error) {
 	leaf := &x509.Certificate{
 		SerialNumber:          big.NewInt(2),
-		DNSNames:              []string{chi.ServerName},
 		Subject:               pkix.Name{CommonName: chi.ServerName},
 		NotBefore:             time.Now(),
 		NotAfter:              time.Now().AddDate(1, 0, 0),
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
 		BasicConstraintsValid: true,
+	}
+	if pip := net.ParseIP(chi.ServerName); pip != nil {
+		leaf.IPAddresses = []net.IP{pip}
+	} else {
+		leaf.DNSNames = []string{chi.ServerName}
 	}
 	certBytes, err := x509.CreateCertificate(rand.Reader, leaf, s.ca, &s.caPrivKey.PublicKey, s.caPrivKey)
 	if err != nil {
