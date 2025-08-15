@@ -1,0 +1,9 @@
+{
+  "https://concourse-charts.storage.googleapis.com/index.yaml": {
+    "Sha256": "80154ad63accffcc5cc54c2c56bce74121c40d020457422b7818b9a07e316e5e",
+    "Headers": {
+      "Content-Length": "129149",
+      "Content-Type": "text/plain; charset=utf-8"
+    }
+  }
+}

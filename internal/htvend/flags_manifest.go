@@ -40,9 +40,12 @@ type ManifestOptions struct {
 }
 
 type manifestContextOptions struct {
-	Writable       bool
-	FetchAlways    bool
-	AllowOverwrite bool
+	Writable        bool
+	FetchAlways     bool
+	AllowOverwrite  bool
+	ReloadOnHUP     bool
+	UseFallback     bool
+	IncrementalSave bool
 
 	NoCacheList []string
 }
@@ -68,7 +71,7 @@ func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockf
 	}
 
 	var cache *lockfile.File
-	if opts.Writable {
+	if opts.UseFallback {
 		cache, err = o.MakeGlobalCacheManifestFile(noCache, 1)
 		if err != nil {
 			return nil, fmt.Errorf("error creating global manifest file: %w", err)
@@ -76,11 +79,13 @@ func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockf
 	}
 
 	return lockfile.NewMapFile(lockfile.MapFileOptions{
-		Depth:          0,
-		Path:           o.ManifestFile,
-		Writable:       opts.Writable,
-		AllowOverwrite: opts.AllowOverwrite,
-		AlwaysFetch:    opts.FetchAlways,
+		Depth:           0,
+		Path:            o.ManifestFile,
+		Writable:        opts.Writable,
+		AllowOverwrite:  opts.AllowOverwrite,
+		AlwaysFetch:     opts.FetchAlways,
+		ReloadHander:    opts.ReloadOnHUP,
+		IncrementalSave: opts.IncrementalSave,
 
 		Fallback: cache,
 		NoCache:  noCache,

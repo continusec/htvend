@@ -25,6 +25,9 @@ type Store interface {
 	// Get thing with this hash
 	Get(k []byte) (io.ReadCloser, error)
 
+	// Does this exist?
+	Exists(k []byte) (bool, error)
+
 	// Put a thing
 	Put() (ContentAddressableBlob, error)
 

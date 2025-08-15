@@ -1,0 +1,725 @@
+{
+  "https://registry-1.docker.io/v2/bitnami/postgresql/blobs/sha256:da3988a89eabf6f6c70cc12fd117c1071844a4edb0889b2cc94b04e04c0beb91": {
+    "Sha256": "da3988a89eabf6f6c70cc12fd117c1071844a4edb0889b2cc94b04e04c0beb91",
+    "Headers": {
+      "Content-Length": "109534450",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/bitnami/postgresql/blobs/sha256:f0173484fd17c759d8ed76aaceb80eef51b96f84eaef2a2354ba6cc6f93480a6": {
+    "Sha256": "f0173484fd17c759d8ed76aaceb80eef51b96f84eaef2a2354ba6cc6f93480a6",
+    "Headers": {
+      "Content-Length": "9906",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/bitnami/postgresql/manifests/17.5.0-debian-12-r12": {
+    "Sha256": "85198aae0aed6a7099005ad5b2c0b1d2d66541af3e6337f23eda502b38ac2bcd",
+    "Headers": {
+      "Content-Length": "529",
+      "Content-Type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "Docker-Content-Digest": "sha256:85198aae0aed6a7099005ad5b2c0b1d2d66541af3e6337f23eda502b38ac2bcd"
+    }
+  },
+  "https://registry-1.docker.io/v2/bitnami/postgresql/manifests/sha256:85198aae0aed6a7099005ad5b2c0b1d2d66541af3e6337f23eda502b38ac2bcd": {
+    "Sha256": "85198aae0aed6a7099005ad5b2c0b1d2d66541af3e6337f23eda502b38ac2bcd",
+    "Headers": {
+      "Content-Length": "529",
+      "Content-Type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "Docker-Content-Digest": "sha256:85198aae0aed6a7099005ad5b2c0b1d2d66541af3e6337f23eda502b38ac2bcd"
+    }
+  },
+  "https://registry-1.docker.io/v2/bitnami/postgresql/manifests/sha256:c910ac9c72aa01f87894d69968b80866ebe2254ac86ff6b4cd497a13838001eb": {
+    "Sha256": "c910ac9c72aa01f87894d69968b80866ebe2254ac86ff6b4cd497a13838001eb",
+    "Headers": {
+      "Content-Length": "430",
+      "Content-Type": "application/vnd.docker.distribution.manifest.v2+json",
+      "Docker-Content-Digest": "sha256:c910ac9c72aa01f87894d69968b80866ebe2254ac86ff6b4cd497a13838001eb"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:08a30036f3a283e078612d45a64d9346fef69344efee8ee68c692d4ee5252ab9": {
+    "Sha256": "08a30036f3a283e078612d45a64d9346fef69344efee8ee68c692d4ee5252ab9",
+    "Headers": {
+      "Content-Length": "11148",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:10ffeec71ae3724c5d3cd2bc18e0e28f697d531f3e453187761eaef414df4861": {
+    "Sha256": "10ffeec71ae3724c5d3cd2bc18e0e28f697d531f3e453187761eaef414df4861",
+    "Headers": {
+      "Content-Length": "88694",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:1a8ab4c8fefbe1f33f7601da576a217bc542f77784d0081414f54e024738ab33": {
+    "Sha256": "1a8ab4c8fefbe1f33f7601da576a217bc542f77784d0081414f54e024738ab33",
+    "Headers": {
+      "Content-Length": "904693214",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:23523bd809cc64bab65ac16890870925e9207d832852c5f2b92863b900cd74fd": {
+    "Sha256": "23523bd809cc64bab65ac16890870925e9207d832852c5f2b92863b900cd74fd",
+    "Headers": {
+      "Content-Length": "4165",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:463bb05cd200784cb8fce4b4b1d4868efbd6f1f5c0484693568c7632cc940a68": {
+    "Sha256": "463bb05cd200784cb8fce4b4b1d4868efbd6f1f5c0484693568c7632cc940a68",
+    "Headers": {
+      "Content-Length": "76622",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:5e4a1ae280d2dfb26e87a8163a6114ea717e0c2856236bacb54945612acc0dfa": {
+    "Sha256": "5e4a1ae280d2dfb26e87a8163a6114ea717e0c2856236bacb54945612acc0dfa",
+    "Headers": {
+      "Content-Length": "125893",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:68d5b3a871fcb204edb73cd774fd1da197f0bf78545cea666c2ad01163bef4b2": {
+    "Sha256": "68d5b3a871fcb204edb73cd774fd1da197f0bf78545cea666c2ad01163bef4b2",
+    "Headers": {
+      "Content-Length": "2544",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:7c5465189ec95cc71a8183abeef7ba65deef4cd96d919cf24a55f50cb72aa4bb": {
+    "Sha256": "7c5465189ec95cc71a8183abeef7ba65deef4cd96d919cf24a55f50cb72aa4bb",
+    "Headers": {
+      "Content-Length": "2600515",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:8eacd1caaead91eaf79e02e8dc44529e99f0bbcfa8da207cb8e3ba2d4332a2e0": {
+    "Sha256": "8eacd1caaead91eaf79e02e8dc44529e99f0bbcfa8da207cb8e3ba2d4332a2e0",
+    "Headers": {
+      "Content-Length": "170962",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:8fa5a12d8312bd5b6f8682888ecae1a67d64b577053f66ddb195cd2c9e20668a": {
+    "Sha256": "8fa5a12d8312bd5b6f8682888ecae1a67d64b577053f66ddb195cd2c9e20668a",
+    "Headers": {
+      "Content-Length": "551",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:980dbbbd629beb2a098d360d9a2593d715e10b9d56e2cd62975fed4b52206b59": {
+    "Sha256": "980dbbbd629beb2a098d360d9a2593d715e10b9d56e2cd62975fed4b52206b59",
+    "Headers": {
+      "Content-Length": "15649055",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:a0e335ec256dd1d8b02f93f43996d4ad40db2ebfa7e37671cb370695bc68c653": {
+    "Sha256": "a0e335ec256dd1d8b02f93f43996d4ad40db2ebfa7e37671cb370695bc68c653",
+    "Headers": {
+      "Content-Length": "13514",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:db1f7442ecbdd097e06a0a4698e3c94c91340a338b7d793185e89f8f8bdf19be": {
+    "Sha256": "db1f7442ecbdd097e06a0a4698e3c94c91340a338b7d793185e89f8f8bdf19be",
+    "Headers": {
+      "Content-Length": "49952",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:e54fff57aed572d6e28ece2ee6bd1697e32c511a37b4028c51e3d650c178815c": {
+    "Sha256": "e54fff57aed572d6e28ece2ee6bd1697e32c511a37b4028c51e3d650c178815c",
+    "Headers": {
+      "Content-Length": "419345",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/blobs/sha256:efedf9dfaf7e821635a62ab4f7494d122160f942725fae1f9cbb835a8bb3a494": {
+    "Sha256": "efedf9dfaf7e821635a62ab4f7494d122160f942725fae1f9cbb835a8bb3a494",
+    "Headers": {
+      "Content-Length": "2297821",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/manifests/7.14.0": {
+    "Sha256": "d950b576d00c706761e5d9cc5be97eec29de4f294c292901c89c11229c6691a3",
+    "Headers": {
+      "Content-Length": "647",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:d950b576d00c706761e5d9cc5be97eec29de4f294c292901c89c11229c6691a3"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/manifests/sha256:d950b576d00c706761e5d9cc5be97eec29de4f294c292901c89c11229c6691a3": {
+    "Sha256": "d950b576d00c706761e5d9cc5be97eec29de4f294c292901c89c11229c6691a3",
+    "Headers": {
+      "Content-Length": "647",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:d950b576d00c706761e5d9cc5be97eec29de4f294c292901c89c11229c6691a3"
+    }
+  },
+  "https://registry-1.docker.io/v2/concourse/concourse/manifests/sha256:daf87fe726137d969a938a640fa121748d04fcd69d396b9e03fd6ec33794c4db": {
+    "Sha256": "daf87fe726137d969a938a640fa121748d04fcd69d396b9e03fd6ec33794c4db",
+    "Headers": {
+      "Content-Length": "2960",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:daf87fe726137d969a938a640fa121748d04fcd69d396b9e03fd6ec33794c4db"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/blobs/sha256:22addda36175b2ff040f23f9a83601a878160f991909e2401943b923174f7d36": {
+    "Sha256": "22addda36175b2ff040f23f9a83601a878160f991909e2401943b923174f7d36",
+    "Headers": {
+      "Content-Length": "2585",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/blobs/sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1": {
+    "Sha256": "4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1",
+    "Headers": {
+      "Content-Length": "32",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/blobs/sha256:5b7583bd8393f80fb1d5a17651dbbd508da553e51f35cc326ebc68ba3c065202": {
+    "Sha256": "5b7583bd8393f80fb1d5a17651dbbd508da553e51f35cc326ebc68ba3c065202",
+    "Headers": {
+      "Content-Length": "4247409",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/blobs/sha256:740dc680e5a03a2c103c73c2f451e36f397f4f492aed61da08484c1a659e5088": {
+    "Sha256": "740dc680e5a03a2c103c73c2f451e36f397f4f492aed61da08484c1a659e5088",
+    "Headers": {
+      "Content-Length": "16490399",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/blobs/sha256:7728059fcf8af5adec8ceda53928d1dccbe6bafb00c91ddee6325a12aec157f9": {
+    "Sha256": "7728059fcf8af5adec8ceda53928d1dccbe6bafb00c91ddee6325a12aec157f9",
+    "Headers": {
+      "Content-Length": "47275965",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/blobs/sha256:d69d4d41cfe2ee680d6972795e2a1eb9e4dc4ec3b3c5e0797c9ab43bb3726fa7": {
+    "Sha256": "d69d4d41cfe2ee680d6972795e2a1eb9e4dc4ec3b3c5e0797c9ab43bb3726fa7",
+    "Headers": {
+      "Content-Length": "4135941",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/manifests/sha256:5e2e5ab00d5f2652bfea2bc5554d07b57a015fe574434b275a2cb11c2d135c04": {
+    "Sha256": "5e2e5ab00d5f2652bfea2bc5554d07b57a015fe574434b275a2cb11c2d135c04",
+    "Headers": {
+      "Content-Length": "2385",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:5e2e5ab00d5f2652bfea2bc5554d07b57a015fe574434b275a2cb11c2d135c04"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/manifests/sha256:7bff73daa1385633d0e2349c2acb7a8bd09cc235cb8a248e18ecb14631450d26": {
+    "Sha256": "7bff73daa1385633d0e2349c2acb7a8bd09cc235cb8a248e18ecb14631450d26",
+    "Headers": {
+      "Content-Length": "1246",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:7bff73daa1385633d0e2349c2acb7a8bd09cc235cb8a248e18ecb14631450d26"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-helm/manifests/v0.9.8-build20250709": {
+    "Sha256": "5e2e5ab00d5f2652bfea2bc5554d07b57a015fe574434b275a2cb11c2d135c04",
+    "Headers": {
+      "Content-Length": "2385",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:5e2e5ab00d5f2652bfea2bc5554d07b57a015fe574434b275a2cb11c2d135c04"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-lb/blobs/sha256:440fbc4b1564278c2229f031ebb855f5b8e929b3db8511c3732db928390e36bb": {
+    "Sha256": "440fbc4b1564278c2229f031ebb855f5b8e929b3db8511c3732db928390e36bb",
+    "Headers": {
+      "Content-Length": "877",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-lb/blobs/sha256:6e771e15690e2fabf2332d3a3b744495411d6e0b00b2aea64419b58b0066cf81": {
+    "Sha256": "6e771e15690e2fabf2332d3a3b744495411d6e0b00b2aea64419b58b0066cf81",
+    "Headers": {
+      "Content-Length": "3993029",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-lb/blobs/sha256:a2085b9ce7147441d8cde006b2d0bb56f37290e666ed6bd1f116e2d2bede2012": {
+    "Sha256": "a2085b9ce7147441d8cde006b2d0bb56f37290e666ed6bd1f116e2d2bede2012",
+    "Headers": {
+      "Content-Length": "1549303",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-lb/blobs/sha256:a399cf1b9d57c6a31922448a2766c89124869e9720bed5497c7628eda05e7be5": {
+    "Sha256": "a399cf1b9d57c6a31922448a2766c89124869e9720bed5497c7628eda05e7be5",
+    "Headers": {
+      "Content-Length": "1540",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-lb/manifests/sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0": {
+    "Sha256": "7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0",
+    "Headers": {
+      "Content-Length": "2382",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-lb/manifests/sha256:88a79c3f9a60fb29fd8b5af271f4e8c96950d5e651b778da27b62cec61e4b7f9": {
+    "Sha256": "88a79c3f9a60fb29fd8b5af271f4e8c96950d5e651b778da27b62cec61e4b7f9",
+    "Headers": {
+      "Content-Length": "861",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:88a79c3f9a60fb29fd8b5af271f4e8c96950d5e651b778da27b62cec61e4b7f9"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/klipper-lb/manifests/v0.4.13": {
+    "Sha256": "7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0",
+    "Headers": {
+      "Content-Length": "2382",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/blobs/sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1": {
+    "Sha256": "4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1",
+    "Headers": {
+      "Content-Length": "32",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/blobs/sha256:52f827f723504aa3325bb5a54247f0dc4b92bb72569525bc951532c4ef679bd4": {
+    "Sha256": "52f827f723504aa3325bb5a54247f0dc4b92bb72569525bc951532c4ef679bd4",
+    "Headers": {
+      "Content-Length": "3992359",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/blobs/sha256:9066dcf7078beacc6fd4b5f58f7292271507984a4b42ca2b3837a1ce9120d9d9": {
+    "Sha256": "9066dcf7078beacc6fd4b5f58f7292271507984a4b42ca2b3837a1ce9120d9d9",
+    "Headers": {
+      "Content-Length": "2469329",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/blobs/sha256:906d9813327f1cb4224eebd4dfb4cf7b66337c42dd6cad3ce7d1bb0dedd28f68": {
+    "Sha256": "906d9813327f1cb4224eebd4dfb4cf7b66337c42dd6cad3ce7d1bb0dedd28f68",
+    "Headers": {
+      "Content-Length": "12779967",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/blobs/sha256:b41714cf6249634852799cf17377f98e07dace3e242c68d0f62797e452bbd032": {
+    "Sha256": "b41714cf6249634852799cf17377f98e07dace3e242c68d0f62797e452bbd032",
+    "Headers": {
+      "Content-Length": "2468",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/blobs/sha256:b978168090984e98e00f51879cebc96a05e9c87096d80a2503756cd6c4d5244f": {
+    "Sha256": "b978168090984e98e00f51879cebc96a05e9c87096d80a2503756cd6c4d5244f",
+    "Headers": {
+      "Content-Length": "554950",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/manifests/sha256:4a1d364fd081e1d01ebc6d61fe8d4784f3e4f2f45df0e76c4402b211ca219188": {
+    "Sha256": "4a1d364fd081e1d01ebc6d61fe8d4784f3e4f2f45df0e76c4402b211ca219188",
+    "Headers": {
+      "Content-Length": "1244",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:4a1d364fd081e1d01ebc6d61fe8d4784f3e4f2f45df0e76c4402b211ca219188"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/manifests/sha256:80496fdeb307541007621959aa13aed41d31db9cd2dc4167c19833e0bfa3878c": {
+    "Sha256": "80496fdeb307541007621959aa13aed41d31db9cd2dc4167c19833e0bfa3878c",
+    "Headers": {
+      "Content-Length": "3140",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:80496fdeb307541007621959aa13aed41d31db9cd2dc4167c19833e0bfa3878c"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/local-path-provisioner/manifests/v0.0.31": {
+    "Sha256": "80496fdeb307541007621959aa13aed41d31db9cd2dc4167c19833e0bfa3878c",
+    "Headers": {
+      "Content-Length": "3140",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:80496fdeb307541007621959aa13aed41d31db9cd2dc4167c19833e0bfa3878c"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:0f8b424aa0b96c1c388a5fd4d90735604459256336853082afb61733438872b5": {
+    "Sha256": "0f8b424aa0b96c1c388a5fd4d90735604459256336853082afb61733438872b5",
+    "Headers": {
+      "Content-Length": "75",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:1069fc2daed1aceff7232f4b8ab21200dd3d8b04f61be9da86977a34a105dfdc": {
+    "Sha256": "1069fc2daed1aceff7232f4b8ab21200dd3d8b04f61be9da86977a34a105dfdc",
+    "Headers": {
+      "Content-Length": "97",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:138784d87c9c50f8e59412544da4cf4928d61ccbaf93b9f5898a3ba406871bfc": {
+    "Sha256": "138784d87c9c50f8e59412544da4cf4928d61ccbaf93b9f5898a3ba406871bfc",
+    "Headers": {
+      "Content-Length": "2562",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:1891dde4e3c6a65ce8f545602bd9989c54042e1150d98189ce343c6422eb7293": {
+    "Sha256": "1891dde4e3c6a65ce8f545602bd9989c54042e1150d98189ce343c6422eb7293",
+    "Headers": {
+      "Content-Length": "19575910",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:2ae251fec02fb291b816530bdcf7100d568a00cf07a17962297fc48f43198368": {
+    "Sha256": "2ae251fec02fb291b816530bdcf7100d568a00cf07a17962297fc48f43198368",
+    "Headers": {
+      "Content-Length": "84670",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:2e4cf50eeb92ac3a7afe75e15d96a26dee99449f86b46c75b5d95f4418a5bca0": {
+    "Sha256": "2e4cf50eeb92ac3a7afe75e15d96a26dee99449f86b46c75b5d95f4418a5bca0",
+    "Headers": {
+      "Content-Length": "12579",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:3f4e2c5863480125882d92060440a5250766bce764fee10acdbac18c872e4dc7": {
+    "Sha256": "3f4e2c5863480125882d92060440a5250766bce764fee10acdbac18c872e4dc7",
+    "Headers": {
+      "Content-Length": "326",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:4e9f20d26c878a5db592123720f66b04bddf045879f6c0ad45e069a991543fa9": {
+    "Sha256": "4e9f20d26c878a5db592123720f66b04bddf045879f6c0ad45e069a991543fa9",
+    "Headers": {
+      "Content-Length": "458279",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:504a5b8caa120ec1734dc8d8a2820b4a3cb699152921ad14f7f232cca65ef6b9": {
+    "Sha256": "504a5b8caa120ec1734dc8d8a2820b4a3cb699152921ad14f7f232cca65ef6b9",
+    "Headers": {
+      "Content-Length": "122688",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:80a8c047508ae5cd6a591060fc43422cb8e3aea1bd908d913e8f0146e2297fea": {
+    "Sha256": "80a8c047508ae5cd6a591060fc43422cb8e3aea1bd908d913e8f0146e2297fea",
+    "Headers": {
+      "Content-Length": "129107",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:b40161cd83fc5d470d6abe50e87aa288481b6b89137012881d74187cfbf9f502": {
+    "Sha256": "b40161cd83fc5d470d6abe50e87aa288481b6b89137012881d74187cfbf9f502",
+    "Headers": {
+      "Content-Length": "382",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:d557676654e572af3e3173c90e7874644207fda32cd87e9d3d66b5d7b98a7b21": {
+    "Sha256": "d557676654e572af3e3173c90e7874644207fda32cd87e9d3d66b5d7b98a7b21",
+    "Headers": {
+      "Content-Length": "193",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:d82bc7a76a838c9a4a6025192429c2fed58f73742ef1fb9c8bb7b995fc3b7213": {
+    "Sha256": "d82bc7a76a838c9a4a6025192429c2fed58f73742ef1fb9c8bb7b995fc3b7213",
+    "Headers": {
+      "Content-Length": "130",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/blobs/sha256:d858cbc252ade14879807ff8dbc3043a26bbdb92087da98cda831ee040b172b3": {
+    "Sha256": "d858cbc252ade14879807ff8dbc3043a26bbdb92087da98cda831ee040b172b3",
+    "Headers": {
+      "Content-Length": "173",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/manifests/1.12.1": {
+    "Sha256": "9eb4929fd181541e7743959884000f010bcc8b1ebf8715ff0965be04509882e5",
+    "Headers": {
+      "Content-Length": "1272",
+      "Content-Type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "Docker-Content-Digest": "sha256:9eb4929fd181541e7743959884000f010bcc8b1ebf8715ff0965be04509882e5"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/manifests/sha256:4779e7517f375a597f100524db6f7f8b5b8499a6ccd14aacfa65432d4cfd5789": {
+    "Sha256": "4779e7517f375a597f100524db6f7f8b5b8499a6ccd14aacfa65432d4cfd5789",
+    "Headers": {
+      "Content-Length": "3024",
+      "Content-Type": "application/vnd.docker.distribution.manifest.v2+json",
+      "Docker-Content-Digest": "sha256:4779e7517f375a597f100524db6f7f8b5b8499a6ccd14aacfa65432d4cfd5789"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-coredns-coredns/manifests/sha256:9eb4929fd181541e7743959884000f010bcc8b1ebf8715ff0965be04509882e5": {
+    "Sha256": "9eb4929fd181541e7743959884000f010bcc8b1ebf8715ff0965be04509882e5",
+    "Headers": {
+      "Content-Length": "1272",
+      "Content-Type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "Docker-Content-Digest": "sha256:9eb4929fd181541e7743959884000f010bcc8b1ebf8715ff0965be04509882e5"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-busybox/blobs/sha256:47584b96de6d6a77592aa9f973ef3ea2c13e83d12243c2b263c8f94a5350ef75": {
+    "Sha256": "47584b96de6d6a77592aa9f973ef3ea2c13e83d12243c2b263c8f94a5350ef75",
+    "Headers": {
+      "Content-Length": "1841044",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-busybox/blobs/sha256:e99306e01437c8b2c3b6df35dbffa206456ad79f08304a38e311ffe02b42d1ee": {
+    "Sha256": "e99306e01437c8b2c3b6df35dbffa206456ad79f08304a38e311ffe02b42d1ee",
+    "Headers": {
+      "Content-Length": "477",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-busybox/manifests/1.36.1": {
+    "Sha256": "8a45424ddf949bbe9bb3231b05f9032a45da5cd036eb4867b511b00734756d6f",
+    "Headers": {
+      "Content-Length": "5034",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:8a45424ddf949bbe9bb3231b05f9032a45da5cd036eb4867b511b00734756d6f"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-busybox/manifests/sha256:8a45424ddf949bbe9bb3231b05f9032a45da5cd036eb4867b511b00734756d6f": {
+    "Sha256": "8a45424ddf949bbe9bb3231b05f9032a45da5cd036eb4867b511b00734756d6f",
+    "Headers": {
+      "Content-Length": "5034",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:8a45424ddf949bbe9bb3231b05f9032a45da5cd036eb4867b511b00734756d6f"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-busybox/manifests/sha256:e0bbe9e057ce9f090b5e9538acbbfa3a736ea289d60c99660e8bca00d47b6895": {
+    "Sha256": "e0bbe9e057ce9f090b5e9538acbbfa3a736ea289d60c99660e8bca00d47b6895",
+    "Headers": {
+      "Content-Length": "610",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:e0bbe9e057ce9f090b5e9538acbbfa3a736ea289d60c99660e8bca00d47b6895"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-traefik/blobs/sha256:442e8ef1858cc11a87bf0c901c7326137263bf45324071ee91e3af8b8422b0f3": {
+    "Sha256": "442e8ef1858cc11a87bf0c901c7326137263bf45324071ee91e3af8b8422b0f3",
+    "Headers": {
+      "Content-Length": "49993416",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-traefik/blobs/sha256:5767a026dafabae556cd462be7925c367eda59c781152c498b6703f4aed3f2b8": {
+    "Sha256": "5767a026dafabae556cd462be7925c367eda59c781152c498b6703f4aed3f2b8",
+    "Headers": {
+      "Content-Length": "462068",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-traefik/blobs/sha256:6e771e15690e2fabf2332d3a3b744495411d6e0b00b2aea64419b58b0066cf81": {
+    "Sha256": "6e771e15690e2fabf2332d3a3b744495411d6e0b00b2aea64419b58b0066cf81",
+    "Headers": {
+      "Content-Length": "3993029",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-traefik/blobs/sha256:8f80de43fbfef0ace6ad5e3f670ceb6818d2d346f87ddcb59680c1e42f025cf2": {
+    "Sha256": "8f80de43fbfef0ace6ad5e3f670ceb6818d2d346f87ddcb59680c1e42f025cf2",
+    "Headers": {
+      "Content-Length": "3107",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-traefik/blobs/sha256:9867893076682e52b7054988a5ebe3031fb4b357f9fc945567fa6796c5de6ab7": {
+    "Sha256": "9867893076682e52b7054988a5ebe3031fb4b357f9fc945567fa6796c5de6ab7",
+    "Headers": {
+      "Content-Length": "369",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-traefik/manifests/3.3.6": {
+    "Sha256": "9595fc80fa8ed6c5f3876416332ca7c88e8f255daaf265cff6b857b8d0f44503",
+    "Headers": {
+      "Content-Length": "4103",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:9595fc80fa8ed6c5f3876416332ca7c88e8f255daaf265cff6b857b8d0f44503"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-traefik/manifests/sha256:2393433ae917804739c08081d64399efd3b596d76f9b006a7e91424e28c11c50": {
+    "Sha256": "2393433ae917804739c08081d64399efd3b596d76f9b006a7e91424e28c11c50",
+    "Headers": {
+      "Content-Length": "1730",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:2393433ae917804739c08081d64399efd3b596d76f9b006a7e91424e28c11c50"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-library-traefik/manifests/sha256:9595fc80fa8ed6c5f3876416332ca7c88e8f255daaf265cff6b857b8d0f44503": {
+    "Sha256": "9595fc80fa8ed6c5f3876416332ca7c88e8f255daaf265cff6b857b8d0f44503",
+    "Headers": {
+      "Content-Length": "4103",
+      "Content-Type": "application/vnd.oci.image.index.v1+json",
+      "Docker-Content-Digest": "sha256:9595fc80fa8ed6c5f3876416332ca7c88e8f255daaf265cff6b857b8d0f44503"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:058cf3d8c2ba04ad7c064698c08c5e886a8623c0ad6171b8d72684253534417d": {
+    "Sha256": "058cf3d8c2ba04ad7c064698c08c5e886a8623c0ad6171b8d72684253534417d",
+    "Headers": {
+      "Content-Length": "537709",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:27be814a09ebd97fac6fb7b82d19f117185e90601009df3fbab6f442f85cd6b3": {
+    "Sha256": "27be814a09ebd97fac6fb7b82d19f117185e90601009df3fbab6f442f85cd6b3",
+    "Headers": {
+      "Content-Length": "93",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:33e068de264953dfdc9f9ada207e76b61159721fd64a4820b320d05133a55fb8": {
+    "Sha256": "33e068de264953dfdc9f9ada207e76b61159721fd64a4820b320d05133a55fb8",
+    "Headers": {
+      "Content-Length": "122",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:4aa0ea1413d37a58615488592a0b827ea4b2e48fa5a77cf707d0e35f025e613f": {
+    "Sha256": "4aa0ea1413d37a58615488592a0b827ea4b2e48fa5a77cf707d0e35f025e613f",
+    "Headers": {
+      "Content-Length": "385",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:5548a49bb60ba722145ce404f0eabb1b0a664f7367d8c23f89b872a275b9f566": {
+    "Sha256": "5548a49bb60ba722145ce404f0eabb1b0a664f7367d8c23f89b872a275b9f566",
+    "Headers": {
+      "Content-Length": "2073",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:5664b15f108bf9436ce3312090a767300800edbbfd4511aa1a6d64357024d5dd": {
+    "Sha256": "5664b15f108bf9436ce3312090a767300800edbbfd4511aa1a6d64357024d5dd",
+    "Headers": {
+      "Content-Length": "168",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212": {
+    "Sha256": "7c12895b777bcaa8ccae0605b4de635b68fc32d60fa08f421dc3818bf55ee212",
+    "Headers": {
+      "Content-Length": "188",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:7c7472f822f9f297fcb599cfd39bf9e6840a750ee718482706c3203b8745d02a": {
+    "Sha256": "7c7472f822f9f297fcb599cfd39bf9e6840a750ee718482706c3203b8745d02a",
+    "Headers": {
+      "Content-Length": "17069136",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:9aee425378d2c16cd44177dc54a274b312897f5860a8e78fdfda555a0d79dd71": {
+    "Sha256": "9aee425378d2c16cd44177dc54a274b312897f5860a8e78fdfda555a0d79dd71",
+    "Headers": {
+      "Content-Length": "130495",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:b6824ed73363f94b3b2b44084c51c31bc32af77a96861d49e16f91e3ab6bed71": {
+    "Sha256": "b6824ed73363f94b3b2b44084c51c31bc32af77a96861d49e16f91e3ab6bed71",
+    "Headers": {
+      "Content-Length": "67",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:da7816fa955ea24533c388143c78804c28682eef99b4ee3723b548c70148bba6": {
+    "Sha256": "da7816fa955ea24533c388143c78804c28682eef99b4ee3723b548c70148bba6",
+    "Headers": {
+      "Content-Length": "321",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:e8d9a567199d7a318c875f2558a679ba8a924f817afacbb428afc3ffe6be6828": {
+    "Sha256": "e8d9a567199d7a318c875f2558a679ba8a924f817afacbb428afc3ffe6be6828",
+    "Headers": {
+      "Content-Length": "13370",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/blobs/sha256:fa614bdc5d4d47e1f671a83c143055486a8248dd92af31d5e1f5fff7fa72435e": {
+    "Sha256": "fa614bdc5d4d47e1f671a83c143055486a8248dd92af31d5e1f5fff7fa72435e",
+    "Headers": {
+      "Content-Length": "104182",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/manifests/sha256:048bcf48fc2cce517a61777e22bac782ba59ea5e9b9a54bcb42dbee99566a91f": {
+    "Sha256": "048bcf48fc2cce517a61777e22bac782ba59ea5e9b9a54bcb42dbee99566a91f",
+    "Headers": {
+      "Content-Length": "2815",
+      "Content-Type": "application/vnd.docker.distribution.manifest.v2+json",
+      "Docker-Content-Digest": "sha256:048bcf48fc2cce517a61777e22bac782ba59ea5e9b9a54bcb42dbee99566a91f"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/manifests/sha256:dccf8474fb910fef261d31d9483d7e4c1df7b86cf4d638fb6a7d7c88bd51600a": {
+    "Sha256": "dccf8474fb910fef261d31d9483d7e4c1df7b86cf4d638fb6a7d7c88bd51600a",
+    "Headers": {
+      "Content-Length": "1297",
+      "Content-Type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "Docker-Content-Digest": "sha256:dccf8474fb910fef261d31d9483d7e4c1df7b86cf4d638fb6a7d7c88bd51600a"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-metrics-server/manifests/v0.7.2": {
+    "Sha256": "dccf8474fb910fef261d31d9483d7e4c1df7b86cf4d638fb6a7d7c88bd51600a",
+    "Headers": {
+      "Content-Length": "1297",
+      "Content-Type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "Docker-Content-Digest": "sha256:dccf8474fb910fef261d31d9483d7e4c1df7b86cf4d638fb6a7d7c88bd51600a"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-pause/blobs/sha256:7d46a07936af93fcce097459055f93ab07331509aa55f4a2a90d95a3ace1850e": {
+    "Sha256": "7d46a07936af93fcce097459055f93ab07331509aa55f4a2a90d95a3ace1850e",
+    "Headers": {
+      "Content-Length": "901",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-pause/blobs/sha256:e45ec8dad998aae4542eafa2b5aa4165a65e84178512d35a71bdcfabd71e6d10": {
+    "Sha256": "e45ec8dad998aae4542eafa2b5aa4165a65e84178512d35a71bdcfabd71e6d10",
+    "Headers": {
+      "Content-Length": "248297",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-pause/manifests/3.6": {
+    "Sha256": "74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893",
+    "Headers": {
+      "Content-Length": "3519",
+      "Content-Type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "Docker-Content-Digest": "sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-pause/manifests/sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893": {
+    "Sha256": "74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893",
+    "Headers": {
+      "Content-Length": "3519",
+      "Content-Type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "Docker-Content-Digest": "sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893"
+    }
+  },
+  "https://registry-1.docker.io/v2/rancher/mirrored-pause/manifests/sha256:fd05cc99606e9180b261362fb625dc3759fc57cbb6f6bd4fecccec64cc85ddfd": {
+    "Sha256": "fd05cc99606e9180b261362fb625dc3759fc57cbb6f6bd4fecccec64cc85ddfd",
+    "Headers": {
+      "Content-Length": "526",
+      "Content-Type": "application/vnd.docker.distribution.manifest.v2+json",
+      "Docker-Content-Digest": "sha256:fd05cc99606e9180b261362fb625dc3759fc57cbb6f6bd4fecccec64cc85ddfd"
+    }
+  }
+}

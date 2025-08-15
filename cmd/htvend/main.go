@@ -24,6 +24,7 @@ func main() {
 		app.FlagsCommon
 		Build   htvend.BuildCommand   `command:"build" description:"Run command to create/update the manifest file"`
 		Verify  htvend.VerifyCommand  `command:"verify" description:"Verify and fetch any missing assets in the manifest file"`
+		Import  htvend.ImportCommand  `command:"import" description:"Import assets to a daemon htvend"`
 		Export  htvend.ExportCommand  `command:"export" description:"Export referenced assets to directory"`
 		Offline htvend.OfflineCommand `command:"offline" description:"Serve assets to command, don't allow other outbound requests"`
 		Clean   htvend.CleanCommand   `command:"clean" description:"Clean various files, see htvend clean --help for details"`
