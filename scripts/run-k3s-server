@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# must be set to use any of the SSL related settings below
+ssl_cert_file="${SSL_CERT_FILE}"
+
+# used for all the proxy vars
+http_proxy="${HTTP_PROXY}"
+
+# path to buildah binary to use
+k3s_binary="${K3S_BINARY:-k3s}"
+
+env_set_args=""
+env_unset_args=""
+
+env_set_args="${env_set_args} CONTAINERD_HTTP_PROXY=${http_proxy}"
+env_set_args="${env_set_args} CONTAINERD_HTTPS_PROXY=${http_proxy}"
+env_set_args="${env_set_args} CONTAINERD_NO_PROXY="
+env_set_args="${env_set_args} CONTAINERD_SSL_CERT_FILE=${ssl_cert_file}"
+env_set_args="${env_set_args} CONTAINERD_http_proxy=${http_proxy}"
+env_set_args="${env_set_args} CONTAINERD_https_proxy=${http_proxy}"
+env_set_args="${env_set_args} CONTAINERD_no_proxy="
+
+env_unset_args="${env_unset_args} --unset=HTTP_PROXY"
+env_unset_args="${env_unset_args} --unset=HTTPS_PROXY"
+env_unset_args="${env_unset_args} --unset=NO_PROXY"
+env_unset_args="${env_unset_args} --unset=SSL_CERT_FILE"
+env_unset_args="${env_unset_args} --unset=http_proxy"
+env_unset_args="${env_unset_args} --unset=https_proxy"
+env_unset_args="${env_unset_args} --unset=no_proxy"
+
+echo "NOTIFY thing: ${NOTIFY_SOCKET}"
+
+set -x
+exec env ${env_unset_args} ${env_set_args} "${k3s_binary}" server "$@"

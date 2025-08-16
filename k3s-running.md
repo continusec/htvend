@@ -13,13 +13,13 @@ htvend offline \
 Copy/paste the env vars that it printed in 2nd (root terminal):
 
 ```bash
-export HTTP_PROXY=http://127.0.0.1:4321
-export HTTPS_PROXY=http://127.0.0.1:4321
-export http_proxy=http://127.0.0.1:4321
-export https_proxy=http://127.0.0.1:4321
+export HTTP_PROXY=http://127.0.0.1:4532
+export HTTPS_PROXY=http://127.0.0.1:4532
+export http_proxy=http://127.0.0.1:4532
+export https_proxy=http://127.0.0.1:4532
 export NO_PROXY=
 export no_proxy=
-export SSL_CERT_FILE=/tmp/htvend.pem
+export SSL_CERT_FILE=/etc/htvend/cert.pem
 ```
 
 Then, to install, in that terminal:
@@ -27,24 +27,24 @@ Then, to install, in that terminal:
 ```bash
 # skip start, as we need to modify the env file that it creates
 # set version, as it otherwise relies on some clever Location field behaviour
-curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_START=true INSTALL_K3S_VERSION=v1.33.3+k3s1 sh -
+htvend offline -- bash -c "curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_START=true INSTALL_K3S_VERSION=v1.33.3+k3s1 sh -"
 
 # next, add our CA and proxy to the CONTAINERD config only:
 cat <<EOF > /etc/systemd/system/k3s.service.env
-CONTAINERD_HTTP_PROXY=${HTTP_PROXY}
-CONTAINERD_HTTPS_PROXY=${HTTPS_PROXY}
-CONTAINERD_NO_PROXY=${NO_PROXY}
-CONTAINERD_SSL_CERT_FILE=${SSL_CERT_FILE}
+CONTAINERD_HTTP_PROXY=http://127.0.0.1:4532
+CONTAINERD_HTTPS_PROXY=http://127.0.0.1:4532
+CONTAINERD_NO_PROXY=
+CONTAINERD_SSL_CERT_FILE=/etc/htvend/cert.pem
 EOF
 
 # start up k3s service
 systemctl start k3s
 
 # install helm binary
-curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+htvend offline -- bash -c "curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash"
 
 # add Concourse helm repo
-helm repo add concourse https://concourse-charts.storage.googleapis.com/
+htvend offline -- helm repo add concourse https://concourse-charts.storage.googleapis.com/
 
 # install Concourse (remove 7.14.0 once chart is updated)
 KUBECONFIG=/etc/rancher/k3s/k3s.yaml \
@@ -70,4 +70,35 @@ k3s kubectl port-forward \
 systemctl stop k3s
 /usr/local/bin/k3s-uninstall.sh
 rm -rf /root/.config/helm /root/.cache/helm /usr/local/bin/helm
+```
+
+```bash
+
+# add service for us
+cat <<'EOF' > /etc/systemd/system/htvend.service
+[Unit]
+Description=htvend service
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/env \
+    htvend offline \
+        --manifest=/Users/aeijdenberg/lima/vol1/k3s-test/assets.json \
+        --listen-addr=127.0.0.1:4532 \
+        --tls-generate-if-missing \
+        --tls-cert-pem=/etc/htvend/cert.pem \
+        --tls-key-pem=/etc/htvend/key.pem \
+        --daemon
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# enable and start it
+systemctl enable htvend
+systemctl start htvend
 ```

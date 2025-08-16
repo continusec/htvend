@@ -37,9 +37,12 @@ type ListenerOptions struct {
 
 	ListenAddr    string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
 	TlsListenAddr string `long:"tls-listen-addr" default:"127.0.0.1:0" description:"Listen address for a TLS proxy server (:0) will allocate a dynamic open port"`
-	CertFileLoc   string `short:"c" long:"ca-out" description:"Cert file out location - defaults to a temp file"`
 	Daemon        bool   `short:"d" long:"daemon" description:"Run as a daemon until terminated"`
 	Serialize     bool   `short:"s" long:"single-thread" description:"Don't service HTTP request until previous one is complete."`
+
+	TlsCertPem           string `long:"tls-cert-pem" description:"If set use this as the TLS cert. Must be a CA pem"`
+	TlsKeyPem            string `long:"tls-key-pem" description:"If set use this as the TLS key. Must match the cert"`
+	TlsGenerateIfMissing bool   `long:"tls-generate-if-missing" description:"If set, generate and save if files missing"`
 
 	TmpDirs          []string `long:"with-temp-dir" short:"t" description:"List of temporary directories to be creating when running this command. Env vars will be be pointing to these for the sub-process."`
 	CertFileEnvVars  []string `long:"set-env-var-ssl-cert-file" default:"SSL_CERT_FILE" description:"List of environment variables that will be set pointing to the temporary CA certificates file in PEM format."`
@@ -80,16 +83,22 @@ func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt st
 	var mu sync.Mutex
 
 	return app.RunUntilSignals(func(parCtx context.Context) error {
-		return proxyserver.ServeUntilDone(parCtx, o.ListenAddr, o.TlsListenAddr, func(w http.ResponseWriter, r *http.Request) {
-			if o.Serialize {
-				mu.Lock()
-				defer mu.Unlock()
-			}
-			if err := handleMainServerRequest(lctx, w, r); err != nil {
-				logrus.Warnf("error handling request: %v", err)
-				http.Error(w, "see proxy server log for details", http.StatusInternalServerError)
-			}
-		}, func(ctx context.Context, proxyAddr string, caPem []byte) error {
+		return proxyserver.ServeUntilDone(parCtx, proxyserver.ProxyServerConfig{
+			HttpListenAddr:       o.ListenAddr,
+			HttpsListenAddr:      o.TlsListenAddr,
+			TlsCertPath:          o.TlsCertPem,
+			TlsKeyPath:           o.TlsKeyPem,
+			TlsGenerateIfMissing: o.TlsGenerateIfMissing,
+			Handler: func(w http.ResponseWriter, r *http.Request) {
+				if o.Serialize {
+					mu.Lock()
+					defer mu.Unlock()
+				}
+				if err := handleMainServerRequest(lctx, w, r); err != nil {
+					logrus.Warnf("error handling request: %v", err)
+					http.Error(w, "see proxy server log for details", http.StatusInternalServerError)
+				}
+			}}, func(ctx context.Context, proxyAddr string, caPem []byte) error {
 			return app.WithTempDir(func(tempDir string) error {
 				ectx := envCtx{
 					TempDir:   tempDir,
