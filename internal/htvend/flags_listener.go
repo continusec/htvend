@@ -22,6 +22,8 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
+	"strconv"
 	"sync"
 
 	"github.com/continusec/htvend/internal/app"
@@ -38,6 +40,7 @@ type ListenerOptions struct {
 	ListenAddr    string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
 	TlsListenAddr string `long:"tls-listen-addr" default:"127.0.0.1:0" description:"Listen address for a TLS proxy server (:0) will allocate a dynamic open port"`
 	Daemon        bool   `short:"d" long:"daemon" description:"Run as a daemon until terminated"`
+	DaemonPidFile string `long:"daemon-pid-file" description:"If set, write a PID file to this location"`
 	Serialize     bool   `short:"s" long:"single-thread" description:"Don't service HTTP request until previous one is complete."`
 
 	TlsCertPem           string `long:"tls-cert-pem" description:"If set use this as the TLS cert. Must be a CA pem"`
@@ -99,7 +102,7 @@ func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt st
 					http.Error(w, "see proxy server log for details", http.StatusInternalServerError)
 				}
 			}}, func(ctx context.Context, proxyAddr string, caPem []byte) error {
-			return app.WithTempDir(func(tempDir string) error {
+			return app.WithTempDir(func(tempDir string) (retErr error) {
 				ectx := envCtx{
 					TempDir:   tempDir,
 					ProxyAddr: proxyAddr,
@@ -124,6 +127,19 @@ func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt st
 				// we are a daemon
 				if o.SubprocessOptions.Process != "" {
 					return fmt.Errorf("if running as a daemon, no sub-process should be specified. Received: %s", o.SubprocessOptions.Process)
+				}
+
+				if o.DaemonPidFile != "" {
+					pid := []byte(strconv.Itoa(os.Getpid()))
+					logrus.Infof("writing pid %s to %s", pid, o.DaemonPidFile)
+					if err := os.WriteFile(o.DaemonPidFile, pid, 0o644); err != nil {
+						return fmt.Errorf("error writing pid file for daemon: %w", err)
+					}
+					defer func() {
+						if err := os.Remove(o.DaemonPidFile); err != nil && retErr == nil {
+							retErr = fmt.Errorf("error removing daemon pid file: %w", err)
+						}
+					}()
 				}
 
 				logrus.Infof("Daemon running...")

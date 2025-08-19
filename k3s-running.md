@@ -2,7 +2,56 @@
 
 The following is experimental, but shows a way of getting `k3s` running with this tool, with installation of Concourse.
 
+First, let's install `htvend` as a local daemon - this will feed `k3s`.
+
 ```bash
+# create user
+useradd --system htvend
+
+# create dir for blobs
+mkdir -p /var/lib/htvend/etc /var/lib/htvend/store
+test -f /var/lib/htvend/store/assets.json || echo "{}" > /var/lib/htvend/store/assets.json
+chown -R htvend /var/lib/htvend
+
+# anyone can read/list the config dir
+chmod 755 /var/lib/htvend /var/lib/htvend/etc
+
+# only our user can deal with store dire
+chmod 700 /var/lib/htvend/store
+
+# create service file
+cat <<'EOF' > /etc/systemd/system/htvend.service
+[Unit]
+Description=htvend service
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=htvend
+ExecStart=/usr/bin/env \
+    htvend offline \
+        --manifest=/var/lib/htvend/store/assets.json \
+        --blobs-dir=/var/lib/htvend/store/blobs \
+        --listen-addr=127.0.0.1:4532 \
+        --tls-generate-if-missing \
+        --tls-cert-pem=/var/lib/htvend/etc/cert.pem \
+        --tls-key-pem=/var/lib/htvend/etc/key.pem \
+        --daemon \
+        --daemon-pid-file=/var/lib/htvend/pid
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# enable and start it
+systemctl enable htvend
+systemctl start htvend
+```
+
+
+
 # in one terminal, doesn't need to be root but doesn't hurt:
 htvend offline \
     --listen-addr=127.0.0.1:4321 \
@@ -98,7 +147,5 @@ ExecStart=/usr/bin/env \
 WantedBy=multi-user.target
 EOF
 
-# enable and start it
-systemctl enable htvend
-systemctl start htvend
+
 ```

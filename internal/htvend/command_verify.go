@@ -49,6 +49,7 @@ func (rc *VerifyCommand) Execute(args []string) (retErr error) {
 	mf, err := rc.ManifestOptions.MakeManifestFile(&manifestContextOptions{
 		Writable:       rc.Repair,
 		AllowOverwrite: rc.Repair,
+		UseFallback:    rc.Repair,
 		NoCacheList:    rc.FetchOptions.NoCache,
 	})
 	if err != nil {

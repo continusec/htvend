@@ -36,7 +36,9 @@ func (rc *OfflineCommand) Execute(args []string) (retErr error) {
 		return fmt.Errorf("error making directory blob store: %w", err)
 	}
 
-	mf, err := rc.ManifestOptions.MakeManifestFile(&manifestContextOptions{}) // read-only!
+	mf, err := rc.ManifestOptions.MakeManifestFile(&manifestContextOptions{
+		ReloadOnHUP: true,
+	}) // read-only!
 	if err != nil {
 		return fmt.Errorf("error getting manifest file: %w", err)
 	}
