@@ -20,6 +20,90 @@
       "Content-Type": "application/zip"
     }
   },
+  "https://proxy.golang.org/github.com/containers/image/v5/@v/v5.36.1.info": {
+    "Sha256": "cae9df2b50103dfbef9e8585236d8f85369282ecd5a963c7bdb7c268ac2d6412",
+    "Headers": {
+      "Content-Length": "194",
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/image/v5/@v/v5.36.1.mod": {
+    "Sha256": "8c35d70ea6d2b6e4be8357973ad0a09ff7730250efa151926bc71b0eed2416d8",
+    "Headers": {
+      "Content-Length": "5932",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/image/v5/@v/v5.36.1.zip": {
+    "Sha256": "c47b842b05be5f20b6560f56a7c553d554d91a9df2828fc344b475f28119d765",
+    "Headers": {
+      "Content-Length": "1080102",
+      "Content-Type": "application/zip"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/libtrust/@v/v0.0.0-20230121012942-c1716e8a8d01.info": {
+    "Sha256": "aaf74b3c5dfeeb55eb7426baeeec618809c36a34e41755299a5e722a8515be51",
+    "Headers": {
+      "Content-Length": "198",
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/libtrust/@v/v0.0.0-20230121012942-c1716e8a8d01.mod": {
+    "Sha256": "3313499079ab1eb18691e212ac5f0a525bd49ddf5b01d9c2142441b5667ac1d7",
+    "Headers": {
+      "Content-Length": "38",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/libtrust/@v/v0.0.0-20230121012942-c1716e8a8d01.zip": {
+    "Sha256": "b743c8e9008da530172e8bb19f5be6b1f1e802714bfe5a403d22f14324512854",
+    "Headers": {
+      "Content-Length": "57251",
+      "Content-Type": "application/zip"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/ocicrypt/@v/v1.2.1.info": {
+    "Sha256": "cb2675a667117909d369f2296a3769a6a9bb330bce0d2c324a39dd3b8ed17986",
+    "Headers": {
+      "Content-Length": "195",
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/ocicrypt/@v/v1.2.1.mod": {
+    "Sha256": "38a49c273e11c74e842dcf845c6588fba7c35b076f3935d1491b16c386b534a3",
+    "Headers": {
+      "Content-Length": "895",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/ocicrypt/@v/v1.2.1.zip": {
+    "Sha256": "9b36e2235a5009b5e2efcb1374a55ca156c5798d68d09dca25b238e233860183",
+    "Headers": {
+      "Content-Length": "104954",
+      "Content-Type": "application/zip"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/storage/@v/v1.59.1.info": {
+    "Sha256": "e648e67a6b65e2ac0b6267ed1143bdf98f09a917914db880168e05b11f3445cf",
+    "Headers": {
+      "Content-Length": "196",
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/storage/@v/v1.59.1.mod": {
+    "Sha256": "cc9718c7e61647ff6380bf873719aeb54eeb9e5b6b145556327d4f8e4c9a5d73",
+    "Headers": {
+      "Content-Length": "2206",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/github.com/containers/storage/@v/v1.59.1.zip": {
+    "Sha256": "f9afc8625d981d26ad57c4791669fb58617be8456b0c33263f4007e149c459c8",
+    "Headers": {
+      "Content-Length": "812202",
+      "Content-Type": "application/zip"
+    }
+  },
   "https://proxy.golang.org/github.com/danjacques/gofslock/@v/v0.0.0-20240212154529-d899e02bfe22.info": {
     "Sha256": "7fd3c772627bcf3c6e6e56ebfb024ccab456153dba7d9c29ac022d1b6af3ca5e",
     "Headers": {
@@ -41,24 +125,45 @@
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/github.com/davecgh/go-spew/@v/v1.1.1.info": {
-    "Sha256": "73de263267a4545708302d807be60fdb649c5c7b981d25302a638145fba0ec47",
+  "https://proxy.golang.org/github.com/davecgh/go-spew/@v/v1.1.2-0.20180830191138-d8f796af33cc.info": {
+    "Sha256": "724bf7eb786b3b7ec5f8d5bd9acbe4e1328518dc8eeea6bf1bd1cf05c8673d55",
     "Headers": {
-      "Content-Length": "50",
+      "Content-Length": "80",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/github.com/davecgh/go-spew/@v/v1.1.1.mod": {
+  "https://proxy.golang.org/github.com/davecgh/go-spew/@v/v1.1.2-0.20180830191138-d8f796af33cc.mod": {
     "Sha256": "bcb29393251237b79a17b6c19bf29134f43e8f438c3198988fcd461a1cdf05cc",
     "Headers": {
       "Content-Length": "34",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/github.com/davecgh/go-spew/@v/v1.1.1.zip": {
-    "Sha256": "6b44a843951f371b7010c754ecc3cabefe815d5ced1c5b9409fb2d697e8a890d",
+  "https://proxy.golang.org/github.com/davecgh/go-spew/@v/v1.1.2-0.20180830191138-d8f796af33cc.zip": {
+    "Sha256": "b4d0923b169b194f0016ec46f3df1ab0c68e27999743e43fe2de59ecb2484128",
     "Headers": {
-      "Content-Length": "60320",
+      "Content-Length": "61763",
+      "Content-Type": "application/zip"
+    }
+  },
+  "https://proxy.golang.org/github.com/docker/docker/@v/v28.3.2+incompatible.info": {
+    "Sha256": "8078c273ef17b08b5a3adeadf581ab154343deabbe0b39c79e6a4a61c9209326",
+    "Headers": {
+      "Content-Length": "204",
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/github.com/docker/docker/@v/v28.3.2+incompatible.mod": {
+    "Sha256": "91fd0ed2743da47a21157d0f6b7685932f54a8c363217e6c5bc67cf223ffd822",
+    "Headers": {
+      "Content-Length": "32",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/github.com/docker/docker/@v/v28.3.2+incompatible.zip": {
+    "Sha256": "6b4376ea4f67f9a664b272f2799607e6d6c04c66956ec34cfb1d24c1a29a3b3b",
+    "Headers": {
+      "Content-Length": "7128752",
       "Content-Type": "application/zip"
     }
   },
@@ -146,24 +251,87 @@
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/github.com/pmezard/go-difflib/@v/v1.0.0.info": {
-    "Sha256": "97cbb0239d80e5221efd1f0aa645d120272bd3ee7975bd654f07a8ed0c2c2adc",
+  "https://proxy.golang.org/github.com/opencontainers/go-digest/@v/v1.0.0.info": {
+    "Sha256": "38e2187cf8b5583ca240efee88162eb8b5bfc19b92a4e390cc142dd4b591167c",
     "Headers": {
       "Content-Length": "50",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/github.com/pmezard/go-difflib/@v/v1.0.0.mod": {
+  "https://proxy.golang.org/github.com/opencontainers/go-digest/@v/v1.0.0.mod": {
+    "Sha256": "8de0250a4ba6811f7703fbb499ed889672597699f335b12f47d788d1df087b4a",
+    "Headers": {
+      "Content-Length": "52",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/github.com/opencontainers/go-digest/@v/v1.0.0.zip": {
+    "Sha256": "615efb31ff6cd71035b8aa38c3659d8b4da46f3cd92ac807cb50449adfe37c86",
+    "Headers": {
+      "Content-Length": "34573",
+      "Content-Type": "application/zip"
+    }
+  },
+  "https://proxy.golang.org/github.com/opencontainers/image-spec/@v/v1.1.1.info": {
+    "Sha256": "879785e29bc2dbfc57302ca81fb6b881c356124831ad71ff2737ef56f486f0ba",
+    "Headers": {
+      "Content-Length": "201",
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/github.com/opencontainers/image-spec/@v/v1.1.1.mod": {
+    "Sha256": "1905f5f90061e422d1a23a8b3becf2b8847c4ae00704d44de2bb7f585fa0fed6",
+    "Headers": {
+      "Content-Length": "415",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/github.com/opencontainers/image-spec/@v/v1.1.1.zip": {
+    "Sha256": "3a32eeb459719172947c20be78b5b7293c6ea84f4039184e846f6b676bc19574",
+    "Headers": {
+      "Content-Length": "196183",
+      "Content-Type": "application/zip"
+    }
+  },
+  "https://proxy.golang.org/github.com/peterbourgon/unixtransport/@v/v0.0.6.info": {
+    "Sha256": "05b6176b4a5604f2d8b2f194147b700160e8b416761ff89235c1fec403427229",
+    "Headers": {
+      "Content-Length": "202",
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/github.com/peterbourgon/unixtransport/@v/v0.0.6.mod": {
+    "Sha256": "b74dfb428821450a56971276929cbff390a1156b71c093efee937cd7a6124148",
+    "Headers": {
+      "Content-Length": "164",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  "https://proxy.golang.org/github.com/peterbourgon/unixtransport/@v/v0.0.6.zip": {
+    "Sha256": "6e341c0ab5e91b938ba39adb656661f91add0b9e6315354d1c2185c7b00b5d13",
+    "Headers": {
+      "Content-Length": "24726",
+      "Content-Type": "application/zip"
+    }
+  },
+  "https://proxy.golang.org/github.com/pmezard/go-difflib/@v/v1.0.1-0.20181226105442-5d4384ee4fb2.info": {
+    "Sha256": "821752bb31ec89f312309ed632ab9c9e644c1d9836df470a77a1c9c06783c147",
+    "Headers": {
+      "Content-Length": "80",
+      "Content-Type": "application/json"
+    }
+  },
+  "https://proxy.golang.org/github.com/pmezard/go-difflib/@v/v1.0.1-0.20181226105442-5d4384ee4fb2.mod": {
     "Sha256": "74b2e766eb215377864d587badf57e95521f692d2a7860b3c7759093f9c9bec2",
     "Headers": {
       "Content-Length": "37",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/github.com/pmezard/go-difflib/@v/v1.0.0.zip": {
-    "Sha256": "de04cecc1a4b8d53e4357051026794bcbc54f2e6a260cfac508ce69d5d6457a0",
+  "https://proxy.golang.org/github.com/pmezard/go-difflib/@v/v1.0.1-0.20181226105442-5d4384ee4fb2.zip": {
+    "Sha256": "24ff45e356f638a53bd0c89fff961fbeaecfdb0dc5e482ceed0a2230e0e5f3b7",
     "Headers": {
-      "Content-Length": "12433",
+      "Content-Length": "12506",
       "Content-Type": "application/zip"
     }
   },

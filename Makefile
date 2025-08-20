@@ -29,7 +29,7 @@ clean:
 	git clean -xfd
 
 $(go_bins) $(BUILDBINDIR): $(GOSOURCES) go.*
-	GOBIN=$(BUILDBINDIR) go install -trimpath -ldflags=-buildid= ./cmd/...
+	GOBIN=$(BUILDBINDIR) CGO_ENABLED=0 go install -trimpath -ldflags=-buildid= ./cmd/...
 
 # copy other scripts
 $(scripts): $(go_bins) scripts/* $(BUILDBINDIR)
