@@ -48,6 +48,25 @@ func NewRegistryStore(url string, writable bool) *RegistryStore {
 	}
 }
 
+func (r *RegistryStore) Exists(k []byte) (bool, error) {
+	resp, err := r.client.Head(r.base + "blobs/sha256:" + hex.EncodeToString(k))
+	if err != nil {
+		return false, fmt.Errorf("error checking blob existence from registry store: %w", err)
+	}
+	defer resp.Body.Close()
+	switch resp.StatusCode {
+	case http.StatusOK:
+		return true, nil
+	case http.StatusNotFound:
+		return false, nil
+	default:
+		bb, _ := io.ReadAll(resp.Body)
+		resp.Body.Close()
+		logrus.Debugf("error response from HEAD blob: %s", bb)
+		return false, fmt.Errorf("bad status code in registry store for HEAD blob: %d", resp.StatusCode)
+	}
+}
+
 func (r *RegistryStore) Get(k []byte) (io.ReadCloser, error) {
 	resp, err := r.client.Get(r.base + "blobs/sha256:" + hex.EncodeToString(k))
 	if err != nil {

@@ -68,7 +68,7 @@ export http_proxy=http://127.0.0.1:4532
 export https_proxy=http://127.0.0.1:4532
 export NO_PROXY=
 export no_proxy=
-export SSL_CERT_FILE=/etc/htvend/cert.pem
+export SSL_CERT_FILE=/var/lib/htvend/etc/cert.pem
 ```
 
 Then, to install, in that terminal:
@@ -76,14 +76,14 @@ Then, to install, in that terminal:
 ```bash
 # skip start, as we need to modify the env file that it creates
 # set version, as it otherwise relies on some clever Location field behaviour
-htvend offline -- bash -c "curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_START=true INSTALL_K3S_VERSION=v1.33.3+k3s1 sh -"
+htvend build -- bash -c "curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_START=true INSTALL_K3S_VERSION=v1.33.3+k3s1 sh -"
 
 # next, add our CA and proxy to the CONTAINERD config only:
 cat <<EOF > /etc/systemd/system/k3s.service.env
 CONTAINERD_HTTP_PROXY=http://127.0.0.1:4532
 CONTAINERD_HTTPS_PROXY=http://127.0.0.1:4532
 CONTAINERD_NO_PROXY=
-CONTAINERD_SSL_CERT_FILE=/etc/htvend/cert.pem
+CONTAINERD_SSL_CERT_FILE=/var/lib/htvend/etc/cert.pem
 EOF
 
 # start up k3s service

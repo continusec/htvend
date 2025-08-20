@@ -10,6 +10,7 @@ require (
 	github.com/gboddin/go-www-authenticate-parser v0.0.0-20230926203616-ec0b649bb077
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/jessevdk/go-flags v1.6.1
+	github.com/peterbourgon/unixtransport v0.0.6
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.10.0
 	software.sslmate.com/src/go-pkcs12 v0.6.0
