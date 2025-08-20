@@ -16,7 +16,7 @@ chown -R htvend /var/lib/htvend
 # anyone can read/list the config dir
 chmod 755 /var/lib/htvend /var/lib/htvend/etc
 
-# only our user can deal with store dire
+# only our user can deal with store dir
 chmod 700 /var/lib/htvend/store
 
 # create service file
@@ -39,7 +39,8 @@ ExecStart=/usr/bin/env \
         --tls-cert-pem=/var/lib/htvend/etc/cert.pem \
         --tls-key-pem=/var/lib/htvend/etc/key.pem \
         --daemon \
-        --daemon-pid-file=/var/lib/htvend/pid
+        --allow-rpc-updates \
+        --daemon-rpc-socket=/var/lib/htvend/rpc
 
 [Install]
 WantedBy=multi-user.target
@@ -50,6 +51,15 @@ systemctl enable htvend
 systemctl start htvend
 ```
 
+
+```bash
+# poke in an image
+htvend build -m rancher.json -- build-img-with-proxy -f <(echo FROM rancher/mirrored-pause:3.6)
+
+# review assets.json
+sudo htvend import -m rancher.json --destination=/var/lib/htvend/rpc
+
+```
 
 
 # in one terminal, doesn't need to be root but doesn't hurt:

@@ -38,9 +38,10 @@ func (rc *OfflineCommand) Execute(args []string) (retErr error) {
 	}
 
 	mf, err := rc.ManifestOptions.MakeManifestFile(&manifestContextOptions{
-		ReloadOnHUP:    true,
-		Writable:       rc.AllowRPCUpdates,
-		AllowOverwrite: rc.AllowRPCUpdates,
+		ReloadOnHUP:     true,
+		Writable:        rc.AllowRPCUpdates,
+		AllowOverwrite:  rc.AllowRPCUpdates,
+		IncrementalSave: rc.AllowRPCUpdates,
 	}) // read-only!
 	if err != nil {
 		return fmt.Errorf("error getting manifest file: %w", err)

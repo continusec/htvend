@@ -40,11 +40,12 @@ type ManifestOptions struct {
 }
 
 type manifestContextOptions struct {
-	Writable       bool
-	FetchAlways    bool
-	AllowOverwrite bool
-	ReloadOnHUP    bool
-	UseFallback    bool
+	Writable        bool
+	FetchAlways     bool
+	AllowOverwrite  bool
+	ReloadOnHUP     bool
+	UseFallback     bool
+	IncrementalSave bool
 
 	NoCacheList []string
 }
@@ -78,12 +79,13 @@ func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockf
 	}
 
 	return lockfile.NewMapFile(lockfile.MapFileOptions{
-		Depth:          0,
-		Path:           o.ManifestFile,
-		Writable:       opts.Writable,
-		AllowOverwrite: opts.AllowOverwrite,
-		AlwaysFetch:    opts.FetchAlways,
-		ReloadHander:   opts.ReloadOnHUP,
+		Depth:           0,
+		Path:            o.ManifestFile,
+		Writable:        opts.Writable,
+		AllowOverwrite:  opts.AllowOverwrite,
+		AlwaysFetch:     opts.FetchAlways,
+		ReloadHander:    opts.ReloadOnHUP,
+		IncrementalSave: opts.IncrementalSave,
 
 		Fallback: cache,
 		NoCache:  noCache,

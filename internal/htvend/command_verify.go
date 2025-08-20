@@ -102,7 +102,7 @@ type validateCtx struct {
 }
 
 func (v *validateCtx) destBlobExists(k []byte) (bool, error) {
-	resp, err := http.Get(fmt.Sprintf("http+unix://%s:/exists?%s", v.SaveToDest, url.Values{"key": []string{hex.EncodeToString(k)}}.Encode()))
+	resp, err := http.Get(fmt.Sprintf("http+unix://%s:/exists?%s", v.DestSocket, url.Values{"key": []string{hex.EncodeToString(k)}}.Encode()))
 	if err != nil {
 		return false, fmt.Errorf("error on GET: %w", err)
 	}
@@ -116,7 +116,7 @@ func (v *validateCtx) destUpdate(kv KeyValue) error {
 	if err != nil {
 		return fmt.Errorf("json can't marshal: %w", err)
 	}
-	resp, err := http.Post(fmt.Sprintf("http+unix://%s:/update", v.SaveToDest), "application/json", bytes.NewReader(bb))
+	resp, err := http.Post(fmt.Sprintf("http+unix://%s:/update", v.DestSocket), "application/json", bytes.NewReader(bb))
 	if err != nil {
 		return fmt.Errorf("error on POST: %w", err)
 	}
@@ -173,7 +173,7 @@ func (wu *wrappedUploader) Cleanup() error {
 
 func (v *validateCtx) destCreateUpload() (blobs.ContentAddressableBlob, error) {
 	pr, pw := io.Pipe()
-	req, err := http.NewRequest(http.MethodPut, fmt.Sprintf("http+unix://%s:/upload", v.SaveToDest), pr)
+	req, err := http.NewRequest(http.MethodPut, fmt.Sprintf("http+unix://%s:/upload", v.DestSocket), pr)
 	if err != nil {
 		return nil, fmt.Errorf("error creating piped request: %w", err)
 	}
