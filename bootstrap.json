@@ -1,0 +1,22 @@
+{
+  "https://get.k3s.io/": {
+    "Sha256": "48fe6ec10517263cc69e1c924cf6b283c59a2b942b9b46186fc7c8d29e6f243a",
+    "Headers": {
+      "Content-Type": "text/plain;charset=UTF-8"
+    }
+  },
+  "https://github.com/k3s-io/k3s/releases/download/v1.33.3+k3s1/k3s-arm64": {
+    "Sha256": "152c961aae4aa7553865481c21902a3cc8e02550df97587379a409494c3626c4",
+    "Headers": {
+      "Content-Length": "68026552",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://github.com/k3s-io/k3s/releases/download/v1.33.3+k3s1/sha256sum-arm64.txt": {
+    "Sha256": "28070ea016941649d2aa144775746c47bda59e9ff2caf77557f06566dfa5c17f",
+    "Headers": {
+      "Content-Length": "365",
+      "Content-Type": "application/octet-stream"
+    }
+  }
+}
