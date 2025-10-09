@@ -1,32 +1,32 @@
 {
-  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:49a8ca9a328e179fe07d40f7f2fd5fb2860b5c45463c288b64f05be521173d2e": {
-    "Sha256": "49a8ca9a328e179fe07d40f7f2fd5fb2860b5c45463c288b64f05be521173d2e",
-    "Headers": {
-      "Content-Length": "28860377",
-      "Content-Type": "application/octet-stream"
-    }
-  },
-  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:a7ff8584a5ea1fd67b1493a7b55d03a4f042fae15d6f4b2064a8a4f9c62c3183": {
-    "Sha256": "a7ff8584a5ea1fd67b1493a7b55d03a4f042fae15d6f4b2064a8a4f9c62c3183",
+  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:b60cb74dfa1b0c0f6ed9a4aaaa3a56f6d04f7cc0cceb7b08ce2ad1803d29e61d": {
+    "Sha256": "b60cb74dfa1b0c0f6ed9a4aaaa3a56f6d04f7cc0cceb7b08ce2ad1803d29e61d",
     "Headers": {
       "Content-Length": "2313",
       "Content-Type": "application/octet-stream"
     }
   },
+  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:cc43ec4c13811c515d52d11a6039f3659696499c8782f5f3f601a3fdedf14082": {
+    "Sha256": "cc43ec4c13811c515d52d11a6039f3659696499c8782f5f3f601a3fdedf14082",
+    "Headers": {
+      "Content-Length": "28860240",
+      "Content-Type": "application/octet-stream"
+    }
+  },
   "https://registry-1.docker.io/v2/library/ubuntu/manifests/24.04": {
-    "Sha256": "7c06e91f61fa88c08cc74f7e1b7c69ae24910d745357e0dfe1d2c0322aaf20f9",
+    "Sha256": "9cbed754112939e914291337b5e554b07ad7c392491dba6daf25eef1332a22e8",
     "Headers": {
       "Content-Length": "6688",
       "Content-Type": "application/vnd.oci.image.index.v1+json",
-      "Docker-Content-Digest": "sha256:7c06e91f61fa88c08cc74f7e1b7c69ae24910d745357e0dfe1d2c0322aaf20f9"
+      "Docker-Content-Digest": "sha256:9cbed754112939e914291337b5e554b07ad7c392491dba6daf25eef1332a22e8"
     }
   },
-  "https://registry-1.docker.io/v2/library/ubuntu/manifests/sha256:4da877f7fd9fc69fc19ff008c4e96cf74b1905258468c551cf8748cacdcd3c9a": {
-    "Sha256": "4da877f7fd9fc69fc19ff008c4e96cf74b1905258468c551cf8748cacdcd3c9a",
+  "https://registry-1.docker.io/v2/library/ubuntu/manifests/sha256:29803570998a550636d23e37a1c4349ffa0803208ef7a4664bcb647b30392373": {
+    "Sha256": "29803570998a550636d23e37a1c4349ffa0803208ef7a4664bcb647b30392373",
     "Headers": {
       "Content-Length": "424",
       "Content-Type": "application/vnd.oci.image.manifest.v1+json",
-      "Docker-Content-Digest": "sha256:4da877f7fd9fc69fc19ff008c4e96cf74b1905258468c551cf8748cacdcd3c9a"
+      "Docker-Content-Digest": "sha256:29803570998a550636d23e37a1c4349ffa0803208ef7a4664bcb647b30392373"
     }
   }
 }

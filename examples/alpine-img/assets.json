@@ -1,15 +1,15 @@
 {
   "https://dl-cdn.alpinelinux.org/alpine/v3.21/community/aarch64/APKINDEX.tar.gz": {
-    "Sha256": "4fb1817aae7b08705136b8791484d2a3ddd7ca044b9b9f7ebcaceb537bbabaae",
+    "Sha256": "5bfa54e6bfadfcd1e1f939f04ae829f5de27f311483f2521586ab1037c5579d7",
     "Headers": {
-      "Content-Length": "1974161",
+      "Content-Length": "1974212",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://dl-cdn.alpinelinux.org/alpine/v3.21/main/aarch64/APKINDEX.tar.gz": {
-    "Sha256": "344a3e4b595f19ed26d96b08793cc1216776426a69bdef0a3d898b1386200240",
+    "Sha256": "61f4b6e5bb1808624d30a127e7579f9370b3ce72bb6a959c2aa7f4803fa854a2",
     "Headers": {
-      "Content-Length": "487657",
+      "Content-Length": "487693",
       "Content-Type": "application/octet-stream"
     }
   },
