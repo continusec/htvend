@@ -5,47 +5,47 @@
       "Content-Type": "application/x-gzip"
     }
   },
-  "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:1474604263309fc1a601a7b4fc9a4b56b117d7d4defa76c964e963362332e40d": {
-    "Sha256": "1474604263309fc1a601a7b4fc9a4b56b117d7d4defa76c964e963362332e40d",
-    "Headers": {
-      "Content-Length": "64794474",
-      "Content-Type": "application/octet-stream"
-    }
-  },
-  "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:3f9234070fd4a9a177785ccb3c05a5409eeeaf935c5938301e6ac0444fa83468": {
-    "Sha256": "3f9234070fd4a9a177785ccb3c05a5409eeeaf935c5938301e6ac0444fa83468",
+  "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:624acee0c8a27ae0e6ae79840ccc3cad13c4fd3836e1af270a1e1af262dacb74": {
+    "Sha256": "624acee0c8a27ae0e6ae79840ccc3cad13c4fd3836e1af270a1e1af262dacb74",
     "Headers": {
       "Content-Length": "2125",
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:43a14bf5f399c85b794f21fc25ddefed9921d741e7e223456e8087c76b5d0c9c": {
-    "Sha256": "43a14bf5f399c85b794f21fc25ddefed9921d741e7e223456e8087c76b5d0c9c",
+  "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:a3bec375112fa06818025bf7b6ee4b903edf4e301e27d2464f104b8aabf964f3": {
+    "Sha256": "a3bec375112fa06818025bf7b6ee4b903edf4e301e27d2464f104b8aabf964f3",
     "Headers": {
-      "Content-Length": "163113734",
+      "Content-Length": "64801350",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/amazoncorretto/blobs/sha256:da42fd9574b5784d709e992e3af3d845e89cc8404fd9babadbb440e560a6f91a": {
+    "Sha256": "da42fd9574b5784d709e992e3af3d845e89cc8404fd9babadbb440e560a6f91a",
+    "Headers": {
+      "Content-Length": "163120082",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/amazoncorretto/manifests/21.0.8": {
-    "Sha256": "dc9e136c19854698f3dc848705cc43ad7cebaf168513126d7a87c1ea6107bb27",
+    "Sha256": "cb7c5e363aafadf48e6423fa5bcc6d0b66fd2609fc0c578be6166497e86c2701",
     "Headers": {
       "Content-Length": "2647",
       "Content-Type": "application/vnd.oci.image.index.v1+json",
-      "Docker-Content-Digest": "sha256:dc9e136c19854698f3dc848705cc43ad7cebaf168513126d7a87c1ea6107bb27"
+      "Docker-Content-Digest": "sha256:cb7c5e363aafadf48e6423fa5bcc6d0b66fd2609fc0c578be6166497e86c2701"
     }
   },
-  "https://registry-1.docker.io/v2/library/amazoncorretto/manifests/sha256:6320d6da00986baa32c0452a2189c20cd9271c5a325b6838a971c604da8542a1": {
-    "Sha256": "6320d6da00986baa32c0452a2189c20cd9271c5a325b6838a971c604da8542a1",
+  "https://registry-1.docker.io/v2/library/amazoncorretto/manifests/sha256:f853638fb6ef845d69579ec09272500d5e41a66c496315045e0dd2e3cb726720": {
+    "Sha256": "f853638fb6ef845d69579ec09272500d5e41a66c496315045e0dd2e3cb726720",
     "Headers": {
       "Content-Length": "1360",
       "Content-Type": "application/vnd.oci.image.manifest.v1+json",
-      "Docker-Content-Digest": "sha256:6320d6da00986baa32c0452a2189c20cd9271c5a325b6838a971c604da8542a1"
+      "Docker-Content-Digest": "sha256:f853638fb6ef845d69579ec09272500d5e41a66c496315045e0dd2e3cb726720"
     }
   },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:3e846d053c2c091ec48e8e3eb9c5661a465e0f4c992ed9b12ec74fb0694cdd9a": {
-    "Sha256": "3e846d053c2c091ec48e8e3eb9c5661a465e0f4c992ed9b12ec74fb0694cdd9a",
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:1fe34a9279d0f635baa2360a822945f0c7e1661a9663cc9cd831206ac19d4de6": {
+    "Sha256": "1fe34a9279d0f635baa2360a822945f0c7e1661a9663cc9cd831206ac19d4de6",
     "Headers": {
-      "Content-Length": "5079",
+      "Content-Length": "850",
       "Content-Type": "application/octet-stream"
     }
   },
@@ -56,55 +56,55 @@
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:907b99062c827b08a5ba032e8ce7732260bacbdb1691e08fdaa0a06b24f456f3": {
-    "Sha256": "907b99062c827b08a5ba032e8ce7732260bacbdb1691e08fdaa0a06b24f456f3",
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:85107e87e39e29cd590738cb32428df7791b1be7e91994098b6491701d10ed11": {
+    "Sha256": "85107e87e39e29cd590738cb32428df7791b1be7e91994098b6491701d10ed11",
+    "Headers": {
+      "Content-Length": "214081805",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:90f7fd3571def08d8c41a8263a76d2fe8b8df5c5823f91412359d7ef0403fd59": {
+    "Sha256": "90f7fd3571def08d8c41a8263a76d2fe8b8df5c5823f91412359d7ef0403fd59",
+    "Headers": {
+      "Content-Length": "9242586",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:9a6263cdeaa5d408640880103ee36920ef814974ca8e2674412ad6460e8968c9": {
+    "Sha256": "9a6263cdeaa5d408640880103ee36920ef814974ca8e2674412ad6460e8968c9",
+    "Headers": {
+      "Content-Length": "30136044",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:a3d5c9ca99d5a8d2282f3b6b0add9faaca461f36185bb566fde0e680ba0934b7": {
+    "Sha256": "a3d5c9ca99d5a8d2282f3b6b0add9faaca461f36185bb566fde0e680ba0934b7",
+    "Headers": {
+      "Content-Length": "5077",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:e43d921d824e856a9174ae89bcd2e7fd6dd5e4da35dc0dfa151bda79aa606d30": {
+    "Sha256": "e43d921d824e856a9174ae89bcd2e7fd6dd5e4da35dc0dfa151bda79aa606d30",
     "Headers": {
       "Content-Length": "155",
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:98887fe92f3d79ab5078c519111b1d354e0ffd047fbcbae2f1657f460b7a79fe": {
-    "Sha256": "98887fe92f3d79ab5078c519111b1d354e0ffd047fbcbae2f1657f460b7a79fe",
-    "Headers": {
-      "Content-Length": "9242591",
-      "Content-Type": "application/octet-stream"
-    }
-  },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:b3407f3b5b5beb45007b2980ccef71785b08dae5a2dcbdd91272f35c4c5e784f": {
-    "Sha256": "b3407f3b5b5beb45007b2980ccef71785b08dae5a2dcbdd91272f35c4c5e784f",
-    "Headers": {
-      "Content-Length": "28082000",
-      "Content-Type": "application/octet-stream"
-    }
-  },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:e2cc3f80a76aa867102b42c63591a0caa70700998c3581cf3ea9558bde306775": {
-    "Sha256": "e2cc3f80a76aa867102b42c63591a0caa70700998c3581cf3ea9558bde306775",
-    "Headers": {
-      "Content-Length": "849",
-      "Content-Type": "application/octet-stream"
-    }
-  },
-  "https://registry-1.docker.io/v2/library/maven/blobs/sha256:fcbd6cde995378360e470c84ca3edc0bcffe309d396dec4e41c9da7bb06d9cec": {
-    "Sha256": "fcbd6cde995378360e470c84ca3edc0bcffe309d396dec4e41c9da7bb06d9cec",
-    "Headers": {
-      "Content-Length": "214995178",
-      "Content-Type": "application/octet-stream"
-    }
-  },
   "https://registry-1.docker.io/v2/library/maven/manifests/3.9.11-amazoncorretto-21-debian": {
-    "Sha256": "82a28c3bb17fd23ab8a821757715afc2e9fa95fdd231198eaac27496cf2d74fb",
+    "Sha256": "d2de951a64252ea8b5037d0f32701d5c4b387660feb0f8042801d6fa7725d70a",
     "Headers": {
-      "Content-Length": "2703",
+      "Content-Length": "2699",
       "Content-Type": "application/vnd.oci.image.index.v1+json",
-      "Docker-Content-Digest": "sha256:82a28c3bb17fd23ab8a821757715afc2e9fa95fdd231198eaac27496cf2d74fb"
+      "Docker-Content-Digest": "sha256:d2de951a64252ea8b5037d0f32701d5c4b387660feb0f8042801d6fa7725d70a"
     }
   },
-  "https://registry-1.docker.io/v2/library/maven/manifests/sha256:534ab94b036df7478a679794378cbc58d34f6bb830220050dcabc68890e3967e": {
-    "Sha256": "534ab94b036df7478a679794378cbc58d34f6bb830220050dcabc68890e3967e",
+  "https://registry-1.docker.io/v2/library/maven/manifests/sha256:89af32a7c32e158ac600854d4abcabbafc5a41df0f60da9c3521284e04d36223": {
+    "Sha256": "89af32a7c32e158ac600854d4abcabbafc5a41df0f60da9c3521284e04d36223",
     "Headers": {
-      "Content-Length": "2145",
+      "Content-Length": "2143",
       "Content-Type": "application/vnd.oci.image.manifest.v1+json",
-      "Docker-Content-Digest": "sha256:534ab94b036df7478a679794378cbc58d34f6bb830220050dcabc68890e3967e"
+      "Docker-Content-Digest": "sha256:89af32a7c32e158ac600854d4abcabbafc5a41df0f60da9c3521284e04d36223"
     }
   },
   "https://repo.maven.apache.org/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.pom": {
