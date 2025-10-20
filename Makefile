@@ -75,6 +75,7 @@ patched-buildah-src:
 	test -d patched-buildah-src || git clone https://github.com/aeijdenberg/buildah --branch continusecbuild --single-branch patched-buildah-src
 	git -C patched-buildah-src fetch
 	git -C patched-buildah-src checkout continusecbuild
+	git -C patched-buildah-src reset --hard origin/continusecbuild
 
 # build patched buildah binary
 patched-buildah-src/bin/buildah: patched-buildah-src
