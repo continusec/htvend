@@ -77,10 +77,8 @@ The examples in this repository apply some small patches to the [buildah](https:
 
 The patches that we apply to `buildah` are, at time of writing:
 
-- [feat(build): add --run-mount option](https://github.com/containers/buildah/pull/6289) - authored by @aeijdenberg
+- [feat(build): add --mount option](https://github.com/containers/buildah/pull/6289) - authored by @aeijdenberg
 - [feat: support --mount=type=secret,id=foo,env=bar](https://github.com/containers/buildah/pull/6285) - authored by @aeijdenberg
-- [fix(build): make --tag oci-archive:xxx.tar work with simple images](https://github.com/containers/buildah/pull/6284) - authored by @aeijdenberg
-- [build,add: add support for corporate proxies](https://github.com/containers/buildah/pull/6274) - authored by @userid0x0
 
 These patches make it possible to invoke `buildah` with options to automatically mount various files / environment variables in any containers used for `RUN` instructions, in such a way that they don't affect the final image.
 
