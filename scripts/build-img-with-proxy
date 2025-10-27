@@ -63,7 +63,7 @@ if [[ -n "${SOURCE_DATE_EPOCH}" ]]; then
 
     # then pass this var through to things inside the RUN instructions
     buildah_args="${buildah_args} --secret=id=SOURCE_DATE_EPOCH,type=env,env=CONTAINER_SOURCE_DATE_EPOCH"
-    buildah_args="${buildah_args} --run-mount=type=secret,id=SOURCE_DATE_EPOCH,required,env=SOURCE_DATE_EPOCH"
+    buildah_args="${buildah_args} --mount=type=secret,id=SOURCE_DATE_EPOCH,required,env=SOURCE_DATE_EPOCH"
 fi
  
 # get the file which is at path SSL_CERT_FILE on host, and mount that in the container
@@ -71,10 +71,10 @@ fi
 if [[ -n "${CERT_FILE_VARS}" ]]; then
     buildah_args="${buildah_args} --secret=id=SSL_CERT_FILE_DATA,type=file,src=${SSL_CERT_FILE}"
     buildah_args="${buildah_args} --secret=id=SSL_CERT_FILE_PATH,type=env,env=SSL_CERT_FILE"
-    buildah_args="${buildah_args} --run-mount=type=secret,id=SSL_CERT_FILE_DATA,required,target=${SSL_CERT_FILE}"
+    buildah_args="${buildah_args} --mount=type=secret,id=SSL_CERT_FILE_DATA,required,target=${SSL_CERT_FILE}"
     for cfv in ${CERT_FILE_VARS}; do
         # then make each var in CERT_FILE_VARS point to it. Override this with space separated if more needed
-        buildah_args="${buildah_args} --run-mount=type=secret,id=SSL_CERT_FILE_PATH,required,env=${cfv}"
+        buildah_args="${buildah_args} --mount=type=secret,id=SSL_CERT_FILE_PATH,required,env=${cfv}"
     done
 fi
 
@@ -82,7 +82,7 @@ fi
 if [[ -n "${JKS_KEYSTORE_PATH}" ]]; then
     buildah_args="${buildah_args} --secret=id=JKS_CA_TRUSTSTORE,type=file,src=${JKS_KEYSTORE_FILE}"
     for jkp in ${JKS_KEYSTORE_PATH}; do
-        buildah_args="${buildah_args} --run-mount=type=secret,id=JKS_CA_TRUSTSTORE,required,target=${jkp}"
+        buildah_args="${buildah_args} --mount=type=secret,id=JKS_CA_TRUSTSTORE,required,target=${jkp}"
     done
 fi
 
@@ -108,7 +108,7 @@ if [[ -n "${MVN_SETTINGS_PATH}" ]]; then
 EOF
     buildah_args="${buildah_args} --secret=id=MVN_SETTINGS_XML,type=file,src=${settings_path}"
     for msp in ${MVN_SETTINGS_PATH}; do
-        buildah_args="${buildah_args} --run-mount=type=secret,id=MVN_SETTINGS_XML,required,target=${msp}"
+        buildah_args="${buildah_args} --mount=type=secret,id=MVN_SETTINGS_XML,required,target=${msp}"
     done
 fi
 
