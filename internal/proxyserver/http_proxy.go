@@ -17,6 +17,7 @@ package proxyserver
 import (
 	"bytes"
 	"context"
+	"crypto"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/tls"
@@ -29,66 +30,149 @@ import (
 	"math/big"
 	"net"
 	"net/http"
+	"os"
+	"path/filepath"
 	"syscall"
 	"time"
 
 	"github.com/sirupsen/logrus"
 )
 
+type ProxyServerConfig struct {
+	HttpListenAddr  string
+	HttpsListenAddr string
+
+	TlsCertPath          string
+	TlsKeyPath           string
+	TlsGenerateIfMissing bool
+
+	Handler http.HandlerFunc
+}
+
 type httpServer struct {
 	listenAddr string
-	caPrivKey  *rsa.PrivateKey
+	caPrivKey  crypto.PrivateKey
+	caPubKey   crypto.PublicKey
 	ca         *x509.Certificate
 	caPEM      []byte
 	tlsAddr    string
 }
 
-func newSelfSignedServer(listenAddr string) (*httpServer, error) {
-	var rv httpServer
-	rv.listenAddr = listenAddr
+func readKeyCert(keyPath, certPath string) (crypto.PrivateKey, *x509.Certificate, error) {
+	tCert, err := tls.LoadX509KeyPair(certPath, keyPath)
+	if err != nil {
+		return nil, nil, fmt.Errorf("error loading cert or key file: %w", err)
+	}
+	if tCert.Leaf == nil {
+		return nil, nil, fmt.Errorf("leaf cert is nil after a successful parse - are you using old Go version?")
+	}
+	return tCert.PrivateKey, tCert.Leaf, nil
+}
 
+func generateKeyCert() (crypto.PrivateKey, *x509.Certificate, error) {
 	caTemplate := &x509.Certificate{
 		SerialNumber:          big.NewInt(1),
-		Subject:               pkix.Name{CommonName: "httpvendor"},
+		Subject:               pkix.Name{CommonName: "htvend"},
 		NotBefore:             time.Now(),
-		NotAfter:              time.Now().AddDate(1, 0, 0),
+		NotAfter:              time.Now().AddDate(10, 0, 0),
 		IsCA:                  true,
 		KeyUsage:              x509.KeyUsageCertSign,
 		BasicConstraintsValid: true,
 	}
-	var err error
-	rv.caPrivKey, err = rsa.GenerateKey(rand.Reader, 2048)
+	caPrivKey, err := rsa.GenerateKey(rand.Reader, 2048)
 	if err != nil {
-		return nil, fmt.Errorf("err generating priv key: %w", err)
+		return nil, nil, fmt.Errorf("err generating priv key: %w", err)
 	}
-	caBytes, err := x509.CreateCertificate(rand.Reader, caTemplate, caTemplate, &rv.caPrivKey.PublicKey, rv.caPrivKey)
+	caBytes, err := x509.CreateCertificate(rand.Reader, caTemplate, caTemplate, &caPrivKey.PublicKey, caPrivKey)
 	if err != nil {
-		return nil, fmt.Errorf("err signing cert: %w", err)
+		return nil, nil, fmt.Errorf("err signing cert: %w", err)
 	}
+	ca, err := x509.ParseCertificate(caBytes)
+	if err != nil {
+		return nil, nil, fmt.Errorf("err parsing cert: %w", err)
+	}
+	return caPrivKey, ca, nil
+}
 
-	rv.ca, err = x509.ParseCertificate(caBytes)
-	if err != nil {
-		return nil, fmt.Errorf("err parsing cert: %w", err)
+func (cfg ProxyServerConfig) newSelfSignedServer() (*httpServer, error) {
+	var rv httpServer
+	rv.listenAddr = cfg.HttpListenAddr
+
+	var mustSaveOut bool
+
+	if cfg.TlsCertPath == "" && cfg.TlsKeyPath == "" {
+		var err error
+		rv.caPrivKey, rv.ca, err = generateKeyCert()
+		if err != nil {
+			return nil, fmt.Errorf("error generating key pair: %w", err)
+		}
+	} else {
+		var err error
+		rv.caPrivKey, rv.ca, err = readKeyCert(cfg.TlsKeyPath, cfg.TlsCertPath)
+		if err != nil {
+			if errors.Is(err, os.ErrNotExist) && cfg.TlsGenerateIfMissing {
+				logrus.Infof("missing cert or key file, so we will generate")
+				rv.caPrivKey, rv.ca, err = generateKeyCert()
+				if err != nil {
+					return nil, fmt.Errorf("error generating key pair: %w", err)
+				}
+				mustSaveOut = true
+			} else {
+				return nil, fmt.Errorf("error reading key pair: %w", err)
+			}
+		}
 	}
 
 	caPEM := &bytes.Buffer{}
-	err = pem.Encode(caPEM, &pem.Block{
+	if err := pem.Encode(caPEM, &pem.Block{
 		Type:  "CERTIFICATE",
-		Bytes: caBytes,
-	})
-	if err != nil {
+		Bytes: rv.ca.Raw,
+	}); err != nil {
 		return nil, fmt.Errorf("err writing PEM: %w", err)
 	}
-
 	rv.caPEM = caPEM.Bytes()
+
+	signer, ok := rv.caPrivKey.(crypto.Signer)
+	if !ok {
+		return nil, fmt.Errorf("private key does not implement Signer!")
+	}
+	rv.caPubKey = signer.Public()
+
+	if mustSaveOut {
+		// first do private key
+		pkb, err := x509.MarshalPKCS8PrivateKey(rv.caPrivKey)
+		if err != nil {
+			return nil, fmt.Errorf("error marshalling private key: %w", err)
+		}
+		pkPEM := &bytes.Buffer{}
+		if err := pem.Encode(pkPEM, &pem.Block{
+			Type:  "PRIVATE KEY",
+			Bytes: pkb,
+		}); err != nil {
+			return nil, fmt.Errorf("err writing PEM for private key: %w", err)
+		}
+		if err := os.MkdirAll(filepath.Dir(cfg.TlsKeyPath), 0o755); err != nil {
+			return nil, fmt.Errorf("error creating dir for key: %w", err)
+		}
+		if err := os.WriteFile(cfg.TlsKeyPath, pkPEM.Bytes(), 0o600); err != nil {
+			return nil, fmt.Errorf("error writing CA key file: %w", err)
+		}
+		// then cert
+		if err := os.MkdirAll(filepath.Dir(cfg.TlsCertPath), 0o755); err != nil {
+			return nil, fmt.Errorf("error creating dir for cert: %w", err)
+		}
+		if err := os.WriteFile(cfg.TlsCertPath, rv.caPEM, 0o644); err != nil {
+			return nil, fmt.Errorf("error writing CA cert file: %w", err)
+		}
+	}
 
 	return &rv, nil
 }
 
-func ServeUntilDone(parCtx context.Context, listAddr string, handlerF http.HandlerFunc, childProcess func(ctx context.Context, proxyAddr string, caPemBytes []byte) error) (retErr error) {
-	s, err := newSelfSignedServer(listAddr)
+func ServeUntilDone(parCtx context.Context, cfg ProxyServerConfig, childProcess func(ctx context.Context, proxyAddr string, caPemBytes []byte) error) (retErr error) {
+	s, err := cfg.newSelfSignedServer()
 	if err != nil {
-		return fmt.Errorf("error creating keys for servier: %w", err)
+		return fmt.Errorf("error creating keys for server: %w", err)
 	}
 
 	ctx, cancel := context.WithCancel(parCtx)
@@ -122,7 +206,7 @@ func ServeUntilDone(parCtx context.Context, listAddr string, handlerF http.Handl
 				if r.Method == http.MethodConnect {
 					s.handleConnect(w, r)
 				} else {
-					handlerF(w, r)
+					cfg.Handler(w, r)
 				}
 			}),
 		}
@@ -135,7 +219,7 @@ func ServeUntilDone(parCtx context.Context, listAddr string, handlerF http.Handl
 
 	// creates a second listener. This recieves HTTPS request sent by ourselves, to ourself
 	// when handling CONNECT requests. We could probably do this better, but for now, this works
-	list2, err := net.Listen("tcp4", "127.0.0.1:0")
+	list2, err := net.Listen("tcp4", cfg.HttpsListenAddr)
 	if err != nil {
 		return fmt.Errorf("error making internal listener: %w", err)
 	}
@@ -152,7 +236,7 @@ func ServeUntilDone(parCtx context.Context, listAddr string, handlerF http.Handl
 	go func() {
 		defer close(tlsServerErr)
 		server := &http.Server{
-			Handler: http.HandlerFunc(handlerF),
+			Handler: http.HandlerFunc(cfg.Handler),
 		}
 		go func() {
 			<-ctx.Done()
@@ -236,7 +320,6 @@ func (s *httpServer) handleConnect(w http.ResponseWriter, _ *http.Request) {
 func (s *httpServer) makeCertFor(chi *tls.ClientHelloInfo) (*tls.Certificate, error) {
 	leaf := &x509.Certificate{
 		SerialNumber:          big.NewInt(2),
-		DNSNames:              []string{chi.ServerName},
 		Subject:               pkix.Name{CommonName: chi.ServerName},
 		NotBefore:             time.Now(),
 		NotAfter:              time.Now().AddDate(1, 0, 0),
@@ -244,7 +327,12 @@ func (s *httpServer) makeCertFor(chi *tls.ClientHelloInfo) (*tls.Certificate, er
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
 		BasicConstraintsValid: true,
 	}
-	certBytes, err := x509.CreateCertificate(rand.Reader, leaf, s.ca, &s.caPrivKey.PublicKey, s.caPrivKey)
+	if pip := net.ParseIP(chi.ServerName); pip != nil {
+		leaf.IPAddresses = []net.IP{pip}
+	} else {
+		leaf.DNSNames = []string{chi.ServerName}
+	}
+	certBytes, err := x509.CreateCertificate(rand.Reader, leaf, s.ca, s.caPubKey, s.caPrivKey)
 	if err != nil {
 		return nil, fmt.Errorf("err signing cert: %w", err)
 	}

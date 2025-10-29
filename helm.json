@@ -1,0 +1,29 @@
+{
+  "https://get.helm.sh/helm-latest-version": {
+    "Sha256": "df563a6ea7cec290623adaeb2d8d484bfd7b1f149a7c738c458678c8103520c2",
+    "Headers": {
+      "Content-Length": "8",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://get.helm.sh/helm-v3.18.5-linux-arm64.tar.gz": {
+    "Sha256": "d25d2c1b1c5a9844755ab5c66e6df4d6b31c25e6d92dd2ce66c137a63ddf9f2c",
+    "Headers": {
+      "Content-Length": "16210153",
+      "Content-Type": "application/x-tar"
+    }
+  },
+  "https://get.helm.sh/helm-v3.18.5-linux-arm64.tar.gz.sha256": {
+    "Sha256": "717429224d54bac12a4b3a88405932c29a45ce2637ec723e0cb9595ac37c309b",
+    "Headers": {
+      "Content-Length": "65",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3": {
+    "Sha256": "17799e1dddef4d63aa8bfd84ba58715f6668f099f738e02af094c8db2c148005",
+    "Headers": {
+      "Content-Type": "text/plain; charset=utf-8"
+    }
+  }
+}

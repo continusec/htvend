@@ -22,12 +22,12 @@ import (
 
 func sslCertFileAppender(e *envCtx) error {
 	if len(e.Options.CertFileEnvVars) != 0 {
-		resultPath := e.Options.CertFileLoc
+		resultPath := e.Options.TlsCertPem
 		if resultPath == "" {
 			resultPath = filepath.Join(e.TempDir, "cacerts.pem")
-		}
-		if err := os.WriteFile(resultPath, e.CAPem, 0o444); err != nil {
-			return fmt.Errorf("error writing CA PEM file: %w", err)
+			if err := os.WriteFile(resultPath, e.CAPem, 0o444); err != nil {
+				return fmt.Errorf("error writing CA PEM file: %w", err)
+			}
 		}
 		for _, ev := range e.Options.CertFileEnvVars {
 			e.EnvOverrides = append(e.EnvOverrides, ev+"="+resultPath)
