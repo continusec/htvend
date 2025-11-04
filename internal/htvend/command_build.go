@@ -53,6 +53,7 @@ func (rc *BuildCommand) Execute(args []string) (retErr error) {
 
 	mf, err := rc.ManifestOptions.MakeManifestFile(&manifestContextOptions{
 		Writable:    true,
+		UseFallback: true,
 		FetchAlways: rc.ForceRefresh,
 		NoCacheList: rc.NoCache,
 	})

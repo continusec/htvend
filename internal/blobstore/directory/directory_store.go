@@ -54,6 +54,17 @@ func (s *DirectoryStore) Get(k []byte) (io.ReadCloser, error) {
 	return rv, nil
 }
 
+func (s *DirectoryStore) Exists(k []byte) (bool, error) {
+	if _, err := os.Stat(s.resolve(k)); err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			return false, nil
+
+		}
+		return false, fmt.Errorf("unexpected error checking for existence: %w", err)
+	}
+	return true, nil
+}
+
 func (s *DirectoryStore) resolve(k []byte) string {
 	return filepath.Join(s.dir, hex.EncodeToString(k))
 }
