@@ -120,3 +120,7 @@ img-manifests: $(addsuffix assets.json,$(EXAMPLES))
 .PHONY: sha256sums
 sha256sums: img-tarballs
 	sha256sum examples/*/img.tar
+
+.PHONY: img
+img:
+	docker build . -t htvend:latest

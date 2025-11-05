@@ -31,8 +31,8 @@ BUILDAH_OPTS="${BUILDAH_OPTS:-}"
 
 temp_xdg_dir="$(mktemp -d)"
 cleanup() {
-    # normal rm -rf often fails with permission errors
-   "${BUILDAH_BINARY}" unshare rm -rf "${temp_xdg_dir}"
+    # normal rm -rf often fails with permission errors, so use the unshare version if that fails
+   rm -rf "${temp_xdg_dir}" 2>/dev/null || "${BUILDAH_BINARY}" unshare rm -rf "${temp_xdg_dir}"
 }
 trap cleanup ERR EXIT
 
