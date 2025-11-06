@@ -1,0 +1,125 @@
+name: Offline Depends
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  htvend_img: ghcr.io/continusec/htvend:1.2
+  build_cmd: build-img-with-proxy -f Dockerfile.offlinebuild
+  htvend_bucket: htvend-demo-001
+  htvend_prefix: blobs/
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout latest source for branch: ${{ github.head_ref }}"
+      uses: actions/checkout@v5
+      with:
+        ref: ${{ github.head_ref }} # need ref so that we can commit
+
+    - name: Restore htvend tool from cache
+      id: htvend-tool-cache
+      uses: actions/cache@v4
+      with:
+        path: ${{ runner.temp }}/htvend-image
+        key: ${{ env.htvend_img }}-${{ runner.os }}-${{ runner.arch }}
+
+    - name: Fetch htvend image
+      if: steps.htvend-tool-cache.outputs.cache-hit != 'true'
+      run: |
+        mkdir -p ${{ runner.temp }}/htvend-image
+        docker pull "${{ env.htvend_img }}"
+        docker save -o ${{ runner.temp }}/htvend-image/img.tar "${{ env.htvend_img }}"
+
+    - name: Load htvend tool into docker
+      if: steps.htvend-tool-cache.outputs.cache-hit == 'true'
+      run: docker load -i ${{ runner.temp }}/htvend-image/img.tar
+
+    - name: Restore offline depends assets from cache
+      id: htvend-blobs-cache
+      uses: actions/cache@v4
+      with:
+        path: ${{ runner.temp }}/blobs
+        key: blobs-${{ hashFiles('assets.json') }}
+
+    - name: Fetch offline depends assets from S3
+      if: steps.htvend-blobs-cache.outputs.cache-hit != 'true'
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ vars.AWS_REGION }}
+      run: |
+        [[ -f $PWD/assets.json ]] || exit 0
+        mkdir -p "${{ runner.temp }}/blobs"
+        docker run \
+          -e AWS_ACCESS_KEY_ID \
+          -e AWS_SECRET_ACCESS_KEY \
+          -e AWS_REGION \
+          -v "$PWD:$PWD" \
+          -v "${{ runner.temp }}/blobs:/blobs" \
+          --rm ${{ env.htvend_img }} \
+            -C "$PWD" export \
+              --blobs-backend=s3 \
+              --blobs-bucket="${{ env.htvend_bucket }}" \
+              --blobs-prefix="${{ env.htvend_prefix }}" \
+              --dest.blobs-dir=/blobs
+        sudo chown -R $USER "${{ runner.temp }}/blobs"
+
+    - name: Rebuild allowing internet access
+      run: |
+        docker run \
+          -v "$PWD:$PWD" \
+          -v "${{ runner.temp }}/blobs:/blobs" \
+          --network=none \
+          --rm --privileged ${{ env.htvend_img }} \
+            -C "$PWD" build \
+              --blobs-dir=/blobs \
+              -- \
+                ${{ env.build_cmd }}
+        sudo chown -R $USER "${{ runner.temp }}/blobs"
+
+    - name: Send assets to S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ vars.AWS_REGION }}
+      run: |
+        docker run \
+          -e AWS_ACCESS_KEY_ID \
+          -e AWS_SECRET_ACCESS_KEY \
+          -e AWS_REGION \
+          -v "$PWD:$PWD" \
+          -v "${{ runner.temp }}/blobs:/blobs" \
+          --rm ${{ env.htvend_img }} \
+            -C "$PWD" export \
+              --blobs-dir=/blobs \
+              --dest.blobs-backend=s3 \
+              --dest.blobs-bucket="${{ env.htvend_bucket }}" \
+              --dest.blobs-prefix="${{ env.htvend_prefix }}"
+
+    - name: Commit any changes to assets.json
+      run: |
+        git diff --exit-code ./assets.json >/dev/null || (
+          git add ./assets.json &&
+          git config --global user.email "${{ env.commit_author }}" &&
+          git config --global user.name "${{ env.commit_name }}" &&
+          git commit -m"${{ env.commit_message }}" &&
+          git push
+        )
+
+    - name: Build in offline mode
+      run: |
+        docker run \
+          -v "$PWD:$PWD" \
+          -v "${{ runner.temp }}/blobs:/blobs" \
+          --network=none \
+          --rm --privileged ${{ env.htvend_img }} \
+            -C "$PWD" offline \
+              --blobs-dir=/blobs \
+              -- \
+                ${{ env.build_cmd }}

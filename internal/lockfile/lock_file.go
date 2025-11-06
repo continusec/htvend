@@ -21,9 +21,7 @@ import (
 	"maps"
 	"net/url"
 	"os"
-	"os/signal"
 	"sync"
-	"syscall"
 
 	"github.com/continusec/htvend/internal/re"
 	"github.com/danjacques/gofslock/fslock"
@@ -52,8 +50,6 @@ type File struct {
 }
 
 type MapFileOptions struct {
-	Depth int // how "deep" are we? Useful for logging
-
 	// Path to where manifest is to be saved
 	Path string
 
@@ -63,9 +59,6 @@ type MapFileOptions struct {
 	// If we get a new value for an existing entry, should we allow overwriting it?
 	AllowOverwrite bool
 
-	// Upstream cache to consult
-	Fallback *File
-
 	// If set, always never return blob (ie force a new fetch will be cached)
 	AlwaysFetch bool
 
@@ -74,9 +67,6 @@ type MapFileOptions struct {
 
 	// List of regexes that we never return a value for
 	NoCache *re.MultiRegexMatcher
-
-	// Install HUP handler to reload
-	ReloadHander bool
 }
 
 // if writable, then we get an exclusive lock on this file,
@@ -104,16 +94,6 @@ func NewMapFile(options MapFileOptions) (retFile *File, retErr error) {
 		return nil, fmt.Errorf("error loading initial file: %w", err)
 	}
 
-	if options.ReloadHander {
-		ch := make(chan os.Signal, 1)
-		signal.Notify(ch, syscall.SIGHUP)
-		go func() {
-			for range ch {
-				rv.reload()
-			}
-		}()
-	}
-
 	return rv, nil
 }
 
@@ -133,53 +113,21 @@ func (f *File) GetBlob(u *url.URL) (BlobInfo, bool, error) {
 		return BlobInfo{}, false, nil
 	}
 
-	// first, see if fallback has it
-	var fallbackRV BlobInfo
-	var fallbackOK bool
-	if f.options.Fallback != nil {
-		var err error
-		if fallbackRV, fallbackOK, err = f.options.Fallback.GetBlob(u); err != nil {
-			return BlobInfo{}, false, fmt.Errorf("error getting fallback blob: %w", err)
-		}
-	}
-
 	f.mu.Lock()
 	defer f.mu.Unlock()
 
 	// now, if we have it, then use it
 	rv, ok := f.blobs[k]
 	if ok {
-		if f.options.Depth == 0 {
-			logrus.Infof("Found (manifest): %s", k)
-		}
+		logrus.Infof("Found (manifest): %s", k)
 		return rv, ok, nil
 	}
 
-	// else if fallback has it populate it here so that we save this out as used
-	if fallbackOK {
-		if f.options.Depth == 0 {
-			logrus.Infof("Found (global cache): %s", k)
-		}
-		f.blobs[k] = fallbackRV
-		f.dirty = true
-	} else {
-		if f.options.Depth == 0 {
-			logrus.Infof("Not cached: %s", k)
-		}
-	}
-
-	return fallbackRV, fallbackOK, f.save(false)
+	logrus.Infof("Not cached: %s", k)
+	return BlobInfo{}, false, nil
 }
 
 func (f *File) AddBlob(u *url.URL, info BlobInfo) error {
-	// first put in backing cache
-	if f.options.Fallback != nil {
-		if err := f.options.Fallback.AddBlob(u, info); err != nil {
-			return fmt.Errorf("error adding blob to fallback (cache): %w", err)
-		}
-	}
-
-	// then do our thing
 	k := u.Redacted()
 
 	if f.options.NoCache.Match(k) {
@@ -267,15 +215,6 @@ func (f *File) ForEach(cb func(k *url.URL, v BlobInfo) error) error {
 // writes file out, releases any locks we have
 // ok to call if read-only
 func (f *File) Close() (retErr error) {
-	// make sure fallback is Closed()
-	if f.options.Fallback != nil {
-		defer func() {
-			if err := f.options.Fallback.Close(); err != nil && retErr == nil {
-				retErr = fmt.Errorf("error closing fallback cache map file: %w", err)
-			}
-		}()
-	}
-
 	if !f.options.Writable {
 		return nil
 	}
@@ -293,22 +232,6 @@ func (f *File) Close() (retErr error) {
 	defer f.mu.Unlock()
 
 	return f.save(true)
-}
-
-func (f *File) reload() error {
-	// reload config from disk
-	if f.options.Writable {
-		return fmt.Errorf("cannot reload file when in writeable mode - intended for offline daemon only")
-	}
-
-	f.mu.Lock()
-	defer f.mu.Unlock()
-
-	if f.dirty {
-		return fmt.Errorf("cannot reload file when it is dirty - should not have gotten here since not writable")
-	}
-
-	return f.load()
 }
 
 // caller must get mutex

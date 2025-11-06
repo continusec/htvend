@@ -17,14 +17,11 @@ package htvend
 import (
 	"context"
 	"encoding/hex"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
-	"net"
 	"net/http"
 	"net/url"
-	"os"
 
 	"github.com/continusec/htvend/internal/app"
 	"github.com/continusec/htvend/internal/blobstore"
@@ -37,10 +34,9 @@ import (
 type ListenerOptions struct {
 	app.SubprocessOptions `positional-args:"yes"`
 
-	ListenAddr      string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
-	TlsListenAddr   string `long:"tls-listen-addr" default:"127.0.0.1:0" description:"Listen address for a TLS proxy server (:0) will allocate a dynamic open port"`
-	Daemon          bool   `short:"d" long:"daemon" description:"Run as a daemon until terminated"`
-	DaemonRpcSocket string `long:"daemon-rpc-socket" description:"If set, create a unix socket here that can be used to accept updates such as new blobs."`
+	ListenAddr    string `short:"l" long:"listen-addr" default:"127.0.0.1:0" description:"Listen address for proxy server (:0) will allocate a dynamic open port"`
+	TlsListenAddr string `long:"tls-listen-addr" default:"127.0.0.1:0" description:"Listen address for a TLS proxy server (:0) will allocate a dynamic open port"`
+	Daemon        bool   `short:"d" long:"daemon" description:"Run as a daemon until terminated"`
 
 	TlsCertPem           string `long:"tls-cert-pem" description:"If set use this as the TLS cert. Must be a CA pem"`
 	TlsKeyPem            string `long:"tls-key-pem" description:"If set use this as the TLS key. Must match the cert"`
@@ -125,96 +121,6 @@ func (o *ListenerOptions) RunListenerWithSubprocess(lctx *listenerCtx, prompt st
 				// we are a daemon
 				if o.SubprocessOptions.Process != "" {
 					return fmt.Errorf("if running as a daemon, no sub-process should be specified. Received: %s", o.SubprocessOptions.Process)
-				}
-
-				if o.DaemonRpcSocket != "" {
-					rpcSocket, err := net.Listen("unix", o.DaemonRpcSocket)
-					if err != nil {
-						return fmt.Errorf("error opening unix socket for daemon rpc: %w", err)
-					}
-					defer func() {
-						if err := os.Remove(o.DaemonRpcSocket); err != nil && retErr == nil {
-							retErr = err
-						}
-					}()
-
-					rpcHandler := http.NewServeMux()
-					rpcHandler.HandleFunc("/exists", func(w http.ResponseWriter, r *http.Request) {
-						if r.Method != http.MethodGet {
-							http.Error(w, "bad method", http.StatusBadRequest)
-							return
-						}
-						kb, err := hex.DecodeString(r.URL.Query().Get("key"))
-						if err != nil {
-							http.Error(w, "bad key", http.StatusBadRequest)
-							return
-						}
-						exists, err := lctx.Blobs.Exists(kb)
-						if err != nil {
-							logrus.Errorf("unexpected error checking blob existence: %v", err)
-							http.Error(w, "internal error, see server log", http.StatusInternalServerError)
-							return
-						}
-						if exists {
-							w.WriteHeader(http.StatusOK)
-						} else {
-							w.WriteHeader(http.StatusNotFound)
-						}
-					})
-					rpcHandler.HandleFunc("/upload", func(w http.ResponseWriter, r *http.Request) {
-						if r.Method != http.MethodPut {
-							http.Error(w, "bad method", http.StatusBadRequest)
-							return
-						}
-						caf, err := lctx.Blobs.Put()
-						if err != nil {
-							logrus.Errorf("unexpected error creating caf: %v", err)
-							http.Error(w, "internal error, see server log", http.StatusInternalServerError)
-							return
-						}
-						_, err = io.Copy(caf, r.Body)
-						if err != nil {
-							logrus.Errorf("unexpected error uploading caf: %v", err)
-							http.Error(w, "internal error, see server log", http.StatusInternalServerError)
-							return
-						}
-						digest, err := caf.Commit()
-						if err != nil {
-							logrus.Errorf("unexpected error committing caf: %v", err)
-							http.Error(w, "internal error, see server log", http.StatusInternalServerError)
-							return
-						}
-						w.Header().Set("X-Sha256-Digest", hex.EncodeToString(digest))
-						w.WriteHeader(http.StatusCreated)
-					})
-					rpcHandler.HandleFunc("/update", func(w http.ResponseWriter, r *http.Request) {
-						if r.Method != http.MethodPost {
-							http.Error(w, "bad method", http.StatusBadRequest)
-							return
-						}
-						var kv KeyValue
-						if err := json.NewDecoder(r.Body).Decode(&kv); err != nil {
-							http.Error(w, "bad request", http.StatusBadRequest)
-							return
-						}
-						if err := lctx.Assets.AddBlob(kv.Key, kv.Value); err != nil {
-							logrus.Errorf("unexpected error adding blob: %v", err)
-							http.Error(w, "internal error, see server log", http.StatusInternalServerError)
-							return
-						}
-						w.WriteHeader(http.StatusAccepted)
-					})
-
-					rpcServer := &http.Server{
-						Handler: rpcHandler,
-					}
-					defer func() {
-						if err := rpcServer.Shutdown(context.Background()); err != nil && retErr == nil {
-							retErr = err
-						}
-					}()
-
-					go rpcServer.Serve(rpcSocket)
 				}
 
 				logrus.Infof("Daemon running...")
