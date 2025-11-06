@@ -121,6 +121,6 @@ img-manifests: $(addsuffix assets.json,$(EXAMPLES))
 sha256sums: img-tarballs
 	sha256sum examples/*/img.tar
 
-.PHONY: img
-img:
-	docker build . -t htvend:latest
+.PHONY: img-to-registry
+img-to-registry:
+	docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/continusec/htvend:latest --push .

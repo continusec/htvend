@@ -47,3 +47,5 @@ RUN apt-get update -y && \
 COPY --from=builder /result/* /usr/local/bin/
 
 ENTRYPOINT ["/usr/local/bin/htvend"]
+
+LABEL org.opencontainers.image.source=https://github.com/continusec/htvend
