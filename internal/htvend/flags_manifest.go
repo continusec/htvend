@@ -22,14 +22,19 @@ import (
 	"github.com/continusec/htvend/internal/blobstore"
 	"github.com/continusec/htvend/internal/blobstore/directory"
 	"github.com/continusec/htvend/internal/blobstore/registry"
+	"github.com/continusec/htvend/internal/blobstore/s3store"
 	"github.com/continusec/htvend/internal/lockfile"
 	"github.com/continusec/htvend/internal/re"
 )
 
 type CacheOptions struct {
-	BlobsBackend  string `long:"blobs-backend" default:"filesystem" choice:"filesystem" choice:"registry" description:"Type of blob store"`
+	BlobsBackend  string `long:"blobs-backend" default:"filesystem" choice:"filesystem" choice:"registry" choice:"s3" description:"Type of blob store"`
 	BlobsRegistry string `long:"blobs-registry" description:"URL for registry to store / fetch blobs from"`
 	BlobsDir      string `long:"blobs-dir" default:"${XDG_DATA_HOME}/htvend/cache/blobs" description:"Common directory to store downloaded blobs in"`
+
+	// S3 options - all other auth etc is with standard AWS env vars / metadata server
+	BlobsBucket string `long:"blobs-bucket" description:"S3 bucket to use for blobs"`
+	BlobsPrefix string `long:"blobs-prefix" default:"" description:"Prefix to prepend keys before uploading to S3 bucket"`
 
 	CacheMap string `long:"cache-manifest" default:"${XDG_DATA_HOME}/htvend/cache/assets.json" description:"Cache of all downloaded assets"`
 }
@@ -113,8 +118,12 @@ func (o *CacheOptions) MakeBlobStore(writable bool) (blobstore.Store, error) {
 		return directory.NewDirectoryStore(d, writable), nil
 	case "registry":
 		return registry.NewRegistryStore(o.BlobsRegistry, writable), nil
+	case "s3":
+		return s3store.NewS3Store(s3store.S3StoreConfig{
+			Bucket: o.BlobsBucket,
+			Prefix: o.BlobsPrefix,
+		})
 	default:
 		return nil, fmt.Errorf("bad blob store type: %s", o.BlobsBackend)
 	}
-
 }
