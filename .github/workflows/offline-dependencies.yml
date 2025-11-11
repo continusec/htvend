@@ -11,6 +11,9 @@ env:
   build_cmd: build-img-with-proxy -f Dockerfile.offlinebuild
   htvend_bucket: htvend-demo-001
   htvend_prefix: blobs/
+  commit_email: htvend@continusec.com
+  commit_name: htvend offline dependency bot
+  commit_message: "chore: offline depends update"
 
 jobs:
   build:
@@ -106,7 +109,7 @@ jobs:
       run: |
         git diff --exit-code ./assets.json >/dev/null || (
           git add ./assets.json &&
-          git config --global user.email "${{ env.commit_author }}" &&
+          git config --global user.email "${{ env.commit_email }}" &&
           git config --global user.name "${{ env.commit_name }}" &&
           git commit -m"${{ env.commit_message }}" &&
           git push
