@@ -107,8 +107,8 @@ jobs:
 
     - name: Commit any changes to assets.json
       run: |
-        git diff --exit-code ./assets.json >/dev/null || (
-          git add ./assets.json &&
+        git add ./assets.json &&
+        git diff --exit-code --staged ./assets.json >/dev/null || (
           git config --global user.email "${{ env.commit_email }}" &&
           git config --global user.name "${{ env.commit_name }}" &&
           git commit -m"${{ env.commit_message }}" &&
