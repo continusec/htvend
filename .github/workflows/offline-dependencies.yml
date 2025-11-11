@@ -75,7 +75,7 @@ jobs:
         docker run \
           -v "$PWD:$PWD" \
           -v "${{ runner.temp }}/blobs:/blobs" \
-          --network=none \
+          --network=host \
           --rm --privileged ${{ env.htvend_img }} \
             -C "$PWD" build \
               --blobs-dir=/blobs \
