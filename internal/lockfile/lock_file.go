@@ -42,11 +42,12 @@ type blobMap map[string]BlobInfo
 type File struct {
 	options MapFileOptions
 
-	mu       sync.Mutex
-	blobs    blobMap
-	dirty    bool
-	lock     fslock.Handle
-	lockPath string
+	mu            sync.Mutex
+	blobs         blobMap
+	previousBlobs blobMap
+	dirty         bool
+	lock          fslock.Handle
+	lockPath      string
 }
 
 type MapFileOptions struct {
@@ -58,12 +59,6 @@ type MapFileOptions struct {
 
 	// If we get a new value for an existing entry, should we allow overwriting it?
 	AllowOverwrite bool
-
-	// If set, always never return blob (ie force a new fetch will be cached)
-	AlwaysFetch bool
-
-	// Should we save the file out as each entry is written (useful during debugging) else it is saved once at end
-	IncrementalSave bool
 
 	// List of regexes that we never return a value for
 	NoCache *re.MultiRegexMatcher
@@ -102,10 +97,6 @@ func (f *File) SkipSave(u *url.URL) bool {
 }
 
 func (f *File) GetBlob(u *url.URL) (BlobInfo, bool, error) {
-	if f.options.AlwaysFetch {
-		return BlobInfo{}, false, nil
-	}
-
 	k := u.Redacted()
 
 	// if we don't want to cache it, stop early
@@ -120,7 +111,17 @@ func (f *File) GetBlob(u *url.URL) (BlobInfo, bool, error) {
 	rv, ok := f.blobs[k]
 	if ok {
 		logrus.Infof("Found (manifest): %s", k)
-		return rv, ok, nil
+		return rv, true, nil
+	}
+
+	// ok, do we have it prior to us being reset()
+	rv, ok = f.previousBlobs[k]
+	if ok {
+		if err := f.internalAddBlob(k, rv); err != nil {
+			logrus.Infof("Found (previous run): %s", k)
+			return BlobInfo{}, false, fmt.Errorf("error storing previously cached blob info: %w", err)
+		}
+		return rv, true, nil
 	}
 
 	logrus.Infof("Not cached: %s", k)
@@ -137,6 +138,10 @@ func (f *File) AddBlob(u *url.URL, info BlobInfo) error {
 	f.mu.Lock()
 	defer f.mu.Unlock()
 
+	return f.internalAddBlob(k, info)
+}
+
+func (f *File) internalAddBlob(k string, info BlobInfo) error {
 	v0, ok := f.blobs[k]
 	if ok {
 		if blobEquals(v0, info) {
@@ -172,9 +177,15 @@ func (f *File) RemoveEntry(u *url.URL) error {
 	return f.save(false)
 }
 
-func (f *File) Reset() error {
+func (f *File) Reset(forgetBlobs bool) error {
 	f.mu.Lock()
 	defer f.mu.Unlock()
+
+	if forgetBlobs {
+		f.previousBlobs = nil
+	} else {
+		f.previousBlobs = f.blobs
+	}
 
 	if len(f.blobs) == 0 {
 		return nil
@@ -247,7 +258,7 @@ func (f *File) save(final bool) (retErr error) {
 	}
 
 	// next, handle non-final save
-	if !final && !f.options.IncrementalSave {
+	if !final {
 		return nil
 	}
 

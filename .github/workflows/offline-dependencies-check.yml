@@ -1,13 +1,10 @@
 name: Offline Depends Check
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  push
 
 env:
-  htvend_img: ghcr.io/continusec/htvend:1.2
+  htvend_img: ghcr.io/continusec/htvend:1.4
   build_cmd: build-img-with-proxy -f Dockerfile.offlinebuild
   htvend_bucket: htvend-demo-001
   htvend_prefix: blobs/

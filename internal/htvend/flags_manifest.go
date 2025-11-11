@@ -43,10 +43,8 @@ type ManifestOptions struct {
 }
 
 type manifestContextOptions struct {
-	Writable        bool
-	FetchAlways     bool
-	AllowOverwrite  bool
-	IncrementalSave bool
+	Writable       bool
+	AllowOverwrite bool
 
 	NoCacheList []string
 }
@@ -58,11 +56,9 @@ func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockf
 	}
 
 	return lockfile.NewMapFile(lockfile.MapFileOptions{
-		Path:            o.ManifestFile,
-		Writable:        opts.Writable,
-		AllowOverwrite:  opts.AllowOverwrite,
-		AlwaysFetch:     opts.FetchAlways,
-		IncrementalSave: opts.IncrementalSave,
+		Path:           o.ManifestFile,
+		Writable:       opts.Writable,
+		AllowOverwrite: opts.AllowOverwrite,
 
 		NoCache: noCache,
 	})
