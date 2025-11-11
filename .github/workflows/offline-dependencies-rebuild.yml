@@ -1,10 +1,16 @@
 name: Offline Depends Rebuild
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: Force refresh of all assets by re-fetching from upstream, even when we have a known value from a previous run.
+        required: true
+        type: boolean
+        default: false
 
 env:
-  htvend_img: ghcr.io/continusec/htvend:1.2
+  htvend_img: ghcr.io/continusec/htvend:1.4
   build_cmd: build-img-with-proxy -f Dockerfile.offlinebuild
   htvend_bucket: htvend-demo-001
   htvend_prefix: blobs/
@@ -78,6 +84,7 @@ jobs:
           --network=host \
           --rm --privileged ${{ env.htvend_img }} \
             -C "$PWD" build \
+              ${{ env.force_refresh && '--force-refresh' || '' }} \
               --blobs-dir=/blobs \
               -- \
                 ${{ env.build_cmd }}

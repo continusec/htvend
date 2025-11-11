@@ -41,8 +41,7 @@ type BuildCommand struct {
 	ListenerOptions
 	FetchOptions
 
-	ForceRefresh bool `long:"force-refresh" description:"If set, always fetch from upstream (and save to both local and global cache)."`
-	Clean        bool `long:"clean" description:"If set, reset local blob list to empty before running."`
+	ForceRefresh bool `long:"force-refresh" description:"If set, ignore any existing SHA256 values"`
 }
 
 func (rc *BuildCommand) Execute(args []string) (retErr error) {
@@ -53,7 +52,6 @@ func (rc *BuildCommand) Execute(args []string) (retErr error) {
 
 	mf, err := rc.ManifestOptions.MakeManifestFile(&manifestContextOptions{
 		Writable:    true,
-		FetchAlways: rc.ForceRefresh,
 		NoCacheList: rc.NoCache,
 	})
 	if err != nil {
@@ -65,10 +63,8 @@ func (rc *BuildCommand) Execute(args []string) (retErr error) {
 		}
 	}()
 
-	if rc.Clean {
-		if err := mf.Reset(); err != nil {
-			return fmt.Errorf("error resetting manifest file: %w", err)
-		}
+	if err := mf.Reset(rc.ForceRefresh); err != nil {
+		return fmt.Errorf("error resetting manifest file: %w", err)
 	}
 
 	return rc.ListenerOptions.RunListenerWithSubprocess(&listenerCtx{
