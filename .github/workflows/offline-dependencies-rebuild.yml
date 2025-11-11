@@ -1,10 +1,7 @@
-name: Offline Depends
+name: Offline Depends Rebuild
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch
 
 env:
   htvend_img: ghcr.io/continusec/htvend:1.2
@@ -114,15 +111,3 @@ jobs:
           git commit -m"${{ env.commit_message }}" &&
           git push
         )
-
-    - name: Build in offline mode
-      run: |
-        docker run \
-          -v "$PWD:$PWD" \
-          -v "${{ runner.temp }}/blobs:/blobs" \
-          --network=none \
-          --rm --privileged ${{ env.htvend_img }} \
-            -C "$PWD" offline \
-              --blobs-dir=/blobs \
-              -- \
-                ${{ env.build_cmd }}
