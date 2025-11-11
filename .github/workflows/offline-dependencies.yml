@@ -1,32 +1,21 @@
-name: Offline Depends Rebuild
+name: Offline Depends
 
 on:
-  workflow_dispatch:
-    inputs:
-      force_refresh:
-        description: Force refresh of all assets by re-fetching from upstream, even when we have a known value from a previous run.
-        required: true
-        type: boolean
-        default: false
+  push
 
 env:
-  htvend_img: ghcr.io/continusec/htvend:1.4
+  htvend_img: ghcr.io/continusec/htvend:1.5
   build_cmd: build-img-with-proxy -f Dockerfile.offlinebuild
   htvend_bucket: htvend-demo-001
   htvend_prefix: blobs/
-  commit_email: htvend@continusec.com
-  commit_name: htvend offline dependency bot
-  commit_message: "chore: offline depends update"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: "Checkout latest source for branch: ${{ github.head_ref }}"
+    - name: Checkout latest source
       uses: actions/checkout@v5
-      with:
-        ref: ${{ github.head_ref }} # need ref so that we can commit
 
     - name: Restore htvend tool from cache
       id: htvend-tool-cache
@@ -76,21 +65,43 @@ jobs:
               --dest.blobs-dir=/blobs
         sudo chown -R $USER "${{ runner.temp }}/blobs"
 
-    - name: Rebuild allowing internet access
+    - name: Build in offline mode
+      id: offline_first_attempt
+      continue-on-error: true # we will attempt with internet if this fails the first time without and we identify a missing asset
       run: |
         docker run \
-          -v "$PWD:$PWD" \
+          -v "$PWD:/src" \
+          -v "$GITHUB_OUTPUT:/metrics" \
+          -v "${{ runner.temp }}/blobs:/blobs" \
+          --network=none \
+          --rm --privileged ${{ env.htvend_img }} \
+            --github-output-path /metrics \
+            -C "/src" offline \
+              --blobs-dir=/blobs \
+              -- \
+                ${{ env.build_cmd }}
+
+    - name: Check for non-dependecy related build failure
+      if: "${{ steps.offline_first_attempt.outcome != 'success' && (steps.offline_first_attempt.outputs.htvend_missing_asset_total == '0' || steps.offline-first-attempt.outputs.htvend_missing_asset_total == '') }}"
+      run: exit 1 # unexpected failure which is unrelated to missing assets
+
+    - name: Rebuild allowing internet access
+      id: rebuild_with_internet
+      if: "${{ steps.offline_first_attempt.outcome == 'failure' }}"
+      run: |
+        docker run \
+          -v "$PWD:/src" \
           -v "${{ runner.temp }}/blobs:/blobs" \
           --network=host \
           --rm --privileged ${{ env.htvend_img }} \
-            -C "$PWD" build \
-              ${{ env.force_refresh && '--force-refresh' || '' }} \
+            -C /src build \
               --blobs-dir=/blobs \
               -- \
                 ${{ env.build_cmd }}
         sudo chown -R $USER "${{ runner.temp }}/blobs"
 
     - name: Send assets to S3
+      if: "${{ steps.rebuild_with_internet.outcome == 'success' }}"
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -110,6 +121,7 @@ jobs:
               --dest.blobs-prefix="${{ env.htvend_prefix }}"
 
     - name: Commit any changes to assets.json
+      if: "${{ steps.rebuild_with_internet.outcome == 'success' }}"
       run: |
         git add ./assets.json &&
         git diff --exit-code --staged ./assets.json >/dev/null || (
@@ -118,3 +130,16 @@ jobs:
           git commit -m"${{ env.commit_message }}" &&
           git push
         )
+      
+    - name: Retry build in offline mode with new assets.json
+      if: "${{ steps.rebuild_with_internet.outcome == 'success' }}"
+      run: |
+        docker run \
+          -v "$PWD:/src" \
+          -v "${{ runner.temp }}/blobs:/blobs" \
+          --network=none \
+          --rm --privileged ${{ env.htvend_img }} \
+            -C "/src" offline \
+              --blobs-dir=/blobs \
+              -- \
+                ${{ env.build_cmd }}

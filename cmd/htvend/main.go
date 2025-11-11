@@ -27,7 +27,7 @@ func main() {
 		Export  htvend.ExportCommand  `command:"export" description:"Export referenced assets to directory"`
 		Offline htvend.OfflineCommand `command:"offline" description:"Serve assets to command, don't allow other outbound requests"`
 	}{}
-	app.RunWithFlags(opts, func() error {
-		return opts.FlagsCommon.Apply()
-	})
+	// not 100% clear to me why we need to wrap opts.FlagsCommon.Apply, but I suspect it's because the value changes
+	// and it's not a proper pointer? Anyway this works, and not doing so doesn't.
+	app.RunWithFlags(opts, func() error { return opts.FlagsCommon.Apply() }, func() error { return opts.FlagsCommon.OnShutdown() })
 }

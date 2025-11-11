@@ -17,13 +17,16 @@ package app
 import (
 	"fmt"
 	"os"
+	"strings"
 
+	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sirupsen/logrus"
 )
 
 type FlagsCommon struct {
-	DirToChangeTo string `short:"C" long:"chdir" default:"." description:"Directory to change to before running."`
-	Verbose       bool   `short:"v" long:"verbose" description:"Set for verbose output. Equivalent to setting LOG_LEVEL=debug"`
+	DirToChangeTo    string `short:"C" long:"chdir" default:"." description:"Directory to change to before running."`
+	Verbose          bool   `short:"v" long:"verbose" description:"Set for verbose output. Equivalent to setting LOG_LEVEL=debug"`
+	GithubOutputPath string `long:"github-output-path" description:"Set to append simple metric format to this path. Suitable for GITHUB_OUTPUT in Actions. Will write on success and most failures."`
 }
 
 func (fc FlagsCommon) Apply() error {
@@ -47,6 +50,36 @@ func (fc FlagsCommon) Apply() error {
 	if fc.DirToChangeTo != "." {
 		if err := os.Chdir(fc.DirToChangeTo); err != nil {
 			return err
+		}
+	}
+	return nil
+}
+
+func (fc FlagsCommon) OnShutdown() (retErr error) {
+	if fc.GithubOutputPath != "" {
+		fp, err := os.OpenFile(fc.GithubOutputPath, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0o666)
+		if err != nil {
+			return fmt.Errorf("error opening file to write simple metrics to: %w", err)
+		}
+		defer func() {
+			if err := fp.Close(); err != nil && retErr == nil {
+				retErr = err
+			}
+		}()
+		metrics, err := prometheus.DefaultGatherer.Gather()
+		if err != nil {
+			return fmt.Errorf("error gathering metrics: %w", err)
+		}
+		for _, m := range metrics {
+			if m.Name != nil && strings.HasPrefix(*m.Name, "htvend_") && m.Type != nil && *m.Type == *prometheus.CounterMetricTypePtr {
+				for _, mm := range m.Metric {
+					if len(mm.Label) == 0 && mm.Counter != nil && mm.Counter.Value != nil {
+						if _, err := fmt.Fprintf(fp, "%s=%d\n", *m.Name, uint64(*mm.Counter.Value)); err != nil {
+							return fmt.Errorf("error writing simple metric out: %w", err)
+						}
+					}
+				}
+			}
 		}
 	}
 	return nil
