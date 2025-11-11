@@ -35,8 +35,6 @@ type CacheOptions struct {
 	// S3 options - all other auth etc is with standard AWS env vars / metadata server
 	BlobsBucket string `long:"blobs-bucket" description:"S3 bucket to use for blobs"`
 	BlobsPrefix string `long:"blobs-prefix" default:"" description:"Prefix to prepend keys before uploading to S3 bucket"`
-
-	CacheMap string `long:"cache-manifest" default:"${XDG_DATA_HOME}/htvend/cache/assets.json" description:"Cache of all downloaded assets"`
 }
 
 type ManifestOptions struct {
@@ -48,25 +46,9 @@ type manifestContextOptions struct {
 	Writable        bool
 	FetchAlways     bool
 	AllowOverwrite  bool
-	ReloadOnHUP     bool
-	UseFallback     bool
 	IncrementalSave bool
 
 	NoCacheList []string
-}
-
-func (o *CacheOptions) MakeGlobalCacheManifestFile(noCache *re.MultiRegexMatcher, depth int) (*lockfile.File, error) {
-	cmPath, err := xdgIt(o.CacheMap)
-	if err != nil {
-		return nil, fmt.Errorf("error getting cache map path with xdg: %w", err)
-	}
-	return lockfile.NewMapFile(lockfile.MapFileOptions{
-		Depth:          depth,
-		Path:           cmPath,
-		AllowOverwrite: true, // global cache should overwrite new vals
-		Writable:       true,
-		NoCache:        noCache,
-	})
 }
 
 func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockfile.File, error) {
@@ -75,25 +57,14 @@ func (o *ManifestOptions) MakeManifestFile(opts *manifestContextOptions) (*lockf
 		return nil, fmt.Errorf("error creating no-cache regex matcher: %w", err)
 	}
 
-	var cache *lockfile.File
-	if opts.UseFallback {
-		cache, err = o.MakeGlobalCacheManifestFile(noCache, 1)
-		if err != nil {
-			return nil, fmt.Errorf("error creating global manifest file: %w", err)
-		}
-	}
-
 	return lockfile.NewMapFile(lockfile.MapFileOptions{
-		Depth:           0,
 		Path:            o.ManifestFile,
 		Writable:        opts.Writable,
 		AllowOverwrite:  opts.AllowOverwrite,
 		AlwaysFetch:     opts.FetchAlways,
-		ReloadHander:    opts.ReloadOnHUP,
 		IncrementalSave: opts.IncrementalSave,
 
-		Fallback: cache,
-		NoCache:  noCache,
+		NoCache: noCache,
 	})
 }
 

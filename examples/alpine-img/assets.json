@@ -1,15 +1,15 @@
 {
   "https://dl-cdn.alpinelinux.org/alpine/v3.21/community/aarch64/APKINDEX.tar.gz": {
-    "Sha256": "5bfa54e6bfadfcd1e1f939f04ae829f5de27f311483f2521586ab1037c5579d7",
+    "Sha256": "d0877abc4c272d868697a077b0220d5accd9d6063ce278d78c319636a5ceb107",
     "Headers": {
-      "Content-Length": "1974212",
+      "Content-Length": "1974202",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://dl-cdn.alpinelinux.org/alpine/v3.21/main/aarch64/APKINDEX.tar.gz": {
-    "Sha256": "61f4b6e5bb1808624d30a127e7579f9370b3ce72bb6a959c2aa7f4803fa854a2",
+    "Sha256": "fdaa30cc5c0eec97d1b732fafe8f183d037d515a12cd1378f68376eafabf8b7e",
     "Headers": {
-      "Content-Length": "487693",
+      "Content-Length": "487710",
       "Content-Type": "application/octet-stream"
     }
   },
@@ -27,17 +27,17 @@
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://dl-cdn.alpinelinux.org/alpine/v3.21/main/aarch64/curl-8.12.1-r1.apk": {
-    "Sha256": "76d314a671c0def06d7e3ad4d725a7c888a361426938ae298f11d59c63cc7962",
+  "https://dl-cdn.alpinelinux.org/alpine/v3.21/main/aarch64/curl-8.14.1-r2.apk": {
+    "Sha256": "75f0c8a7d792763e2a1c2b18b730fda08ad33351e933bfacb55e4a18c5584d2a",
     "Headers": {
-      "Content-Length": "154957",
+      "Content-Length": "165197",
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://dl-cdn.alpinelinux.org/alpine/v3.21/main/aarch64/libcurl-8.12.1-r1.apk": {
-    "Sha256": "86bd609f4b48c26ea366f9b70d97bd50b17e435df6b49a2065f33da1611b69aa",
+  "https://dl-cdn.alpinelinux.org/alpine/v3.21/main/aarch64/libcurl-8.14.1-r2.apk": {
+    "Sha256": "a7339bca050feddd0a3622446a255143c4a981d1d442625b9dd085d0ad30299e",
     "Headers": {
-      "Content-Length": "311207",
+      "Content-Length": "329571",
       "Content-Type": "application/octet-stream"
     }
   },
@@ -76,34 +76,34 @@
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://registry-1.docker.io/v2/library/alpine/blobs/sha256:72dcd4e5585506282b441479de25513a6d3878ebee63a2999408fa4c6c98f0fa": {
-    "Sha256": "72dcd4e5585506282b441479de25513a6d3878ebee63a2999408fa4c6c98f0fa",
+  "https://registry-1.docker.io/v2/library/alpine/blobs/sha256:a13411245a25e4709e994537ac44c272e8c74dc740b3c3b0e25756de2f4ba8e9": {
+    "Sha256": "a13411245a25e4709e994537ac44c272e8c74dc740b3c3b0e25756de2f4ba8e9",
     "Headers": {
       "Content-Length": "597",
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://registry-1.docker.io/v2/library/alpine/blobs/sha256:d06c6b665c9b4c183a2e300b290a6b4b7db03f803122fe93d91e9178f425e488": {
-    "Sha256": "d06c6b665c9b4c183a2e300b290a6b4b7db03f803122fe93d91e9178f425e488",
+  "https://registry-1.docker.io/v2/library/alpine/blobs/sha256:c2fe130f4aabc917e559e7eed7d37b0e21ba13b44520101696887ca892e8c63f": {
+    "Sha256": "c2fe130f4aabc917e559e7eed7d37b0e21ba13b44520101696887ca892e8c63f",
     "Headers": {
-      "Content-Length": "3986937",
+      "Content-Length": "3992353",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/alpine/manifests/3.21": {
-    "Sha256": "b6a6be0ff92ab6db8acd94f5d1b7a6c2f0f5d10ce3c24af348d333ac6da80685",
+    "Sha256": "5405e8f36ce1878720f71217d664aa3dea32e5e5df11acbf07fc78ef5661465b",
     "Headers": {
       "Content-Length": "9218",
       "Content-Type": "application/vnd.oci.image.index.v1+json",
-      "Docker-Content-Digest": "sha256:b6a6be0ff92ab6db8acd94f5d1b7a6c2f0f5d10ce3c24af348d333ac6da80685"
+      "Docker-Content-Digest": "sha256:5405e8f36ce1878720f71217d664aa3dea32e5e5df11acbf07fc78ef5661465b"
     }
   },
-  "https://registry-1.docker.io/v2/library/alpine/manifests/sha256:d4fdbfc39faf24a67747e8e5d0cccdd149ecf4998140746617fd71384c23f23c": {
-    "Sha256": "d4fdbfc39faf24a67747e8e5d0cccdd149ecf4998140746617fd71384c23f23c",
+  "https://registry-1.docker.io/v2/library/alpine/manifests/sha256:fac2338de28c1143c0e69b48ba2d9b50481d5f1542b46c4656e5d6912d2d963a": {
+    "Sha256": "fac2338de28c1143c0e69b48ba2d9b50481d5f1542b46c4656e5d6912d2d963a",
     "Headers": {
       "Content-Length": "1025",
       "Content-Type": "application/vnd.oci.image.manifest.v1+json",
-      "Docker-Content-Digest": "sha256:d4fdbfc39faf24a67747e8e5d0cccdd149ecf4998140746617fd71384c23f23c"
+      "Docker-Content-Digest": "sha256:fac2338de28c1143c0e69b48ba2d9b50481d5f1542b46c4656e5d6912d2d963a"
     }
   }
 }
