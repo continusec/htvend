@@ -49,16 +49,16 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ vars.AWS_REGION }}
       run: |
-        [[ -f $PWD/assets.json ]] || exit 0
+        [[ -f "$PWD/assets.json" ]] || echo "{}" > "$PWD/assets.json"
         mkdir -p "${{ runner.temp }}/blobs"
         docker run \
           -e AWS_ACCESS_KEY_ID \
           -e AWS_SECRET_ACCESS_KEY \
           -e AWS_REGION \
-          -v "$PWD:$PWD" \
+          -v "$PWD:/src" \
           -v "${{ runner.temp }}/blobs:/blobs" \
           --rm ${{ env.htvend_img }} \
-            -C "$PWD" export \
+            -C /src export \
               --blobs-backend=s3 \
               --blobs-bucket="${{ env.htvend_bucket }}" \
               --blobs-prefix="${{ env.htvend_prefix }}" \
@@ -79,9 +79,9 @@ jobs:
             -C "/src" offline \
               --blobs-dir=/blobs \
               -- \
-                ${{ env.build_cmd }}
+                ${{ env.build_cmd }} || (cat $GITHUB_OUTPUT && exit 1)
 
-    - name: Check for non-dependecy related build failure
+    - name: Check for non-dependency related build failure
       if: "${{ steps.offline_first_attempt.outcome != 'success' && (steps.offline_first_attempt.outputs.htvend_missing_asset_total == '0' || steps.offline-first-attempt.outputs.htvend_missing_asset_total == '') }}"
       run: exit 1 # unexpected failure which is unrelated to missing assets
 
