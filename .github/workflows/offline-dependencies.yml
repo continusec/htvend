@@ -8,6 +8,9 @@ env:
   build_cmd: build-img-with-proxy -f Dockerfile.offlinebuild
   htvend_bucket: htvend-demo-001
   htvend_prefix: blobs/
+  commit_email: htvend@continusec.com
+  commit_name: htvend offline dependency bot
+  commit_message: "chore: offline depends update"
 
 jobs:
   build:
