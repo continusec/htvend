@@ -123,4 +123,4 @@ sha256sums: img-tarballs
 
 .PHONY: githubaction-to-registry
 githubaction-to-registry:
-	docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/continusec/htvend:1.4 --push -f Dockerfile.githubaction .
+	docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/continusec/htvend:1.5 --push -f Dockerfile.githubaction .

@@ -28,7 +28,16 @@ import (
 	"github.com/continusec/htvend/internal/lockfile"
 	"github.com/continusec/htvend/internal/proxyserver"
 	"github.com/continusec/htvend/internal/re"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/sirupsen/logrus"
+)
+
+var (
+	missingAssetCount = promauto.NewCounter(prometheus.CounterOpts{
+		Name: "htvend_missing_asset_total",
+		Help: "The total number of missing asset requests",
+	})
 )
 
 type ListenerOptions struct {
@@ -152,6 +161,8 @@ func handleMainServerRequest(lctx *listenerCtx, w http.ResponseWriter, r *http.R
 	if found {
 		return serveFoundBlob(lctx, bi, w)
 	}
+
+	missingAssetCount.Inc()
 
 	if lctx.FetchIfMissing {
 		return fetchAndSaveBlob(lctx.Assets, lctx.Blobs, r.Method, r.Body, u, http.DefaultClient, lctx.HeadersToCache, func(newReq *http.Request) error {

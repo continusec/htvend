@@ -21,30 +21,27 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func RunWithFlags(opts any, globalInit func() error) {
-	err := func() (retErr error) {
-		// create parser - this should include execution of any flags.Executor(s)
-		parser := flags.NewParser(opts, flags.Default)
-		parser.CommandHandler = func(command flags.Commander, args []string) error {
-			if err := globalInit(); err != nil {
-				return err
-			}
-			if command == nil {
-				return nil
-			}
-			return command.Execute(args)
+func RunWithFlags(opts any, globalInit, globalShutdown func() error) {
+	// create parser - this should include execution of any flags.Executor(s)
+	parser := flags.NewParser(opts, flags.Default)
+	parser.CommandHandler = func(command flags.Commander, args []string) (retErr error) {
+		if err := globalInit(); err != nil {
+			return err
 		}
-		if _, err := parser.ParseArgs(os.Args[1:]); err != nil {
-			if flags.WroteHelp(err) {
-				return nil
+		defer func() {
+			if err := globalShutdown(); err != nil && retErr == nil {
+				retErr = err
 			}
-			return err // don't wrap as it looks useless in the logs
+		}()
+		if command == nil {
+			return nil
 		}
-
-		// and we're done, since anything should have been called above
-		return nil
-	}()
-	if err != nil {
+		return command.Execute(args)
+	}
+	if _, err := parser.ParseArgs(os.Args[1:]); err != nil {
+		if flags.WroteHelp(err) {
+			return
+		}
 		logrus.Fatalf("%v", err)
 	}
 }
