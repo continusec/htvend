@@ -62,45 +62,45 @@
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/config/@v/v1.31.18.info": {
-    "Sha256": "f567edb5a59e040352fda0dfa4088c101b95931001cd9edcdff5c3d64d170ec0",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/config/@v/v1.31.19.info": {
+    "Sha256": "924bdb88c8751a21111a727cf33621fda11e5bc6fbfcc7b5d361c618466d3870",
     "Headers": {
       "Content-Length": "222",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/config/@v/v1.31.18.mod": {
-    "Sha256": "a52fbc43065a00e1b8eee5d2f92aefa842426c5c1a8acdcc4b480faab3587057",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/config/@v/v1.31.19.mod": {
+    "Sha256": "97735a6bcb6e0cb9d0c25f95e652f0836eefa0ca4ef3aafa3dfb2b09dbad7b33",
     "Headers": {
       "Content-Length": "1648",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/config/@v/v1.31.18.zip": {
-    "Sha256": "fbcf71720033f5dd4ae5a151b837e5e92815de1bf2c47158b34813f4aeda5221",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/config/@v/v1.31.19.zip": {
+    "Sha256": "daaa1a80f50c0d42406030d8d26bf29f0755b6223a9e211187f221dd7fc8dc5c",
     "Headers": {
-      "Content-Length": "104781",
+      "Content-Length": "104786",
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/credentials/@v/v1.18.22.info": {
-    "Sha256": "d614c72770a0b03d4eb3971e0b7999161aa98729ab95ca05e0c74e8d9f146f0f",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/credentials/@v/v1.18.23.info": {
+    "Sha256": "a4a0996e27679c9dfd55f3f18476fd9c514fdc26474b20dede77be8362673d14",
     "Headers": {
       "Content-Length": "232",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/credentials/@v/v1.18.22.mod": {
-    "Sha256": "fa61b923bacb094b085bfef72937c3e92ba3d58425a5b9e104b7b52155e45a1c",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/credentials/@v/v1.18.23.mod": {
+    "Sha256": "be248276b9c2d45d0711702c309cda267bdd8b24c227708c784d2da89eaa0ea2",
     "Headers": {
       "Content-Length": "1412",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/credentials/@v/v1.18.22.zip": {
-    "Sha256": "ca3a787ac487a5e701f4ceb99e8f7895fd1f1a0e464b5993ee4f0ada6a152fe0",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/credentials/@v/v1.18.23.zip": {
+    "Sha256": "c7ae6a664812635f64d84f1e5c40b61430febae815a1f65221cc6913995464d0",
     "Headers": {
-      "Content-Length": "65918",
+      "Content-Length": "65920",
       "Content-Type": "application/zip"
     }
   },
@@ -314,66 +314,66 @@
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sso/@v/v1.30.1.info": {
-    "Sha256": "20c972b63cc949832d4d601d6ab1283eeb44317e65633e059bd0a85d4f5737ae",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sso/@v/v1.30.2.info": {
+    "Sha256": "42acb9d656dec954df3c8478e991a1769150bbb8efa899993efff8893e2b2374",
     "Headers": {
       "Content-Length": "230",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sso/@v/v1.30.1.mod": {
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sso/@v/v1.30.2.mod": {
     "Sha256": "47179d9aceba41b7567ed4be9a02c3638fa379ca34c84e4739c8a2eccc030c2a",
     "Headers": {
       "Content-Length": "497",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sso/@v/v1.30.1.zip": {
-    "Sha256": "b409656d72d4ede6b180c75b57d349363f18ce5909bda20a890819ad8add040e",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sso/@v/v1.30.2.zip": {
+    "Sha256": "59817176ac61e5b10dba665c8d53b9a8a2440f155f5b826de1a733b7808e57f5",
     "Headers": {
-      "Content-Length": "54959",
+      "Content-Length": "55082",
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/ssooidc/@v/v1.35.5.info": {
-    "Sha256": "22aacbc65d28b780f3e9107d931da431621879302940c6c4aab3bcce042f9111",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/ssooidc/@v/v1.35.6.info": {
+    "Sha256": "85f29a2f1f1006c2b2911733aec0f724cd0d96703009fca1a91bbb9ad9cf3856",
     "Headers": {
       "Content-Length": "238",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/ssooidc/@v/v1.35.5.mod": {
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/ssooidc/@v/v1.35.6.mod": {
     "Sha256": "2b700f27ec1d653fa554fe3face46a019bf7815cd1cacfe46d5a1ddc67165e8e",
     "Headers": {
       "Content-Length": "501",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/ssooidc/@v/v1.35.5.zip": {
-    "Sha256": "5130484d6a999aede7b2770610a4d872a71f343fe3e095d3d86395192d33e30a",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/ssooidc/@v/v1.35.6.zip": {
+    "Sha256": "67491a9fb7fb5ca66f4962575d5e267cf0e7557f5836aece3b2bc431e5b909bd",
     "Headers": {
-      "Content-Length": "59956",
+      "Content-Length": "60079",
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sts/@v/v1.40.0.info": {
-    "Sha256": "1dba378efc4319d6828ce39935698146b553688d2f1361d666c68b615cf2403a",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sts/@v/v1.40.1.info": {
+    "Sha256": "e5a8ea1910ac26fe6003121ab6a8243dd8b433ee65d6422bcdb2dbc6b37ff9d9",
     "Headers": {
       "Content-Length": "230",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sts/@v/v1.40.0.mod": {
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sts/@v/v1.40.1.mod": {
     "Sha256": "2e689e28a48bd6894d82844ee6f205907c6008c98608f377691b77bcaaa38399",
     "Headers": {
       "Content-Length": "862",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sts/@v/v1.40.0.zip": {
-    "Sha256": "2852175e1cc3ee3399a9f118053f1ef86442e51113166a727d4e92978ef13e34",
+  "https://proxy.golang.org/github.com/aws/aws-sdk-go-v2/service/sts/@v/v1.40.1.zip": {
+    "Sha256": "5a7d5a7a0f32b4534ec836b6b83b53a0f5727b851c72c1dcf304b9b661ee4e3d",
     "Headers": {
-      "Content-Length": "98429",
+      "Content-Length": "98540",
       "Content-Type": "application/zip"
     }
   },
