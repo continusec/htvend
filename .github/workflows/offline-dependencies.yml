@@ -69,7 +69,7 @@ jobs:
       id: offline_first_attempt
       continue-on-error: true # we will attempt with internet if this fails the first time without and we identify a missing asset
       run: |
-        docker run \
+        touch "${GITHUB_OUTPUT}" && docker run \
           -v "$PWD:/src" \
           -v "$GITHUB_OUTPUT:/metrics" \
           -v "${{ runner.temp }}/blobs:/blobs" \
