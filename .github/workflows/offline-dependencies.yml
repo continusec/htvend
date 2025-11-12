@@ -17,28 +17,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout latest source
+    - name: Fetch source from git
       uses: actions/checkout@v5
+      with:
+        ref: ${{ github.head_ref }} # need ref so that we can commit
 
-    - name: Restore htvend tool from cache
+    - name: Fetch htvend from cache
       id: htvend-tool-cache
       uses: actions/cache@v4
       with:
         path: ${{ runner.temp }}/htvend-image
         key: ${{ env.htvend_img }}-${{ runner.os }}-${{ runner.arch }}
 
-    - name: Fetch htvend image
+    - name: Fetch htvend from upstream
       if: steps.htvend-tool-cache.outputs.cache-hit != 'true'
       run: |
         mkdir -p ${{ runner.temp }}/htvend-image
         docker pull "${{ env.htvend_img }}"
         docker save -o ${{ runner.temp }}/htvend-image/img.tar "${{ env.htvend_img }}"
 
-    - name: Load htvend tool into docker
+    - name: Load htvend from cache
       if: steps.htvend-tool-cache.outputs.cache-hit == 'true'
       run: docker load -i ${{ runner.temp }}/htvend-image/img.tar
 
-    - name: Restore offline depends assets from cache
+    - name: Fetch offline depends assets from cache
       id: htvend-blobs-cache
       uses: actions/cache@v4
       with:
@@ -68,7 +70,7 @@ jobs:
               --dest.blobs-dir=/blobs
         sudo chown -R $USER "${{ runner.temp }}/blobs"
 
-    - name: Build in offline mode
+    - name: Build with no network access
       id: offline_first_attempt
       continue-on-error: true # we will attempt with internet if this fails the first time without and we identify a missing asset
       run: |
@@ -84,11 +86,11 @@ jobs:
               -- \
                 ${{ env.build_cmd }} || (cat $GITHUB_OUTPUT && exit 1)
 
-    - name: Check for non-dependency related build failure
+    - name: Exit with failure (skipped if build succeeded, or failed due to missing assets)
       if: "${{ steps.offline_first_attempt.outcome != 'success' && (steps.offline_first_attempt.outputs.htvend_missing_asset_total == '0' || steps.offline_first_attempt.outputs.htvend_missing_asset_total == '') }}"
       run: exit 1 # unexpected failure which is likley unrelated to missing assets
 
-    - name: Rebuild allowing internet access
+    - name: Rebuild assets.json allowing internet access
       id: rebuild_with_internet
       if: "${{ steps.offline_first_attempt.outcome == 'failure' }}"
       run: |
@@ -103,7 +105,7 @@ jobs:
                 ${{ env.build_cmd }}
         sudo chown -R $USER "${{ runner.temp }}/blobs"
 
-    - name: Send assets to S3
+    - name: Save assets needed for build to S3
       if: "${{ steps.rebuild_with_internet.outcome == 'success' }}"
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -114,16 +116,16 @@ jobs:
           -e AWS_ACCESS_KEY_ID \
           -e AWS_SECRET_ACCESS_KEY \
           -e AWS_REGION \
-          -v "$PWD:$PWD" \
+          -v "$PWD:/src" \
           -v "${{ runner.temp }}/blobs:/blobs" \
           --rm ${{ env.htvend_img }} \
-            -C "$PWD" export \
+            -C /src export \
               --blobs-dir=/blobs \
               --dest.blobs-backend=s3 \
               --dest.blobs-bucket="${{ env.htvend_bucket }}" \
               --dest.blobs-prefix="${{ env.htvend_prefix }}"
 
-    - name: Commit any changes to assets.json
+    - name: Commit and push changes to assets.json
       if: "${{ steps.rebuild_with_internet.outcome == 'success' }}"
       run: |
         git add ./assets.json &&
@@ -134,7 +136,7 @@ jobs:
           git push
         )
       
-    - name: Retry build in offline mode with new assets.json
+    - name: Verify build with no network access
       if: "${{ steps.rebuild_with_internet.outcome == 'success' }}"
       run: |
         docker run \
@@ -142,7 +144,7 @@ jobs:
           -v "${{ runner.temp }}/blobs:/blobs" \
           --network=none \
           --rm --privileged ${{ env.htvend_img }} \
-            -C "/src" offline \
+            -C /src offline \
               --blobs-dir=/blobs \
               -- \
                 ${{ env.build_cmd }}
