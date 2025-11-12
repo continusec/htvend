@@ -82,8 +82,8 @@ jobs:
                 ${{ env.build_cmd }} || (cat $GITHUB_OUTPUT && exit 1)
 
     - name: Check for non-dependency related build failure
-      if: "${{ steps.offline_first_attempt.outcome != 'success' && (steps.offline_first_attempt.outputs.htvend_missing_asset_total == '0' || steps.offline-first-attempt.outputs.htvend_missing_asset_total == '') }}"
-      run: exit 1 # unexpected failure which is unrelated to missing assets
+      if: "${{ steps.offline_first_attempt.outcome != 'success' && (steps.offline_first_attempt.outputs.htvend_missing_asset_total == '0' || steps.offline_first_attempt.outputs.htvend_missing_asset_total == '') }}"
+      run: exit 1 # unexpected failure which is likley unrelated to missing assets
 
     - name: Rebuild allowing internet access
       id: rebuild_with_internet
