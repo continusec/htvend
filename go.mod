@@ -8,7 +8,7 @@ require (
 	github.com/adrg/xdg v0.5.3
 	github.com/aws/aws-sdk-go-v2 v1.41.0
 	github.com/aws/aws-sdk-go-v2/config v1.32.5
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.93.2
+	github.com/aws/aws-sdk-go-v2/service/s3 v1.94.0
 	github.com/containers/image/v5 v5.36.2
 	github.com/danjacques/gofslock v0.0.0-20240212154529-d899e02bfe22
 	github.com/gboddin/go-www-authenticate-parser v0.0.0-20230926203616-ec0b649bb077
