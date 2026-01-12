@@ -6,7 +6,7 @@ toolchain go1.24.5
 
 require (
 	github.com/adrg/xdg v0.5.3
-	github.com/aws/aws-sdk-go-v2 v1.41.0
+	github.com/aws/aws-sdk-go-v2 v1.41.1
 	github.com/aws/aws-sdk-go-v2/config v1.32.5
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.93.2
 	github.com/containers/image/v5 v5.36.2
