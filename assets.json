@@ -818,24 +818,24 @@
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.3.info": {
-    "Sha256": "fbf4f488a8615236b3899ffe329b0c26835cb4f946d6aa0933c625029e1a57b5",
+  "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.4.info": {
+    "Sha256": "e06eb2267b8acbbd7f32d1401c238bcf73a0b6f60aba69ca6219734b5de63185",
     "Headers": {
       "Content-Length": "191",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.3.mod": {
-    "Sha256": "01e82122d547d1228151a623fe6cacc4d7a9cb318a0f668ce08bb6b67fdb28b1",
+  "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.4.mod": {
+    "Sha256": "65bd5913b818d483bd0c92041e39a4ec17766f8907318aea02df8658f46324e8",
     "Headers": {
-      "Content-Length": "192",
+      "Content-Length": "266",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.3.zip": {
-    "Sha256": "4501f4e6b858bfdd997671fcdd2f647a3178b29b6b4d1344caa7c07517121dd0",
+  "https://proxy.golang.org/github.com/sirupsen/logrus/@v/v1.9.4.zip": {
+    "Sha256": "3847d00c5ee6948f1ff0d0120bc343c55ce852becb7720f8f08f53eecfe9e437",
     "Headers": {
-      "Content-Length": "69937",
+      "Content-Length": "70579",
       "Content-Type": "application/zip"
     }
   },
