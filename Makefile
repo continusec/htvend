@@ -8,7 +8,7 @@ bindir := $(exec_prefix)/bin
 BUILDBINDIR ?= $(CURDIR)/target
 GOSOURCES := $(shell git ls-files *.go)
 
-# all binaries that we creaate
+# all binaries that we create
 go_bins := $(patsubst cmd/%,$(BUILDBINDIR)/%,$(wildcard cmd/*))
 scripts := $(patsubst scripts/%,$(BUILDBINDIR)/%,$(wildcard scripts/*))
 
