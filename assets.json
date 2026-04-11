@@ -923,24 +923,24 @@
       "Content-Type": "application/zip"
     }
   },
-  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.7.0.info": {
-    "Sha256": "4222c6cc6cd100c8f17c9e2b2ff260100c3f47b401753093baaf64ea82837bae",
+  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.7.1.info": {
+    "Sha256": "de4e1b9095ee5130c18a414f36d992657b034abd3be510d16280aec87c7282ea",
     "Headers": {
       "Content-Length": "203",
       "Content-Type": "application/json"
     }
   },
-  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.7.0.mod": {
+  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.7.1.mod": {
     "Sha256": "fbf55b69a87d5a391082fd9bae5e4c7581041fe09b8bb93b0fe16cddfe85ce95",
     "Headers": {
       "Content-Length": "100",
       "Content-Type": "text/plain; charset=UTF-8"
     }
   },
-  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.7.0.zip": {
-    "Sha256": "9665bc3461beb6f36f2d1b8ce3e1d597c165c9d829d4217621b1c6a8a12bc647",
+  "https://proxy.golang.org/software.sslmate.com/src/go-pkcs12/@v/v0.7.1.zip": {
+    "Sha256": "46697244141879cc9d9ee728fdf4158d486da082e54b6117f0701c44b0ce9eb7",
     "Headers": {
-      "Content-Length": "66599",
+      "Content-Length": "66837",
       "Content-Type": "application/zip"
     }
   },
