@@ -1,0 +1,9 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "registryauthclient",
+    srcs = ["wrapping_registry_auth_client.go"],
+    importpath = "github.com/continusec/htvend/internal/registryauthclient",
+    visibility = ["//:__subpackages__"],
+    deps = ["@com_github_gboddin_go_www_authenticate_parser//:go-www-authenticate-parser"],
+)

@@ -1,32 +1,54 @@
 {
-  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:b60cb74dfa1b0c0f6ed9a4aaaa3a56f6d04f7cc0cceb7b08ce2ad1803d29e61d": {
-    "Sha256": "b60cb74dfa1b0c0f6ed9a4aaaa3a56f6d04f7cc0cceb7b08ce2ad1803d29e61d",
+  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:1f701c2d4555be2b976cb1846aaf0d73c955ccdc143c0bce5581ffbac7705feb": {
+    "Sha256": "1f701c2d4555be2b976cb1846aaf0d73c955ccdc143c0bce5581ffbac7705feb",
     "Headers": {
-      "Content-Length": "2313",
+      "Content-Length": "2069",
       "Content-Type": "application/octet-stream"
     }
   },
-  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:cc43ec4c13811c515d52d11a6039f3659696499c8782f5f3f601a3fdedf14082": {
-    "Sha256": "cc43ec4c13811c515d52d11a6039f3659696499c8782f5f3f601a3fdedf14082",
+  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:8bf6fbc94074daccf0d7e43395600ddd71aa5a9e486cf0d1a19cc36583f8401e": {
+    "Sha256": "8bf6fbc94074daccf0d7e43395600ddd71aa5a9e486cf0d1a19cc36583f8401e",
     "Headers": {
-      "Content-Length": "28860240",
+      "Content-Length": "2051",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:cb259a83ac3dd9fea0b394df41df2b298adf0df938fef5999475af18a751c257": {
+    "Sha256": "cb259a83ac3dd9fea0b394df41df2b298adf0df938fef5999475af18a751c257",
+    "Headers": {
+      "Content-Length": "29732805",
+      "Content-Type": "application/octet-stream"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/ubuntu/blobs/sha256:fff3795b437199a0b714aadba6fb2c251d7da853c3e257d3fed1d2c8d0f05158": {
+    "Sha256": "fff3795b437199a0b714aadba6fb2c251d7da853c3e257d3fed1d2c8d0f05158",
+    "Headers": {
+      "Content-Length": "28876406",
       "Content-Type": "application/octet-stream"
     }
   },
   "https://registry-1.docker.io/v2/library/ubuntu/manifests/24.04": {
-    "Sha256": "9cbed754112939e914291337b5e554b07ad7c392491dba6daf25eef1332a22e8",
+    "Sha256": "786a8b558f7be160c6c8c4a54f9a57274f3b4fb1491cf65146521ae77ff1dc54",
     "Headers": {
       "Content-Length": "6688",
       "Content-Type": "application/vnd.oci.image.index.v1+json",
-      "Docker-Content-Digest": "sha256:9cbed754112939e914291337b5e554b07ad7c392491dba6daf25eef1332a22e8"
+      "Docker-Content-Digest": "sha256:786a8b558f7be160c6c8c4a54f9a57274f3b4fb1491cf65146521ae77ff1dc54"
     }
   },
-  "https://registry-1.docker.io/v2/library/ubuntu/manifests/sha256:29803570998a550636d23e37a1c4349ffa0803208ef7a4664bcb647b30392373": {
-    "Sha256": "29803570998a550636d23e37a1c4349ffa0803208ef7a4664bcb647b30392373",
+  "https://registry-1.docker.io/v2/library/ubuntu/manifests/sha256:023f8a753c22258c9fe2d0005a7d28258038da7d620e9f93e9ad78aa266f9f11": {
+    "Sha256": "023f8a753c22258c9fe2d0005a7d28258038da7d620e9f93e9ad78aa266f9f11",
     "Headers": {
       "Content-Length": "424",
       "Content-Type": "application/vnd.oci.image.manifest.v1+json",
-      "Docker-Content-Digest": "sha256:29803570998a550636d23e37a1c4349ffa0803208ef7a4664bcb647b30392373"
+      "Docker-Content-Digest": "sha256:023f8a753c22258c9fe2d0005a7d28258038da7d620e9f93e9ad78aa266f9f11"
+    }
+  },
+  "https://registry-1.docker.io/v2/library/ubuntu/manifests/sha256:ea0b2b8607a61f981b2461f21edc27c0b37ddd53d23d4d350936480adf5de28c": {
+    "Sha256": "ea0b2b8607a61f981b2461f21edc27c0b37ddd53d23d4d350936480adf5de28c",
+    "Headers": {
+      "Content-Length": "424",
+      "Content-Type": "application/vnd.oci.image.manifest.v1+json",
+      "Docker-Content-Digest": "sha256:ea0b2b8607a61f981b2461f21edc27c0b37ddd53d23d4d350936480adf5de28c"
     }
   }
 }

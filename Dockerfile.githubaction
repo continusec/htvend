@@ -9,15 +9,15 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /go/src/buildah /go/src/htvend
 
-# pull in our buildah branch (until the PRs are merged)
-ADD https://api.github.com/repos/aeijdenberg/buildah/tarball/continusecbuild /buildah.tar.gz
+# pull latest buildah
+ADD https://api.github.com/repos/podman-container-tools/buildah/tarball/v1.44 /buildah.tar.gz
 
 # pull in htvend source
 ADD . /go/src/htvend
 
 # untar and build
 RUN tar -C /go/src/buildah --strip-components=1 -zxf /buildah.tar.gz && \
-    make -C /go/src/buildah GIT_COMMIT=continusecbuild bin/buildah && \
+    make -C /go/src/buildah GIT_COMMIT=v1.44 bin/buildah && \
     make -C /go/src/htvend all && \
     mkdir /result && \
     mv /go/src/buildah/bin/buildah /result/patched-buildah && \

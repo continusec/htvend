@@ -2,4 +2,4 @@
 /blobs/
 /examples/*/blobs/
 /examples/*/img.tar
-/patched-buildah-src/
+/bazel-*

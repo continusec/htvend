@@ -1,0 +1,19 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "app",
+    srcs = [
+        "flags_all.go",
+        "run_subprocess.go",
+        "run_with_flags.go",
+        "run_with_interrupt.go",
+        "with_temp_dir.go",
+    ],
+    importpath = "github.com/continusec/htvend/internal/app",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "@com_github_jessevdk_go_flags//:go-flags",
+        "@com_github_prometheus_client_golang//prometheus",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)

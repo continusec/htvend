@@ -1,0 +1,13 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "directory",
+    srcs = ["directory_store.go"],
+    importpath = "github.com/continusec/htvend/internal/blobstore/directory",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/blobstore",
+        "//internal/blobstore/directory/caf",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)

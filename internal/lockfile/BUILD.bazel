@@ -1,0 +1,13 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "lockfile",
+    srcs = ["lock_file.go"],
+    importpath = "github.com/continusec/htvend/internal/lockfile",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/re",
+        "@com_github_danjacques_gofslock//fslock",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)

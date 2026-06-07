@@ -1,0 +1,16 @@
+load("//rules_htvend:image.bzl", "htvend_image")
+load("//rules_htvend:lock.bzl", "htvend_lock")
+
+# run this target, it creates assets.json ensures the given s3 bucket is
+# populated with the blobs needed to support that assets.json file.
+htvend_lock(
+    name = "lock",
+    s3_bucket = "htvend-demo-001",
+    s3_prefix = "blobs/",
+)
+
+# build this target, creates image.tar as OCI image
+htvend_image(
+    name = "image",
+    blobs = "@python3_img_blobs//:blobs",
+)

@@ -54,7 +54,8 @@ targets-for-offline: all test
 assets.json: $(all_artifacts)
 	# here we set a temp GOMODCACHE to ensure go pulls through all dependent modules
 	# we set a different BUILDBINDIR so that we won't overwrite ourselves
-	$(BUILDBINDIR)/htvend build --clean -t GOMODCACHE -t BUILDBINDIR -- \
+	rm -f assets.json
+	$(BUILDBINDIR)/htvend build -t GOMODCACHE -t BUILDBINDIR -- \
 		$(MAKE) -B targets-for-offline || rm assets.json
 
 # fetch all the assets referred to by assets.json
@@ -72,10 +73,10 @@ offline: $(all_artifacts) assets.json blobs
 
 # clone or update patched-buildah-src
 patched-buildah-src:
-	test -d patched-buildah-src || git clone https://github.com/aeijdenberg/buildah --branch continusecbuild --single-branch patched-buildah-src
+	test -d patched-buildah-src || git clone https://github.com/podman-container-tools/buildah --branch v1.44.0 --single-branch patched-buildah-src
 	git -C patched-buildah-src fetch
-	git -C patched-buildah-src checkout continusecbuild
-	git -C patched-buildah-src reset --hard origin/continusecbuild
+	git -C patched-buildah-src checkout v1.44.0
+	git -C patched-buildah-src reset --hard origin/v1.44.0
 
 # build patched buildah binary
 patched-buildah-src/bin/buildah: patched-buildah-src
@@ -115,7 +116,7 @@ img-manifests: $(addsuffix assets.json,$(EXAMPLES))
 %/img.tar: %/assets.json %/blobs $(all_artifacts)
 	rm -f "$@"
 	$(BUILDBINDIR)/htvend -C "$*" offline -- \
-		$(MAKE) PATH=$(BUILDBINDIR):$(PATH) BUILDAH_OPTS="--tag oci-archive:img.tar" -B
+		$(MAKE) PATH=$(BUILDBINDIR):$(PATH) -B
 
 .PHONY: sha256sums
 sha256sums: img-tarballs
@@ -123,4 +124,4 @@ sha256sums: img-tarballs
 
 .PHONY: githubaction-to-registry
 githubaction-to-registry:
-	docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/continusec/htvend:1.5 --push -f Dockerfile.githubaction .
+	docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/continusec/htvend:1.6 --push -f Dockerfile.githubaction .
