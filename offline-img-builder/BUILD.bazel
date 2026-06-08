@@ -1,4 +1,4 @@
-load("@rules_apko//apko:defs.bzl", "apko_bazelrc", "apko_lock", "apko_image")
+load("@rules_apko//apko:defs.bzl", "apko_bazelrc", "apko_image", "apko_lock")
 load("@rules_img//img:convert.bzl", "image_manifest_from_oci_layout")
 load("@rules_img//img:image.bzl", "image_manifest")
 load("@rules_img//img:layer.bzl", "image_layer")
@@ -23,8 +23,8 @@ image_manifest_from_oci_layout(
     name = "wolfi_img",
     src = ":wolfi_base",
     architecture = "arm64",
-    os = "linux",
     layers = ["application/vnd.oci.image.layer.v1.tar+gzip"],
+    os = "linux",
 )
 
 # adds our binary on top
@@ -39,11 +39,11 @@ image_layer(
 # final image
 image_manifest(
     name = "image",
-    base = ":wolfi_img", 
-    layers = [":htvend_layer"],
+    base = ":wolfi_img",
     entrypoint = [
         "/usr/local/bin/htvend",
     ],
+    layers = [":htvend_layer"],
     working_dir = "/workspace",
 )
 
