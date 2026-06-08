@@ -2,13 +2,7 @@
 
 There are a number of challenges building Docker / OCI Images with respect to getting track of which assets are needed to build them.
 
-Here we have a small number of patches on the `buildah` tool that allow it to work well to service this use-case.
-
-## Quickstart
-
-Our patched `buildah` can be found at: <https://github.com/aeijdenberg/buildah/tree/continusecbuild>
-
-See further down for rationale why, but here is how to get started with a patched `buildah`.
+You will need `buildah` version [1.44](https://github.com/podman-container-tools/buildah/releases/tag/v1.44.0) or newer.
 
 ### Ubuntu 24.04 dependencies for `buildah`
 

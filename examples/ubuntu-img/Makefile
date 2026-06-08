@@ -1,2 +1,2 @@
-assets.json: Dockerfile
+assets.json:
 	build-img-with-proxy

@@ -1,0 +1,12 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "registry",
+    srcs = ["reg_store.go"],
+    importpath = "github.com/continusec/htvend/internal/blobstore/registry",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/blobstore",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)

@@ -1,0 +1,56 @@
+load("@rules_apko//apko:defs.bzl", "apko_bazelrc", "apko_lock", "apko_image")
+load("@rules_img//img:convert.bzl", "image_manifest_from_oci_layout")
+load("@rules_img//img:image.bzl", "image_manifest")
+load("@rules_img//img:layer.bzl", "image_layer")
+
+# run target, generates the lock file that pins all package versions and checksums
+apko_lock(
+    name = "lock",
+    config = "apko.yaml",
+    lockfile_name = "apko.lock.json",
+)
+
+# builds base
+apko_image(
+    name = "wolfi_base",
+    config = "apko.yaml",
+    contents = "@wolfi_base_lock//:contents",
+    tag = "wolfi-base:latest",
+)
+
+# creates manifest
+image_manifest_from_oci_layout(
+    name = "wolfi_img",
+    src = ":wolfi_base",
+    architecture = "arm64",
+    os = "linux",
+    layers = ["application/vnd.oci.image.layer.v1.tar+gzip"],
+)
+
+# adds our binary on top
+image_layer(
+    name = "htvend_layer",
+    srcs = {
+        "/usr/local/bin/htvend": "//cmd/htvend:bin",
+        "/usr/local/bin/build-img-with-proxy": "//scripts:build-img-with-proxy",
+    },
+)
+
+# final image
+image_manifest(
+    name = "image",
+    base = ":wolfi_img", 
+    layers = [":htvend_layer"],
+    entrypoint = [
+        "/usr/local/bin/htvend",
+    ],
+    working_dir = "/workspace",
+)
+
+# tarball for use by rules
+filegroup(
+    name = "oci_tarball",
+    srcs = [":image"],
+    output_group = "oci_tarball",
+    visibility = ["//visibility:public"],
+)

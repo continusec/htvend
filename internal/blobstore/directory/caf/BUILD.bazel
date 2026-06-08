@@ -1,0 +1,15 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "caf",
+    srcs = ["caf.go"],
+    importpath = "github.com/continusec/htvend/internal/blobstore/directory/caf",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "caf_test",
+    srcs = ["caf_test.go"],
+    embed = [":caf"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

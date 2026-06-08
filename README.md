@@ -77,7 +77,7 @@ WARN[0000] missing asset for URL: https://www.bing.com/
 To package up the assets (e.g. to transfer to a different environment), run:
 
 ```bash
-htvend export
+htvend export --dest.blobs-dir=blobs
 ```
 
 and this creates:

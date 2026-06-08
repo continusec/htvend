@@ -1,0 +1,21 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "download-image_lib",
+    srcs = ["download_image_main.go"],
+    importpath = "github.com/continusec/htvend/cmd/download-image",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//internal/registryauthclient",
+        "@com_github_containers_image_v5//manifest",
+        "@com_github_hashicorp_go_multierror//:go-multierror",
+        "@com_github_opencontainers_go_digest//:go-digest",
+        "@com_github_sirupsen_logrus//:logrus",
+    ],
+)
+
+go_binary(
+    name = "download-image",
+    embed = [":download-image_lib"],
+    visibility = ["//visibility:public"],
+)

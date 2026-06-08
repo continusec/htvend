@@ -13,7 +13,7 @@ HTTP_PROXY="${HTTP_PROXY}"
 SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-0}"
 
 # path to buildah binary to use
-BUILDAH_BINARY="${BUILDAH_BINARY:-patched-buildah}"
+BUILDAH_BINARY="${BUILDAH_BINARY:-buildah}"
 
 # space separated name of env vars we set inside container pointing to CA file
 CERT_FILE_VARS="${CERT_FILE_VARS:-SSL_CERT_FILE}"
@@ -112,5 +112,34 @@ EOF
     done
 fi
 
-set -x
-env ${env_unset_args} ${env_set_args} "${BUILDAH_BINARY}" build ${buildah_args} ${BUILDAH_OPTS} "$@"
+
+IMAGE_NAME=my-temp-name
+
+# Create the manifest list
+MANIFEST_NAME="$IMAGE_NAME-manifest"
+buildah manifest create "$MANIFEST_NAME"
+
+for PLATFORM in linux/arm64 linux/amd64; do
+  # Normalise: linux/amd64 -> linux-amd64 (for use in filenames/tags)
+  SAFE_PLATFORM="${PLATFORM//\//-}"
+
+  PLATFORM_TAR="${SAFE_PLATFORM}.tar"
+  PLATFORM_TAG="$IMAGE_NAME-$SAFE_PLATFORM"
+
+  echo "--- Building $PLATFORM ---"
+  env ${env_unset_args} ${env_set_args} "${BUILDAH_BINARY}" build --platform="$PLATFORM" --tag="oci-archive:${PLATFORM_TAR}:${PLATFORM_TAG}" ${buildah_args} ${BUILDAH_OPTS} "$@"
+
+  echo "--- Adding $PLATFORM to manifest ---"
+  env ${env_unset_args} ${env_set_args} "${BUILDAH_BINARY}" manifest add "$MANIFEST_NAME" "oci-archive:${PLATFORM_TAR}"
+done
+
+echo "--- Pushing manifest list to archive ---"
+env ${env_unset_args} ${env_set_args} "${BUILDAH_BINARY}" manifest push \
+  --all \
+  "$MANIFEST_NAME" \
+  "oci:oci"
+
+echo "--- Cleaning up manifest ---"
+"${BUILDAH_BINARY}" manifest rm "$MANIFEST_NAME" || false
+
+echo "Done. Multi-arch image written to dir: oci"

@@ -1,0 +1,15 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "re",
+    srcs = ["multi_regexp.go"],
+    importpath = "github.com/continusec/htvend/internal/re",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "re_test",
+    srcs = ["re_test.go"],
+    embed = [":re"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)
