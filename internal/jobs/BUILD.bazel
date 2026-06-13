@@ -1,8 +1,0 @@
-load("@rules_go//go:def.bzl", "go_library")
-
-go_library(
-    name = "jobs",
-    srcs = ["multitasker.go"],
-    importpath = "github.com/continusec/htvend/internal/jobs",
-    visibility = ["//:__subpackages__"],
-)

@@ -1,9 +1,0 @@
-load("@gazelle//:def.bzl", "gazelle")
-load("@rules_apko//apko:defs.bzl", "apko_bazelrc", "apko_lock")
-
-# gazelle:prefix github.com/continusec/htvend
-gazelle(name = "gazelle")
-
-# Generates .apko/.bazelrc and .apko/range.sh for partial package fetches.
-# Run with: bazel run //:apko_bazelrc
-apko_bazelrc()

@@ -1,0 +1,12 @@
+module(
+    name = "rules_htvend",
+    version = "0.0.0",
+)
+
+# Intentionally dependency-free: the rules load no external .bzl and rely only on
+# built-in repository/action APIs (ctx.download, ctx.symlink, ctx.actions). They
+# shell out to `podman` at execution time and pull the published htvend tool image.
+#
+# Consumers that fetch blobs from S3 also wire up the tweag credential helper in
+# their own .bazelrc -- see ../docs/bazel.md. That is a consumer concern, not a
+# module dependency.

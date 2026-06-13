@@ -1,15 +1,16 @@
-load("//rules_htvend:image.bzl", "htvend_image")
-load("//rules_htvend:lock.bzl", "htvend_lock")
+load("@rules_htvend//:image.bzl", "htvend_image")
+load("@rules_htvend//:lock.bzl", "htvend_lock")
 
-# run this target, it creates assets.json ensures the given s3 bucket is
-# populated with the blobs needed to support that assets.json file.
+# run this target: it (re)builds assets.json and populates the S3 bucket with the
+# blobs needed to satisfy it. Run once per architecture to accumulate a multi-arch
+# lockfile.
 htvend_lock(
     name = "lock",
     s3_bucket = "htvend-demo-001",
     s3_prefix = "blobs/",
 )
 
-# build this target, creates image.tar as OCI image
+# build this target: produces an OCI layout, built offline from assets.json + blobs.
 htvend_image(
     name = "image",
     blobs = "@ubuntu_img_blobs//:blobs",
