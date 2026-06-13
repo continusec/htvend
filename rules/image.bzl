@@ -12,7 +12,7 @@ with htvend_lock.
 # Default published tool image. podman resolves this from the local image store if
 # present (e.g. after `cd cli && make image IMAGE_TAG=...`), otherwise pulls it.
 # Pin by digest for fully reproducible builds.
-DEFAULT_HTVEND_IMAGE = "ghcr.io/continusec/htvend:2.0@sha256:2fa537803b0b2488ceab743a0a261d930888aa883c1c2c6f68b78e1cce0e4b80"
+DEFAULT_HTVEND_IMAGE = "ghcr.io/continusec/htvend:2.1@sha256:ebb2c06cfc40ed6dbfa9d203127b5cd0cd535f8d07c3b4b7ec07ea35f3f184e4 "
 
 def render_env_flags(env):
     """Render an env dict as `-e "K=V"` podman flags."""
