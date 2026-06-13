@@ -1,13 +1,11 @@
 load("@rules_htvend//:image.bzl", "htvend_image")
 load("@rules_htvend//:lock.bzl", "htvend_lock")
 
-# run this target: it (re)builds assets.json and populates the S3 bucket with the
-# blobs needed to satisfy it. Run once per architecture to accumulate a multi-arch
-# lockfile.
+# run this target: it (re)builds assets.json and stores the blobs in the local htvend
+# cache. No S3 / credentials -- this is the fully local flow. Run once per
+# architecture to accumulate a multi-arch lockfile.
 htvend_lock(
     name = "lock",
-    s3_bucket = "htvend-demo-001",
-    s3_prefix = "blobs/",
 )
 
 # build this target: produces an OCI layout, built offline from assets.json + blobs.
