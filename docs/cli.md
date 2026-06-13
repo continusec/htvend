@@ -26,9 +26,6 @@ After setting up a proxy server with a self-signed certificate, it sets the rele
 environment variables and executes a sub-command. If none is specified, an
 interactive shell is opened.
 
-See `make assets.json` (in [`../cli`](../cli)) for an example that creates a manifest
-for the dependencies of this project.
-
 ```
 Usage:
   htvend [OPTIONS] build [build-OPTIONS] [COMMAND] [ARG...]
@@ -63,13 +60,11 @@ Usage:
 Runs the specified sub-process with a proxy which only serves the contents
 referenced in `assets.json`. Anything else returns a 404 not found error.
 
-`make offline` (in [`../cli`](../cli)) does this for this repository.
-
 If you have `unshare` installed, a good way to *really* verify that you are offline:
 
 ```bash
 unshare -r -n -- \
-  bash -c "ip link set lo up && make offline"
+  bash -c "ip link set lo up && htvend offline -- <your build command>"
 ```
 
 `unshare -r -n` runs the sub-command in a new namespace with no networks; the
@@ -113,8 +108,8 @@ Copies all cached blobs referred to by `assets.json` to a destination of your
 choosing (a directory, or another backend such as S3). Useful when packaging assets
 to send to another environment, or to populate a shared blob store.
 
-`make blobs` (in [`../cli`](../cli)) runs this for the `assets.json` in this repo and
-creates the `blobs` directory.
+For example, `htvend export --output-directory=blobs` writes every blob referenced by
+`assets.json` into a local `blobs/` directory.
 
 ```
 Usage:
@@ -141,9 +136,6 @@ correct SHA256.
 - `--fetch` tries to fetch anything missing.
 - `--repair` updates the local manifest if the content has changed since (implies
   `--fetch`; may still require a rebuild afterwards).
-
-`make blobs` runs this for the `assets.json` in this repo (it also runs
-`htvend export`).
 
 ```
 Usage:

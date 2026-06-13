@@ -47,30 +47,6 @@ update-license:
 test:
 	go test ./...
 
-.PHONY: targets-for-offline
-targets-for-offline: all test
-
-# builds htvend then use that to produce bootstrap assets.json for self
-assets.json: $(all_artifacts)
-	# here we set a temp GOMODCACHE to ensure go pulls through all dependent modules
-	# we set a different BUILDBINDIR so that we won't overwrite ourselves
-	rm -f assets.json
-	$(BUILDBINDIR)/htvend build -t GOMODCACHE -t BUILDBINDIR -- \
-		$(MAKE) -B targets-for-offline || rm assets.json
-
-# fetch all the assets referred to by assets.json
-blobs: assets.json $(all_artifacts)
-	rm -rf blobs
-	$(BUILDBINDIR)/htvend verify --fetch
-	$(BUILDBINDIR)/htvend export
-
-# rebuild htvend using itself and downloaded assets
-.PHONY: offline
-offline: $(all_artifacts) assets.json blobs
-	# there's no need to set GOMODCACHE, other than to demonstrate that these will be downloaded again
-	$(BUILDBINDIR)/htvend offline -t GOMODCACHE -t BUILDBINDIR -- \
-		$(MAKE) BUILDBINDIR=$(BUILDBINDIR) -B targets-for-offline
-
 # ========================================================
 # Tool image (consumed by the Bazel rules in ../rules)
 # ========================================================

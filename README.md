@@ -123,8 +123,8 @@ build pulls through everything it needs, producing a canonical lock file. See
 
 ### Isn't `go mod vendor` a better solution for Go code?
 
-Yes it is. The `assets.json` in [`cli/`](./cli) is an example only — not all languages
-are as well-served as Go.
+Yes it is. `htvend` is most useful for the long tail of assets that *don't* have a
+good vendoring story — not all ecosystems are as well-served as Go.
 
 ### Why is this needed, can't we just ship built images around?
 
