@@ -1,17 +1,10 @@
-load("@rules_htvend//:image.bzl", "htvend_image")
-load("@rules_htvend//:lock.bzl", "htvend_lock")
+load("@rules_htvend//:defs.bzl", "htvend_image")
 
-# run this target: it (re)builds assets.json and populates the S3 bucket with the
-# blobs needed to satisfy it. Run once per architecture to accumulate a multi-arch
-# lockfile.
-htvend_lock(
-    name = "lock",
-    s3_bucket = "htvend-demo-001",
-    s3_prefix = "blobs/",
-)
-
-# build this target: produces an OCI layout, built offline from assets.json + blobs.
+# Creates //python3-img:image (bazel build) and //python3-img:image.lock (bazel run).
+# Blobs are stored locally and also exported to S3 (read back via @python3_img_blobs).
 htvend_image(
     name = "image",
     blobs = "@python3_img_blobs//:blobs",
+    s3_bucket = "htvend-demo-001",
+    s3_prefix = "blobs/",
 )

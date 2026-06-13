@@ -1,12 +1,14 @@
 # rules_htvend: reusable Bazel rules for building OCI images offline with htvend.
 #
 # Public entry points (load from another module as @rules_htvend//:<file>):
-#   image.bzl                -> htvend_image
-#   lock.bzl                 -> htvend_lock
+#   defs.bzl                 -> htvend_image  (the combined macro most consumers use)
+#   image.bzl                -> htvend_image_build         (offline build, advanced)
+#   lock.bzl                 -> htvend_lock                (lock run target, advanced)
 #   blobs_repository.bzl     -> htvend_blobs_repository      (S3 backend)
 #   blobs_dir_repository.bzl -> htvend_blobs_dir_repository  (local directory backend)
 
 exports_files([
+    "defs.bzl",
     "image.bzl",
     "lock.bzl",
     "blobs_repository.bzl",

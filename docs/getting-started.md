@@ -42,7 +42,7 @@ cd htvend/examples
 ## 3. Lock — capture assets (online, once)
 
 ```bash
-bazel run //alpine-img:lock
+bazel run //alpine-img:image.lock
 ```
 
 This builds `alpine-img` online inside the tool image, recording every fetched asset

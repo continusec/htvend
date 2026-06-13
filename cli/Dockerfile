@@ -1,6 +1,7 @@
 # Tool image for htvend: bundles the htvend binary, the build-img-with-proxy
 # wrapper, and an upstream buildah (>= 1.44, which carries the --mount patches
-# that used to require our fork) on a small wolfi base.
+# that used to require our fork) on a small wolfi base. The Bazel rules invoke
+# build-img-with-proxy directly, so no `make` is needed in the image.
 #
 # This is the image the Bazel rules (../rules) pull and run via podman. Build and
 # publish it with `make image` / `make image-push`.
@@ -21,7 +22,7 @@ RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH \
 # ---- final image ----
 FROM cgr.dev/chainguard/wolfi-base
 
-RUN apk add --no-cache bash buildah make
+RUN apk add --no-cache bash buildah
 
 COPY --from=builder /out/htvend /usr/local/bin/htvend
 COPY scripts/build-img-with-proxy /usr/local/bin/build-img-with-proxy

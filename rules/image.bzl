@@ -1,15 +1,25 @@
-"""htvend_image: build an OCI image offline from a checked-in lockfile + blobs.
+"""htvend_image_build: build an OCI image offline from a checked-in lockfile + blobs.
 
 The rule mounts the build context and the blob set into the htvend tool image and
-runs `htvend offline ... -- make -B`, which (via each example's Makefile) invokes
-build-img-with-proxy/buildah with no network access. The output is an OCI layout
-directory that downstream rules (e.g. rules_oci/rules_img push) can consume.
+runs `htvend offline ... -- build-img-with-proxy`, which invokes buildah with no
+network access. The output is an OCI layout directory that downstream rules (e.g.
+rules_oci/rules_img push) can consume.
+
+Most consumers use the combined `htvend_image` macro in defs.bzl, which pairs this
+with htvend_lock.
 """
 
 # Default published tool image. podman resolves this from the local image store if
 # present (e.g. after `cd cli && make image IMAGE_TAG=...`), otherwise pulls it.
 # Pin by digest for fully reproducible builds.
 DEFAULT_HTVEND_IMAGE = "ghcr.io/continusec/htvend:2.0@sha256:2fa537803b0b2488ceab743a0a261d930888aa883c1c2c6f68b78e1cce0e4b80"
+
+def render_env_flags(env):
+    """Render an env dict as `-e "K=V"` podman flags."""
+    flags = ""
+    for k, v in env.items():
+        flags += ' -e "{}={}"'.format(k, v)
+    return flags
 
 def _htvend_image_impl(ctx):
     output_oci_layout = ctx.actions.declare_directory(ctx.label.name + ".oci")
@@ -29,11 +39,12 @@ def _htvend_image_impl(ctx):
             # run podman, mounting our temp context
             PATH=/usr/local/bin:$PATH podman run --rm \\
                 -v "$tmp_context:/workspace" \\
-                -e BUILDAH_OPTS="--isolation=chroot" \\
+                -e BUILDAH_OPTS="--isolation=chroot"{env_flags} \\
                 --device /dev/fuse \\
                 --tmpfs /var/tmp:exec \\
                 {image} \\
-                   offline -m {lockfile_name} --blobs-dir=/workspace/blobs -- make -B
+                   offline -m {lockfile_name} --blobs-dir=/workspace/blobs -- \\
+                       build-img-with-proxy -f {dockerfile} .
             cp -R $tmp_context/oci/* "{output_oci_layout}"
         """.format(
             image = ctx.attr.image,
@@ -41,6 +52,8 @@ def _htvend_image_impl(ctx):
             output_oci_layout = output_oci_layout.path,
             blobs_dir = blobs_dir,
             lockfile_name = ctx.attr.lockfile_name,
+            dockerfile = ctx.attr.dockerfile,
+            env_flags = render_env_flags(ctx.attr.env),
         ),
         is_executable = True,
     )
@@ -58,7 +71,7 @@ def _htvend_image_impl(ctx):
 
     return [DefaultInfo(files = depset([output_oci_layout]))]
 
-def htvend_image(name, srcs = None, lockfile_name = "assets.json", **kwargs):
+def htvend_image_build(name, srcs = None, lockfile_name = "assets.json", **kwargs):
     if srcs == None:
         srcs = native.glob(
             ["**/*"],
@@ -77,6 +90,8 @@ _htvend_image = rule(
         "srcs": attr.label_list(allow_files = True, default = []),
         "image": attr.string(default = DEFAULT_HTVEND_IMAGE),
         "lockfile_name": attr.string(default = "assets.json"),
+        "dockerfile": attr.string(default = "Dockerfile"),
+        "env": attr.string_dict(default = {}),
         "blobs": attr.label(
             mandatory = True,
             allow_files = True,

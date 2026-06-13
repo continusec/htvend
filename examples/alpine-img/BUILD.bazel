@@ -1,16 +1,11 @@
-load("@rules_htvend//:image.bzl", "htvend_image")
-load("@rules_htvend//:lock.bzl", "htvend_lock")
+load("@rules_htvend//:defs.bzl", "htvend_image")
 
-# run this target: it (re)builds assets.json and stores the blobs in the local htvend
-# cache. No S3 / credentials -- this is the fully local flow. Run once per
-# architecture to accumulate a multi-arch lockfile.
-htvend_lock(
-    name = "lock",
-)
-
-# build this target: produces an OCI layout, built offline from assets.json + blobs.
-# This example reads blobs from the local directory backend (@alpine_img_blobs,
-# declared in //:MODULE.bazel) rather than S3 -- no credentials required.
+# Creates two targets:
+#   //alpine-img:image       (bazel build) -- OCI image, built offline
+#   //alpine-img:image.lock  (bazel run)   -- capture assets, write assets.json
+#
+# Fully local flow: no s3_bucket, so the lock stores blobs in the local htvend cache,
+# read back via the directory backend (@alpine_img_blobs, see //:MODULE.bazel).
 htvend_image(
     name = "image",
     blobs = "@alpine_img_blobs//:blobs",
