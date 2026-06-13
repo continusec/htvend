@@ -97,7 +97,9 @@ under `offline` it returns a 404. Blobs are content-addressed by SHA256.
 - **Building Docker / OCI images** — capture and replay everything a `Dockerfile`
   build pulls in: [docs/oci-image-building.md](./docs/oci-image-building.md).
 - **In Bazel** — let other projects build Dockerfiles hermetically with the reusable
-  `rules_htvend` rules: [docs/bazel.md](./docs/bazel.md).
+  `rules_htvend` rules: [docs/bazel.md](./docs/bazel.md). For a from-scratch,
+  copy-pasteable runbook on a clean Ubuntu 24.04, see
+  [docs/getting-started.md](./docs/getting-started.md).
 - **Experimental: feeding k3s** — [docs/k3s-running.md](./docs/k3s-running.md).
 
 ## When is this useful?

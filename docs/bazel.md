@@ -25,14 +25,18 @@ the `build-img-with-proxy` wrapper) via **podman**.
 The rules shell out to **podman** on a Linux host (or a Linux VM such as
 [Lima](https://lima-vm.io/) on macOS). The build tooling — `buildah`, `make`,
 `build-img-with-proxy` — lives **inside the tool image**, so you do *not* install it
-yourself. You do need:
+yourself. On a stock Ubuntu 24.04 the entire dependency list is:
 
-- `podman`
-- `/dev/fuse` available to the container (the rules pass `--device /dev/fuse`)
-- a writable `tmpfs` for `/var/tmp` (the rules pass `--tmpfs /var/tmp:exec`)
+```bash
+sudo apt-get install -y git podman qemu-user-static   # + Bazel via bazelisk
+```
 
-See [oci-image-building.md](./oci-image-building.md) for the underlying mechanics and
-the one-time host setup (subuid/subgid ranges, unprivileged userns) buildah needs.
+`qemu-user-static` registers the binfmt handlers for multi-arch builds; podman rootless
+otherwise works out of the box (no subuid/subgid or apparmor tweaks needed). For the
+complete, verified from-scratch runbook see
+[getting-started.md](./getting-started.md). The underlying mechanics (and the heavier
+setup needed only to run `buildah` directly on the host) are in
+[oci-image-building.md](./oci-image-building.md).
 
 ## Wiring it into a consumer project
 
@@ -152,7 +156,17 @@ htvend_blobs_dir_repository(
 )
 ```
 
-`examples/alpine-img` uses this backend.
+Pair it with an `htvend_lock` that has **no** `s3_bucket` — the lock then just stores
+blobs into the local directory (defaulting to the htvend cache) with no S3 export and
+no credentials:
+
+```python
+htvend_lock(name = "lock")          # writes blobs to the local cache only
+htvend_image(name = "image", blobs = "@my_app_blobs//:blobs")
+```
+
+`examples/alpine-img` uses exactly this fully-local backend; see
+[getting-started.md](./getting-started.md) for the end-to-end commands.
 
 ## Multiple targets in one directory
 

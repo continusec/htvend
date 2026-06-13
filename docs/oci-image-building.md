@@ -2,11 +2,17 @@
 
 There are a number of challenges building Docker / OCI Images with respect to getting track of which assets are needed to build them.
 
-You will need `buildah` version [1.44](https://github.com/podman-container-tools/buildah/releases/tag/v1.44.0) or newer.
+> **Just want the Bazel flow?** It runs everything through podman using the published
+> tool image, so you only need `podman` + `qemu-user-static` (plus git and Bazel) — none
+> of the host `buildah` setup below. See [getting-started.md](./getting-started.md).
 
-### Ubuntu 24.04 dependencies for `buildah`
+This page covers running `build-img-with-proxy` / `buildah` **directly on the host**
+(the CLI path). For that you will need `buildah` version
+[1.44](https://github.com/podman-container-tools/buildah/releases/tag/v1.44.0) or newer.
 
-You will likely need some operating system specific libraries / configuration be installed. At time of writing, the following works for an Ubuntu 24.04 system (tested with <https://lima-vm.io/> on macOS, using template `limactl create --name=u2404 --plain template://ubuntu-24.04 -y`)
+### Ubuntu 24.04 dependencies for host `buildah`
+
+To run buildah directly on the host you will likely need some operating-system-specific libraries / configuration installed. At time of writing, the following works for an Ubuntu 24.04 system (tested with <https://lima-vm.io/> on macOS, using template `limactl create --name=u2404 --plain template://ubuntu-24.04 -y`)
 
 ```bash
 # install Go
