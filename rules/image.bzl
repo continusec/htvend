@@ -9,7 +9,7 @@ directory that downstream rules (e.g. rules_oci/rules_img push) can consume.
 # Default published tool image. podman resolves this from the local image store if
 # present (e.g. after `cd cli && make image IMAGE_TAG=...`), otherwise pulls it.
 # Pin by digest for fully reproducible builds.
-DEFAULT_HTVEND_IMAGE = "ghcr.io/continusec/htvend:1.6"
+DEFAULT_HTVEND_IMAGE = "ghcr.io/continusec/htvend:2.0@sha256:2fa537803b0b2488ceab743a0a261d930888aa883c1c2c6f68b78e1cce0e4b80"
 
 def _htvend_image_impl(ctx):
     output_oci_layout = ctx.actions.declare_directory(ctx.label.name + ".oci")
