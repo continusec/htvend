@@ -27,6 +27,9 @@ JKS_KEYSTORE_PATH="${JKS_KEYSTORE_PATH:-}"
 # any other options to pass to buildah for convenience
 BUILDAH_OPTS="${BUILDAH_OPTS:-}"
 
+# space separated list of os/arch platforms to build into the manifest
+PLATFORMS="${PLATFORMS:-linux/arm64 linux/amd64}"
+
 ########################################################
 
 temp_xdg_dir="$(mktemp -d)"
@@ -119,7 +122,7 @@ IMAGE_NAME=my-temp-name
 MANIFEST_NAME="$IMAGE_NAME-manifest"
 buildah manifest create "$MANIFEST_NAME"
 
-for PLATFORM in linux/arm64 linux/amd64; do
+for PLATFORM in ${PLATFORMS}; do
   # Normalise: linux/amd64 -> linux-amd64 (for use in filenames/tags)
   SAFE_PLATFORM="${PLATFORM//\//-}"
 

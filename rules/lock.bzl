@@ -14,14 +14,14 @@ Most consumers use the combined `htvend_image` macro in defs.bzl, which pairs th
 with htvend_image_build.
 """
 
-load(":image.bzl", "DEFAULT_HTVEND_IMAGE", "render_env_flags")
+load(":image.bzl", "DEFAULT_HTVEND_IMAGE", "build_env_flags")
 
 # default local blob directory: the shared htvend cache (shell-expanded at runtime)
 _DEFAULT_BLOBS_DIR = "${XDG_DATA_HOME:-$HOME/.local/share}/htvend/cache/blobs"
 
 def _htvend_lock_impl(ctx):
     blobs_dir = ctx.attr.blobs_dir or _DEFAULT_BLOBS_DIR
-    env_flags = render_env_flags(ctx.attr.env)
+    env_flags = build_env_flags(ctx.attr.env, ctx.attr.platforms)
 
     # optional: also push the blobs up to S3
     s3_block = ""
@@ -118,6 +118,7 @@ _htvend_lock = rule(
         "lockfile_name": attr.string(default = "assets.json"),
         "dockerfile": attr.string(default = "Dockerfile"),
         "env": attr.string_dict(default = {}),
+        "platforms": attr.string_list(default = ["linux/amd64", "linux/arm64"]),
         # local directory to store blobs in. Empty -> the shared htvend cache.
         # Should match the directory the matching htvend_blobs_dir_repository reads.
         "blobs_dir": attr.string(default = ""),

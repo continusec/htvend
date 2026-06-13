@@ -213,18 +213,32 @@ The matching `htvend_blobs_repository` should set `assets_json` to the same
 
 ## Multi-architecture images
 
-A single `assets.json` can hold the assets for several architectures — different
-architectures simply reference different URLs, and a build ignores any assets it
-doesn't need. Run the lock step once per architecture to accumulate them all into the
-one shared lockfile:
+`build-img-with-proxy` builds a multi-arch manifest in one shot, looping over a list
+of `os/arch` platforms. Control that list with the `platforms` attribute (default
+`["linux/amd64", "linux/arm64"]`):
 
-```bash
-bazel run //path/to/my-app:image.lock   # on / for linux/amd64
-bazel run //path/to/my-app:image.lock   # on / for linux/arm64
+```python
+htvend_image(
+    name = "image",
+    blobs = "@my_app_blobs//:blobs",
+    platforms = ["linux/amd64", "linux/arm64", "linux/arm/v7"],
+)
 ```
 
-then commit the combined `assets.json`. `build-img-with-proxy` builds a multi-arch
-manifest, so a single `bazel build :image` produces the multi-arch OCI layout.
+> The host needs the matching `binfmt` handlers to build foreign architectures —
+> `apt-get install qemu-user-static` registers them (see
+> [getting-started.md](./getting-started.md)).
+
+A single `assets.json` can hold the assets for every architecture — different
+architectures simply reference different URLs, and a build ignores any it doesn't
+need. The lock captures all the platforms in `platforms` in one run; commit the
+combined `assets.json`, and `bazel build :image` then produces the multi-arch OCI
+layout offline.
+
+> **Why an attribute and not Bazel `--platforms`?** The multi-arch fan-out happens
+> *inside* buildah (one action emitting a manifest list), not via Bazel per-platform
+> transitions, so the natural knob is this list of buildah `os/arch` strings rather
+> than `@platforms//` constraint values.
 
 ## Pinning the tool image
 

@@ -21,6 +21,18 @@ def render_env_flags(env):
         flags += ' -e "{}={}"'.format(k, v)
     return flags
 
+def build_env_flags(env, platforms):
+    """Render the env dict plus the PLATFORMS list as podman `-e` flags.
+
+    build-img-with-proxy reads PLATFORMS (space separated os/arch) to decide which
+    architectures to build into the manifest; an empty list falls back to the
+    script's own default.
+    """
+    merged = dict(env)
+    if platforms:
+        merged["PLATFORMS"] = " ".join(platforms)
+    return render_env_flags(merged)
+
 def _htvend_image_impl(ctx):
     output_oci_layout = ctx.actions.declare_directory(ctx.label.name + ".oci")
     script = ctx.actions.declare_file(ctx.label.name + "_offline.sh")
@@ -53,7 +65,7 @@ def _htvend_image_impl(ctx):
             blobs_dir = blobs_dir,
             lockfile_name = ctx.attr.lockfile_name,
             dockerfile = ctx.attr.dockerfile,
-            env_flags = render_env_flags(ctx.attr.env),
+            env_flags = build_env_flags(ctx.attr.env, ctx.attr.platforms),
         ),
         is_executable = True,
     )
@@ -92,6 +104,7 @@ _htvend_image = rule(
         "lockfile_name": attr.string(default = "assets.json"),
         "dockerfile": attr.string(default = "Dockerfile"),
         "env": attr.string_dict(default = {}),
+        "platforms": attr.string_list(default = ["linux/amd64", "linux/arm64"]),
         "blobs": attr.label(
             mandatory = True,
             allow_files = True,

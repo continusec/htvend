@@ -27,6 +27,7 @@ def htvend_image(
         blobs,
         dockerfile = "Dockerfile",
         env = {},
+        platforms = ["linux/amd64", "linux/arm64"],
         srcs = None,
         lockfile_name = "assets.json",
         image = None,
@@ -42,6 +43,7 @@ def htvend_image(
       blobs: the blob set to build from (e.g. "@my_blobs//:blobs").
       dockerfile: Dockerfile to build (relative to the package). Default "Dockerfile".
       env: dict of environment variables to pass into the build (e.g. settings paths).
+      platforms: os/arch list to build into the manifest. Default amd64 + arm64.
       srcs: build context files. Defaults to a glob of the package.
       lockfile_name: the lockfile to read/write. Default "assets.json".
       image: override the htvend tool image (defaults to the pinned published image).
@@ -60,6 +62,7 @@ def htvend_image(
         name = lock_name,
         dockerfile = dockerfile,
         env = env,
+        platforms = platforms,
         srcs = srcs,
         lockfile_name = lockfile_name,
         blobs_dir = blobs_dir,
@@ -73,6 +76,7 @@ def htvend_image(
         blobs = blobs,
         dockerfile = dockerfile,
         env = env,
+        platforms = platforms,
         srcs = srcs,
         lockfile_name = lockfile_name,
         **dict(image_kwargs, **kwargs)
