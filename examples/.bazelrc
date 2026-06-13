@@ -1,0 +1,7 @@
+common --enable_bzlmod
+
+# S3 auth for fetching blobs (htvend_blobs_repository). The credential helper reads
+# the standard AWS chain (~/.aws/credentials, env vars, instance profiles). See
+# .tweag-credential-helper.json for the region, and ../docs/bazel.md for setup.
+common --credential_helper=s3.amazonaws.com=%workspace%/tools/credential-helper
+common --credential_helper=*.s3.amazonaws.com=%workspace%/tools/credential-helper

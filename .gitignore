@@ -1,5 +1,6 @@
-/target/
-/blobs/
+/cli/target/
+/cli/blobs/
 /examples/*/blobs/
 /examples/*/img.tar
-/bazel-*
+bazel-*
+.claude

@@ -1,0 +1,46 @@
+module(
+    name = "htvend_examples",
+    version = "0.0.0",
+)
+
+# These examples consume rules_htvend exactly as an external project would. During
+# development we resolve it from the sibling directory; a real consumer would use a
+# git_override / archive_override (or the Bazel Central Registry once published).
+bazel_dep(name = "rules_htvend", version = "0.0.0")
+local_path_override(
+    module_name = "rules_htvend",
+    path = "../rules",
+)
+
+htvend_blobs_repository = use_repo_rule("@rules_htvend//:blobs_repository.bzl", "htvend_blobs_repository")
+htvend_blobs_dir_repository = use_repo_rule("@rules_htvend//:blobs_dir_repository.bzl", "htvend_blobs_dir_repository")
+
+# Most examples fetch their blobs from S3 (auth via the tweag credential helper,
+# configured in .bazelrc).
+htvend_blobs_repository(
+    name = "java_spring_img_blobs",
+    assets_json = "//java-spring-img:assets.json",
+    s3_bucket = "htvend-demo-001",
+    s3_prefix = "blobs/",
+)
+
+htvend_blobs_repository(
+    name = "python3_img_blobs",
+    assets_json = "//python3-img:assets.json",
+    s3_bucket = "htvend-demo-001",
+    s3_prefix = "blobs/",
+)
+
+htvend_blobs_repository(
+    name = "ubuntu_img_blobs",
+    assets_json = "//ubuntu-img:assets.json",
+    s3_bucket = "htvend-demo-001",
+    s3_prefix = "blobs/",
+)
+
+# alpine-img demonstrates the directory backend: blobs come from the local htvend
+# cache (no S3, no credentials). Override the location with HTVEND_BLOBS_DIR or the
+# blobs_dir attribute.
+htvend_blobs_dir_repository(
+    name = "alpine_img_blobs",
+)

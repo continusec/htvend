@@ -1,16 +1,16 @@
-load("//rules_htvend:image.bzl", "htvend_image")
-load("//rules_htvend:lock.bzl", "htvend_lock")
+load("@rules_htvend//:defs.bzl", "htvend_image")
 
-# run this target, it creates assets.json ensures the given s3 bucket is
-# populated with the blobs needed to support that assets.json file.
-htvend_lock(
-    name = "lock",
-    s3_bucket = "htvend-demo-001",
-    s3_prefix = "blobs/",
-)
-
-# build this target, creates image.tar as OCI image
+# Creates //java-spring-img:image (bazel build) and //java-spring-img:image.lock (run).
+# Demonstrates passing env vars into the build (previously done via a Makefile): these
+# tell build-img-with-proxy where to mount the CA truststore and the maven proxy
+# settings inside the RUN containers.
 htvend_image(
     name = "image",
     blobs = "@java_spring_img_blobs//:blobs",
+    s3_bucket = "htvend-demo-001",
+    s3_prefix = "blobs/",
+    env = {
+        "JKS_KEYSTORE_PATH": "/usr/lib/jvm/java-21-amazon-corretto/lib/security/cacerts",
+        "MVN_SETTINGS_PATH": "/usr/share/maven/conf/settings.xml",
+    },
 )

@@ -1,15 +1,11 @@
-load("//rules_htvend:image.bzl", "htvend_image")
-load("//rules_htvend:lock.bzl", "htvend_lock")
+load("@rules_htvend//:defs.bzl", "htvend_image")
 
-# run this target, it creates assets.json ensures the given s3 bucket is
-# populated with the blobs needed to support that assets.json file.
-htvend_lock(
-    name = "lock",
-    s3_bucket = "htvend-demo-001",
-    s3_prefix = "blobs/",
-)
-
-# build this target, creates image.tar as OCI image
+# Creates two targets:
+#   //alpine-img:image       (bazel build) -- OCI image, built offline
+#   //alpine-img:image.lock  (bazel run)   -- capture assets, write assets.json
+#
+# Fully local flow: no s3_bucket, so the lock stores blobs in the local htvend cache,
+# read back via the directory backend (@alpine_img_blobs, see //:MODULE.bazel).
 htvend_image(
     name = "image",
     blobs = "@alpine_img_blobs//:blobs",
