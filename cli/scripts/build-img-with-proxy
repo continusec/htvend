@@ -118,9 +118,12 @@ fi
 
 IMAGE_NAME=my-temp-name
 
-# Create the manifest list
+# Create the manifest list. Use the same custom XDG_DATA_HOME as the build/add/push
+# steps below: when buildah runs rootless it honours XDG_DATA_HOME, so create and add
+# must share one storage location (root ignores it and always uses /var/lib/containers,
+# which is why this only bites the rootless/direct path).
 MANIFEST_NAME="$IMAGE_NAME-manifest"
-buildah manifest create "$MANIFEST_NAME"
+env ${env_unset_args} ${env_set_args} "${BUILDAH_BINARY}" manifest create "$MANIFEST_NAME"
 
 for PLATFORM in ${PLATFORMS}; do
   # Normalise: linux/amd64 -> linux-amd64 (for use in filenames/tags)
@@ -143,6 +146,6 @@ env ${env_unset_args} ${env_set_args} "${BUILDAH_BINARY}" manifest push \
   "oci:oci"
 
 echo "--- Cleaning up manifest ---"
-"${BUILDAH_BINARY}" manifest rm "$MANIFEST_NAME" || false
+env ${env_unset_args} ${env_set_args} "${BUILDAH_BINARY}" manifest rm "$MANIFEST_NAME" || false
 
 echo "Done. Multi-arch image written to dir: oci"

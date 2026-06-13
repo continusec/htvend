@@ -5,3 +5,13 @@ common --enable_bzlmod
 # .tweag-credential-helper.json for the region, and ../docs/bazel.md for setup.
 common --credential_helper=s3.amazonaws.com=%workspace%/tools/credential-helper
 common --credential_helper=*.s3.amazonaws.com=%workspace%/tools/credential-helper
+
+# `bazel build --config=rbe ...` switches htvend_image's offline build from podman
+# (local default) to direct mode (sandbox/RBE-eligible) and points it at an RBE
+# cluster. Without --config=rbe, builds stay local + podman. See ../docs/bazel.md
+# "Remote execution (RBE)". htvend_image already sets exec_properties so the worker
+# is selected by the same tool image as DEFAULT_HTVEND_IMAGE -- no need to repeat it
+# here. The address below matches a local buildbarn/bb-deployments cluster.
+build:rbe --@rules_htvend//:exec_mode=direct
+build:rbe --remote_executor=grpc://localhost:8980
+build:rbe --remote_instance_name=hardlinking

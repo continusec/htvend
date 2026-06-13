@@ -14,6 +14,7 @@ Most consumers use the combined `htvend_image` macro in defs.bzl, which pairs th
 with htvend_image_build.
 """
 
+load(":blobs_info.bzl", "HtvendBlobsInfo")
 load(":image.bzl", "DEFAULT_HTVEND_IMAGE", "build_env_flags")
 
 # default local blob directory: the shared htvend cache (shell-expanded at runtime)
@@ -23,9 +24,18 @@ def _htvend_lock_impl(ctx):
     blobs_dir = ctx.attr.blobs_dir or _DEFAULT_BLOBS_DIR
     env_flags = build_env_flags(ctx.attr.env, ctx.attr.platforms)
 
+    # S3 bucket/prefix: explicit attrs win, otherwise take them from the blobs
+    # backend's own :blobs_info (one source of truth with htvend_blobs_repository).
+    s3_bucket = ctx.attr.s3_bucket
+    s3_prefix = ctx.attr.s3_prefix
+    if not s3_bucket and ctx.attr.blobs_info:
+        info = ctx.attr.blobs_info[HtvendBlobsInfo]
+        s3_bucket = info.s3_bucket
+        s3_prefix = info.s3_prefix
+
     # optional: also push the blobs up to S3
     s3_block = ""
-    if ctx.attr.s3_bucket:
+    if s3_bucket:
         s3_block = """
             # export the blobs to s3
             podman run --rm \\
@@ -43,8 +53,8 @@ def _htvend_lock_impl(ctx):
             image = ctx.attr.image,
             blobs_dir = blobs_dir,
             lockfile_name = ctx.attr.lockfile_name,
-            s3_bucket = ctx.attr.s3_bucket,
-            s3_prefix = ctx.attr.s3_prefix,
+            s3_bucket = s3_bucket,
+            s3_prefix = s3_prefix,
         )
 
     script = ctx.actions.declare_file(ctx.label.name + "_lock.sh")
@@ -122,8 +132,13 @@ _htvend_lock = rule(
         # local directory to store blobs in. Empty -> the shared htvend cache.
         # Should match the directory the matching htvend_blobs_dir_repository reads.
         "blobs_dir": attr.string(default = ""),
-        # if set, also export blobs to this S3 bucket (for htvend_blobs_repository).
+        # S3 bucket/prefix to export blobs to. Empty -> taken from blobs_info (if set),
+        # i.e. the matching htvend_blobs_repository's own s3_bucket/s3_prefix. Set
+        # these to override that, or to export to S3 with a directory-backed blobs_info.
         "s3_bucket": attr.string(default = ""),
         "s3_prefix": attr.string(default = ""),
+        # the `:blobs_info` target generated alongside the blobs backend's `:blobs`
+        # (see blobs_info.bzl) -- supplies the default s3_bucket/s3_prefix above.
+        "blobs_info": attr.label(providers = [HtvendBlobsInfo], default = None),
     },
 )

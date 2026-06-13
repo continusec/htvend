@@ -19,7 +19,7 @@ For advanced cases where you want the two targets configured independently, load
 htvend_image_build from image.bzl and htvend_lock from lock.bzl directly.
 """
 
-load(":image.bzl", "htvend_image_build")
+load(":image.bzl", "DEFAULT_HTVEND_IMAGE", "htvend_image_build")
 load(":lock.bzl", "htvend_lock")
 
 def htvend_image(
@@ -31,6 +31,7 @@ def htvend_image(
         srcs = None,
         lockfile_name = "assets.json",
         image = None,
+        exec_mode = "",
         blobs_dir = "",
         s3_bucket = "",
         s3_prefix = "",
@@ -47,9 +48,13 @@ def htvend_image(
       srcs: build context files. Defaults to a glob of the package.
       lockfile_name: the lockfile to read/write. Default "assets.json".
       image: override the htvend tool image (defaults to the pinned published image).
+      exec_mode: build only -- "podman" (local default) or "direct" (RBE-eligible, runs
+        tools from PATH). Empty -> follow the --@rules_htvend//:exec_mode flag.
       blobs_dir: lock only -- local directory to write blobs into. Empty -> htvend cache.
-      s3_bucket: lock only -- if set, also export blobs to this S3 bucket.
-      s3_prefix: lock only -- S3 key prefix.
+      s3_bucket: lock only -- override the S3 bucket blobs are exported to. Empty ->
+        taken from `blobs`'s own :blobs_info (i.e. its htvend_blobs_repository config),
+        or no S3 export for a directory-backed `blobs`.
+      s3_prefix: lock only -- override the S3 key prefix. Empty -> see s3_bucket.
       lock_name: name of the lock target. Default "<name>.lock".
       **kwargs: common args (e.g. visibility) applied to both targets.
     """
@@ -57,6 +62,13 @@ def htvend_image(
 
     # shared image override only passed through when set, so each rule keeps its default
     image_kwargs = {"image": image} if image else {}
+
+    # The blobs backend (htvend_blobs_repository / htvend_blobs_dir_repository) generates
+    # a `:blobs_info` target alongside `:blobs` advertising its own S3 bucket/prefix (if
+    # any). Pass it through so htvend_lock can default s3_bucket/s3_prefix from it --
+    # one source of truth, no need to repeat them here. String manipulation (not Label())
+    # so the result is resolved in the caller's repo mapping, not rules_htvend's.
+    blobs_info = blobs.rsplit(":", 1)[0] + ":blobs_info"
 
     htvend_lock(
         name = lock_name,
@@ -68,8 +80,20 @@ def htvend_image(
         blobs_dir = blobs_dir,
         s3_bucket = s3_bucket,
         s3_prefix = s3_prefix,
+        blobs_info = blobs_info,
         **dict(image_kwargs, **kwargs)
     )
+
+    # Default the RBE worker selection to the same tool image used for podman, so the
+    # image version has one source of truth (the `image` attr / DEFAULT_HTVEND_IMAGE).
+    # Only takes effect under --@rules_htvend//:exec_mode=direct; harmless otherwise.
+    # Consumers needing a different RBE worker can pass their own exec_properties.
+    build_kwargs = dict(image_kwargs, **kwargs)
+    if "exec_properties" not in build_kwargs:
+        build_kwargs["exec_properties"] = {
+            "container-image": "docker://" + (image or DEFAULT_HTVEND_IMAGE),
+            "OSFamily": "linux",
+        }
 
     htvend_image_build(
         name = name,
@@ -77,7 +101,8 @@ def htvend_image(
         dockerfile = dockerfile,
         env = env,
         platforms = platforms,
+        exec_mode = exec_mode,
         srcs = srcs,
         lockfile_name = lockfile_name,
-        **dict(image_kwargs, **kwargs)
+        **build_kwargs
     )

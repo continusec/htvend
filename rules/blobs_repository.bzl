@@ -30,8 +30,17 @@ def _htvend_blobs_impl(ctx):
         )
 
     ctx.file("BUILD.bazel", """
+load("@rules_htvend//:blobs_info.bzl", "htvend_blobs_info")
+
 exports_files(["blobs"])
-""")
+
+htvend_blobs_info(
+    name = "blobs_info",
+    s3_bucket = "{s3_bucket}",
+    s3_prefix = "{s3_prefix}",
+    visibility = ["//visibility:public"],
+)
+""".format(s3_bucket = ctx.attr.s3_bucket, s3_prefix = ctx.attr.s3_prefix))
 
 htvend_blobs_repository = repository_rule(
     implementation = _htvend_blobs_impl,

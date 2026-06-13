@@ -79,18 +79,21 @@ load("@rules_htvend//:defs.bzl", "htvend_image")
 htvend_image(
     name = "image",
     blobs = "@my_app_blobs//:blobs",
-    s3_bucket = "your-bucket",   # omit for the local-only (directory) flow
-    s3_prefix = "blobs/",
 )
 ```
+
+`:image.lock` will export blobs to `your-bucket`/`blobs/` automatically — it reads
+those from `@my_app_blobs`'s own `:blobs_info` (generated alongside `:blobs`), so the
+S3 location is only specified once, on `htvend_blobs_repository` above. For the
+local-only (directory) flow, just point `blobs` at an `htvend_blobs_dir_repository`
+instead — see "Blob backends" below.
 
 This produces:
 
 - `//path/to/my-app:image` — `bazel build`, the OCI image built offline;
 - `//path/to/my-app:image.lock` — `bazel run`, regenerates the lockfile + blobs.
 
-The package needs only your `Dockerfile` (no `Makefile` — the rules invoke
-`build-img-with-proxy` directly). Pass build-time configuration through attributes:
+Pass build-time configuration through attributes:
 
 - `dockerfile` — which Dockerfile to build (default `"Dockerfile"`); set it when a
   package has more than one.
@@ -109,9 +112,11 @@ The package needs only your `Dockerfile` (no `Makefile` — the rules invoke
   )
   ```
 
-(For advanced cases you can drive the two targets independently by loading
-`htvend_image_build` from `@rules_htvend//:image.bzl` and `htvend_lock` from
-`@rules_htvend//:lock.bzl`.)
+  Most builds need none of these. They're for specialty cases (e.g. Maven/Java
+  needing a truststore or `settings.xml` inside the build container) — see the
+  header comments in
+  [`cli/scripts/build-img-with-proxy`](../cli/scripts/build-img-with-proxy) for the
+  full list of variables it reads.
 
 ### Day-to-day
 
@@ -122,6 +127,12 @@ bazel run //path/to/my-app:image.lock
 # build the image — offline, hermetic, cached by Bazel
 bazel build //path/to/my-app:image
 ```
+
+`:image.lock` only needs to be re-run when an *external* dependency changes —
+e.g. a new/updated base image, a version bump in a `pom.xml` or `requirements.txt`,
+or a new package added to the `Dockerfile`. Changes to your application's own
+source (that don't pull in new upstream assets) don't need a re-lock; `:image`
+rebuilds from the existing lockfile + blobs as usual.
 
 `bazel build :image` produces an OCI layout directory under `bazel-bin/...` that you
 can feed into other rules (e.g. an `oci_push` from rules_oci/rules_img) or load with
@@ -173,15 +184,20 @@ htvend_blobs_dir_repository = use_repo_rule("@rules_htvend//:blobs_dir_repositor
 
 htvend_blobs_dir_repository(
     name = "my_app_blobs",
+    assets_json = "//path/to/my-app:assets.json",
     # optional; defaults to $HTVEND_BLOBS_DIR, then
     # ${XDG_DATA_HOME:-$HOME/.local/share}/htvend/cache/blobs
     blobs_dir = "/srv/shared/htvend-blobs",
 )
 ```
 
-Leave `s3_bucket` off the `htvend_image` call — the lock then just stores blobs into
-the local directory (defaulting to the htvend cache) with no S3 export and no
-credentials:
+The directory may hold blobs for many images (it's content-addressed by sha256);
+`assets_json` limits what this repository exposes to just the blobs `:my-app:image`
+needs, so each image's `@..._blobs//:blobs` only contains its own dependencies.
+
+A directory-backed `:blobs_info` reports no S3 bucket, so `:image.lock` just stores
+blobs into the local directory (defaulting to the htvend cache) with no S3 export and
+no credentials — no extra attributes needed:
 
 ```python
 htvend_image(name = "image", blobs = "@my_app_blobs//:blobs")
@@ -202,8 +218,6 @@ htvend_image(
     blobs = "@a_blobs//:blobs",
     dockerfile = "Dockerfile.a",
     lockfile_name = "a.assets.json",
-    s3_bucket = "...",
-    s3_prefix = "blobs/",
 )
 # -> //pkg:a and //pkg:a.lock
 ```
@@ -239,6 +253,158 @@ layout offline.
 > *inside* buildah (one action emitting a manifest list), not via Bazel per-platform
 > transitions, so the natural knob is this list of buildah `os/arch` strings rather
 > than `@platforms//` constraint values.
+
+## Remote execution (RBE)
+
+By default `bazel build :image` runs the build under **podman** on the local machine,
+with `--network=none` (the container gets no external network — buildah's inner
+`--network=host` containers share that same netns, so loopback to the htvend proxy
+still works). That path is deliberately **local-only**: the rule tags the action
+`local` + `no-sandbox` because podman/buildah need real host devices (`/dev/fuse`),
+their own user+mount namespaces, and `$HOME` container storage — none of which survive
+Bazel's sandbox or a remote worker.
+
+For RBE, switch the build to **direct mode**:
+
+```bash
+bazel build //path/to/my-app:image --@rules_htvend//:exec_mode=direct
+```
+
+In direct mode the rule does **not** shell out to podman. It runs `htvend`, `buildah`,
+and `build-img-with-proxy` straight from `PATH`, with the build context and blobs as
+declared Bazel inputs and no network access — so the action is both sandboxable and
+remote-eligible (the `local`/`no-sandbox` tags are dropped). You can also set it
+per-target with `exec_mode = "direct"` on `htvend_image`.
+
+### Recommended: a `--config=rbe` bazelrc convention
+
+`exec_mode` only controls *how the action runs*; it doesn't configure RBE itself
+(`--remote_executor`, `--remote_default_exec_properties`, etc. are still needed). Bundle
+both into a `build:rbe` config group in your `.bazelrc` so the two switches stay in sync —
+users without RBE configured get plain `bazel build` (podman, local); users with RBE
+configured add `--config=rbe` and get direct mode pointed at the cluster:
+
+```ini
+# .bazelrc
+build:rbe --@rules_htvend//:exec_mode=direct
+build:rbe --remote_executor=grpc://rbe.example.com:443
+build:rbe --remote_instance_name=...
+```
+
+`htvend_image` already sets `exec_properties` (`container-image`, `OSFamily`) to match
+the tool image it's built against, so you don't need to repeat those here — see
+"Providing the tooling on the worker" below.
+
+```bash
+bazel build //path/to/my-app:image            # local, podman
+bazel build //path/to/my-app:image --config=rbe  # remote, direct mode
+```
+
+See [`../examples/.bazelrc`](../examples/.bazelrc) for a working `build:rbe` block (pointed
+at a local Buildbarn cluster, per the "Verified against a local Buildbarn cluster" section
+below).
+
+The action runs with `use_default_shell_env = True`, so the three tools must be on the
+action's `PATH` (extend it if needed with `--action_env=PATH=/usr/local/bin:/usr/bin:/bin`).
+In the tool image they live in `/usr/local/bin`, which a normal shell `PATH` already
+covers.
+
+### Providing the tooling on the worker
+
+Direct mode expects `htvend`/`buildah`/`build-img-with-proxy` to already be present in
+the execution environment. The simplest, most robust way to guarantee that on RBE is to
+**make the worker's container image the htvend tool image itself** (it already bundles
+all three).
+
+`htvend_image` does this selection for you automatically: it sets the target's
+`exec_properties` to
+
+```python
+{
+    "container-image": "docker://" + image,  # image = DEFAULT_HTVEND_IMAGE unless overridden
+    "OSFamily": "linux",
+}
+```
+
+so the worker image is derived from the same `image`/`DEFAULT_HTVEND_IMAGE` used for
+the podman path — one source of truth, no separate digest to keep in sync. This only
+takes effect under `--@rules_htvend//:exec_mode=direct`; it's harmless otherwise.
+
+The exact `exec_properties` keys are backend-specific; the defaults above match
+Buildbarn's `container-image`/`OSFamily` platform properties (see "Verified against a
+local Buildbarn cluster" below). If your backend uses different keys, or you want a
+different worker pool than the image podman pulls, pass your own `exec_properties` to
+`htvend_image` to override the default entirely:
+
+```python
+htvend_image(
+    name = "image",
+    blobs = "@my_app_blobs//:blobs",
+    exec_mode = "direct",
+    exec_properties = {
+        "container-image": "docker://ghcr.io/continusec/htvend@sha256:...",
+        "OSFamily": "linux",
+    },
+)
+```
+
+buildah still needs user-namespace + fuse-overlayfs support on the worker — that's
+buildah's nature, not something Bazel can remove; ensure your worker pool provides it.
+
+### Testing readiness without a full RBE cluster
+
+The cheapest check needs no setup at all: the **default podman path already runs with
+`--network=none`** (see above), so a plain
+
+```bash
+bazel build //path/to/my-app:image
+```
+
+is itself a no-external-network build. The real hermeticity guarantee underneath is
+htvend `offline` mode, which serves strictly from the captured blobs and **fails
+closed**: remove a blob from the blob set and the build errors rather than reaching the
+internet.
+
+The next rung up is a real local RBE server (e.g. Buildbarn's `bb-deployments`) with a
+tool-image worker, run with `--@rules_htvend//:exec_mode=direct
+--remote_executor=grpc://localhost:...`. There's no supported way to exercise
+direct/RBE mode without such a worker: it expects `htvend`, `buildah` and
+`build-img-with-proxy` to already be on `PATH`, and distro-packaged `buildah` (e.g.
+`apt-get install buildah`) is typically too old to support the flags these rules
+rely on — only the published tool image is supported.
+
+### Verified against a local Buildbarn cluster
+
+This has been verified end-to-end against `buildbarn/bb-deployments`' docker-compose
+deployment, using its `*-hardlinking-ubuntu22-04` worker/runner pair with the runner's image
+swapped for the htvend tool image (`ghcr.io/continusec/htvend`) and its `container-image`
+platform property set to the exact `DEFAULT_HTVEND_IMAGE` (including digest), matching
+what `htvend_image` now sets in `exec_properties` automatically:
+
+```bash
+bazel build //path/to/my-app:image \
+    --@rules_htvend//:exec_mode=direct \
+    --remote_executor=grpc://localhost:8980 \
+    --remote_instance_name=hardlinking
+```
+
+The action dispatches to the runner ("Runner: remote"), which has `network_mode: none` — no
+network interfaces at all, a stronger guarantee than `--sandbox_default_allow_network=false` —
+and `htvend`/`buildah`/`build-img-with-proxy` already on `PATH` from the image. The build
+produced a valid multi-arch OCI layout. Three small additions were needed on the runner
+container beyond the reference compose file, all because the default Docker security profile
+is tighter than a bare sandbox/host process:
+
+- `cap_add: [SYS_ADMIN]` + `security_opt: [seccomp=unconfined, apparmor=unconfined]` — buildah
+  calls `unshare(CLONE_NEWUSER)` even under `BUILDAH_ISOLATION=chroot`.
+- `tmpfs: [/var/tmp:exec]` — buildah stages an overlay mount for the build context under
+  `/var/tmp`; overlay-on-overlay (the container's own root is overlay2) is rejected by the
+  kernel, so `/var/tmp` needs a non-overlay filesystem.
+- `devices: [/dev/fuse:/dev/fuse]` + `ulimits.nofile` raised to 1048576 — the same
+  `/dev/fuse` and `RLIMIT_NOFILE` needs the podman path already covers via `--device /dev/fuse`.
+
+These are properties of "a container that runs buildah", independent of `rules_htvend` — an
+RBE worker pool built from the tool image should grant the same.
 
 ## Pinning the tool image
 

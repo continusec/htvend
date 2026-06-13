@@ -6,6 +6,10 @@
 #   lock.bzl                 -> htvend_lock                (lock run target, advanced)
 #   blobs_repository.bzl     -> htvend_blobs_repository      (S3 backend)
 #   blobs_dir_repository.bzl -> htvend_blobs_dir_repository  (local directory backend)
+#   blobs_info.bzl           -> HtvendBlobsInfo / htvend_blobs_info (internal, used by the
+#                                generated BUILD.bazel of the two backends above)
+
+load(":image.bzl", "exec_mode_flag")
 
 exports_files([
     "defs.bzl",
@@ -13,4 +17,15 @@ exports_files([
     "lock.bzl",
     "blobs_repository.bzl",
     "blobs_dir_repository.bzl",
+    "blobs_info.bzl",
 ])
+
+# Execution mode for the offline build. Override with
+#   --@rules_htvend//:exec_mode=direct
+# "podman" (default) runs the tool image via podman (local-only); "direct" runs the
+# tools straight from PATH (sandbox- and RBE-eligible). See docs/bazel.md.
+exec_mode_flag(
+    name = "exec_mode",
+    build_setting_default = "podman",
+    visibility = ["//visibility:public"],
+)
