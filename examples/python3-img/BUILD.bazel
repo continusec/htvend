@@ -1,10 +1,9 @@
 load("@rules_htvend//:defs.bzl", "htvend_image")
 
 # Creates //python3-img:image (bazel build) and //python3-img:image.lock (bazel run).
-# Blobs are stored locally and also exported to S3 (read back via @python3_img_blobs).
+# Blobs are stored locally and also exported to S3 (the bucket/prefix come from
+# @python3_img_blobs's own :blobs_info, matching its htvend_blobs_repository config).
 htvend_image(
     name = "image",
     blobs = "@python3_img_blobs//:blobs",
-    s3_bucket = "htvend-demo-001",
-    s3_prefix = "blobs/",
 )

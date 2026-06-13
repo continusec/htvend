@@ -43,4 +43,5 @@ htvend_blobs_repository(
 # blobs_dir attribute.
 htvend_blobs_dir_repository(
     name = "alpine_img_blobs",
+    assets_json = "//alpine-img:assets.json",
 )
