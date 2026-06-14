@@ -14,6 +14,20 @@ with htvend_lock.
 # Pin by digest for fully reproducible builds.
 DEFAULT_HTVEND_IMAGE = "ghcr.io/continusec/htvend:2.2@sha256:c8a817e67e119693c1f583b6f867e2c3a1a9019760425e1821c49ec077f4f611"
 
+# Shell snippet (prepended to the generated build/lock scripts) that computes the
+# host os/arch in buildah's `os/arch` form, e.g. linux/arm64. Used as the default
+# single-platform target when `platforms` is unset -- so a fresh project builds for
+# the machine it's run on, with no multi-arch / qemu setup required.
+HOST_PLATFORM_SH = 'host_platform="linux/$(uname -m | sed -e s/x86_64/amd64/ -e s/aarch64/arm64/)"'
+
+def _platforms_value(platforms):
+    """The value for the PLATFORMS env var: the explicit os/arch list if given,
+    otherwise a reference to the `$host_platform` shell var defined by
+    HOST_PLATFORM_SH (i.e. build for the current architecture)."""
+    if platforms:
+        return " ".join(platforms)
+    return "$host_platform"
+
 def render_env_flags(env):
     """Render an env dict as `-e "K=V"` podman flags."""
     flags = ""
@@ -25,12 +39,11 @@ def build_env_flags(env, platforms):
     """Render the env dict plus the PLATFORMS list as podman `-e` flags.
 
     build-img-with-proxy reads PLATFORMS (space separated os/arch) to decide which
-    architectures to build into the manifest; an empty list falls back to the
-    script's own default.
+    architectures to build into the manifest. An empty list defaults to the host
+    architecture via the `$host_platform` shell var (see HOST_PLATFORM_SH).
     """
     merged = dict(env)
-    if platforms:
-        merged["PLATFORMS"] = " ".join(platforms)
+    merged["PLATFORMS"] = _platforms_value(platforms)
     return render_env_flags(merged)
 
 def build_env_exports(env, platforms):
@@ -40,8 +53,7 @@ def build_env_exports(env, platforms):
     same variables podman would inject via `-e` are passed through `env K=V ...`.
     """
     merged = dict(env)
-    if platforms:
-        merged["PLATFORMS"] = " ".join(platforms)
+    merged["PLATFORMS"] = _platforms_value(platforms)
     parts = []
     for k, v in merged.items():
         parts.append('{}="{}"'.format(k, v))
@@ -122,6 +134,8 @@ def _htvend_image_impl(ctx):
         content = """#!/bin/bash
             set -euo pipefail
 
+            {host_platform}
+
             tmp_context=$(mktemp -d)
             trap 'rm -rf "$tmp_context"' EXIT
 
@@ -133,6 +147,7 @@ def _htvend_image_impl(ctx):
 
             cp -R $tmp_context/oci/* "{output_oci_layout}"
         """.format(
+            host_platform = HOST_PLATFORM_SH,
             context_dir = ctx.label.package,
             blobs_dir = blobs_dir,
             run_block = run_block,
@@ -178,7 +193,9 @@ _htvend_image = rule(
         "lockfile_name": attr.string(default = "assets.json"),
         "dockerfile": attr.string(default = "Dockerfile"),
         "env": attr.string_dict(default = {}),
-        "platforms": attr.string_list(default = ["linux/amd64", "linux/arm64"]),
+        # os/arch list built into the manifest. Empty (default) -> just the host
+        # architecture (see HOST_PLATFORM_SH); set it to build a multi-arch manifest.
+        "platforms": attr.string_list(default = []),
         # "" -> follow the --@rules_htvend//:exec_mode flag; otherwise override per target.
         "exec_mode": attr.string(default = "", values = ["", "podman", "direct"]),
         "_exec_mode_flag": attr.label(default = Label("//:exec_mode")),

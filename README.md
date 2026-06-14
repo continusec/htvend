@@ -68,8 +68,11 @@ htvend offline -- curl https://www.bing.com
 To package the captured assets up (e.g. to move to another environment):
 
 ```bash
-htvend export --output-directory=blobs
+htvend export --dest.blobs-backend=filesystem --dest.blobs-dir=blobs
 ```
+
+This copies every blob referenced by `assets.json` into `blobs/`. **`assets.json`
+alone is not enough** — see [Don't forget the blobs](#dont-forget-the-blobs) below.
 
 ## How does it work?
 
@@ -89,6 +92,62 @@ htvend build -- env
 When the proxy sees a URL present in `assets.json`, it serves that content (with the
 recorded headers). Otherwise, under `build` it fetches from upstream and records it;
 under `offline` it returns a 404. Blobs are content-addressed by SHA256.
+
+## Don't forget the blobs
+
+`assets.json` is only a manifest — it records URLs, headers and SHA256 hashes, **not
+the content itself**. The actual bytes ("blobs") live separately, content-addressed by
+their SHA256, in whatever blob store `--blobs-backend` points at (by default a local
+directory under `${XDG_DATA_HOME}/htvend/cache/blobs`).
+
+That means checking `assets.json` into git is necessary but **not sufficient**: when
+`htvend offline` or `htvend verify` later runs (possibly on a different machine, in
+CI, or in an air-gapped environment), it needs access to a blob store containing those
+same blobs. If it doesn't have them, you'll see `WARN missing asset for URL: ...`
+errors even though the URL is listed in `assets.json`.
+
+```
+  online, with internet access              offline / air-gapped
+  ┌──────────────────────────┐              ┌──────────────────────────┐
+  │ htvend build -- <cmd>     │              │ htvend offline -- <cmd>  │
+  │                           │              │                          │
+  │ upstream ──> proxy        │              │           proxy          │
+  │                │          │              │             ^            │
+  │                v          │              │             │            │
+  │        local blob cache   │              │        blob store        │
+  └────────────┬──────────────┘              └─────────────^────────────┘
+               │                                            │
+               │ htvend export                              │
+               v                                            │
+        shared blob store ───────────────────────────────────┘
+        (directory / S3 / OCI registry)
+
+  assets.json (checked in) ───────────────────────────────> read by both
+```
+
+So alongside `assets.json`, you need to get the blobs from the machine that ran
+`build` to the machine that runs `offline`/`verify`. Options:
+
+- **Export to a directory** and ship it alongside `assets.json` (e.g. as part of your
+  repo, a release artifact, or a container image layer):
+
+  ```bash
+  htvend export --dest.blobs-backend=filesystem --dest.blobs-dir=blobs
+  # ... copy blobs/ + assets.json to the target environment ...
+  htvend offline --blobs-backend=filesystem --blobs-dir=blobs -- <cmd>
+  ```
+
+- **Export to S3 (or an OCI registry)** and have both `build`/`export` and
+  `offline`/`verify` point at the same bucket/registry via `--blobs-backend=s3`
+  (or `registry`) plus the relevant `--blobs-*` flags. This is the approach the Bazel
+  rules use — see [docs/bazel.md](./docs/bazel.md).
+
+- **Reuse the local cache directly** if `build` and `offline` run on the same
+  machine/container — both default to the same `${XDG_DATA_HOME}/htvend/cache/blobs`,
+  so no export is needed.
+
+`htvend verify` (optionally with `--fetch`) is a good way to confirm that a given blob
+store actually has everything `assets.json` references before you rely on it offline.
 
 ## Ways to use htvend
 

@@ -12,36 +12,33 @@ local_path_override(
     path = "../rules",
 )
 
-htvend_blobs_repository = use_repo_rule("@rules_htvend//:blobs_repository.bzl", "htvend_blobs_repository")
 htvend_blobs_dir_repository = use_repo_rule("@rules_htvend//:blobs_dir_repository.bzl", "htvend_blobs_dir_repository")
 
-# Most examples fetch their blobs from S3 (auth via the tweag credential helper,
-# configured in .bazelrc).
-htvend_blobs_repository(
-    name = "java_spring_img_blobs",
-    assets_json = "//java-spring-img:assets.json",
-    s3_bucket = "htvend-demo-001",
-    s3_prefix = "blobs/",
-)
-
-htvend_blobs_repository(
-    name = "python3_img_blobs",
-    assets_json = "//python3-img:assets.json",
-    s3_bucket = "htvend-demo-001",
-    s3_prefix = "blobs/",
-)
-
-htvend_blobs_repository(
-    name = "ubuntu_img_blobs",
-    assets_json = "//ubuntu-img:assets.json",
-    s3_bucket = "htvend-demo-001",
-    s3_prefix = "blobs/",
-)
-
-# alpine-img demonstrates the directory backend: blobs come from the local htvend
-# cache (no S3, no credentials). Override the location with HTVEND_BLOBS_DIR or the
-# blobs_dir attribute.
+# All of these examples use the directory backend: blobs come from a local directory (no
+# S3, no credentials). With no blobs_dir, they default to the local htvend cache at
+# ${XDG_DATA_HOME:-$HOME/.local/share}/htvend/cache/blobs (override with the blobs_dir
+# attribute or the HTVEND_BLOBS_DIR env var). See ../docs/bazel.md for the S3 backend.
 htvend_blobs_dir_repository(
     name = "alpine_img_blobs",
     assets_json = "//alpine-img:assets.json",
+)
+
+htvend_blobs_dir_repository(
+    name = "python3_img_blobs",
+    assets_json = "//python3-img:assets.json",
+)
+
+htvend_blobs_dir_repository(
+    name = "ubuntu_img_blobs",
+    assets_json = "//ubuntu-img:assets.json",
+)
+
+htvend_blobs_dir_repository(
+    name = "java_spring_img_blobs",
+    assets_json = "//java-spring-img:assets.json",
+)
+
+htvend_blobs_dir_repository(
+    name = "ruby_img_blobs",
+    assets_json = "//ruby-img:assets.json",
 )

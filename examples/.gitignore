@@ -1,0 +1,4 @@
+# Lockfiles are generated on demand by `bazel run //<img>:image.lock`, not checked in
+# (the blobs they reference aren't in the repo either). Run the lock to (re)create them.
+assets.json
+**/assets.json

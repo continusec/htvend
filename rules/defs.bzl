@@ -27,7 +27,7 @@ def htvend_image(
         blobs,
         dockerfile = "Dockerfile",
         env = {},
-        platforms = ["linux/amd64", "linux/arm64"],
+        platforms = [],
         srcs = None,
         lockfile_name = "assets.json",
         image = None,
@@ -44,16 +44,20 @@ def htvend_image(
       blobs: the blob set to build from (e.g. "@my_blobs//:blobs").
       dockerfile: Dockerfile to build (relative to the package). Default "Dockerfile".
       env: dict of environment variables to pass into the build (e.g. settings paths).
-      platforms: os/arch list to build into the manifest. Default amd64 + arm64.
+      platforms: os/arch list to build into the manifest. Empty (default) builds for
+        the host architecture only; set it (e.g. ["linux/amd64", "linux/arm64"]) for a
+        multi-arch manifest.
       srcs: build context files. Defaults to a glob of the package.
       lockfile_name: the lockfile to read/write. Default "assets.json".
       image: override the htvend tool image (defaults to the pinned published image).
       exec_mode: build only -- "podman" (local default) or "direct" (RBE-eligible, runs
         tools from PATH). Empty -> follow the --@rules_htvend//:exec_mode flag.
-      blobs_dir: lock only -- local directory to write blobs into. Empty -> htvend cache.
+      blobs_dir: lock only -- local directory to write blobs into. Empty -> taken from
+        `blobs`'s own :blobs_info (i.e. its htvend_blobs_dir_repository directory), or
+        the htvend cache if there isn't one.
       s3_bucket: lock only -- override the S3 bucket blobs are exported to. Empty ->
-        taken from `blobs`'s own :blobs_info (i.e. its htvend_blobs_repository config),
-        or no S3 export for a directory-backed `blobs`.
+        taken from `blobs`'s own :blobs_info (i.e. its htvend_blobs_s3_repository
+        config), or no S3 export for a directory-backed `blobs`.
       s3_prefix: lock only -- override the S3 key prefix. Empty -> see s3_bucket.
       lock_name: name of the lock target. Default "<name>.lock".
       **kwargs: common args (e.g. visibility) applied to both targets.
@@ -63,11 +67,12 @@ def htvend_image(
     # shared image override only passed through when set, so each rule keeps its default
     image_kwargs = {"image": image} if image else {}
 
-    # The blobs backend (htvend_blobs_repository / htvend_blobs_dir_repository) generates
-    # a `:blobs_info` target alongside `:blobs` advertising its own S3 bucket/prefix (if
-    # any). Pass it through so htvend_lock can default s3_bucket/s3_prefix from it --
-    # one source of truth, no need to repeat them here. String manipulation (not Label())
-    # so the result is resolved in the caller's repo mapping, not rules_htvend's.
+    # The blobs backend (htvend_blobs_s3_repository / htvend_blobs_dir_repository)
+    # generates a `:blobs_info` target alongside `:blobs` advertising its own S3
+    # bucket/prefix and/or local blobs_dir (if any). Pass it through so htvend_lock
+    # can default blobs_dir/s3_bucket/s3_prefix from it -- one source of truth, no
+    # need to repeat them here. String manipulation (not Label()) so the result is
+    # resolved in the caller's repo mapping, not rules_htvend's.
     blobs_info = blobs.rsplit(":", 1)[0] + ":blobs_info"
 
     htvend_lock(
