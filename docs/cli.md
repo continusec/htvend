@@ -108,8 +108,11 @@ Copies all cached blobs referred to by `assets.json` to a destination of your
 choosing (a directory, or another backend such as S3). Useful when packaging assets
 to send to another environment, or to populate a shared blob store.
 
-For example, `htvend export --output-directory=blobs` writes every blob referenced by
-`assets.json` into a local `blobs/` directory.
+For example, `htvend export --dest.blobs-backend=filesystem --dest.blobs-dir=blobs`
+writes every blob referenced by `assets.json` into a local `blobs/` directory. Note
+that `assets.json` alone is not a complete, portable artifact — see
+[Don't forget the blobs](../README.md#dont-forget-the-blobs) in the top-level README
+for why the exported blobs need to travel with it.
 
 ```
 Usage:
@@ -119,14 +122,17 @@ Usage:
           --blobs-backend=[filesystem|registry|s3] Type of blob store (default: filesystem)
           --blobs-registry=                     URL for registry to store / fetch blobs from
           --blobs-dir=                          Common directory to store downloaded blobs in (default: ${XDG_DATA_HOME}/htvend/cache/blobs)
-          --cache-manifest=                     Cache of all downloaded assets (default: ${XDG_DATA_HOME}/htvend/cache/assets.json)
+          --blobs-bucket=                       S3 bucket to use for blobs
+          --blobs-prefix=                       Prefix to prepend keys before uploading to S3 bucket
       -m, --manifest=                           File to put manifest data in (default: ./assets.json)
-      -o, --output-directory=                   Directory to export blobs to. (default: ./blobs)
 ```
 
-The `export` command also accepts `--dest.blobs-backend`, `--dest.blobs-bucket`, and
-`--dest.blobs-prefix` to push to an S3 destination (used by the Bazel `htvend_lock`
-rule). See `htvend export --help` for the full set.
+The source blob store above is where blobs are read *from* (the `assets.json` cache
+populated by `htvend build`). The destination — where blobs are written *to* — is
+configured separately via the `Destination blob store` group:
+`--dest.blobs-backend`, `--dest.blobs-dir`, `--dest.blobs-registry`,
+`--dest.blobs-bucket`, and `--dest.blobs-prefix` (used by the Bazel `htvend_lock`
+rule to push to S3). See `htvend export --help` for the full set.
 
 ## `htvend verify`
 

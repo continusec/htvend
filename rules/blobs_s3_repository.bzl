@@ -1,4 +1,4 @@
-"""htvend_blobs_repository: fetch a lockfile's blobs from S3 into Bazel.
+"""htvend_blobs_s3_repository: fetch a lockfile's blobs from S3 into Bazel.
 
 Reads the (content-addressed) entries in a checked-in htvend lockfile and downloads
 each blob from S3 by sha256, verifying the hash. Produces a `@<name>//:blobs` target
@@ -10,10 +10,12 @@ with the matching sha256. For a credential-free local/NFS setup, see the directo
 backend in blobs_dir_repository.bzl.
 """
 
+load(":blobs_info.bzl", "read_assets_json")
+
 def _htvend_blobs_impl(ctx):
-    # Read the lockfile
-    assets_json = ctx.read(ctx.attr.assets_json)
-    assets = json.decode(assets_json)
+    # Read the lockfile (treated as empty if assets.json doesn't exist yet --
+    # e.g. before the first `bazel run //pkg:image.lock`).
+    assets = read_assets_json(ctx, ctx.attr.assets_json)
 
     # Download each blob listed in assets.json
     for blob in assets.values():
@@ -42,7 +44,7 @@ htvend_blobs_info(
 )
 """.format(s3_bucket = ctx.attr.s3_bucket, s3_prefix = ctx.attr.s3_prefix))
 
-htvend_blobs_repository = repository_rule(
+htvend_blobs_s3_repository = repository_rule(
     implementation = _htvend_blobs_impl,
     attrs = {
         "assets_json": attr.label(

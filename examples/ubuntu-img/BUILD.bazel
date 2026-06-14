@@ -1,8 +1,8 @@
 load("@rules_htvend//:defs.bzl", "htvend_image")
 
 # Creates //ubuntu-img:image (bazel build) and //ubuntu-img:image.lock (bazel run).
-# Blobs are stored locally and also exported to S3 (the bucket/prefix come from
-# @ubuntu_img_blobs's own :blobs_info, matching its htvend_blobs_repository config).
+# Directory backend: blobs are read from / exported to the local htvend cache (see
+# @ubuntu_img_blobs in //:MODULE.bazel).
 htvend_image(
     name = "image",
     blobs = "@ubuntu_img_blobs//:blobs",
