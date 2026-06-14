@@ -92,6 +92,14 @@ def _htvend_image_impl(ctx):
         # netns, so loopback to the htvend proxy keeps working) -- so a plain
         # `bazel build :image` is itself the offline/hermeticity test, no Bazel
         # sandbox or host buildah install required.
+        #
+        # storage_driver is normally left empty here: the tool image runs buildah with
+        # overlay + the --device /dev/fuse passed below, which is the efficient local
+        # path. Honour an explicit override if the consumer sets one.
+        podman_env = dict(ctx.attr.env)
+        if ctx.attr.storage_driver:
+            podman_env["STORAGE_DRIVER"] = ctx.attr.storage_driver
+
         run_block = """# run podman, mounting our temp context
             PATH=/usr/local/bin:$PATH podman run --rm \\
                 -v "$tmp_context:/workspace" \\
@@ -105,7 +113,7 @@ def _htvend_image_impl(ctx):
             image = ctx.attr.image,
             lockfile_name = ctx.attr.lockfile_name,
             dockerfile = ctx.attr.dockerfile,
-            env_flags = build_env_flags(ctx.attr.env, ctx.attr.platforms),
+            env_flags = build_env_flags(podman_env, ctx.attr.platforms),
         )
         execution_requirements = {
             "no-sandbox": "1",
@@ -117,6 +125,13 @@ def _htvend_image_impl(ctx):
         # image). All inputs are declared and there is no network, so this path is
         # sandbox- and remote-eligible. Worker selection is left to the consumer's
         # exec_properties + platform.
+        #
+        # Default the storage driver to vfs: unlike overlay it needs no /dev/fuse, so the
+        # action runs on an RBE worker with no fuse device. The output image is identical
+        # (vfs just copies where overlay would mount). Override with the storage_driver attr.
+        direct_env = dict(ctx.attr.env)
+        direct_env["STORAGE_DRIVER"] = ctx.attr.storage_driver or "vfs"
+
         run_block = """# run the tools directly from PATH (no podman); subshell keeps the
             # cd local so the final cp below still resolves the relative output path
             ( cd "$tmp_context" && \\
@@ -125,7 +140,7 @@ def _htvend_image_impl(ctx):
                       build-img-with-proxy -f {dockerfile} . )""".format(
             lockfile_name = ctx.attr.lockfile_name,
             dockerfile = ctx.attr.dockerfile,
-            env_exports = build_env_exports(ctx.attr.env, ctx.attr.platforms),
+            env_exports = build_env_exports(direct_env, ctx.attr.platforms),
         )
         execution_requirements = {}
 
@@ -193,6 +208,11 @@ _htvend_image = rule(
         "lockfile_name": attr.string(default = "assets.json"),
         "dockerfile": attr.string(default = "Dockerfile"),
         "env": attr.string_dict(default = {}),
+        # buildah storage driver for the offline build (sets STORAGE_DRIVER). Empty ->
+        # per-mode default: direct/RBE mode uses "vfs" (needs no /dev/fuse on the worker);
+        # podman mode leaves it to the tool image (overlay + the --device /dev/fuse it
+        # passes). Set to "overlay" or "vfs" to override either mode.
+        "storage_driver": attr.string(default = ""),
         # os/arch list built into the manifest. Empty (default) -> just the host
         # architecture (see HOST_PLATFORM_SH); set it to build a multi-arch manifest.
         "platforms": attr.string_list(default = []),
