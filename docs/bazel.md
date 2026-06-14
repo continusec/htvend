@@ -253,6 +253,12 @@ Pass build-time options through `htvend_image` attributes:
   [`cli/scripts/build-img-with-proxy`](../cli/scripts/build-img-with-proxy) for the full
   list of variables it reads.
 
+- **`storage_driver`** — buildah storage driver for the offline build. Empty (default)
+  uses each mode's natural default: **direct/RBE mode uses `vfs`** so the worker needs no
+  `/dev/fuse`; podman mode uses the tool image's overlay (with the `/dev/fuse` device it
+  already passes). Set `"overlay"` or `"vfs"` to override. See
+  [Remote execution (RBE)](#remote-execution-rbe).
+
 ### Multiple images in one package
 
 `htvend_image` takes a `lockfile_name` (default `assets.json`). To host several images in
@@ -365,15 +371,51 @@ entirely. The action runs with `use_default_shell_env = True`, so the three tool
 on the action's `PATH` (extend with `--action_env=PATH=...` if needed; in the tool image
 they're in `/usr/local/bin`).
 
-buildah still needs user-namespace + fuse-overlayfs support on the worker — that's
-buildah's nature, not something Bazel removes; ensure your worker pool provides it.
+buildah still needs **mount privilege** on the worker to set up each `RUN` container —
+that's buildah's nature, not something Bazel removes. The next section pins down exactly
+what the worker pool must allow.
+
+### Worker privilege requirements
+
+The custom worker image is the *easy* part: `container-image` is a standard REAPI platform
+property, and pointing a worker pool at the tool image is an ordinary Buildbarn operation.
+What an RBE team actually has to sign off on is the **privilege buildah needs to execute
+`RUN` instructions**. Direct mode keeps that as small as practical:
+
+- **Storage driver defaults to `vfs`**, so the worker needs **no `/dev/fuse`** (overlay's
+  fuse-overlayfs is what would otherwise need it). The output image is byte-identical to
+  the overlay build — vfs just copies where overlay would mount, trading some speed/disk.
+  Override with the `storage_driver` attribute (e.g. `"overlay"` if your worker *does*
+  provide a fuse device).
+- **A non-overlay writable `/var/tmp`** (e.g. `tmpfs: [/var/tmp:exec]`) — buildah stages an
+  overlay mount of the *build context* there, and overlay-on-overlay (the container's own
+  rootfs) is rejected by the kernel. Needed even with the vfs driver.
+- **Raised `RLIMIT_NOFILE`** (e.g. `nofile: 1048576`) — buildah raises it for build
+  containers; start high so it needn't hold `CAP_SYS_RESOURCE`.
+- **Mount privilege for the `RUN` containers** — irreducible (every `RUN` bind-mounts
+  `/proc`, `/dev`, secrets, …). Grant it one of two equivalent ways:
+
+  | | added caps | seccomp | apparmor¹ | how `RUN`'s mounts happen |
+  |---|---|---|---|---|
+  | **Strategy P** | `SYS_ADMIN` | **default** (filter stays on) | `unconfined` | real `CAP_SYS_ADMIN` — assumes the action runs as root² |
+  | **Strategy U** | none | `unconfined` | `unconfined` | buildah creates a user namespace (`unshare(CLONE_NEWUSER)`, which the default seccomp profile blocks) |
+
+  ¹ `apparmor=unconfined` is only needed where the runtime applies a restrictive default
+  LSM profile (e.g. Docker's `docker-default`, which denies the mounts). A custom apparmor
+  profile allowing just buildah's mounts is a finer-grained alternative; on hosts without
+  apparmor it doesn't apply at all.
+  ² true on the bb-deployments runner, whose image is `User=0`; bb_runner sets no uid.
+
+  Strategy P generally sits better with security teams — it keeps the seccomp filter on;
+  Strategy U avoids granting `CAP_SYS_ADMIN`. **Neither runs on a fully locked-down generic
+  runner** — some mount privilege is unavoidable for image builds that execute `RUN`.
 
 ### Verified against a local Buildbarn cluster
 
-This has been verified end-to-end against `buildbarn/bb-deployments`' docker-compose
+Both strategies are verified end-to-end against `buildbarn/bb-deployments`' docker-compose
 deployment, using its `*-hardlinking-ubuntu22-04` worker/runner pair with the runner's
-image swapped for the htvend tool image and its `container-image` property set to the
-exact `DEFAULT_HTVEND_IMAGE` (including digest):
+image swapped for the htvend tool image and its `container-image` property set to the exact
+`DEFAULT_HTVEND_IMAGE` (including digest):
 
 ```bash
 bazel build //app:image \
@@ -383,16 +425,14 @@ bazel build //app:image \
 ```
 
 The action dispatches to the runner ("Runner: remote"), which has `network_mode: none` —
-no network interfaces at all — and the three tools on `PATH` from the image. Three small
-additions were needed on the runner container beyond the reference compose file (the
-default Docker security profile is tighter than a bare sandbox/host process):
+no network interfaces at all — and the three tools on `PATH` from the image. Both runner
+privilege sets below produced the **byte-identical** OCI image (`--network=none`, vfs
+driver, **no `/dev/fuse`**):
 
-- `cap_add: [SYS_ADMIN]` + `security_opt: [seccomp=unconfined, apparmor=unconfined]` —
-  buildah calls `unshare(CLONE_NEWUSER)` even under `BUILDAH_ISOLATION=chroot`.
-- `tmpfs: [/var/tmp:exec]` — buildah stages an overlay mount under `/var/tmp`; overlay-on-
-  overlay is rejected by the kernel.
-- `devices: [/dev/fuse:/dev/fuse]` + `ulimits.nofile` raised to 1048576 — the same
-  `/dev/fuse` + `RLIMIT_NOFILE` the podman path covers via `--device /dev/fuse`.
+- **Strategy P** — `cap_add: [SYS_ADMIN]`, `security_opt: [apparmor=unconfined]` (default
+  seccomp), `tmpfs: [/var/tmp:exec]`, `ulimits.nofile: 1048576`.
+- **Strategy U** — `security_opt: [seccomp=unconfined, apparmor=unconfined]` (no added
+  caps), `tmpfs: [/var/tmp:exec]`, `ulimits.nofile: 1048576`.
 
 These are properties of "a container that runs buildah", independent of `rules_htvend`.
 
