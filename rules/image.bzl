@@ -12,7 +12,7 @@ with htvend_lock.
 # Default published tool image. podman resolves this from the local image store if
 # present (e.g. after `cd cli && make image IMAGE_TAG=...`), otherwise pulls it.
 # Pin by digest for fully reproducible builds.
-DEFAULT_HTVEND_IMAGE = "ghcr.io/continusec/htvend:2.2@sha256:c8a817e67e119693c1f583b6f867e2c3a1a9019760425e1821c49ec077f4f611"
+DEFAULT_HTVEND_IMAGE = "ghcr.io/continusec/htvend:2.3@sha256:65ceba02afe7a9bfb7f5a8f3bc41d56057bbfe3586e03fe45bb6a8fcb7b3b028"
 
 # Shell snippet (prepended to the generated build/lock scripts) that computes the
 # host os/arch in buildah's `os/arch` form, e.g. linux/arm64. Used as the default

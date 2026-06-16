@@ -18,16 +18,18 @@ import (
 	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"runtime"
 	"strings"
 
-	"github.com/containers/image/v5/manifest"
 	"github.com/continusec/htvend/internal/registryauthclient"
 	"github.com/hashicorp/go-multierror"
 	"github.com/opencontainers/go-digest"
+	imgspecv1 "github.com/opencontainers/image-spec/specs-go/v1"
 	"github.com/sirupsen/logrus"
 )
 
@@ -94,7 +96,7 @@ func downloadImage(client *http.Client, name string) error {
 	hm := sha256.Sum256(mByTag)
 
 	// now pull same but via SHA256 URL, as some clients need this
-	mBySha, shaCT, err := pullManifest(client, img.ToManifestUrlWithKey(hm[:]))
+	mBySha, _, err := pullManifest(client, img.ToManifestUrlWithKey(hm[:]))
 	if err != nil {
 		return fmt.Errorf("error pulling manifest by tag: %w", err)
 	}
@@ -104,37 +106,60 @@ func downloadImage(client *http.Client, name string) error {
 		return fmt.Errorf("that's weird, manifest changed!")
 	}
 
-	ml, err := manifest.ListFromBlob(mBySha, shaCT)
-	if err != nil {
-		return fmt.Errorf("error parsing manifest: %w", err)
+	var ml imgspecv1.Index
+	if err := json.Unmarshal(mBySha, &ml); err != nil {
+		return fmt.Errorf("error parsing manifest list: %w", err)
 	}
 
-	ourDigest, err := ml.ChooseInstance(nil)
+	ourDigest, err := chooseInstance(ml.Manifests)
 	if err != nil {
 		return fmt.Errorf("error choosing operating system digest: %w", err)
 	}
 
-	ourPlatformManifestBytes, ourPlatformManifestCT, err := pullManifest(client, img.ToManifestUrlWithDigest(ourDigest))
+	ourPlatformManifestBytes, _, err := pullManifest(client, img.ToManifestUrlWithDigest(ourDigest))
 	if err != nil {
 		return fmt.Errorf("can't pull actual platform manifest: %w", err)
 	}
 
-	ourPlatformManifest, err := manifest.FromBlob(ourPlatformManifestBytes, ourPlatformManifestCT)
-	if err != nil {
+	var ourPlatformManifest imgspecv1.Manifest
+	if err := json.Unmarshal(ourPlatformManifestBytes, &ourPlatformManifest); err != nil {
 		return fmt.Errorf("can't parse platform manifest: %w", err)
 	}
 
-	if err := pullBlob(client, img.ToBlobUrlWithDigest(ourPlatformManifest.ConfigInfo().Digest)); err != nil {
+	if err := pullBlob(client, img.ToBlobUrlWithDigest(ourPlatformManifest.Config.Digest)); err != nil {
 		return fmt.Errorf("error pulling config: %w", err)
 	}
 
-	for _, li := range ourPlatformManifest.LayerInfos() {
+	for _, li := range ourPlatformManifest.Layers {
 		if err := pullBlob(client, img.ToBlobUrlWithDigest(li.Digest)); err != nil {
 			return fmt.Errorf("error pulling layer: %w", err)
 		}
 	}
 
 	return nil
+}
+
+// chooseInstance picks the manifest descriptor matching the host platform,
+// replacing containers/image's manifest.List.ChooseInstance(nil). Docker
+// schema2 manifest lists and OCI image indexes share the same JSON shape, so
+// both unmarshal into imgspecv1.Index.
+func chooseInstance(manifests []imgspecv1.Descriptor) (digest.Digest, error) {
+	wantVariant := ""
+	if runtime.GOARCH == "arm" {
+		wantVariant = "v7" // matches containers/image's default for 32-bit arm
+	}
+	for _, m := range manifests {
+		p := m.Platform
+		if p == nil || p.OS != runtime.GOOS || p.Architecture != runtime.GOARCH {
+			continue
+		}
+		// Treat an unset variant on either side as compatible (e.g. arm64/v8).
+		if wantVariant != "" && p.Variant != "" && p.Variant != wantVariant {
+			continue
+		}
+		return m.Digest, nil
+	}
+	return "", fmt.Errorf("no image found for %s/%s", runtime.GOOS, runtime.GOARCH)
 }
 
 func NewImageName(ref string) (ImageName, error) {
